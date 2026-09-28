@@ -8,6 +8,7 @@ import FlagshipProducts from "@/components/FlagshipProducts";
 import DemoRequestForm from "@/components/DemoRequestForm";
 import CardCarousel from "@/components/CardCarousel";
 import StopwatchCounter from "@/components/StopwatchCounter";
+import WorkforceHeroVector from "@/components/WorkforceHeroVector";
 
 /* --------------------------------------------------------------------
    Images — every image this page uses lives in
@@ -114,68 +115,49 @@ function FaqToggleIcon() {
   );
 }
 
-// Line icons drawn for this page (the live site uses an icon font here).
+// Solid icons drawn for this page matching the HRMS vibrant solid-tile + white icon style.
 const ICON_PATHS = {
   employee: (
-    <>
-      <rect x="4" y="6" width="24" height="20" rx="2.5" fill="currentColor" fillOpacity={0.18} />
-      <circle cx="11.5" cy="14" r="3" />
-      <path d="M7 22c.6-2.6 2.4-4 4.5-4s3.9 1.4 4.5 4M19 12h5M19 16h5M19 20h3" />
-    </>
+    <path fillRule="evenodd" d="M12 1.5a4.5 4.5 0 0 0-4.5 4.5v.75a4.5 4.5 0 0 0 9 0V6a4.5 4.5 0 0 0-4.5-4.5Zm-7.5 16.5A4.5 4.5 0 0 1 9 13.5h6a4.5 4.5 0 0 1 4.5 4.5v1.5a1.5 1.5 0 0 1-1.5 1.5h-12A1.5 1.5 0 0 1 4.5 19.5V18Z" clipRule="evenodd" />
   ),
   clock: (
-    <>
-      <circle cx="16" cy="16" r="11.5" fill="currentColor" fillOpacity={0.18} />
-      <path d="M16 9v7.5l5 3" />
-    </>
+    <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 6a.75.75 0 0 0-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 0 0 0-1.5h-3.75V6Z" clipRule="evenodd" />
   ),
   payroll: (
-    <>
-      <path d="M8 4h16v24l-4-2.5-4 2.5-4-2.5L8 28Z" fill="currentColor" fillOpacity={0.18} />
-      <path d="M12.5 10h7M12.5 13.5h7M16.5 10c2.5 0 2.5 6.5 0 6.5h-3l5 4.5" />
-    </>
+    <path fillRule="evenodd" d="M12 1.5c-5.799 0-10.5 4.701-10.5 10.5s4.701 10.5 10.5 10.5 10.5-4.701 10.5-10.5S17.799 1.5 12 1.5Zm1.125 5.25a.75.75 0 0 0 0 1.5h2.25a.75.75 0 0 1 0 1.5h-3.375a.75.75 0 0 0 0 1.5h1.875a2.25 2.25 0 0 1 0 4.5h-.75v1.5a.75.75 0 0 1-1.5 0V16.5H9.375a.75.75 0 0 1 0-1.5h2.25a.75.75 0 0 0 0-1.5H9.75a2.25 2.25 0 0 1 0-4.5h2.625V7.5a.75.75 0 0 1 1.5 0v.75h1.5a.75.75 0 0 0 0-1.5h-2.25Z" clipRule="evenodd" />
   ),
   mobile: (
     <>
-      <rect x="9" y="3" width="14" height="26" rx="2.5" fill="currentColor" fillOpacity={0.18} />
-      <circle cx="16" cy="12.5" r="2.8" />
-      <path d="M11.8 20c.8-2 2.3-3 4.2-3s3.4 1 4.2 3M14.5 25.5h3" />
+      <path d="M7 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H7zm0 2h10v13H7V4zm5 14.25a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+      <path d="M12 7a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-3 7a3 3 0 0 1 6 0H9z" />
     </>
   ),
   calendar: (
-    <>
-      <rect x="4" y="6.5" width="24" height="21" rx="2.5" fill="currentColor" fillOpacity={0.18} />
-      <path d="M4 12.5h24M10 4v5M22 4v5M9.5 18h3M15 18h3M20.5 18h3M9.5 22.5h3M15 22.5h3" />
-    </>
+    <path fillRule="evenodd" d="M6.75 2.25A.75.75 0 0 1 7.5 3v1.5h9V3A.75.75 0 0 1 18 3v1.5h.75A3.75 3.75 0 0 1 22.5 8.25v10.5A3.75 3.75 0 0 1 18.75 22.5H5.25A3.75 3.75 0 0 1 1.5 18.75V8.25A3.75 3.75 0 0 1 5.25 4.5H6V3a.75.75 0 0 1 .75-.75Zm13.5 9a1.5 1.5 0 0 0-1.5-1.5H5.25a1.5 1.5 0 0 0-1.5 1.5v7.5a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5v-7.5Z" clipRule="evenodd" />
   ),
   lock: (
-    <>
-      <rect x="6" y="14" width="20" height="14" rx="2.5" fill="currentColor" fillOpacity={0.18} />
-      <path d="M10.5 14V9.5a5.5 5.5 0 0 1 11 0V14M16 19.5v3" />
-    </>
+    <path fillRule="evenodd" d="M12 1.5a5.25 5.25 0 0 0-5.25 5.25v3a3 3 0 0 0-3 3v6.75a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3v-6.75a3 3 0 0 0-3-3v-3c0-2.9-2.35-5.25-5.25-5.25Zm3.75 8.25v-3a3.75 3.75 0 1 0-7.5 0v3h7.5Z" clipRule="evenodd" />
   ),
   workflow: (
-    <>
-      <rect x="4" y="4" width="9" height="8" rx="2" fill="currentColor" fillOpacity={0.18} />
-      <rect x="19" y="20" width="9" height="8" rx="2" fill="currentColor" fillOpacity={0.18} />
-      <path d="M8.5 12v5a3 3 0 0 0 3 3H19M23.5 20v-3a3 3 0 0 0-3-3H17" />
-      <path d="M25 6.5a2.5 2.5 0 1 1-.01 0" />
-    </>
+    <path fillRule="evenodd" d="M6 2a3 3 0 0 0-3 3v.5a3 3 0 0 0 2 2.82v7.36A3 3 0 0 0 3 18.5v.5a3 3 0 1 0 6 0v-.5a3 3 0 0 0-2-2.82V9.82A3.001 3.001 0 0 0 8.82 8H13a3 3 0 0 1 3 3v2.18a3 3 0 1 0 2 0V11a5 5 0 0 0-5-5H8.82A3 3 0 0 0 6 2Z" clipRule="evenodd" />
   ),
   reports: (
-    <>
-      <path d="M19 4H8a2 2 0 0 0-2 2v20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V11Z" fill="currentColor" fillOpacity={0.18} />
-      <path d="M19 4v7h7M11 22v-4M15 22v-7M19 22v-5" />
-    </>
+    <path fillRule="evenodd" d="M5.625 1.5H9a3.75 3.75 0 0 1 3.75 3.75v1.875c0 1.036.84 1.875 1.875 1.875H16.5a3.75 3.75 0 0 1 3.75 3.75v7.875c0 1.035-.84 1.875-1.875 1.875H5.625a1.875 1.875 0 0 1-1.875-1.875V3.375c0-1.036.84-1.875 1.875-1.875ZM12.75 12a.75.75 0 0 0 0-1.5h-4.5a.75.75 0 0 0 0 1.5h4.5Zm0 3a.75.75 0 0 0 0-1.5h-4.5a.75.75 0 0 0 0 1.5h4.5Zm-2.25 3a.75.75 0 0 0 0-1.5h-2.25a.75.75 0 0 0 0 1.5h2.25Zm4.5-12.75v1.875a.375.375 0 0 0 .375.375h1.875a2.25 2.25 0 0 0-2.25-2.25Z" clipRule="evenodd" />
   ),
 };
 
-function IconTile({ name, bg, color, className = "h-12 w-12", iconClassName = "h-7 w-7" }) {
+function LineIcon({ name, className = "h-6 w-6" }) {
   return (
-    <span className={`flex shrink-0 items-center justify-center rounded-[10px] ${iconPop} ${className}`} style={{ background: bg, color }}>
-      <svg viewBox="0 0 32 32" aria-hidden="true" className={iconClassName} fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
-        {ICON_PATHS[name]}
-      </svg>
+    <svg viewBox="0 0 24 24" aria-hidden="true" className={className} fill="currentColor">
+      {ICON_PATHS[name]}
+    </svg>
+  );
+}
+
+function IconTile({ name, bg, color = "#ffffff", className = "h-12 w-12 rounded-[10px]", iconClassName = "h-6 w-6" }) {
+  return (
+    <span className={`flex shrink-0 items-center justify-center text-white shadow-sm ${iconPop} ${className}`} style={{ background: bg }}>
+      <LineIcon name={name} className={iconClassName} />
     </span>
   );
 }
@@ -193,11 +175,11 @@ function SectionHeader({ id, title, text, align = "center", className = "", dark
 }
 
 const TONES = [
-  { bg: "#d8e7fe", color: "#1d64d8" },
-  { bg: "#fee6b1", color: "#b07d00" },
-  { bg: "#d1f4e3", color: "#0b8f63" },
-  { bg: "#fdd7d4", color: "#c2362c" },
-  { bg: "#e9eafe", color: "#5b5bd6" },
+  { bg: "#0077c2", color: "#ffffff" },
+  { bg: "#0fb880", color: "#ffffff" },
+  { bg: "#f8bb18", color: "#ffffff" },
+  { bg: "#ef4444", color: "#ffffff" },
+  { bg: "#5b5bd6", color: "#ffffff" },
 ];
 const tone = (index) => TONES[index % TONES.length];
 
@@ -211,14 +193,11 @@ const stats = [
     suffix: "+",
     label: "Happy Customers",
     desc: "Enterprise clients worldwide",
-    bg: "#d8e7fe",
-    color: "#1d64d8",
+    bg: "#0077c2",
+    color: "#ffffff",
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
-        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-        <circle cx="9" cy="7" r="4" />
-        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+      <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
+        <path d="M4.5 6.375a4.125 4.125 0 1 1 8.25 0 4.125 4.125 0 0 1-8.25 0ZM14.25 8.625a3.375 3.375 0 1 1 6.75 0 3.375 3.375 0 0 1-6.75 0ZM1.5 19.125a7.125 7.125 0 0 1 14.25 0v.003l-.001.119a.75.75 0 0 1-.363.63 13.067 13.067 0 0 1-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 0 1-.364-.63l-.001-.122ZM17.25 19.128l-.003.144a2.25 2.25 0 0 1-.233.96 10.088 10.088 0 0 0 5.06-1.232.75.75 0 0 0 .364-.63v-.12a5.625 5.625 0 0 0-5.188-5.615Z" />
       </svg>
     ),
   },
@@ -227,12 +206,11 @@ const stats = [
     suffix: "+",
     label: "Compliance Reports",
     desc: "State & central statutory acts",
-    bg: "#fee6b1",
-    color: "#b07d00",
+    bg: "#f8bb18",
+    color: "#ffffff",
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-        <path d="m9 12 2 2 4-4" />
+      <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
+        <path fillRule="evenodd" d="M12.516 2.17a.75.75 0 0 0-1.032 0 11.209 11.209 0 0 1-7.877 3.08.75.75 0 0 0-.722.515A12.74 12.74 0 0 0 2.25 9.75c0 5.942 4.064 10.933 9.563 12.348a.749.749 0 0 0 .374 0c5.499-1.415 9.563-6.406 9.563-12.348 0-1.39-.223-2.73-.635-3.985a.75.75 0 0 0-.722-.516l-.143.001c-2.996 0-5.717-1.17-7.734-3.08Zm3.094 8.016a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z" clipRule="evenodd" />
       </svg>
     ),
   },
@@ -241,12 +219,11 @@ const stats = [
     suffix: "+",
     label: "Successful projects",
     desc: "Multi-site implementations",
-    bg: "#d1f4e3",
-    color: "#0b8f63",
+    bg: "#0fb880",
+    color: "#ffffff",
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
-        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-        <polyline points="22 4 12 14.01 9 11.01" />
+      <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
+        <path fillRule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z" clipRule="evenodd" />
       </svg>
     ),
   },
@@ -255,11 +232,11 @@ const stats = [
     suffix: "%",
     label: "Customer Satisfaction",
     desc: "Verified SLA delivery rating",
-    bg: "#fdd7d4",
-    color: "#c2362c",
+    bg: "#ef4444",
+    color: "#ffffff",
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
-        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+      <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
+        <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clipRule="evenodd" />
       </svg>
     ),
   },
@@ -411,19 +388,8 @@ export default function WorkforceManagementSystemPage() {
             </div>
           </header>
 
-          <div className={`${revealFromRight} relative w-full max-w-xl lg:w-[48%] lg:max-w-[560px]`}>
-            <div aria-hidden="true" className="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-[#f8bb18]/30 via-[#fee6b1]/20 to-transparent blur-3xl -z-10" />
-            <div className="group/card relative overflow-hidden rounded-2xl bg-white p-3 shadow-[inset_0_0_0_0.744px_#dddddd,0px_16px_36px_-12px_rgba(0,0,0,0.14)] transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[inset_0_0_0_1.5px_#f8bb18,0px_22px_48px_-12px_rgba(0,0,0,0.2)]">
-              <div className="overflow-hidden rounded-xl bg-[#0f172a]">
-                <Image
-                  src={heroImg}
-                  alt="Enterprise business executive interacting with an intuitive holographic workforce management interface and connected global network"
-                  className="h-auto w-full object-cover transition-transform duration-500 ease-out group-hover/card:scale-[1.02]"
-                  priority
-                  sizes="(min-width: 1024px) 48vw, 100vw"
-                />
-              </div>
-            </div>
+          <div className={`${revealFromRight} relative w-full max-w-xl lg:w-[48%] lg:max-w-none`}>
+            <WorkforceHeroVector />
           </div>
         </div>
       </section>

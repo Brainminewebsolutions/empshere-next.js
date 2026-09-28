@@ -32,14 +32,19 @@ export default function StopwatchCounter({
   value = "15,00,000",
   suffix = "",
   className = "",
+  delay = 0,
 }) {
   const containerRef = useRef(null);
   const [isArmed, setIsArmed] = useState(false);
   const [isRolling, setIsRolling] = useState(false);
 
-  // Parse characters into structured items
-  const fullValue = `${value ?? ""}${suffix ?? ""}`;
-  const characters = String(fullValue).split("");
+  // Format numbers to Indian locale string with commas if passed as number
+  const formattedValue =
+    typeof value === "number"
+      ? value.toLocaleString("en-IN")
+      : String(value ?? "");
+  const fullValue = `${formattedValue}${suffix ?? ""}`;
+  const characters = fullValue.split("");
   let digitCounter = 0;
   const items = characters.map((char) => {
     if (char === "," || char === "." || !char.trim() || isNaN(Number(char))) {
@@ -76,7 +81,7 @@ export default function StopwatchCounter({
       // If already in view on load, begin rolling after a short pause
       const timer = setTimeout(() => {
         setIsRolling(true);
-      }, 150);
+      }, 150 + delay);
       return () => clearTimeout(timer);
     }
 
@@ -86,7 +91,7 @@ export default function StopwatchCounter({
           // Delay start slightly for optimal perceived motion
           setTimeout(() => {
             setIsRolling(true);
-          }, 120);
+          }, 120 + delay);
           observer.disconnect();
         }
       },
@@ -95,7 +100,7 @@ export default function StopwatchCounter({
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [delay]);
 
   const handleReplay = (e) => {
     e.preventDefault();
@@ -138,7 +143,7 @@ export default function StopwatchCounter({
           // rightmost dials spin longer (~2.4s) like high-speed stopwatch centiseconds
           const progress = totalDigits > 1 ? item.digitIndex / (totalDigits - 1) : 0;
           const duration = 1600 + progress * 800;
-          const delay = progress * 70;
+          const dialDelay = progress * 70;
 
           return (
             <span
@@ -157,7 +162,7 @@ export default function StopwatchCounter({
                   transitionProperty: isArmed ? "transform" : "none",
                   transitionDuration: isArmed && isRolling ? `${duration}ms` : "0ms",
                   transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
-                  transitionDelay: isArmed && isRolling ? `${delay}ms` : "0ms",
+                  transitionDelay: isArmed && isRolling ? `${dialDelay}ms` : "0ms",
                   willChange: "transform",
                 }}
               >

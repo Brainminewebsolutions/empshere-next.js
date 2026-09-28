@@ -7,6 +7,9 @@ import BackToTop from "@/components/BackToTop";
 import FlagshipProducts from "@/components/FlagshipProducts";
 import DemoRequestForm from "@/components/DemoRequestForm";
 import CardCarousel from "@/components/CardCarousel";
+import VisitorHeroVector from "@/components/VisitorHeroVector";
+import VisitorSecurityVector from "@/components/VisitorSecurityVector";
+import VisitorDigitalSolutionsVector from "@/components/VisitorDigitalSolutionsVector";
 
 /* --------------------------------------------------------------------
    Images — every image this page uses lives in
@@ -16,8 +19,7 @@ import CardCarousel from "@/components/CardCarousel";
 import heroImg from "../images/visitor-management-system/hero-verified-visitor-check-in-devices.webp";
 import mobileImg from "../images/visitor-management-system/visitor-analytics-mobile-app-dashboard.webp";
 import securityImg from "../images/visitor-management-system/workplace-security-visitor-scheduling-illustration.webp";
-import digitalImg from "../images/visitor-management-system/digital-visitor-profiles-verification-illustration.webp";
-import receptionImg from "../images/visitor-management-system/reception-security-desk-visitor-check-in.webp";
+import transformImg from "../images/visitor-management-system/visitor-qr-pass-scan-reception-kiosk.webp";
 
 
 // Title and description are the page's Rank Math values on the current site.
@@ -80,7 +82,7 @@ const iconPop = `transition-[scale] duration-300 ${ease} group-hover/card:scale-
 const arrowNudge = `transition-[translate] duration-200 ${ease} group-hover/btn:translate-x-[3px]`;
 
 const primaryButton = `group/btn inline-flex items-center justify-center gap-2 rounded-[9px] bg-[#0077c2] px-6 py-3 ${fontInter} font-semibold text-white ${motion} hover:-translate-y-0.5 hover:bg-[#0061af] hover:shadow-[0_8px_18px_-4px_rgba(0,119,194,0.45)]`;
-const outlineButton = `group/btn inline-flex items-center justify-center gap-2 rounded-[9px] bg-white px-6 py-3 ${fontInter} font-semibold text-[#0077c2] shadow-[inset_0_0_0_1.5px_#0077c2] ${motion} hover:-translate-y-0.5 hover:bg-[#eef6fd]`;
+const outlineButton = `group/btn inline-flex items-center justify-center gap-2 rounded-[9px] bg-white px-6 py-3 ${fontInter} font-semibold text-[#f8bb18] shadow-[inset_0_0_0_1.5px_#f8bb18] ${motion} hover:-translate-y-0.5 hover:bg-[#fffdf5]`;
 
 /* --------------------------------------------------------------------
    Icons
@@ -117,164 +119,94 @@ function FaqToggleIcon() {
 }
 
 // Line icons drawn for this page (the live site uses an icon font here).
+// Solid icons drawn for this page matching the HRMS vibrant solid-tile + white icon style.
 const ICON_PATHS = {
   checkin: (
-    <>
-      <rect x="6" y="5" width="20" height="23" rx="2.5" fill="currentColor" fillOpacity={0.18} />
-      <path d="M12 5V3.5h8V5M11 13l2.5 2.5L18 11M11 21h10" />
-    </>
+    <path fillRule="evenodd" d="M7.5 3.75A1.5 1.5 0 0 0 6 5.25v13.5A1.5 1.5 0 0 0 7.5 20.25h9a1.5 1.5 0 0 0 1.5-1.5V5.25a1.5 1.5 0 0 0-1.5-1.5h-9Zm6.78 6.28a.75.75 0 0 0-1.06-1.06l-2.47 2.47-1.19-1.19a.75.75 0 0 0-1.06 1.06l1.72 1.72a.75.75 0 0 0 1.06 0l3-3Z" clipRule="evenodd" />
   ),
   record: (
-    <>
-      <rect x="5" y="4" width="22" height="24" rx="2.5" fill="currentColor" fillOpacity={0.18} />
-      <path d="M10 10h12M10 15h12M10 20h7" />
-    </>
+    <path fillRule="evenodd" d="M5.625 1.5H9a3.75 3.75 0 0 1 3.75 3.75v1.875c0 1.036.84 1.875 1.875 1.875H16.5a3.75 3.75 0 0 1 3.75 3.75v7.875c0 1.035-.84 1.875-1.875 1.875H5.625a1.875 1.875 0 0 1-1.875-1.875V3.375c0-1.036.84-1.875 1.875-1.875ZM12.75 12a.75.75 0 0 0 0-1.5h-4.5a.75.75 0 0 0 0 1.5h4.5Zm0 3a.75.75 0 0 0 0-1.5h-4.5a.75.75 0 0 0 0 1.5h4.5Zm-2.25 3a.75.75 0 0 0 0-1.5h-2.25a.75.75 0 0 0 0 1.5h2.25Zm4.5-12.75v1.875a.375.375 0 0 0 .375.375h1.875a2.25 2.25 0 0 0-2.25-2.25Z" clipRule="evenodd" />
   ),
   chat: (
-    <>
-      <path d="M5 7.5A2.5 2.5 0 0 1 7.5 5h12A2.5 2.5 0 0 1 22 7.5v7a2.5 2.5 0 0 1-2.5 2.5H12l-5 4v-4H7.5" fill="currentColor" fillOpacity={0.18} />
-      <path d="M25 11h.5a2.5 2.5 0 0 1 2.5 2.5v7a2.5 2.5 0 0 1-2.5 2.5H25v4l-5-4h-4.5" />
-    </>
+    <path fillRule="evenodd" d="M4.848 2.771A49.144 49.144 0 0 1 12 2.25c2.43 0 4.817.177 7.152.521 1.957.288 3.348 1.94 3.348 3.911v5.836c0 1.971-1.391 3.623-3.348 3.911a49.852 49.852 0 0 1-3.652.417V21a.75.75 0 0 1-1.28.53l-4.72-4.72a49.52 49.52 0 0 1-4.652-.417C2.891 16.095 1.5 14.443 1.5 12.472V6.182c0-1.97 1.391-3.623 3.348-3.911Z" clipRule="evenodd" />
   ),
   note: (
-    <>
-      <path d="M6 5h20v15l-7 7H6Z" fill="currentColor" fillOpacity={0.18} />
-      <path d="M19 27v-7h7M11 11h10M11 15.5h6" />
-    </>
+    <path fillRule="evenodd" d="M3 4.5A2.25 2.25 0 0 1 5.25 2.25h13.5A2.25 2.25 0 0 1 21.75 4.5v15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 19.5v-15ZM6.75 7.5a.75.75 0 0 0 0 1.5h10.5a.75.75 0 0 0 0-1.5H6.75Zm0 4.5a.75.75 0 0 0 0 1.5h10.5a.75.75 0 0 0 0-1.5H6.75Zm0 4.5a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5H6.75Z" clipRule="evenodd" />
   ),
   bell: (
-    <>
-      <path d="M8 21V14a8 8 0 0 1 16 0v7l2.5 3h-21Z" fill="currentColor" fillOpacity={0.18} />
-      <path d="M13 27.5a3 3 0 0 0 6 0" />
-    </>
+    <path fillRule="evenodd" d="M5.25 9a6.75 6.75 0 0 1 13.5 0v4.755l1.624 2.435A.75.75 0 0 1 19.75 17.5H4.25a.75.75 0 0 1-.624-1.31L5.25 13.755V9Zm4.5 10.5a2.25 2.25 0 0 0 4.5 0h-4.5Z" clipRule="evenodd" />
   ),
   signature: (
-    <>
-      <path d="M20.5 5.5l6 6L13 25H7v-6Z" fill="currentColor" fillOpacity={0.18} />
-      <path d="M17.5 8.5l6 6M4 28.5h24" />
-    </>
+    <path fillRule="evenodd" d="M21.731 2.269a2.625 2.625 0 0 0-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 0 0 0-3.712ZM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 0 0-1.32 2.214l-.8 2.685a.75.75 0 0 0 .933.933l2.685-.8a5.25 5.25 0 0 0 2.214-1.32L19.513 8.2Z" clipRule="evenodd" />
   ),
   badge: (
-    <>
-      <rect x="7" y="6" width="18" height="22" rx="2.5" fill="currentColor" fillOpacity={0.18} />
-      <path d="M13 3.5h6v5h-6ZM16 14.5a3 3 0 1 1-.01 0M11 24c.8-2.2 2.7-3.5 5-3.5s4.2 1.3 5 3.5" />
-    </>
+    <path fillRule="evenodd" d="M7.5 1.5a.75.75 0 0 1 .75.75V3h7.5V2.25a.75.75 0 0 1 1.5 0V3h.75A2.25 2.25 0 0 1 20.25 5.25v14.25A2.25 2.25 0 0 1 18 21.75H6a2.25 2.25 0 0 1-2.25-2.25V5.25A2.25 2.25 0 0 1 6 3h.75V2.25a.75.75 0 0 1 .75-.75ZM12 7.5a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Zm-3.75 8.25a3.75 3.75 0 0 1 7.5 0H8.25Z" clipRule="evenodd" />
   ),
   qr: (
-    <>
-      <rect x="5" y="5" width="9" height="9" rx="1.5" fill="currentColor" fillOpacity={0.18} />
-      <rect x="18" y="5" width="9" height="9" rx="1.5" fill="currentColor" fillOpacity={0.18} />
-      <rect x="5" y="18" width="9" height="9" rx="1.5" fill="currentColor" fillOpacity={0.18} />
-      <path d="M18 18h3v3h-3ZM24 18h3M18 24v3M22 24h5v3" />
-    </>
+    <path fillRule="evenodd" d="M3 4.5A1.5 1.5 0 0 1 4.5 3h4.5A1.5 1.5 0 0 1 10.5 4.5v4.5A1.5 1.5 0 0 1 9 10.5H4.5A1.5 1.5 0 0 1 3 9V4.5Zm1.5 0v4.5h4.5V4.5H4.5ZM13.5 4.5A1.5 1.5 0 0 1 15 3h4.5A1.5 1.5 0 0 1 21 4.5v4.5a1.5 1.5 0 0 1-1.5 1.5H15a1.5 1.5 0 0 1-1.5-1.5V4.5Zm1.5 0v4.5H19.5V4.5H15ZM3 15a1.5 1.5 0 0 1 1.5-1.5h4.5a1.5 1.5 0 0 1 1.5 1.5v4.5A1.5 1.5 0 0 1 9 21H4.5A1.5 1.5 0 0 1 3 19.5V15Zm1.5 0v4.5h4.5V15H4.5ZM13.5 13.5a.75.75 0 0 1 .75-.75h2.25a.75.75 0 0 1 .75.75v2.25a.75.75 0 0 1-.75.75H14.25a.75.75 0 0 1-.75-.75V13.5Zm3.75 3.75a.75.75 0 0 1 .75-.75H20.25a.75.75 0 0 1 .75.75v2.25a.75.75 0 0 1-.75.75H18a.75.75 0 0 1-.75-.75V17.25ZM13.5 18a.75.75 0 0 1 .75-.75h1.5a.75.75 0 0 1 0 1.5h-1.5a.75.75 0 0 1-.75-.75Zm4.5-4.5a.75.75 0 0 1 .75-.75h1.5a.75.75 0 0 1 0 1.5h-1.5a.75.75 0 0 1-.75-.75Z" clipRule="evenodd" />
   ),
   idcard: (
-    <>
-      <rect x="3.5" y="7" width="25" height="18" rx="2.5" fill="currentColor" fillOpacity={0.18} />
-      <circle cx="11" cy="14.5" r="2.8" />
-      <path d="M7 21c.7-1.9 2.2-3 4-3s3.3 1.1 4 3M18.5 13h6M18.5 17.5h4" />
-    </>
+    <path fillRule="evenodd" d="M4.5 3.75A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V6A2.25 2.25 0 0 0 19.5 3.75h-15ZM8.25 8.25a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5ZM5.25 15.75a3 3 0 0 1 6 0H5.25Zm8.25-6.75a.75.75 0 0 0 0 1.5h5.25a.75.75 0 0 0 0-1.5H13.5Zm0 3.75a.75.75 0 0 0 0 1.5h5.25a.75.75 0 0 0 0-1.5H13.5Zm0 3.75a.75.75 0 0 0 0 1.5h3a.75.75 0 0 0 0-1.5H13.5Z" clipRule="evenodd" />
   ),
   integration: (
-    <>
-      <rect x="4" y="11" width="9" height="10" rx="2" fill="currentColor" fillOpacity={0.18} />
-      <rect x="19" y="11" width="9" height="10" rx="2" fill="currentColor" fillOpacity={0.18} />
-      <path d="M13 16h6M8.5 11V6M23.5 21v5" />
-    </>
+    <path fillRule="evenodd" d="M18.75 3a2.25 2.25 0 0 0-2.25 2.25v2.25H7.5V5.25A2.25 2.25 0 0 0 5.25 3h-1.5A2.25 2.25 0 0 0 1.5 5.25v1.5A2.25 2.25 0 0 0 3.75 9h1.5v6H3.75A2.25 2.25 0 0 0 1.5 17.25v1.5A2.25 2.25 0 0 0 3.75 21h1.5a2.25 2.25 0 0 0 2.25-2.25v-2.25h9v2.25a2.25 2.25 0 0 0 2.25 2.25h1.5a2.25 2.25 0 0 0 2.25-2.25v-1.5a2.25 2.25 0 0 0-2.25-2.25H18.75V9h1.5A2.25 2.25 0 0 0 22.5 6.75v-1.5A2.25 2.25 0 0 0 20.25 3h-1.5ZM6.75 9h10.5v6H6.75V9Z" clipRule="evenodd" />
   ),
   lock: (
-    <>
-      <rect x="6" y="14" width="20" height="14" rx="2.5" fill="currentColor" fillOpacity={0.18} />
-      <path d="M10.5 14V9.5a5.5 5.5 0 0 1 11 0V14M16 19.5v3" />
-    </>
+    <path fillRule="evenodd" d="M12 1.5a5.25 5.25 0 0 0-5.25 5.25v3a3 3 0 0 0-3 3v6.75a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3v-6.75a3 3 0 0 0-3-3v-3c0-2.9-2.35-5.25-5.25-5.25Zm3.75 8.25v-3a3.75 3.75 0 1 0-7.5 0v3h7.5Z" clipRule="evenodd" />
   ),
   shield: (
-    <>
-      <path d="M16 3.5 26 7.5v7.5c0 6.2-4.3 10.8-10 13-5.7-2.2-10-6.8-10-13V7.5Z" fill="currentColor" fillOpacity={0.18} />
-      <path d="m11.5 16 3.2 3.2 6-6.4" />
-    </>
+    <path fillRule="evenodd" d="M12.516 2.17a.75.75 0 0 0-1.032 0 11.209 11.209 0 0 1-7.877 3.08.75.75 0 0 0-.722.515A12.74 12.74 0 0 0 2.25 9.75c0 5.942 4.064 10.933 9.563 12.348a.749.749 0 0 0 .374 0c5.499-1.415 9.563-6.406 9.563-12.348 0-1.39-.223-2.73-.635-3.985a.75.75 0 0 0-.722-.516l-.143.001c-2.996 0-5.717-1.17-7.734-3.08Zm3.094 8.016a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z" clipRule="evenodd" />
   ),
   bolt: (
-    <>
-      <path d="M18 3 6.5 18H15l-1.5 11L25 14h-8.5Z" fill="currentColor" fillOpacity={0.18} />
-    </>
+    <path fillRule="evenodd" d="M14.615 1.595a.75.75 0 0 1 .359.852L12.982 9.75h7.268a.75.75 0 0 1 .548 1.262l-10.5 11.25a.75.75 0 0 1-1.272-.71l1.992-7.302H3.75a.75.75 0 0 1-.548-1.262l10.5-11.25a.75.75 0 0 1 .913-.143Z" clipRule="evenodd" />
   ),
   savings: (
-    <>
-      <circle cx="16" cy="16" r="11.5" fill="currentColor" fillOpacity={0.18} />
-      <path d="M12 11h8M12 15h8M16 11c3 0 3 8 0 8h-4l6 5" />
-    </>
+    <path fillRule="evenodd" d="M12 1.5c-5.799 0-10.5 4.701-10.5 10.5s4.701 10.5 10.5 10.5 10.5-4.701 10.5-10.5S17.799 1.5 12 1.5Zm1.125 5.25a.75.75 0 0 0 0 1.5h2.25a.75.75 0 0 1 0 1.5h-3.375a.75.75 0 0 0 0 1.5h1.875a2.25 2.25 0 0 1 0 4.5h-.75v1.5a.75.75 0 0 1-1.5 0V16.5H9.375a.75.75 0 0 1 0-1.5h2.25a.75.75 0 0 0 0-1.5H9.75a2.25 2.25 0 0 1 0-4.5h2.625V7.5a.75.75 0 0 1 1.5 0v.75h1.5a.75.75 0 0 0 0-1.5h-2.25Z" clipRule="evenodd" />
   ),
   smile: (
-    <>
-      <circle cx="16" cy="16" r="11.5" fill="currentColor" fillOpacity={0.18} />
-      <path d="M11 18.5c1.2 2 2.9 3 5 3s3.8-1 5-3M12 12.5h.01M20 12.5h.01" />
-    </>
+    <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-2.625 6a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25Zm5.25 0a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25ZM8.53 14.47a.75.75 0 0 1 1.06 0 3.75 3.75 0 0 0 4.82 0 .75.75 0 0 1 .98 1.14 5.25 5.25 0 0 1-6.86 0 .75.75 0 0 1 0-1.14Z" clipRule="evenodd" />
   ),
   audit: (
-    <>
-      <path d="M21 13V6a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v20a2 2 0 0 0 2 2h7" fill="currentColor" fillOpacity={0.18} />
-      <path d="M10 10h7M10 14.5h4M10 19h3" />
-      <circle cx="21.5" cy="20.5" r="4.5" />
-      <path d="m24.8 23.8 3.2 3.2" />
-    </>
+    <path fillRule="evenodd" d="M7.5 3.75A1.5 1.5 0 0 0 6 5.25v13.5A1.5 1.5 0 0 0 7.5 20.25h9a1.5 1.5 0 0 0 1.5-1.5V5.25a1.5 1.5 0 0 0-1.5-1.5h-9Zm3.75 3.75a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 0 1.5h-3a.75.75 0 0 1-.75-.75Zm-2.25 4.5a.75.75 0 0 1 .75-.75h6a.75.75 0 0 1 0 1.5h-6a.75.75 0 0 1-.75-.75Zm0 3.75a.75.75 0 0 1 .75-.75h6a.75.75 0 0 1 0 1.5h-6a.75.75 0 0 1-.75-.75Z" clipRule="evenodd" />
   ),
   hourglass: (
-    <>
-      <path d="M9 4h14M9 28h14M10 4c0 6 12 7 12 12S10 22 10 28M22 4c0 6-12 7-12 12s12 6 12 12" />
-      <path d="M12 26c1-2.5 7-2.5 8 0Z" fill="currentColor" fillOpacity={0.4} />
-    </>
+    <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 6a.75.75 0 0 0-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 0 0 0-1.5h-3.75V6Z" clipRule="evenodd" />
   ),
   warning: (
-    <>
-      <path d="M16 4 29 27H3Z" fill="currentColor" fillOpacity={0.18} />
-      <path d="M16 12v7M16 23h.01" />
-    </>
+    <path fillRule="evenodd" d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003ZM12 8.25a.75.75 0 0 1 .75.75v3.75a.75.75 0 0 1-1.5 0V9a.75.75 0 0 1 .75-.75Zm0 8.25a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" clipRule="evenodd" />
   ),
   chartOff: (
     <>
-      <path d="M5 27h22" />
-      <rect x="7" y="16" width="4" height="8" rx="1" fill="currentColor" fillOpacity={0.18} />
-      <rect x="14" y="10" width="4" height="14" rx="1" fill="currentColor" fillOpacity={0.18} />
-      <rect x="21" y="5" width="4" height="19" rx="1" fill="currentColor" fillOpacity={0.18} />
-      <path d="M4 4l24 24" />
+      <path d="M3 3a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h16a1 1 0 1 0 0-2H4V4a1 1 0 0 0-1-1zm5 10a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-5zm6-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V9z" />
+      <path d="M21.7 4.3a1 1 0 0 0-1.4 0L17 7.6 13.7 4.3a1 1 0 1 0-1.4 1.4l3.3 3.3-3.3 3.3a1 1 0 0 0 1.4 1.4l3.3-3.3 3.3 3.3a1 1 0 0 0 1.4-1.4l-3.3-3.3 3.3-3.3a1 1 0 0 0 0-1.4z" />
     </>
   ),
   scale: (
-    <>
-      <path d="M5 11V5h6M27 11V5h-6M5 21v6h6M27 21v6h-6" />
-      <rect x="10.5" y="10.5" width="11" height="11" rx="2" fill="currentColor" fillOpacity={0.18} />
-    </>
+    <path fillRule="evenodd" d="M3.75 3a.75.75 0 0 0-.75.75v5.25a.75.75 0 0 0 1.5 0V5.56l4.72 4.72a.75.75 0 0 0 1.06-1.06L5.56 4.5h3.44a.75.75 0 0 0 0-1.5H3.75Zm16.5 0a.75.75 0 0 0-.75.75v3.44l-4.72 4.72a.75.75 0 1 0 1.06 1.06L20.56 8.25v3.44a.75.75 0 0 0 1.5 0V3.75a.75.75 0 0 0-.75-.75h-5.25a.75.75 0 0 0 0 1.5h3.44ZM3.75 21a.75.75 0 0 0 .75-.75v-3.44l4.72-4.72a.75.75 0 1 0-1.06-1.06L3.44 15.75V12.31a.75.75 0 0 0-1.5 0v5.25a.75.75 0 0 0 .75.75h5.25a.75.75 0 0 0 0-1.5H4.5v-3.44Zm16.5 0a.75.75 0 0 0 .75-.75v-5.25a.75.75 0 0 0-1.5 0v3.44l-4.72-4.72a.75.75 0 0 0-1.06 1.06l4.72 4.72h-3.44a.75.75 0 0 0 0 1.5h5.25Z" clipRule="evenodd" />
   ),
   gate: (
-    <>
-      <rect x="7" y="4" width="18" height="24" rx="2" fill="currentColor" fillOpacity={0.18} />
-      <path d="M21 16h.01M3 28h26" />
-      <path d="m12.5 16 2.5 2.5 4-4.5" />
-    </>
+    <path fillRule="evenodd" d="M3 4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4zm12 0a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2V4zm-6 4a1 1 0 0 1 1-1h2a1 1 0 1 1 0 2h-2a1 1 0 0 1-1-1zm0 4a1 1 0 0 1 1-1h2a1 1 0 1 1 0 2h-2a1 1 0 0 1-1-1zm0 4a1 1 0 0 1 1-1h2a1 1 0 1 1 0 2h-2a1 1 0 0 1-1-1z" clipRule="evenodd" />
   ),
   evacuation: (
-    <>
-      <path d="M17 8a2.5 2.5 0 1 1-.01 0M12 28l3-8 4 3v5M15 20l1.5-6 4 3.5 4 1M16.5 14l-4.5 2-2 4" />
-      <path d="M4 4h9v5H4Z" fill="currentColor" fillOpacity={0.18} />
-    </>
+    <path fillRule="evenodd" d="M15.75 2.25H6.75A2.25 2.25 0 0 0 4.5 4.5v15a2.25 2.25 0 0 0 2.25 2.25h9a2.25 2.25 0 0 0 2.25-2.25V18a.75.75 0 0 0-1.5 0v1.5a.75.75 0 0 1-.75.75h-9a.75.75 0 0 1-.75-.75V4.5a.75.75 0 0 1 .75-.75h9a.75.75 0 0 1 .75.75V6a.75.75 0 0 0 1.5 0V4.5a2.25 2.25 0 0 0-2.25-2.25Zm2.78 6.97a.75.75 0 0 1 0 1.06l-2.25 2.25a.75.75 0 0 1-1.06-1.06l.97-.97H9.75a.75.75 0 0 1 0-1.5h6.44l-.97-.97a.75.75 0 0 1 1.06-1.06l2.25 2.25Z" clipRule="evenodd" />
   ),
   database: (
-    <>
-      <ellipse cx="14" cy="7.5" rx="9" ry="3.5" fill="currentColor" fillOpacity={0.18} />
-      <path d="M5 7.5v14c0 1.9 4 3.5 9 3.5M23 7.5v6M5 14.5c0 1.9 4 3.5 9 3.5" />
-      <rect x="18" y="19" width="10" height="8" rx="1.5" fill="currentColor" fillOpacity={0.18} />
-      <path d="M20 19v-2a3 3 0 0 1 6 0v2" />
-    </>
+    <path fillRule="evenodd" d="M2.25 5.25a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3v2.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V5.25Zm1.5 0a1.5 1.5 0 0 1 1.5-1.5h13.5a1.5 1.5 0 0 1 1.5 1.5v2.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5V5.25Zm14.25.75a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm-2.25.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM2.25 13.5a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3v2.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V13.5Zm1.5 0a1.5 1.5 0 0 1 1.5-1.5h13.5a1.5 1.5 0 0 1 1.5 1.5v2.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5V13.5Zm14.25.75a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm-2.25.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" clipRule="evenodd" />
   ),
 };
 
-function IconTile({ name, bg, color, className = "h-12 w-12", iconClassName = "h-7 w-7" }) {
+function LineIcon({ name, className = "h-6 w-6" }) {
   return (
-    <span className={`flex shrink-0 items-center justify-center rounded-[10px] ${iconPop} ${className}`} style={{ background: bg, color }}>
-      <svg viewBox="0 0 32 32" aria-hidden="true" className={iconClassName} fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
-        {ICON_PATHS[name]}
-      </svg>
+    <svg viewBox="0 0 24 24" aria-hidden="true" className={className} fill="currentColor">
+      {ICON_PATHS[name]}
+    </svg>
+  );
+}
+
+function IconTile({ name, bg, color = "#ffffff", className = "h-12 w-12 rounded-[10px]", iconClassName = "h-6 w-6" }) {
+  return (
+    <span className={`flex shrink-0 items-center justify-center text-white shadow-sm ${iconPop} ${className}`} style={{ background: bg }}>
+      <LineIcon name={name} className={iconClassName} />
     </span>
   );
 }
@@ -293,11 +225,11 @@ function SectionHeader({ id, title, text, align = "center", className = "", dark
 }
 
 const TONES = [
-  { bg: "#d8e7fe", color: "#1d64d8" },
-  { bg: "#fee6b1", color: "#b07d00" },
-  { bg: "#d1f4e3", color: "#0b8f63" },
-  { bg: "#fdd7d4", color: "#c2362c" },
-  { bg: "#e9eafe", color: "#5b5bd6" },
+  { bg: "#0077c2", color: "#ffffff" },
+  { bg: "#0fb880", color: "#ffffff" },
+  { bg: "#f8bb18", color: "#ffffff" },
+  { bg: "#ef4444", color: "#ffffff" },
+  { bg: "#5b5bd6", color: "#ffffff" },
 ];
 const tone = (index) => TONES[index % TONES.length];
 
@@ -509,27 +441,27 @@ export default function VisitorManagementSystemPage() {
       {/* Hero */}
       <section
         aria-labelledby="vms-hero-heading"
-        className="relative bg-[radial-gradient(circle_at_0%_20%,rgba(0,119,194,0.14),transparent_32%),radial-gradient(circle_at_55%_0%,rgba(248,187,24,0.25),transparent_35%),radial-gradient(circle_at_100%_80%,rgba(248,187,24,0.3),transparent_30%),radial-gradient(circle_at_30%_100%,rgba(15,184,128,0.1),transparent_25%)] px-4 pb-12 pt-6 md:px-12 md:pb-16 md:pt-10"
+        className="relative flex flex-col justify-center bg-[radial-gradient(circle_at_0%_20%,rgba(0,119,194,0.14),transparent_32%),radial-gradient(circle_at_55%_0%,rgba(248,187,24,0.25),transparent_35%),radial-gradient(circle_at_100%_80%,rgba(248,187,24,0.3),transparent_30%),radial-gradient(circle_at_30%_100%,rgba(15,184,128,0.1),transparent_25%)] px-4 py-8 md:px-12 lg:min-h-[calc(100vh-88px)] lg:py-6"
       >
-        <div className="mx-auto flex max-w-7xl flex-col items-center gap-12 lg:flex-row lg:justify-between lg:gap-14">
-          <header className={`${revealFromLeft} flex flex-col gap-5 lg:max-w-xl`}>
+        <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-8 lg:flex-row lg:items-center lg:justify-between lg:gap-12 xl:gap-14">
+          <header className={`${revealFromLeft} flex flex-col gap-4 lg:gap-5 lg:max-w-xl`}>
             <nav aria-label="Breadcrumb" className={`${fontInter} text-[13px] font-medium text-black/55`}>
               <ol className="flex flex-wrap items-center gap-1.5">
                 <li>
-                  <Link href="/" className="transition-colors hover:text-[#0077c2]">
+                  <Link href="/" className="transition-colors hover:text-[#f8bb18]">
                     Home
                   </Link>
                 </li>
-                <li aria-hidden="true">›</li>
+                <li aria-hidden="true" className="text-black/35">›</li>
                 <li aria-current="page" className="text-black/80">
                   Visitor Management System
                 </li>
               </ol>
             </nav>
-            <h1 id="vms-hero-heading" className="text-3xl font-semibold leading-tight text-[#1f1f1f] md:text-[2.6rem] md:leading-[1.2]">
-              Smart <span className="text-[#0077c2]">Visitor Management System</span> by Emsphere Technologies
+            <h1 id="vms-hero-heading" className="text-3xl font-semibold leading-tight text-[#1f1f1f] md:text-4xl lg:text-[2.6rem] md:leading-[1.2]">
+              Smart <span className="text-[#f8bb18]">Visitor Management System</span> by Emsphere Technologies
             </h1>
-            <p className={`text-base leading-[26px] md:text-lg md:leading-[29px] ${mutedText}`}>
+            <p className={`text-base leading-[26px] md:text-[17px] md:leading-[28px] ${mutedText}`}>
               India’s leading cloud-based, fully automated &amp; comprehensive system to manage planned and unplanned visitors. Secure multiple entry and
               exit points, integrate hardware installed with our software to make a full proof visitor management system and get detailed analytics.
             </p>
@@ -542,36 +474,10 @@ export default function VisitorManagementSystemPage() {
                 Explore Features
               </a>
             </div>
-            <ul className="flex flex-wrap gap-x-6 gap-y-2 pt-1 text-sm font-semibold text-[#1f1f1f]">
-              {["Cloud-based", "Fully automated", "Hardware integration"].map((item, index) => (
-                <li key={item} className="flex items-center gap-2">
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full" style={{ background: tone(index + 2).bg, color: tone(index + 2).color }}>
-                    <CheckIcon className="h-3.5 w-3.5" />
-                  </span>
-                  {item}
-                </li>
-              ))}
-            </ul>
           </header>
 
-          <div className={`${revealFromRight} relative w-full max-w-xl lg:w-[46%] lg:max-w-none`}>
-            <div aria-hidden="true" className="absolute inset-8 rounded-full bg-[#fff1c7] blur-3xl" />
-            <Image
-              src={heroImg}
-              alt="Isometric illustration of a verified visitor profile connected to check-in screens and a laptop"
-              className={`relative h-auto w-full ${motion} hover:-translate-y-1`}
-              priority
-              sizes="(min-width: 1024px) 46vw, 100vw"
-            />
-            <div className="payroll-float absolute -bottom-4 left-2 flex items-center gap-3 rounded-2xl bg-white p-3 pr-5 shadow-[0_16px_36px_-14px_rgba(0,0,0,0.4)] sm:left-6">
-              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#d1f4e3] text-[#0b8f63]">
-                <CheckIcon className="h-5 w-5" />
-              </span>
-              <div>
-                <p className="text-sm font-semibold text-[#1f1f1f]">Visitor verified</p>
-                <p className={`text-xs ${mutedText}`}>Contactless QR check-in</p>
-              </div>
-            </div>
+          <div className={`${revealFromRight} relative w-full max-w-lg lg:w-[48%] lg:max-w-none`}>
+            <VisitorHeroVector />
           </div>
         </div>
       </section>
@@ -590,7 +496,7 @@ export default function VisitorManagementSystemPage() {
           </div>
           <div className={`${revealFromLeft} flex w-full flex-col gap-5 lg:w-[62%]`}>
             <h2 id="needs-heading" className="text-2xl font-semibold md:text-[2.1rem] md:leading-[44px]">
-              Why Your Business Needs a <span className="text-[#0077c2]">Visitor Management System</span>
+              Why Your Business Needs a <span className="text-[#f8bb18]">Visitor Management System</span>
             </h2>
             <p className={`text-base leading-[27px] md:text-[17px] ${mutedText}`}>
               If you are a business managing visitor movements manually and struggling to do it efficiently, you need a tech-driven visitor management
@@ -613,7 +519,7 @@ export default function VisitorManagementSystemPage() {
             id="features-heading"
             title={
               <>
-                Features of Emsphere&apos;s <span className="text-[#0077c2]">Visitor Management System</span>
+                Features of Emsphere&apos;s <span className="text-[#f8bb18]">Visitor Management System</span>
               </>
             }
             text="A comprehensive solution to managing visitor movements, our visitor management system offers the following features."
@@ -621,10 +527,10 @@ export default function VisitorManagementSystemPage() {
           <div className={revealUp}>
             <CardCarousel label="Visitor management features" interval={1700} dotLabels={features.map((f, i) => `Show feature ${i + 1}: ${f.title}`)}>
               {features.map((item, index) => (
-                <article key={item.title} className={`${goldCard} ${liftGold} relative flex w-full flex-col gap-3 p-6`}>
+                <article key={item.title} className={`${goldCard} ${liftGold} relative flex w-full flex-col items-center gap-3 p-6 text-center`}>
                   <span className={`${fontInter} absolute right-5 top-5 text-sm font-bold text-black/15`}>{String(index + 1).padStart(2, "0")}</span>
                   <IconTile name={item.icon} bg={tone(index).bg} color={tone(index).color} />
-                  <h3 className="pr-6 text-lg font-semibold leading-snug text-[#1f1f1f]">{item.title}</h3>
+                  <h3 className="px-6 text-lg font-semibold leading-snug text-[#1f1f1f]">{item.title}</h3>
                   <p className={`text-[15px] leading-[23px] ${mutedText}`}>{item.text}</p>
                 </article>
               ))}
@@ -663,14 +569,7 @@ export default function VisitorManagementSystemPage() {
       <section aria-labelledby="enhances-heading" className="bg-[#eef4fd] px-4 py-14 md:px-12 md:py-20">
         <div className="mx-auto flex max-w-7xl flex-col items-center gap-12 lg:flex-row lg:gap-16">
           <div className={`${revealFromLeft} relative mx-auto w-full max-w-lg lg:w-[45%]`}>
-            <div className={`${softCard} overflow-hidden bg-white p-4`}>
-              <Image
-                src={securityImg}
-                alt="Two colleagues managing a visitor schedule beside a large hourglass and calendar board"
-                className="h-auto w-full"
-                sizes="(min-width: 1024px) 32rem, 90vw"
-              />
-            </div>
+            <VisitorSecurityVector />
           </div>
           <div className="flex w-full flex-col gap-6 lg:w-[55%]">
             <SectionHeader
@@ -678,7 +577,7 @@ export default function VisitorManagementSystemPage() {
               align="left"
               title={
                 <>
-                  How Emsphere Enhances Workplace Security with <span className="text-[#0077c2]">Visitor Management Software</span>
+                  How Emsphere Enhances Workplace Security with <span className="text-[#f8bb18]">Visitor Management Software</span>
                 </>
               }
               text="At Emsphere, we strive to improve workplace security with our comprehensive and thoughtfully designed visitor management software. Here’s how we contribute."
@@ -690,7 +589,7 @@ export default function VisitorManagementSystemPage() {
                   style={stagger(index, 70)}
                   className={`${revealUp} group/card flex items-center gap-3 rounded-xl bg-white px-4 py-3.5 text-[15px] font-semibold text-[#1f1f1f] shadow-[inset_0_0_0_1px_#dfe7f3] ${motion} hover:-translate-y-0.5 hover:shadow-[inset_0_0_0_1.5px_#a7ddff,0_10px_22px_-12px_rgba(0,119,194,0.45)]`}
                 >
-                  <span className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#0077c2] text-white ${iconPop}`}>
+                  <span className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#f8bb18] text-white ${iconPop}`}>
                     <CheckIcon className="h-4 w-4" />
                   </span>
                   {point}
@@ -701,58 +600,56 @@ export default function VisitorManagementSystemPage() {
         </div>
       </section>
 
-      {/* Challenges with traditional visitor management (dark band) */}
-      <section aria-labelledby="challenges-heading" className="relative overflow-hidden bg-[#0f162a] px-4 py-14 text-white md:px-12 md:py-20">
-        <div aria-hidden="true" className="absolute -right-24 -top-24 h-80 w-80 rounded-full bg-[#efb000]/20 blur-3xl" />
-        <div aria-hidden="true" className="absolute -bottom-32 -left-24 h-80 w-80 rounded-full bg-[#0077c2]/30 blur-3xl" />
+      {/* Challenges with traditional visitor management */}
+      <section
+        aria-labelledby="challenges-heading"
+        className="relative overflow-hidden bg-[#fdf6e6] bg-[radial-gradient(circle_at_10%_15%,rgba(248,187,24,0.25),transparent_35%),radial-gradient(circle_at_90%_80%,rgba(0,119,194,0.1),transparent_35%)] px-4 py-14 text-[#1f1f1f] md:px-12 md:py-20"
+      >
+        <div aria-hidden="true" className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-[#f8bb18]/15 blur-3xl" />
+        <div aria-hidden="true" className="pointer-events-none absolute -bottom-32 -left-24 h-80 w-80 rounded-full bg-[#0077c2]/10 blur-3xl" />
         <div className="relative mx-auto flex max-w-7xl flex-col gap-12">
           <header className={`${revealUp} mx-auto flex max-w-3xl flex-col items-center gap-3 text-center`}>
-            <p className="text-lg font-semibold text-[#efb000]">Why Your Business Needs a Visitor Management System</p>
-            <h2 id="challenges-heading" className="text-2xl font-semibold md:text-[2.1rem] md:leading-[44px]">
+            <p className="text-sm font-bold uppercase tracking-wider text-[#b45309]">Why Your Business Needs a Visitor Management System</p>
+            <h2 id="challenges-heading" className="text-2xl font-semibold text-[#1f1f1f] md:text-[2.1rem] md:leading-[44px]">
               Challenges with Traditional Visitor Management
             </h2>
-            <p className="text-base leading-[25px] text-white/75 md:text-lg">Some common challenges associated with traditional visitor management include,</p>
+            <p className={`text-base leading-[25px] md:text-lg ${mutedText}`}>
+              Some common challenges associated with traditional visitor management include,
+            </p>
           </header>
           <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {challenges.map((item, index) => (
               <li
                 key={item.title}
                 style={stagger(index, 100)}
-                className={`${revealUp} group/card flex flex-col gap-3 rounded-2xl bg-white/[0.06] p-6 ring-1 ring-white/10 backdrop-blur ${motion} hover:-translate-y-1 hover:bg-white/[0.1]`}
+                className={`${revealUp} group/card flex flex-col items-center gap-3 rounded-2xl bg-white p-6 text-center shadow-[inset_0_0_0_1px_#f0deba,0px_10px_24px_-10px_rgba(0,0,0,0.08)] ${motion} hover:-translate-y-1 hover:shadow-[inset_0_0_0_1.5px_#f8bb18,0px_14px_28px_-6px_rgba(0,0,0,0.14)]`}
               >
-                <span className={`flex h-12 w-12 items-center justify-center rounded-[10px] bg-[#ef4444]/15 text-[#ff8a80] ${iconPop}`}>
-                  <svg viewBox="0 0 32 32" aria-hidden="true" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
-                    {ICON_PATHS[item.icon]}
-                  </svg>
+                <span className={`flex h-12 w-12 items-center justify-center rounded-[10px] bg-[#ef4444] text-white shadow-sm ${iconPop}`}>
+                  <LineIcon name={item.icon} className="h-6 w-6" />
                 </span>
-                <h3 className="text-lg font-semibold">{item.title}</h3>
-                <p className="text-sm leading-[22px] text-white/70">{item.text}</p>
+                <h3 className="text-lg font-semibold text-[#1f1f1f]">{item.title}</h3>
+                <p className={`text-sm leading-[22px] ${mutedText}`}>{item.text}</p>
               </li>
             ))}
           </ul>
 
-          <div className="grid grid-cols-1 items-center gap-10 rounded-2xl bg-white/[0.04] p-6 ring-1 ring-white/10 md:p-10 lg:grid-cols-[1.2fr_0.8fr]">
+          <div className="grid grid-cols-1 items-center gap-10 rounded-2xl bg-white p-6 shadow-[inset_0_0_0_1px_#f0deba,0px_12px_32px_-12px_rgba(0,0,0,0.08)] md:p-10 lg:grid-cols-[1.2fr_0.8fr]">
             <div className={`${revealFromLeft} flex flex-col gap-4`}>
-              <h3 className="text-2xl font-semibold md:text-[1.75rem]">
-                The Shift to <span className="text-[#efb000]">Digital Solutions</span> for Visitor Management
+              <h3 className="text-2xl font-semibold text-[#1f1f1f] md:text-[1.75rem]">
+                The Shift to <span className="text-[#f8bb18]">Digital Solutions</span> for Visitor Management
               </h3>
-              <p className="text-base leading-[26px] text-white/75">
+              <p className={`text-base leading-[26px] ${mutedText}`}>
                 Upgrading to digital solutions refers to a futuristic move. While streamlining visitor movements is one aspect, what matters the most is
                 enhancing security. Secure premises foster a fearless environment that fuels productivity, and efficiency.
               </p>
-              <p className="text-base leading-[26px] text-white/75">
+              <p className={`text-base leading-[26px] ${mutedText}`}>
                 Although these are indirect impacts, they matter in the long run. Emsphere’s visitor management principle is based on delivering tangible
                 value to enterprises. The system is designed with modern security needs in mind and supports companies in various tactical and strategic
                 ways, helping them strengthen security and improve the overall visitor experience.
               </p>
             </div>
-            <div className={`${revealFromRight} mx-auto w-full max-w-md rounded-2xl bg-white p-4`}>
-              <Image
-                src={digitalImg}
-                alt="Professionals reviewing digital visitor profile cards with verification check marks"
-                className="h-auto w-full"
-                sizes="(min-width: 1024px) 28rem, 90vw"
-              />
+            <div className={`${revealFromRight} mx-auto w-full max-w-md rounded-2xl bg-[#fafafa] p-4 ring-1 ring-[#e5e7eb]`}>
+              <VisitorDigitalSolutionsVector />
             </div>
           </div>
         </div>
@@ -765,13 +662,13 @@ export default function VisitorManagementSystemPage() {
             id="pillars-heading"
             title={
               <>
-                How Emsphere Enhances <span className="text-[#0077c2]">Workplace Security</span>
+                How Emsphere Enhances <span className="text-[#f8bb18]">Workplace Security</span>
               </>
             }
           />
           <ul className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {enhancements.map((item, index) => (
-              <li key={item.title} style={stagger(index)} className={`${revealUp} ${goldCard} ${liftGold} relative flex flex-col gap-4 overflow-hidden p-7`}>
+              <li key={item.title} style={stagger(index)} className={`${revealUp} ${goldCard} ${liftGold} relative flex flex-col items-center gap-4 overflow-hidden p-7 text-center`}>
                 <span aria-hidden="true" className="absolute inset-x-0 top-0 h-1" style={{ background: tone(index * 2).color }} />
                 <IconTile name={item.icon} bg={tone(index * 2).bg} color={tone(index * 2).color} className="h-14 w-14" iconClassName="h-8 w-8" />
                 <h3 className="text-xl font-semibold leading-snug text-[#1f1f1f]">{item.title}</h3>
@@ -810,30 +707,36 @@ export default function VisitorManagementSystemPage() {
       </section>
 
       {/* Ready to transform — image + copy + demo form */}
-      <section aria-labelledby="transform-heading" className="relative overflow-hidden bg-[#0f162a] px-4 py-14 text-white md:px-12 md:py-20">
-        <div aria-hidden="true" className="absolute -left-24 -top-24 h-80 w-80 rounded-full bg-[#0077c2]/30 blur-3xl" />
-        <div aria-hidden="true" className="absolute -bottom-32 -right-24 h-80 w-80 rounded-full bg-[#efb000]/20 blur-3xl" />
-        <div className="relative mx-auto flex max-w-7xl flex-col items-center gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-14">
-          <div className={`${revealFromLeft} flex w-full flex-col gap-6 lg:max-w-xl`}>
+      <section
+        aria-labelledby="transform-heading"
+        className="relative overflow-hidden bg-white px-4 py-14 text-[#1f1f1f] md:px-12 md:py-20"
+      >
+        <div className="relative mx-auto flex max-w-7xl flex-col items-center gap-10 lg:flex-row lg:items-stretch lg:justify-between lg:gap-14">
+          <div className={`${revealFromLeft} flex w-full flex-col gap-6 lg:flex-1`}>
             <SectionHeader
               id="transform-heading"
-              dark
               align="left"
               title={
                 <>
-                  Ready to Transform Your Visitor Management? <span className="text-[#efb000]">Contact Emsphere Today!</span>
+                  Ready to Transform Your Visitor Management? <span className="text-[#f8bb18]">Contact Emsphere Today!</span>
                 </>
               }
               text="Yes. Upgrade to a smarter and safer workplace with Emsphere. Our customizable visitor management software is prepared to serve you. Connect with us via email ID and embark on your journey to improving visitor management and strengthening workplace security."
             />
-            <div className="overflow-hidden rounded-2xl ring-1 ring-white/15">
+            <figure className="relative aspect-[3/2] w-full overflow-hidden rounded-2xl shadow-[0px_18px_40px_-16px_rgba(15,23,42,0.35)] ring-1 ring-[#f0deba] lg:aspect-auto lg:min-h-[240px] lg:flex-1">
               <Image
-                src={receptionImg}
-                alt="Security officer monitoring screens while visitors check in at the reception desk"
-                className="h-auto w-full"
-                sizes="(min-width: 1024px) 36rem, 100vw"
+                src={transformImg}
+                alt="Visitor scanning a digital QR pass from their phone at a reception check-in kiosk"
+                fill
+                placeholder="blur"
+                className="object-cover object-[center_30%]"
+                sizes="(min-width: 1024px) 36rem, 92vw"
               />
-            </div>
+              <figcaption className="absolute bottom-4 left-4 flex items-center gap-2 rounded-full bg-white/95 px-4 py-2 text-sm font-semibold text-[#1f1f1f] shadow-md backdrop-blur">
+                <span aria-hidden="true" className="h-2 w-2 rounded-full bg-[#22c55e]" />
+                Touchless QR check-in
+              </figcaption>
+            </figure>
           </div>
           <div className={`${revealFromRight} w-full max-w-md lg:w-[40%] lg:max-w-[440px]`}>
             <DemoRequestForm

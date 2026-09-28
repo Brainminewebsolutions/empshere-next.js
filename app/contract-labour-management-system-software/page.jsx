@@ -15,6 +15,7 @@ import WhyChooseFlipCards from "@/components/WhyChooseFlipCards";
    app/images/contract-labour-management-system-software and is imported by name.
    -------------------------------------------------------------------- */
 
+
 // Hero dashboards
 import dashboardLiability from "../images/contract-labour-management-system-software/dashboard-contractor-liability-document-status.webp";
 import dashboardContractorOt from "../images/contract-labour-management-system-software/dashboard-contractor-wise-headcount-overtime.webp";
@@ -146,194 +147,105 @@ function FaqToggleIcon() {
   );
 }
 
-// Line icons drawn for this page (the live site uses an icon font here).
+// Solid icons drawn for this page matching the HRMS vibrant solid-tile + white icon style.
 const ICON_PATHS = {
   automation: (
-    <>
-      <circle cx="16" cy="16" r="5" fill="currentColor" fillOpacity={0.18} />
-      <path d="M16 4v4M16 24v4M4 16h4M24 16h4M7.5 7.5l2.8 2.8M21.7 21.7l2.8 2.8M7.5 24.5l2.8-2.8M21.7 10.3l2.8-2.8" />
-    </>
+    <path fillRule="evenodd" d="M11.078 2.25c-.917 0-1.699.663-1.85 1.567L9.05 4.889c-.02.12-.115.26-.297.348a7.493 7.493 0 0 0-.986.57c-.166.115-.334.126-.45.083L6.177 5.48a1.875 1.875 0 0 0-2.282.819l-.92 1.59a1.875 1.875 0 0 0 .432 2.385l1.04.832c.1.082.146.229.117.382a7.525 7.525 0 0 0 0 1.14c.029.153-.017.3-.117.382l-1.04.832a1.875 1.875 0 0 0-.432 2.385l.92 1.59c.527.912 1.636 1.3 2.282.818l1.14-.41c.116-.043.284-.032.45.082.312.214.641.405.986.57.182.088.277.228.297.35l.177 1.071c.151.904.933 1.567 1.85 1.567h1.844c.916 0 1.699-.663 1.85-1.567l.178-1.072c.02-.12.114-.26.297-.349.344-.165.673-.356.985-.57.167-.114.335-.125.45-.082l1.14.409a1.875 1.875 0 0 0 2.282-.818l.92-1.59a1.875 1.875 0 0 0-.432-2.385l-1.04-.832c-.1-.082-.146-.229-.117-.382a7.525 7.525 0 0 0 0-1.14c-.029-.153.017-.3.117-.382l1.04-.832a1.875 1.875 0 0 0 .432-2.385l-.92-1.59a1.875 1.875 0 0 0-2.282-.818l-1.14.41c-.115.042-.283.031-.45-.083a7.49 7.49 0 0 0-.985-.57c-.183-.088-.277-.229-.297-.349l-.178-1.071A1.875 1.875 0 0 0 12.922 2.25h-1.844ZM12 15.75a3.75 3.75 0 1 0 0-7.5 3.75 3.75 0 0 0 0 7.5Z" clipRule="evenodd" />
   ),
   shield: (
-    <>
-      <path d="M16 3.5 26 7.5v7.5c0 6.2-4.3 10.8-10 13-5.7-2.2-10-6.8-10-13V7.5Z" fill="currentColor" fillOpacity={0.18} />
-      <path d="m11.5 16 3.2 3.2 6-6.4" />
-    </>
+    <path fillRule="evenodd" d="M12.516 2.17a.75.75 0 0 0-1.032 0 11.209 11.209 0 0 1-7.877 3.08.75.75 0 0 0-.722.515A12.74 12.74 0 0 0 2.25 9.75c0 5.942 4.064 10.933 9.563 12.348a.749.749 0 0 0 .374 0c5.499-1.415 9.563-6.406 9.563-12.348 0-1.39-.223-2.73-.635-3.985a.75.75 0 0 0-.722-.516l-.143.001c-2.996 0-5.717-1.17-7.734-3.08Zm3.094 8.016a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z" clipRule="evenodd" />
   ),
   master: (
-    <>
-      <rect x="4" y="6" width="24" height="20" rx="2.5" fill="currentColor" fillOpacity={0.18} />
-      <circle cx="11.5" cy="14" r="3" />
-      <path d="M7 22c.6-2.6 2.4-4 4.5-4s3.9 1.4 4.5 4M19 12h5M19 16h5M19 20h3" />
-    </>
+    <path fillRule="evenodd" d="M4.5 3.75A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V6A2.25 2.25 0 0 0 19.5 3.75h-15ZM8.25 8.25a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5ZM5.25 15.75a3 3 0 0 1 6 0H5.25Zm8.25-6.75a.75.75 0 0 0 0 1.5h5.25a.75.75 0 0 0 0-1.5H13.5Zm0 3.75a.75.75 0 0 0 0 1.5h5.25a.75.75 0 0 0 0-1.5H13.5Zm0 3.75a.75.75 0 0 0 0 1.5h3a.75.75 0 0 0 0-1.5H13.5Z" clipRule="evenodd" />
   ),
   clock: (
-    <>
-      <circle cx="16" cy="16" r="11.5" fill="currentColor" fillOpacity={0.18} />
-      <path d="M16 9v7.5l5 3" />
-    </>
+    <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 6a.75.75 0 0 0-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 0 0 0-1.5h-3.75V6Z" clipRule="evenodd" />
   ),
   dashboard: (
-    <>
-      <rect x="4" y="5" width="24" height="18" rx="2.5" fill="currentColor" fillOpacity={0.18} />
-      <path d="M11 28h10M16 23v5M8.5 18l4-4.5 3.5 3 5.5-6" />
-    </>
+    <path fillRule="evenodd" d="M3 4.5A2.25 2.25 0 0 1 5.25 2.25h13.5A2.25 2.25 0 0 1 21.75 4.5v15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 19.5v-15ZM5.25 3.75a.75.75 0 0 0-.75.75v5.25h15V4.5a.75.75 0 0 0-.75-.75H5.25Zm-.75 7.5v8.25c0 .414.336.75.75.75h5.25v-9H4.5Zm7.5 9h7.5a.75.75 0 0 0 .75-.75v-8.25h-8.25v9Z" clipRule="evenodd" />
   ),
   wages: (
-    <>
-      <path d="M8 4h16v24l-4-2.5-4 2.5-4-2.5L8 28Z" fill="currentColor" fillOpacity={0.18} />
-      <path d="M12.5 10h7M12.5 13.5h7M16.5 10c2.5 0 2.5 6.5 0 6.5h-3l5 4.5" />
-    </>
+    <path fillRule="evenodd" d="M12 1.5c-5.799 0-10.5 4.701-10.5 10.5s4.701 10.5 10.5 10.5 10.5-4.701 10.5-10.5S17.799 1.5 12 1.5Zm1.125 5.25a.75.75 0 0 0 0 1.5h2.25a.75.75 0 0 1 0 1.5h-3.375a.75.75 0 0 0 0 1.5h1.875a2.25 2.25 0 0 1 0 4.5h-.75v1.5a.75.75 0 0 1-1.5 0V16.5H9.375a.75.75 0 0 1 0-1.5h2.25a.75.75 0 0 0 0-1.5H9.75a2.25 2.25 0 0 1 0-4.5h2.625V7.5a.75.75 0 0 1 1.5 0v.75h1.5a.75.75 0 0 0 0-1.5h-2.25Z" clipRule="evenodd" />
   ),
   star: (
-    <>
-      <path d="m16 4 3.6 7.4 8.1 1.2-5.9 5.7 1.4 8.1L16 22.6l-7.2 3.8 1.4-8.1-5.9-5.7 8.1-1.2Z" fill="currentColor" fillOpacity={0.18} />
-    </>
+    <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clipRule="evenodd" />
   ),
   planning: (
-    <>
-      <path d="M5 27h22" />
-      <path d="M7 22l6-6 4.5 4L26 10" />
-      <path d="M20 10h6v6" />
-      <circle cx="13" cy="16" r="1.5" fill="currentColor" />
-    </>
+    <path fillRule="evenodd" d="M2.25 18a.75.75 0 0 1 .75-.75h18a.75.75 0 0 1 0 1.5H3a.75.75 0 0 1-.75-.75Zm1.72-8.03a.75.75 0 0 1 1.06 0l4.22 4.22 3.97-3.97a.75.75 0 0 1 1.06 0l5.72 5.72a.75.75 0 1 1-1.06 1.06l-5.19-5.19-3.97 3.97a.75.75 0 0 1-1.06 0L4.5 11.03a.75.75 0 0 1 0-1.06Zm13.5-3.22a.75.75 0 0 1 .75-.75h4.5a.75.75 0 0 1 .75.75v4.5a.75.75 0 0 1-1.5 0V7.5H18.22a.75.75 0 0 1-.75-.75Z" clipRule="evenodd" />
   ),
   contractor: (
-    <>
-      <path d="M7 17a9 9 0 0 1 18 0" fill="currentColor" fillOpacity={0.18} />
-      <path d="M5 17h22M16 8v4M12.5 9.5 13.5 13M19.5 9.5 18.5 13M9 21c1.4 3.2 4 5 7 5s5.6-1.8 7-5" />
-    </>
+    <path fillRule="evenodd" d="M12 1.5a4.5 4.5 0 0 0-4.5 4.5v.75a4.5 4.5 0 0 0 9 0V6a4.5 4.5 0 0 0-4.5-4.5Zm-7.5 16.5A4.5 4.5 0 0 1 9 13.5h6a4.5 4.5 0 0 1 4.5 4.5v1.5a1.5 1.5 0 0 1-1.5 1.5h-12A1.5 1.5 0 0 1 4.5 19.5V18Z" clipRule="evenodd" />
   ),
   reports: (
-    <>
-      <path d="M19 4H8a2 2 0 0 0-2 2v20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V11Z" fill="currentColor" fillOpacity={0.18} />
-      <path d="M19 4v7h7M11 17h10M11 21.5h7" />
-    </>
+    <path fillRule="evenodd" d="M5.625 1.5H9a3.75 3.75 0 0 1 3.75 3.75v1.875c0 1.036.84 1.875 1.875 1.875H16.5a3.75 3.75 0 0 1 3.75 3.75v7.875c0 1.035-.84 1.875-1.875 1.875H5.625a1.875 1.875 0 0 1-1.875-1.875V3.375c0-1.036.84-1.875 1.875-1.875ZM12.75 12a.75.75 0 0 0 0-1.5h-4.5a.75.75 0 0 0 0 1.5h4.5Zm0 3a.75.75 0 0 0 0-1.5h-4.5a.75.75 0 0 0 0 1.5h4.5Zm-2.25 3a.75.75 0 0 0 0-1.5h-2.25a.75.75 0 0 0 0 1.5h2.25Zm4.5-12.75v1.875a.375.375 0 0 0 .375.375h1.875a2.25 2.25 0 0 0-2.25-2.25Z" clipRule="evenodd" />
   ),
   mail: (
-    <>
-      <rect x="4" y="7" width="24" height="18" rx="2.5" fill="currentColor" fillOpacity={0.18} />
-      <path d="m5 9 11 8.5L27 9" />
-    </>
+    <path fillRule="evenodd" d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67Zm19.5-3.42H3a3 3 0 0 0-1.5.405l9.263 5.7a1.5 1.5 0 0 0 1.474 0l9.263-5.7A3 3 0 0 0 21 5.25Z" clipRule="evenodd" />
   ),
   integration: (
-    <>
-      <rect x="4" y="11" width="9" height="10" rx="2" fill="currentColor" fillOpacity={0.18} />
-      <rect x="19" y="11" width="9" height="10" rx="2" fill="currentColor" fillOpacity={0.18} />
-      <path d="M13 16h6M8.5 11V6M23.5 21v5" />
-    </>
+    <path fillRule="evenodd" d="M18.75 3a2.25 2.25 0 0 0-2.25 2.25v2.25H7.5V5.25A2.25 2.25 0 0 0 5.25 3h-1.5A2.25 2.25 0 0 0 1.5 5.25v1.5A2.25 2.25 0 0 0 3.75 9h1.5v6H3.75A2.25 2.25 0 0 0 1.5 17.25v1.5A2.25 2.25 0 0 0 3.75 21h1.5a2.25 2.25 0 0 0 2.25-2.25v-2.25h9v2.25a2.25 2.25 0 0 0 2.25 2.25h1.5a2.25 2.25 0 0 0 2.25-2.25v-1.5a2.25 2.25 0 0 0-2.25-2.25H18.75V9h1.5A2.25 2.25 0 0 0 22.5 6.75v-1.5A2.25 2.25 0 0 0 20.25 3h-1.5ZM6.75 9h10.5v6H6.75V9Z" clipRule="evenodd" />
   ),
   ai: (
-    <>
-      <path d="M13 5.5 15 11l5.5 2-5.5 2-2 5.5-2-5.5L5.5 13l5.5-2Z" fill="currentColor" fillOpacity={0.18} />
-      <path d="m23 17 1.2 3.3 3.3 1.2-3.3 1.2L23 26l-1.2-3.3-3.3-1.2 3.3-1.2Z" />
-    </>
+    <path fillRule="evenodd" d="M9 4.5a.75.75 0 0 1 .721.544l.813 2.846a3.75 3.75 0 0 0 2.576 2.576l2.846.813a.75.75 0 0 1 0 1.442l-2.846.813a3.75 3.75 0 0 0-2.576 2.576l-.813 2.846a.75.75 0 0 1-1.442 0l-.813-2.846a3.75 3.75 0 0 0-2.576-2.576l-2.846-.813a.75.75 0 0 1 0-1.442l2.846-.813A3.75 3.75 0 0 0 7.466 7.89l.813-2.846A.75.75 0 0 1 9 4.5ZM18 1.5a.75.75 0 0 1 .728.568l.258.972a2.25 2.25 0 0 0 1.544 1.544l.972.258a.75.75 0 0 1 0 1.456l-.972.258a2.25 2.25 0 0 0-1.544 1.544l-.258.972a.75.75 0 0 1-1.456 0l-.258-.972a2.25 2.25 0 0 0-1.544-1.544l-.972-.258a.75.75 0 0 1 0-1.456l.972-.258a2.25 2.25 0 0 0 1.544-1.544l.258-.972A.75.75 0 0 1 18 1.5Z" clipRule="evenodd" />
   ),
   law: (
-    <>
-      <path d="M16 5v21M9 26.5h14M6 9h20" />
-      <path d="M9 9 5 17a4 4 0 0 0 8 0ZM23 9l-4 8a4 4 0 0 0 8 0Z" fill="currentColor" fillOpacity={0.18} />
-    </>
+    <path fillRule="evenodd" d="M12 2.25a.75.75 0 0 1 .75.75v1.5h6.75a.75.75 0 0 1 .75.75v.75a.75.75 0 0 1-.75.75h-.814l2.127 5.319a2.25 2.25 0 0 1-1.393 2.977l-.695.232a4.498 4.498 0 0 1-3.045 0l-.695-.232a2.25 2.25 0 0 1-1.393-2.977L15.765 6h-3.015v14.25h3a.75.75 0 0 1 0 1.5h-7.5a.75.75 0 0 1 0-1.5h3V6H8.235l2.127 5.319a2.25 2.25 0 0 1-1.393 2.977l-.695.232a4.498 4.498 0 0 1-3.045 0l-.695-.232a2.25 2.25 0 0 1-1.393-2.977L5.314 6H4.5a.75.75 0 0 1-.75-.75V4.5a.75.75 0 0 1 .75-.75h6.75V3a.75.75 0 0 1 .75-.75Z" clipRule="evenodd" />
   ),
   attendance: (
-    <>
-      <circle cx="13" cy="11" r="5" fill="currentColor" fillOpacity={0.18} />
-      <path d="M4 27c0-5 4-8.5 9-8.5 1.6 0 3.1.4 4.4 1M19.5 23.5l3 3 6-6.5" />
-    </>
+    <path fillRule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695ZM17.28 11.22a.75.75 0 0 1 1.06 0l2.25 2.25a.75.75 0 0 1-1.06 1.06l-1.72-1.72-1.72 1.72a.75.75 0 1 1-1.06-1.06l2.25-2.25Z" clipRule="evenodd" />
   ),
   calendar: (
-    <>
-      <rect x="4" y="6.5" width="24" height="21" rx="2.5" fill="currentColor" fillOpacity={0.18} />
-      <path d="M4 12.5h24M10 4v5M22 4v5M9.5 18h3M15 18h3M20.5 18h3M9.5 22.5h3M15 22.5h3" />
-    </>
+    <path fillRule="evenodd" d="M6.75 2.25A.75.75 0 0 1 7.5 3v1.5h9V3A.75.75 0 0 1 18 3v1.5h.75A3.75 3.75 0 0 1 22.5 8.25v10.5A3.75 3.75 0 0 1 18.75 22.5H5.25A3.75 3.75 0 0 1 1.5 18.75V8.25A3.75 3.75 0 0 1 5.25 4.5H6V3a.75.75 0 0 1 .75-.75Zm13.5 9a1.5 1.5 0 0 0-1.5-1.5H5.25a1.5 1.5 0 0 0-1.5 1.5v7.5a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5v-7.5Z" clipRule="evenodd" />
   ),
   performance: (
-    <>
-      <circle cx="16" cy="16" r="11.5" fill="currentColor" fillOpacity={0.18} />
-      <path d="M9 19.5l4.5-4.5 3.5 3 6-6.5M18.5 11.5H23V16" />
-    </>
+    <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75 0 2.457.91 4.7 2.41 6.417a.75.75 0 0 0 1.118-.999A8.25 8.25 0 1 1 19.98 12a8.217 8.217 0 0 1-1.758 5.097.75.75 0 0 0 1.18.924A9.718 9.718 0 0 0 21.75 12c0-5.385-4.365-9.75-9.75-9.75ZM12 8.25a.75.75 0 0 1 .75.75v1.69l2.47-1.425a.75.75 0 1 1 .75 1.3l-3.22 1.86a1.5 1.5 0 1 1-1.5-1.5V9a.75.75 0 0 1 .75-.75Z" clipRule="evenodd" />
   ),
   tasks: (
-    <>
-      <rect x="6" y="4" width="20" height="24" rx="2.5" fill="currentColor" fillOpacity={0.18} />
-      <path d="m10 11 2 2 3.5-4M10 19l2 2 3.5-4M19 11.5h3.5M19 19.5h3.5" />
-    </>
+    <path fillRule="evenodd" d="M7.5 3.75A1.5 1.5 0 0 0 6 5.25v13.5A1.5 1.5 0 0 0 7.5 20.25h9a1.5 1.5 0 0 0 1.5-1.5V5.25a1.5 1.5 0 0 0-1.5-1.5h-9Zm6.78 6.28a.75.75 0 0 0-1.06-1.06l-2.47 2.47-1.19-1.19a.75.75 0 0 0-1.06 1.06l1.72 1.72a.75.75 0 0 0 1.06 0l3-3Zm0 5.25a.75.75 0 0 0-1.06-1.06l-2.47 2.47-1.19-1.19a.75.75 0 0 0-1.06 1.06l1.72 1.72a.75.75 0 0 0 1.06 0l3-3Z" clipRule="evenodd" />
   ),
   selfservice: (
     <>
-      <rect x="9" y="3" width="14" height="26" rx="2.5" fill="currentColor" fillOpacity={0.18} />
-      <circle cx="16" cy="12.5" r="2.8" />
-      <path d="M11.8 20c.8-2 2.3-3 4.2-3s3.4 1 4.2 3M14.5 25.5h3" />
+      <path d="M7 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H7zm0 2h10v13H7V4zm5 14.25a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+      <path d="M12 7a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-3 7a3 3 0 0 1 6 0H9z" />
     </>
   ),
   analytics: (
-    <>
-      <path d="M5 27h22" />
-      <rect x="7" y="16" width="4" height="8" rx="1" fill="currentColor" fillOpacity={0.18} />
-      <rect x="14" y="10" width="4" height="14" rx="1" fill="currentColor" fillOpacity={0.18} />
-      <rect x="21" y="5" width="4" height="19" rx="1" fill="currentColor" fillOpacity={0.18} />
-    </>
+    <path fillRule="evenodd" d="M3 3a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h18a1 1 0 1 0 0-2H4V4a1 1 0 0 0-1-1Zm4 10a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-5Zm6-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V9Zm6-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V5Z" clipRule="evenodd" />
   ),
   tailored: (
-    <>
-      <path d="M6 9h20M6 16h20M6 23h20" />
-      <circle cx="12" cy="9" r="2.8" fill="currentColor" fillOpacity={0.3} />
-      <circle cx="21" cy="16" r="2.8" fill="currentColor" fillOpacity={0.3} />
-      <circle cx="10" cy="23" r="2.8" fill="currentColor" fillOpacity={0.3} />
-    </>
+    <path fillRule="evenodd" d="M3 6a1 1 0 0 1 1-1h2.17a3.001 3.001 0 0 1 5.66 0H20a1 1 0 1 1 0 2H11.83a3.001 3.001 0 0 1-5.66 0H4a1 1 0 0 1-1-1Zm0 6a1 1 0 0 1 1-1h8.17a3.001 3.001 0 0 1 5.66 0H20a1 1 0 1 1 0 2h-2.17a3.001 3.001 0 0 1-5.66 0H4a1 1 0 0 1-1-1Zm0 6a1 1 0 0 1 1-1h4.17a3.001 3.001 0 0 1 5.66 0H20a1 1 0 1 1 0 2h-6.17a3.001 3.001 0 0 1-5.66 0H4a1 1 0 0 1-1-1Z" clipRule="evenodd" />
   ),
   cloud: (
-    <>
-      <path d="M10 24a6 6 0 0 1-.8-11.95A8 8 0 0 1 24.6 13 5.5 5.5 0 0 1 23.5 24Z" fill="currentColor" fillOpacity={0.18} />
-      <path d="M16 13.5v8M13 18.5l3 3 3-3" />
-    </>
+    <path fillRule="evenodd" d="M4.5 9.75a6 6 0 0 1 11.573-2.226 3.75 3.75 0 0 1 4.177 4.226H20.25A4.5 4.5 0 0 1 20.25 20.25H5.25A4.5 4.5 0 0 1 4.5 11.25v-1.5Zm7.5 1.5a.75.75 0 0 0-1.06 0l-3 3a.75.75 0 0 0 1.06 1.06l1.72-1.72v4.66a.75.75 0 0 0 1.5 0v-4.66l1.72 1.72a.75.75 0 0 0 1.06-1.06l-3-3Z" clipRule="evenodd" />
   ),
   scale: (
-    <>
-      <path d="M5 11V5h6M27 11V5h-6M5 21v6h6M27 21v6h-6" />
-      <rect x="10.5" y="10.5" width="11" height="11" rx="2" fill="currentColor" fillOpacity={0.18} />
-    </>
+    <path fillRule="evenodd" d="M3.75 3a.75.75 0 0 0-.75.75v5.25a.75.75 0 0 0 1.5 0V5.56l4.72 4.72a.75.75 0 0 0 1.06-1.06L5.56 4.5h3.44a.75.75 0 0 0 0-1.5H3.75Zm16.5 0a.75.75 0 0 0-.75.75v3.44l-4.72 4.72a.75.75 0 1 0 1.06 1.06L20.56 8.25v3.44a.75.75 0 0 0 1.5 0V3.75a.75.75 0 0 0-.75-.75h-5.25a.75.75 0 0 0 0 1.5h3.44ZM3.75 21a.75.75 0 0 0 .75-.75v-3.44l4.72-4.72a.75.75 0 1 0-1.06-1.06L3.44 15.75V12.31a.75.75 0 0 0-1.5 0v5.25a.75.75 0 0 0 .75.75h5.25a.75.75 0 0 0 0-1.5H4.5v-3.44Zm16.5 0a.75.75 0 0 0 .75-.75v-5.25a.75.75 0 0 0-1.5 0v3.44l-4.72-4.72a.75.75 0 0 0-1.06 1.06l4.72 4.72h-3.44a.75.75 0 0 0 0 1.5h5.25Z" clipRule="evenodd" />
   ),
   pointer: (
-    <>
-      <rect x="4" y="5" width="24" height="18" rx="2.5" fill="currentColor" fillOpacity={0.18} />
-      <path d="M4 10h24M8 7.5h.01M11 7.5h.01M16 15l8.5 3-3.7 1.3-1.3 3.7Z" />
-    </>
+    <path d="M4 2.5a.75.75 0 0 1 1.28-.53l14.25 14.25a.75.75 0 0 1-.7 1.28h-5.58l3.4 6.8a.75.75 0 1 1-1.34.68l-3.52-7.03-3.79 3.79a.75.75 0 0 1-1.28-.53V2.5z" />
   ),
   headset: (
-    <>
-      <path d="M6 18v-3a10 10 0 0 1 20 0v3" />
-      <rect x="4.5" y="17" width="5" height="8" rx="2" fill="currentColor" fillOpacity={0.18} />
-      <rect x="22.5" y="17" width="5" height="8" rx="2" fill="currentColor" fillOpacity={0.18} />
-      <path d="M25 25c0 2-2 3-5 3h-3" />
-    </>
+    <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75v4.5A3.75 3.75 0 0 0 6 20.25h1.5a2.25 2.25 0 0 0 2.25-2.25v-3a2.25 2.25 0 0 0-2.25-2.25H4.5V12a7.5 7.5 0 0 1 15 0v.75h-3A2.25 2.25 0 0 0 14.25 15v3a2.25 2.25 0 0 0 2.25 2.25h.75v.75a2.25 2.25 0 0 1-2.25 2.25h-2.25a.75.75 0 0 0 0 1.5h2.25a3.75 3.75 0 0 0 3.75-3.75v-.75H18A3.75 3.75 0 0 0 21.75 16.5V12c0-5.385-4.365-9.75-9.75-9.75Z" clipRule="evenodd" />
   ),
   trophy: (
-    <>
-      <path d="M10 5h12v7a6 6 0 0 1-12 0Z" fill="currentColor" fillOpacity={0.18} />
-      <path d="M10 8H6c0 4 2 6 4.5 6.5M22 8h4c0 4-2 6-4.5 6.5M16 18v5M11 27h10M12.5 27l1-4h5l1 4" />
-    </>
+    <path fillRule="evenodd" d="M5.166 2.621v.858c-1.035.148-2.059.33-3.071.543a.75.75 0 0 0-.584.859 6.753 6.753 0 0 0 6.138 5.6c.45 1.391 1.381 2.571 2.601 3.324v2.795H8.25a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-2v-2.795a6.002 6.002 0 0 0 2.601-3.324 6.754 6.754 0 0 0 6.138-5.6.75.75 0 0 0-.584-.859 27.68 27.68 0 0 0-3.071-.543v-.858a.75.75 0 0 0-.75-.75h-12a.75.75 0 0 0-.75.75Zm1.5 2.378v4.218a5.255 5.255 0 0 1-3.585-2.915 26.246 26.246 0 0 1 3.585-1.303Zm10.668 0a26.246 26.246 0 0 1 3.585 1.303 5.255 5.255 0 0 1-3.585 2.915V4.999Z" clipRule="evenodd" />
   ),
   server: (
-    <>
-      <rect x="5" y="5" width="22" height="9" rx="2" fill="currentColor" fillOpacity={0.18} />
-      <rect x="5" y="18" width="22" height="9" rx="2" fill="currentColor" fillOpacity={0.18} />
-      <path d="M9 9.5h.01M9 22.5h.01M14 9.5h8M14 22.5h8" />
-    </>
+    <path fillRule="evenodd" d="M2.25 5.25a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3v2.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V5.25Zm1.5 0a1.5 1.5 0 0 1 1.5-1.5h13.5a1.5 1.5 0 0 1 1.5 1.5v2.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5V5.25Zm14.25.75a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm-2.25.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM2.25 13.5a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3v2.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V13.5Zm1.5 0a1.5 1.5 0 0 1 1.5-1.5h13.5a1.5 1.5 0 0 1 1.5 1.5v2.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5V13.5Zm14.25.75a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm-2.25.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" clipRule="evenodd" />
   ),
 };
 
-function LineIcon({ name, className = "h-7 w-7" }) {
+function LineIcon({ name, className = "h-6 w-6" }) {
   return (
-    <svg viewBox="0 0 32 32" aria-hidden="true" className={className} fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+    <svg viewBox="0 0 24 24" aria-hidden="true" className={className} fill="currentColor">
       {ICON_PATHS[name]}
     </svg>
   );
 }
 
-function IconTile({ name, bg, color, className = "h-12 w-12", iconClassName = "h-7 w-7" }) {
+function IconTile({ name, bg, color = "#ffffff", className = "h-12 w-12 rounded-[10px]", iconClassName = "h-6 w-6" }) {
   return (
-    <span className={`flex shrink-0 items-center justify-center rounded-[10px] ${iconPop} ${className}`} style={{ background: bg, color }}>
+    <span className={`flex shrink-0 items-center justify-center text-white shadow-sm ${iconPop} ${className}`} style={{ background: bg }}>
       <LineIcon name={name} className={iconClassName} />
     </span>
   );
@@ -360,13 +272,13 @@ function SectionHeader({ id, eyebrow, title, text, align = "center", className =
   );
 }
 
-// A soft palette the cards cycle through (blue / gold / green / red / violet).
+// A vibrant solid palette the cards cycle through (blue / green / gold / red / violet).
 const TONES = [
-  { bg: "#d8e7fe", color: "#1d64d8" },
-  { bg: "#fee6b1", color: "#b07d00" },
-  { bg: "#d1f4e3", color: "#0b8f63" },
-  { bg: "#fdd7d4", color: "#c2362c" },
-  { bg: "#e9eafe", color: "#5b5bd6" },
+  { bg: "#0077c2", color: "#ffffff" },
+  { bg: "#0fb880", color: "#ffffff" },
+  { bg: "#f8bb18", color: "#ffffff" },
+  { bg: "#ef4444", color: "#ffffff" },
+  { bg: "#5b5bd6", color: "#ffffff" },
 ];
 const tone = (index) => TONES[index % TONES.length];
 
@@ -456,6 +368,7 @@ const partners = [
   { name: "Virdi", logo: partnerVirdi },
   { name: "Nitgen", logo: partnerNitgen },
 ];
+
 
 const dashboards = [
   { title: "Contractor Liability & Document Status", image: dashboardLiability, alt: "CLMS dashboard table of contractor liability and document submission percentage by month" },
@@ -761,8 +674,8 @@ export default function ContractLabourManagementSystemPage() {
             <div className={`${softCard} overflow-hidden bg-[#0f162a] p-3`}>
               <Image
                 src={complianceAutomationImg}
-                alt="Hand tapping a glowing digital compliance checklist surrounded by process icons"
-                className="h-auto w-full rounded-lg"
+                alt="Enterprise executive interacting with digital labor compliance analytics and automated workflow interface"
+                className="h-auto w-full rounded-lg shadow-inner"
                 sizes="(min-width: 1024px) 28rem, 90vw"
               />
             </div>
@@ -889,6 +802,8 @@ export default function ContractLabourManagementSystemPage() {
         </div>
       </section>
 
+
+
       {/* Dashboards */}
       <section aria-labelledby="dashboards-heading" className="bg-[#eef4fd] px-4 py-12 md:px-12 md:py-16">
         <div className="mx-auto flex max-w-7xl flex-col gap-10">
@@ -908,8 +823,13 @@ export default function ContractLabourManagementSystemPage() {
                   </span>
                   {dash.title}
                 </figcaption>
-                <div className="overflow-x-auto p-3 md:p-4">
-                  <Image src={dash.image} alt={dash.alt} className="h-auto w-full min-w-[520px] md:min-w-0" sizes={index === 0 ? "(min-width: 1280px) 1200px, 100vw" : "(min-width: 1024px) 50vw, 100vw"} />
+                <div className="overflow-x-auto p-2 sm:p-3">
+                  <Image
+                    src={dash.image}
+                    alt={dash.alt}
+                    className={`h-auto w-full ${index === 0 ? "min-w-[800px] xl:min-w-0" : "min-w-[460px] md:min-w-0"}`}
+                    sizes={index === 0 ? "(min-width: 1280px) 1200px, 100vw" : "(min-width: 1024px) 50vw, 100vw"}
+                  />
                 </div>
               </figure>
             ))}

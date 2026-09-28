@@ -77,7 +77,7 @@ const iconPop = `transition-[scale] duration-300 ${ease} group-hover/card:scale-
 const arrowNudge = `transition-[translate] duration-200 ${ease} group-hover/btn:translate-x-[3px]`;
 
 const primaryButton = `group/btn inline-flex items-center justify-center gap-2 rounded-[9px] bg-[#0077c2] px-6 py-3 ${fontInter} font-semibold text-white ${motion} hover:-translate-y-0.5 hover:bg-[#0061af] hover:shadow-[0_8px_18px_-4px_rgba(0,119,194,0.45)]`;
-const outlineButton = `group/btn inline-flex items-center justify-center gap-2 rounded-[9px] bg-white px-6 py-3 ${fontInter} font-semibold text-[#0077c2] shadow-[inset_0_0_0_1.5px_#0077c2] ${motion} hover:-translate-y-0.5 hover:bg-[#eef6fd]`;
+const outlineButton = `group/btn inline-flex items-center justify-center gap-2 rounded-[9px] bg-white px-6 py-3 ${fontInter} font-semibold text-[#f8bb18] shadow-[inset_0_0_0_1.5px_#f8bb18] ${motion} hover:-translate-y-0.5 hover:bg-[#fffdf5]`;
 
 /* --------------------------------------------------------------------
    Icons
@@ -113,160 +113,91 @@ function FaqToggleIcon() {
   );
 }
 
-// Line icons drawn for this page (the live site uses an icon font here).
+// Solid icons drawn for this page matching the HRMS vibrant solid-tile + white icon style.
 const ICON_PATHS = {
   portal: (
-    <>
-      <rect x="4" y="5" width="24" height="18" rx="2.5" fill="currentColor" fillOpacity={0.18} />
-      <circle cx="16" cy="12" r="3" />
-      <path d="M11 20c.8-2.2 2.7-3.5 5-3.5s4.2 1.3 5 3.5M11 28h10" />
-    </>
+    <path fillRule="evenodd" d="M2.25 4.5A2.25 2.25 0 0 1 4.5 2.25h15A2.25 2.25 0 0 1 21.75 4.5v10.5A2.25 2.25 0 0 1 19.5 17.25h-5.69l.72 2.25h2.22a.75.75 0 0 1 0 1.5H7.25a.75.75 0 0 1 0-1.5h2.22l.72-2.25H4.5A2.25 2.25 0 0 1 2.25 15V4.5Zm2.25-.75a.75.75 0 0 0-.75.75v10.5c0 .414.336.75.75.75h15a.75.75 0 0 0 .75-.75V4.5a.75.75 0 0 0-.75-.75H4.5Z" clipRule="evenodd" />
   ),
   clock: (
-    <>
-      <circle cx="16" cy="16" r="11.5" fill="currentColor" fillOpacity={0.18} />
-      <path d="M16 9v7.5l5 3" />
-    </>
+    <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 6a.75.75 0 0 0-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 0 0 0-1.5h-3.75V6Z" clipRule="evenodd" />
   ),
   billing: (
-    <>
-      <path d="M8 4h16v24l-4-2.5-4 2.5-4-2.5L8 28Z" fill="currentColor" fillOpacity={0.18} />
-      <path d="M12.5 10h7M12.5 13.5h7M16.5 10c2.5 0 2.5 6.5 0 6.5h-3l5 4.5" />
-    </>
+    <path fillRule="evenodd" d="M4.5 2.25A.75.75 0 0 0 3.75 3v18a.75.75 0 0 0 1.18.614l2.57-1.836 2.57 1.836a.75.75 0 0 0 .88 0l2.57-1.836 2.57 1.836a.75.75 0 0 0 .88 0l2.57-1.836 2.57 1.836A.75.75 0 0 0 20.25 21V3a.75.75 0 0 0-.75-.75H4.5ZM7.5 6a.75.75 0 0 0 0 1.5h9a.75.75 0 0 0 0-1.5h-9Zm0 3.75a.75.75 0 0 0 0 1.5h9a.75.75 0 0 0 0-1.5h-9Zm0 3.75a.75.75 0 0 0 0 1.5h5a.75.75 0 0 0 0-1.5h-5Z" clipRule="evenodd" />
   ),
   reports: (
-    <>
-      <path d="M19 4H8a2 2 0 0 0-2 2v20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V11Z" fill="currentColor" fillOpacity={0.18} />
-      <path d="M19 4v7h7M11 22v-4M15 22v-7M19 22v-5" />
-    </>
+    <path fillRule="evenodd" d="M5.625 1.5H9a3.75 3.75 0 0 1 3.75 3.75v1.875c0 1.036.84 1.875 1.875 1.875H16.5a3.75 3.75 0 0 1 3.75 3.75v7.875c0 1.035-.84 1.875-1.875 1.875H5.625a1.875 1.875 0 0 1-1.875-1.875V3.375c0-1.036.84-1.875 1.875-1.875ZM12.75 12a.75.75 0 0 0 0-1.5h-4.5a.75.75 0 0 0 0 1.5h4.5Zm0 3a.75.75 0 0 0 0-1.5h-4.5a.75.75 0 0 0 0 1.5h4.5Zm-2.25 3a.75.75 0 0 0 0-1.5h-2.25a.75.75 0 0 0 0 1.5h2.25Zm4.5-12.75v1.875a.375.375 0 0 0 .375.375h1.875a2.25 2.25 0 0 0-2.25-2.25Z" clipRule="evenodd" />
   ),
   mail: (
-    <>
-      <rect x="4" y="7" width="24" height="18" rx="2.5" fill="currentColor" fillOpacity={0.18} />
-      <path d="m5 9 11 8.5L27 9" />
-    </>
+    <path fillRule="evenodd" d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67Zm19.5-3.42H3a3 3 0 0 0-1.5.405l9.263 5.7a1.5 1.5 0 0 0 1.474 0l9.263-5.7A3 3 0 0 0 21 5.25Z" clipRule="evenodd" />
   ),
   menu: (
-    <>
-      <path d="M5 21a11 11 0 0 1 22 0Z" fill="currentColor" fillOpacity={0.18} />
-      <path d="M3 21h26M16 10V7M13 7h6M6 25h20" />
-    </>
+    <path fillRule="evenodd" d="M12 3a1 1 0 0 1 1 1v1.05A9.004 9.004 0 0 1 21 14v1a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-1a9.004 9.004 0 0 1 8-8.95V4a1 1 0 0 1 1-1ZM5.05 14h13.9A7.002 7.002 0 0 0 12 7.05 7.002 7.002 0 0 0 5.05 14ZM3 18a1 1 0 0 1 1-1h16a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1Z" clipRule="evenodd" />
   ),
   kiosk: (
-    <>
-      <rect x="7" y="3" width="18" height="17" rx="2" fill="currentColor" fillOpacity={0.18} />
-      <path d="M13 20v5h6v-5M9 28h14M13 10.5a3 3 0 1 1 6 0c0 1.7-1.3 3-3 3s-3-1.3-3-3" />
-    </>
+    <path fillRule="evenodd" d="M6 3a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 6 18h4.5v3H8.25a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5H13.5v-3H18a2.25 2.25 0 0 0 2.25-2.25V5.25A2.25 2.25 0 0 0 18 3H6Zm-.75 2.25a.75.75 0 0 1 .75-.75h12a.75.75 0 0 1 .75.75v8.25a.75.75 0 0 1-.75.75H6a.75.75 0 0 1-.75-.75V5.25Zm6.75 10.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Z" clipRule="evenodd" />
   ),
   integration: (
-    <>
-      <rect x="4" y="11" width="9" height="10" rx="2" fill="currentColor" fillOpacity={0.18} />
-      <rect x="19" y="11" width="9" height="10" rx="2" fill="currentColor" fillOpacity={0.18} />
-      <path d="M13 16h6M8.5 11V6M23.5 21v5" />
-    </>
+    <path fillRule="evenodd" d="M18.75 3a2.25 2.25 0 0 0-2.25 2.25v2.25H7.5V5.25A2.25 2.25 0 0 0 5.25 3h-1.5A2.25 2.25 0 0 0 1.5 5.25v1.5A2.25 2.25 0 0 0 3.75 9h1.5v6H3.75A2.25 2.25 0 0 0 1.5 17.25v1.5A2.25 2.25 0 0 0 3.75 21h1.5a2.25 2.25 0 0 0 2.25-2.25v-2.25h9v2.25a2.25 2.25 0 0 0 2.25 2.25h1.5a2.25 2.25 0 0 0 2.25-2.25v-1.5a2.25 2.25 0 0 0-2.25-2.25H18.75V9h1.5A2.25 2.25 0 0 0 22.5 6.75v-1.5A2.25 2.25 0 0 0 20.25 3h-1.5ZM6.75 9h10.5v6H6.75V9Z" clipRule="evenodd" />
   ),
   coupon: (
-    <>
-      <path d="M4 10a3 3 0 0 0 0 6v6h24v-6a3 3 0 0 0 0-6V4H4Z" transform="translate(0 3)" fill="currentColor" fillOpacity={0.18} />
-      <path d="M20 7v4M20 14.5v3M20 21v4M9 13h6M9 17h4" />
-    </>
+    <path fillRule="evenodd" d="M1.5 6.375c0-1.036.84-1.875 1.875-1.875h17.25c1.035 0 1.875.84 1.875 1.875v3.188a2.25 2.25 0 0 0 0 4.874v3.188c0 1.035-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 0 1 1.5 17.625V14.437a2.25 2.25 0 0 0 0-4.874V6.375ZM15 7.5a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 15 7.5Zm0 4.5a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5a.75.75 0 0 1 .75-.75Z" clipRule="evenodd" />
   ),
   overtime: (
-    <>
-      <circle cx="14" cy="16" r="10" fill="currentColor" fillOpacity={0.18} />
-      <path d="M14 10v6l4 2.5M25 6v6M22 9h6" />
-    </>
+    <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 6a.75.75 0 0 0-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 0 0 0-1.5h-3.75V6Zm4.5 12a.75.75 0 0 1 .75-.75h2.25a.75.75 0 0 1 0 1.5H18a.75.75 0 0 1-.75-.75Z" clipRule="evenodd" />
   ),
   vendor: (
-    <>
-      <path d="M4 12 6.5 5h19L28 12" />
-      <path d="M5 12h22v14H5Z" fill="currentColor" fillOpacity={0.18} />
-      <path d="M13 26v-7h6v7" />
-    </>
+    <path fillRule="evenodd" d="M3 4.5A1.5 1.5 0 0 1 4.5 3h15A1.5 1.5 0 0 1 21 4.5v3a3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1-3 3 3 3 0 0 1-3-3v-3ZM4.5 12h1.875a4.49 4.49 0 0 0 2.625-.845A4.49 4.49 0 0 0 12 12a4.49 4.49 0 0 0 2.625-.845A4.49 4.49 0 0 0 17.625 12H19.5v7.5A1.5 1.5 0 0 1 18 21H6a1.5 1.5 0 0 1-1.5-1.5V12Zm4.5 3a.75.75 0 0 1 .75.75v3a.75.75 0 0 1-1.5 0v-3a.75.75 0 0 1 .75-.75Zm6 0a.75.75 0 0 1 .75.75v3a.75.75 0 0 1-1.5 0v-3a.75.75 0 0 1 .75-.75Z" clipRule="evenodd" />
   ),
   inventory: (
-    <>
-      <path d="M16 3 28 9v14l-12 6-12-6V9Z" fill="currentColor" fillOpacity={0.18} />
-      <path d="M4 9l12 6 12-6M16 15v14" />
-    </>
+    <path fillRule="evenodd" d="M3.375 3C2.339 3 1.5 3.84 1.5 4.875v.75c0 1.036.84 1.875 1.875 1.875h17.25c1.035 0 1.875-.84 1.875-1.875v-.75C22.5 3.839 21.66 3 20.625 3H3.375ZM3 9h18v10.125c0 1.036-.84 1.875-1.875 1.875H4.875A1.875 1.875 0 0 1 3 19.125V9Zm6 3.75a.75.75 0 0 1 .75-.75h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1-.75-.75Z" clipRule="evenodd" />
   ),
   pointer: (
-    <>
-      <rect x="4" y="5" width="24" height="18" rx="2.5" fill="currentColor" fillOpacity={0.18} />
-      <path d="M4 10h24M8 7.5h.01M11 7.5h.01M16 15l8.5 3-3.7 1.3-1.3 3.7Z" />
-    </>
+    <path d="M4 2.5a.75.75 0 0 1 1.28-.53l14.25 14.25a.75.75 0 0 1-.7 1.28h-5.58l3.4 6.8a.75.75 0 1 1-1.34.68l-3.52-7.03-3.79 3.79a.75.75 0 0 1-1.28-.53V2.5z" />
   ),
   savings: (
-    <>
-      <circle cx="16" cy="16" r="11.5" fill="currentColor" fillOpacity={0.18} />
-      <path d="M12 11h8M12 15h8M16 11c3 0 3 8 0 8h-4l6 5" />
-    </>
+    <path fillRule="evenodd" d="M12 1.5c-5.799 0-10.5 4.701-10.5 10.5s4.701 10.5 10.5 10.5 10.5-4.701 10.5-10.5S17.799 1.5 12 1.5Zm1.125 5.25a.75.75 0 0 0 0 1.5h2.25a.75.75 0 0 1 0 1.5h-3.375a.75.75 0 0 0 0 1.5h1.875a2.25 2.25 0 0 1 0 4.5h-.75v1.5a.75.75 0 0 1-1.5 0V16.5H9.375a.75.75 0 0 1 0-1.5h2.25a.75.75 0 0 0 0-1.5H9.75a2.25 2.25 0 0 1 0-4.5h2.625V7.5a.75.75 0 0 1 1.5 0v.75h1.5a.75.75 0 0 0 0-1.5h-2.25Z" clipRule="evenodd" />
   ),
   bolt: (
-    <>
-      <path d="M18 3 6.5 18H15l-1.5 11L25 14h-8.5Z" fill="currentColor" fillOpacity={0.18} />
-    </>
+    <path fillRule="evenodd" d="M14.615 1.595a.75.75 0 0 1 .359.852L12.982 9.75h7.268a.75.75 0 0 1 .548 1.262l-10.5 11.25a.75.75 0 0 1-1.272-.71l1.992-7.302H3.75a.75.75 0 0 1-.548-1.262l10.5-11.25a.75.75 0 0 1 .913-.143Z" clipRule="evenodd" />
   ),
   smile: (
-    <>
-      <circle cx="16" cy="16" r="11.5" fill="currentColor" fillOpacity={0.18} />
-      <path d="M11 18.5c1.2 2 2.9 3 5 3s3.8-1 5-3M12 12.5h.01M20 12.5h.01" />
-    </>
+    <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-2.625 6a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25Zm5.25 0a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25ZM8.53 14.47a.75.75 0 0 1 1.06 0 3.75 3.75 0 0 0 4.82 0 .75.75 0 0 1 .98 1.14 5.25 5.25 0 0 1-6.86 0 .75.75 0 0 1 0-1.14Z" clipRule="evenodd" />
   ),
   layers: (
-    <>
-      <path d="M16 4 28 10l-12 6-12-6Z" fill="currentColor" fillOpacity={0.18} />
-      <path d="m4 16 12 6 12-6M4 22l12 6 12-6" />
-    </>
+    <path fillRule="evenodd" d="M11.644 1.34a.75.75 0 0 1 .712 0l9.75 5.25a.75.75 0 0 1 0 1.32l-9.75 5.25a.75.75 0 0 1-.712 0l-9.75-5.25a.75.75 0 0 1 0-1.32l9.75-5.25Zm0 7.82 7.74-4.168-7.74-4.168-7.74 4.168 7.74 4.168ZM2.25 12.33l9.394 5.06a.75.75 0 0 0 .712 0l9.394-5.06a.75.75 0 1 1 .712 1.32l-9.75 5.25a.75.75 0 0 1-.712 0l-9.75-5.25a.75.75 0 1 1 .712-1.32Zm0 4.5 9.394 5.06a.75.75 0 0 0 .712 0l9.394-5.06a.75.75 0 1 1 .712 1.32l-9.75 5.25a.75.75 0 0 1-.712 0l-9.75-5.25a.75.75 0 1 1 .712-1.32Z" clipRule="evenodd" />
   ),
   tailored: (
-    <>
-      <path d="M6 9h20M6 16h20M6 23h20" />
-      <circle cx="12" cy="9" r="2.8" fill="currentColor" fillOpacity={0.3} />
-      <circle cx="21" cy="16" r="2.8" fill="currentColor" fillOpacity={0.3} />
-      <circle cx="10" cy="23" r="2.8" fill="currentColor" fillOpacity={0.3} />
-    </>
+    <path fillRule="evenodd" d="M3 6a1 1 0 0 1 1-1h2.17a3.001 3.001 0 0 1 5.66 0H20a1 1 0 1 1 0 2H11.83a3.001 3.001 0 0 1-5.66 0H4a1 1 0 0 1-1-1Zm0 6a1 1 0 0 1 1-1h8.17a3.001 3.001 0 0 1 5.66 0H20a1 1 0 1 1 0 2h-2.17a3.001 3.001 0 0 1-5.66 0H4a1 1 0 0 1-1-1Zm0 6a1 1 0 0 1 1-1h4.17a3.001 3.001 0 0 1 5.66 0H20a1 1 0 1 1 0 2h-6.17a3.001 3.001 0 0 1-5.66 0H4a1 1 0 0 1-1-1Z" clipRule="evenodd" />
   ),
   automation: (
-    <>
-      <circle cx="16" cy="16" r="5" fill="currentColor" fillOpacity={0.18} />
-      <path d="M16 4v4M16 24v4M4 16h4M24 16h4M7.5 7.5l2.8 2.8M21.7 21.7l2.8 2.8M7.5 24.5l2.8-2.8M21.7 10.3l2.8-2.8" />
-    </>
+    <path fillRule="evenodd" d="M11.078 2.25c-.917 0-1.699.663-1.85 1.567L9.05 4.889c-.02.12-.115.26-.297.348a7.493 7.493 0 0 0-.986.57c-.166.115-.334.126-.45.083L6.177 5.48a1.875 1.875 0 0 0-2.282.819l-.92 1.59a1.875 1.875 0 0 0 .432 2.385l1.04.832c.1.082.146.229.117.382a7.525 7.525 0 0 0 0 1.14c.029.153-.017.3-.117.382l-1.04.832a1.875 1.875 0 0 0-.432 2.385l.92 1.59c.527.912 1.636 1.3 2.282.818l1.14-.41c.116-.043.284-.032.45.082.312.214.641.405.986.57.182.088.277.228.297.35l.177 1.071c.151.904.933 1.567 1.85 1.567h1.844c.916 0 1.699-.663 1.85-1.567l.178-1.072c.02-.12.114-.26.297-.349.344-.165.673-.356.985-.57.167-.114.335-.125.45-.082l1.14.409a1.875 1.875 0 0 0 2.282-.818l.92-1.59a1.875 1.875 0 0 0-.432-2.385l-1.04-.832c-.1-.082-.146-.229-.117-.382a7.525 7.525 0 0 0 0-1.14c-.029-.153.017-.3.117-.382l1.04-.832a1.875 1.875 0 0 0 .432-2.385l-.92-1.59a1.875 1.875 0 0 0-2.282-.818l-1.14.41c-.115.042-.283.031-.45-.083a7.49 7.49 0 0 0-.985-.57c-.183-.088-.277-.229-.297-.349l-.178-1.071A1.875 1.875 0 0 0 12.922 2.25h-1.844ZM12 15.75a3.75 3.75 0 1 0 0-7.5 3.75 3.75 0 0 0 0 7.5Z" clipRule="evenodd" />
   ),
   scale: (
-    <>
-      <path d="M5 11V5h6M27 11V5h-6M5 21v6h6M27 21v6h-6" />
-      <rect x="10.5" y="10.5" width="11" height="11" rx="2" fill="currentColor" fillOpacity={0.18} />
-    </>
+    <path fillRule="evenodd" d="M3.75 3a.75.75 0 0 0-.75.75v5.25a.75.75 0 0 0 1.5 0V5.56l4.72 4.72a.75.75 0 0 0 1.06-1.06L5.56 4.5h3.44a.75.75 0 0 0 0-1.5H3.75Zm16.5 0a.75.75 0 0 0-.75.75v3.44l-4.72 4.72a.75.75 0 1 0 1.06 1.06L20.56 8.25v3.44a.75.75 0 0 0 1.5 0V3.75a.75.75 0 0 0-.75-.75h-5.25a.75.75 0 0 0 0 1.5h3.44ZM3.75 21a.75.75 0 0 0 .75-.75v-3.44l4.72-4.72a.75.75 0 1 0-1.06-1.06L3.44 15.75V12.31a.75.75 0 0 0-1.5 0v5.25a.75.75 0 0 0 .75.75h5.25a.75.75 0 0 0 0-1.5H4.5v-3.44Zm16.5 0a.75.75 0 0 0 .75-.75v-5.25a.75.75 0 0 0-1.5 0v3.44l-4.72-4.72a.75.75 0 0 0-1.06 1.06l4.72 4.72h-3.44a.75.75 0 0 0 0 1.5h5.25Z" clipRule="evenodd" />
   ),
   headset: (
-    <>
-      <path d="M6 18v-3a10 10 0 0 1 20 0v3" />
-      <rect x="4.5" y="17" width="5" height="8" rx="2" fill="currentColor" fillOpacity={0.18} />
-      <rect x="22.5" y="17" width="5" height="8" rx="2" fill="currentColor" fillOpacity={0.18} />
-      <path d="M25 25c0 2-2 3-5 3h-3" />
-    </>
+    <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75v4.5A3.75 3.75 0 0 0 6 20.25h1.5a2.25 2.25 0 0 0 2.25-2.25v-3a2.25 2.25 0 0 0-2.25-2.25H4.5V12a7.5 7.5 0 0 1 15 0v.75h-3A2.25 2.25 0 0 0 14.25 15v3a2.25 2.25 0 0 0 2.25 2.25h.75v.75a2.25 2.25 0 0 1-2.25 2.25h-2.25a.75.75 0 0 0 0 1.5h2.25a3.75 3.75 0 0 0 3.75-3.75v-.75H18A3.75 3.75 0 0 0 21.75 16.5V12c0-5.385-4.365-9.75-9.75-9.75Z" clipRule="evenodd" />
   ),
   trophy: (
-    <>
-      <path d="M10 5h12v7a6 6 0 0 1-12 0Z" fill="currentColor" fillOpacity={0.18} />
-      <path d="M10 8H6c0 4 2 6 4.5 6.5M22 8h4c0 4-2 6-4.5 6.5M16 18v5M11 27h10M12.5 27l1-4h5l1 4" />
-    </>
+    <path fillRule="evenodd" d="M5.166 2.621v.858c-1.035.148-2.059.33-3.071.543a.75.75 0 0 0-.584.859 6.753 6.753 0 0 0 6.138 5.6c.45 1.391 1.381 2.571 2.601 3.324v2.795H8.25a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-2v-2.795a6.002 6.002 0 0 0 2.601-3.324 6.754 6.754 0 0 0 6.138-5.6.75.75 0 0 0-.584-.859 27.68 27.68 0 0 0-3.071-.543v-.858a.75.75 0 0 0-.75-.75h-12a.75.75 0 0 0-.75.75Zm1.5 2.378v4.218a5.255 5.255 0 0 1-3.585-2.915 26.246 26.246 0 0 1 3.585-1.303Zm10.668 0a26.246 26.246 0 0 1 3.585 1.303 5.255 5.255 0 0 1-3.585 2.915V4.999Z" clipRule="evenodd" />
   ),
   warning: (
-    <>
-      <path d="M16 4 29 27H3Z" fill="currentColor" fillOpacity={0.18} />
-      <path d="M16 12v7M16 23h.01" />
-    </>
+    <path fillRule="evenodd" d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003ZM12 8.25a.75.75 0 0 1 .75.75v3.75a.75.75 0 0 1-1.5 0V9a.75.75 0 0 1 .75-.75Zm0 8.25a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" clipRule="evenodd" />
   ),
 };
 
-function IconTile({ name, bg, color, className = "h-12 w-12", iconClassName = "h-7 w-7" }) {
+function LineIcon({ name, className = "h-6 w-6" }) {
   return (
-    <span className={`flex shrink-0 items-center justify-center rounded-[10px] ${iconPop} ${className}`} style={{ background: bg, color }}>
-      <svg viewBox="0 0 32 32" aria-hidden="true" className={iconClassName} fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
-        {ICON_PATHS[name]}
-      </svg>
+    <svg viewBox="0 0 24 24" aria-hidden="true" className={className} fill="currentColor">
+      {ICON_PATHS[name]}
+    </svg>
+  );
+}
+
+function IconTile({ name, bg, color = "#ffffff", className = "h-12 w-12 rounded-[10px]", iconClassName = "h-6 w-6" }) {
+  return (
+    <span className={`flex shrink-0 items-center justify-center text-white shadow-sm ${iconPop} ${className}`} style={{ background: bg }}>
+      <LineIcon name={name} className={iconClassName} />
     </span>
   );
 }
@@ -284,11 +215,11 @@ function SectionHeader({ id, title, text, align = "center", className = "", dark
 }
 
 const TONES = [
-  { bg: "#d8e7fe", color: "#1d64d8" },
-  { bg: "#fee6b1", color: "#b07d00" },
-  { bg: "#d1f4e3", color: "#0b8f63" },
-  { bg: "#fdd7d4", color: "#c2362c" },
-  { bg: "#e9eafe", color: "#5b5bd6" },
+  { bg: "#0077c2", color: "#ffffff" },
+  { bg: "#0fb880", color: "#ffffff" },
+  { bg: "#f8bb18", color: "#ffffff" },
+  { bg: "#ef4444", color: "#ffffff" },
+  { bg: "#5b5bd6", color: "#ffffff" },
 ];
 const tone = (index) => TONES[index % TONES.length];
 
@@ -514,27 +445,27 @@ export default function CanteenManagementSystemPage() {
       {/* Hero */}
       <section
         aria-labelledby="cms-hero-heading"
-        className="relative bg-[radial-gradient(circle_at_0%_20%,rgba(0,119,194,0.14),transparent_32%),radial-gradient(circle_at_55%_0%,rgba(248,187,24,0.25),transparent_35%),radial-gradient(circle_at_100%_80%,rgba(248,187,24,0.3),transparent_30%),radial-gradient(circle_at_30%_100%,rgba(15,184,128,0.1),transparent_25%)] px-4 pb-12 pt-6 md:px-12 md:pb-16 md:pt-10"
+        className="relative flex flex-col justify-center bg-[radial-gradient(circle_at_0%_20%,rgba(0,119,194,0.14),transparent_32%),radial-gradient(circle_at_55%_0%,rgba(248,187,24,0.25),transparent_35%),radial-gradient(circle_at_100%_80%,rgba(248,187,24,0.3),transparent_30%),radial-gradient(circle_at_30%_100%,rgba(15,184,128,0.1),transparent_25%)] px-4 py-8 md:px-12 lg:min-h-[calc(100vh-88px)] lg:py-6"
       >
-        <div className="mx-auto flex max-w-7xl flex-col items-center gap-12 lg:flex-row lg:justify-between lg:gap-14">
-          <header className={`${revealFromLeft} flex flex-col gap-5 lg:max-w-2xl`}>
+        <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-8 lg:flex-row lg:items-center lg:justify-between lg:gap-10 xl:gap-14">
+          <header className={`${revealFromLeft} flex flex-col gap-4 lg:gap-4.5 lg:max-w-xl xl:max-w-2xl`}>
             <nav aria-label="Breadcrumb" className={`${fontInter} text-[13px] font-medium text-black/55`}>
               <ol className="flex flex-wrap items-center gap-1.5">
                 <li>
-                  <Link href="/" className="transition-colors hover:text-[#0077c2]">
+                  <Link href="/" className="transition-colors hover:text-[#f8bb18]">
                     Home
                   </Link>
                 </li>
-                <li aria-hidden="true">›</li>
+                <li aria-hidden="true" className="text-black/35">›</li>
                 <li aria-current="page" className="text-black/80">
                   Canteen Management System
                 </li>
               </ol>
             </nav>
-            <h1 id="cms-hero-heading" className="text-3xl font-semibold leading-tight text-[#1f1f1f] md:text-[2.6rem] md:leading-[1.2]">
-              Simplify <span className="text-[#0077c2]">Canteen Management System</span> with em<span className="text-[#f8bb18]">Meal</span> System
+            <h1 id="cms-hero-heading" className="text-3xl font-semibold leading-tight text-[#1f1f1f] md:text-4xl lg:text-[2.6rem] md:leading-[1.2]">
+              Simplify <span className="text-[#f8bb18]">Canteen Management System</span> with em<span className="text-[#f8bb18]">Meal</span> System
             </h1>
-            <p className={`text-base leading-[26px] md:text-[17px] md:leading-[28px] ${mutedText}`}>
+            <p className={`text-base leading-[26px] md:text-[17px] md:leading-[27px] ${mutedText}`}>
               Most large organizations, including corporate offices and factory units, prioritize employee meals, hygiene, and the quality of food
               served. A robust Canteen Management System like emMeal helps streamline these operations by enabling quick, efficient, and systematic meal
               management. emMeal ensures hassle-free service for a large workforce, improving satisfaction while maintaining hygiene and operational
@@ -552,20 +483,18 @@ export default function CanteenManagementSystemPage() {
             </div>
           </header>
 
-          <div className={`${revealFromRight} relative w-full max-w-md lg:w-[38%] lg:max-w-none`}>
+          <div className={`${revealFromRight} relative mx-auto w-full max-w-[340px] sm:max-w-md lg:mx-0 lg:w-[36%] lg:max-w-[420px]`}>
             <div aria-hidden="true" className="absolute inset-8 rounded-full bg-[#fff1c7] blur-3xl" />
             <Image
               src={heroImg}
-              alt="Hand holding a phone showing the emMeal weekly meal planner"
+              alt="Hand holding a phone showing the emMeal meal planner with today's lunch booking, canteen menu and meal pass"
               className={`relative h-auto w-full ${motion} hover:-translate-y-1`}
               priority
-              sizes="(min-width: 1024px) 38vw, 100vw"
+              sizes="(min-width: 1024px) 36vw, 100vw"
             />
-            <div className="payroll-float absolute bottom-10 -left-2 flex items-center gap-3 rounded-2xl bg-white p-3 pr-5 shadow-[0_16px_36px_-14px_rgba(0,0,0,0.4)] sm:-left-8">
-              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#fee6b1] text-[#b07d00]">
-                <svg viewBox="0 0 32 32" aria-hidden="true" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
-                  {ICON_PATHS.menu}
-                </svg>
+            <div className="payroll-float absolute bottom-6 -left-2 flex items-center gap-3 rounded-2xl bg-white p-2.5 sm:p-3 pr-4 sm:pr-5 shadow-[0_16px_36px_-14px_rgba(0,0,0,0.25)] sm:-left-6">
+              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#f8bb18] text-white shadow-sm">
+                <LineIcon name="menu" className="h-6 w-6" />
               </span>
               <div>
                 <p className="text-sm font-semibold text-[#1f1f1f]">Fixed Menu &amp; Ala-carte</p>
@@ -583,7 +512,7 @@ export default function CanteenManagementSystemPage() {
             id="modules-heading"
             title={
               <>
-                Whether your canteen serves a <span className="text-[#0077c2]">Fixed Menu</span> or <span className="text-[#f8bb18]">Ala-Carte</span>, We have a
+                Whether your canteen serves a <span className="text-[#f8bb18]">Fixed Menu</span> or <span className="text-[#f8bb18]">Ala-Carte</span>, We have a
                 module for you!
               </>
             }
@@ -605,15 +534,14 @@ export default function CanteenManagementSystemPage() {
         </div>
       </section>
 
-      {/* We're talking system for food!! — app screen + demo form (dark band) */}
-      <section aria-labelledby="food-heading" className="relative overflow-hidden bg-[#0f162a] px-4 py-14 text-white md:px-12 md:py-20">
-        <div aria-hidden="true" className="absolute -right-24 -top-24 h-80 w-80 rounded-full bg-[#efb000]/20 blur-3xl" />
-        <div aria-hidden="true" className="absolute -bottom-32 -left-24 h-80 w-80 rounded-full bg-[#0077c2]/30 blur-3xl" />
+      {/* We're talking system for food!! — app screen + demo form */}
+      <section aria-labelledby="food-heading" className="relative overflow-hidden bg-[#fdf6e6] px-4 py-14 text-[#1f1f1f] md:px-12 md:py-20">
+        <div aria-hidden="true" className="absolute -right-24 -top-24 h-80 w-80 rounded-full bg-[#f8bb18]/25 blur-3xl" />
+        <div aria-hidden="true" className="absolute -bottom-32 -left-24 h-80 w-80 rounded-full bg-[#f8bb18]/15 blur-3xl" />
         <div className="relative mx-auto flex max-w-7xl flex-col items-center gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-14">
           <div className={`${revealFromLeft} flex w-full flex-col gap-6 lg:max-w-xl`}>
             <SectionHeader
               id="food-heading"
-              dark
               align="left"
               title={
                 <>
@@ -621,10 +549,10 @@ export default function CanteenManagementSystemPage() {
                 </>
               }
             />
-            <div className="overflow-hidden rounded-2xl bg-white/5 ring-1 ring-white/15">
+            <div className="overflow-hidden rounded-2xl bg-white shadow-[0px_18px_40px_-18px_rgba(0,0,0,0.18)] ring-1 ring-[#f0deba]">
               <Image
                 src={appScreenImg}
-                alt="emMeal app on a phone showing Find Meals with favourites, popular categories and dinner recommendations"
+                alt="emMeal Find Meals app screen with meal categories and dinner pick, surrounded by lunch booking, coupon wallet, OT meal and vendor billing cards"
                 className="h-auto w-full"
                 sizes="(min-width: 1024px) 36rem, 100vw"
               />
@@ -643,13 +571,13 @@ export default function CanteenManagementSystemPage() {
             id="convenience-heading"
             title={
               <>
-                Convenience with <span className="text-[#0077c2]">integration</span>
+                Convenience with <span className="text-[#f8bb18]">integration</span>
               </>
             }
           />
           <ul className="grid grid-cols-1 gap-5 md:grid-cols-3">
             {convenience.map((item, index) => (
-              <li key={item.icon} style={stagger(index)} className={`${revealUp} ${greyCard} ${liftGrey} flex flex-col gap-4 p-6`}>
+              <li key={item.icon} style={stagger(index)} className={`${revealUp} ${greyCard} ${liftGrey} flex flex-col items-center gap-4 p-6 text-center`}>
                 <IconTile name={item.icon} bg={tone(index * 2).bg} color={tone(index * 2).color} className="h-14 w-14" iconClassName="h-8 w-8" />
                 <p className="text-base font-medium leading-[26px] text-[#1f1f1f]">{item.text}</p>
               </li>
@@ -675,7 +603,7 @@ export default function CanteenManagementSystemPage() {
             ))}
           </ul>
           <p
-            className={`${revealZoom} mx-auto flex items-center gap-3 rounded-full bg-[#0f162a] px-6 py-3.5 text-center text-base font-semibold text-white shadow-[0_18px_40px_-20px_rgba(15,22,42,0.9)] md:text-lg`}
+            className={`${revealZoom} mx-auto flex items-center gap-3 rounded-full bg-[#fdf6e6] px-6 py-3.5 text-center text-base font-semibold text-[#1f1f1f] shadow-[inset_0_0_0_1px_#f0deba,0_18px_40px_-22px_rgba(0,0,0,0.25)] md:text-lg`}
           >
             <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#efb000] text-[#0f162a]">
               <CheckIcon className="h-4 w-4" />
@@ -695,7 +623,7 @@ export default function CanteenManagementSystemPage() {
             align="left"
             title={
               <>
-                Introduction to Emsphere’s <span className="text-[#0077c2]">Canteen Management System</span>
+                Introduction to Emsphere’s <span className="text-[#f8bb18]">Canteen Management System</span>
               </>
             }
             text="In today's fast-paced world, efficient management of canteens is essential for organizations of all sizes. Canteen Management Systems (CMS) play a pivotal role in streamlining operations, ensuring transparency, and enhancing user experience."
@@ -715,10 +643,8 @@ export default function CanteenManagementSystemPage() {
           <ul className="flex flex-col gap-3">
             {challenges.map(([term, text]) => (
               <li key={term} className="flex gap-3">
-                <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#fdd7d4] text-[#c2362c]">
-                  <svg viewBox="0 0 32 32" aria-hidden="true" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round">
-                    {ICON_PATHS.warning}
-                  </svg>
+                <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#ef4444] text-white shadow-sm">
+                  <LineIcon name="warning" className="h-4 w-4" />
                 </span>
                 <p className={`text-[15px] leading-[24px] ${mutedText}`}>
                   <span className="font-semibold text-[#1f1f1f]">{term}:</span> {text}
@@ -750,14 +676,14 @@ export default function CanteenManagementSystemPage() {
             id="functionalities-heading"
             title={
               <>
-                Features and Functionalities of <span className="text-[#0077c2]">Canteen Management System</span>
+                Features and Functionalities of <span className="text-[#f8bb18]">Canteen Management System</span>
               </>
             }
             text="In today's fast-paced world, efficient management of canteens is essential for organizations of all sizes. Canteen Management System (CMS) play a pivotal role in streamlining operations, ensuring transparency, and enhancing user experience."
           />
           <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {functionalities.map((item, index) => (
-              <li key={item.title} style={stagger(index, 100)} className={`${revealUp} ${greyCard} ${liftGrey} flex flex-col gap-3 p-6`}>
+              <li key={item.title} style={stagger(index, 100)} className={`${revealUp} ${greyCard} ${liftGrey} flex flex-col items-center gap-3 p-6 text-center`}>
                 <IconTile name={item.icon} bg={tone(index).bg} color={tone(index).color} />
                 <h3 className="text-lg font-semibold text-[#1f1f1f]">{item.title}</h3>
                 <p className={`text-[15px] leading-[24px] ${mutedText}`}>{item.text}</p>
@@ -781,7 +707,7 @@ export default function CanteenManagementSystemPage() {
           />
           <ul className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {benefits.map((item, index) => (
-              <li key={item.title} style={stagger(index)} className={`${revealUp} ${goldCard} ${liftGold} relative flex flex-col gap-4 overflow-hidden p-7`}>
+              <li key={item.title} style={stagger(index)} className={`${revealUp} ${goldCard} ${liftGold} relative flex flex-col items-center gap-4 overflow-hidden p-7 text-center`}>
                 <span aria-hidden="true" className="absolute inset-x-0 top-0 h-1" style={{ background: tone(index * 2 + 1).color }} />
                 <IconTile name={item.icon} bg={tone(index * 2 + 1).bg} color={tone(index * 2 + 1).color} className="h-14 w-14" iconClassName="h-8 w-8" />
                 <h3 className="text-xl font-semibold text-[#1f1f1f]">{item.title}</h3>
@@ -806,10 +732,10 @@ export default function CanteenManagementSystemPage() {
           />
           <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {reasons.map((item, index) => (
-              <li key={item.title} style={stagger(index % 4, 90)} className={`${revealUp} ${goldCard} ${liftGold} relative flex flex-col gap-3 p-6`}>
+              <li key={item.title} style={stagger(index % 4, 90)} className={`${revealUp} ${goldCard} ${liftGold} relative flex flex-col items-center gap-3 p-6 text-center`}>
                 <span className={`${fontInter} absolute right-5 top-5 text-sm font-bold text-black/15`}>{String(index + 1).padStart(2, "0")}</span>
                 <IconTile name={item.icon} bg={tone(index).bg} color={tone(index).color} />
-                <h3 className="pr-6 text-lg font-semibold leading-snug text-[#1f1f1f]">{item.title}</h3>
+                <h3 className="px-6 text-lg font-semibold leading-snug text-[#1f1f1f]">{item.title}</h3>
                 <p className={`text-[15px] leading-[23px] ${mutedText}`}>{item.text}</p>
               </li>
             ))}
@@ -817,25 +743,18 @@ export default function CanteenManagementSystemPage() {
 
           <aside
             aria-labelledby="conclusion-heading"
-            className={`${revealZoom} relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#0077c2] to-[#0061af] p-6 text-white shadow-[0_24px_50px_-24px_rgba(0,97,175,0.8)] md:p-10`}
+            className={`${revealZoom} relative overflow-hidden rounded-2xl bg-[#fdf6e6] p-6 text-[#1f1f1f] shadow-[inset_0_0_0_1px_#f0deba,0_24px_50px_-28px_rgba(0,0,0,0.25)] md:p-10`}
           >
-            <div aria-hidden="true" className="absolute -right-16 -top-16 h-56 w-56 rounded-full bg-[#efb000]/30 blur-2xl" />
+            <div aria-hidden="true" className="absolute -right-16 -top-16 h-56 w-56 rounded-full bg-[#f8bb18]/25 blur-2xl" />
             <div className="relative flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-              <div className="max-w-3xl">
-                <h3 id="conclusion-heading" className="text-2xl font-semibold md:text-3xl">
-                  Conclusion | Canteen Management System
-                </h3>
-                <p className="mt-3 text-base leading-[26px] text-white/85">
-                  Efficient canteen management is essential for organizations to ensure employee satisfaction, productivity, and overall operational
-                  efficiency. Emsphere Technologies offers a comprehensive Canteen Management System designed to address the challenges faced by
-                  traditional systems and deliver tangible benefits to organizations.
-                </p>
-              </div>
+              <h3 id="conclusion-heading" className="text-2xl font-semibold md:text-3xl">
+                Still confused?
+              </h3>
               <a
                 href="#request-demo"
                 className={`group/btn inline-flex shrink-0 items-center justify-center gap-2 self-start rounded-[9px] bg-[#efb000] px-6 py-3 ${fontInter} text-[15px] font-semibold text-black ${motion} hover:-translate-y-0.5 hover:bg-[#d69e00] hover:shadow-[0_8px_18px_-4px_rgba(239,176,0,0.55)] lg:self-center`}
               >
-                Book a demo
+                Talk to an Expert
                 <ArrowCircleIcon fill="#000000" />
               </a>
             </div>

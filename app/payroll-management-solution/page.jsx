@@ -147,152 +147,92 @@ function CheckIcon({ className = "h-4 w-4" }) {
   );
 }
 
-// Line icons drawn for this page (no source assets exist for these tiles).
+// Solid icons drawn for this page matching the HRMS vibrant solid-tile + white icon style.
 const ICON_PATHS = {
   access: (
-    <>
-      <rect x="6" y="14" width="20" height="14" rx="2.5" fill="currentColor" fillOpacity={0.18} />
-      <path d="M10.5 14V9.5a5.5 5.5 0 0 1 11 0V14M16 19.5v3" />
-    </>
+    <path fillRule="evenodd" d="M12 1.5a5.25 5.25 0 0 0-5.25 5.25v3a3 3 0 0 0-3 3v6.75a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3v-6.75a3 3 0 0 0-3-3v-3c0-2.9-2.35-5.25-5.25-5.25Zm3.75 8.25v-3a3.75 3.75 0 1 0-7.5 0v3h7.5Z" clipRule="evenodd" />
   ),
   controls: (
-    <>
-      <path d="M16 3.5 26 7.5v7.5c0 6.2-4.3 10.8-10 13-5.7-2.2-10-6.8-10-13V7.5Z" fill="currentColor" fillOpacity={0.18} />
-      <path d="m11.5 16 3.2 3.2 6-6.4" />
-    </>
+    <path fillRule="evenodd" d="M12.516 2.17a.75.75 0 0 0-1.032 0 11.209 11.209 0 0 1-7.877 3.08.75.75 0 0 0-.722.515A12.74 12.74 0 0 0 2.25 9.75c0 5.942 4.064 10.933 9.563 12.348a.749.749 0 0 0 .374 0c5.499-1.415 9.563-6.406 9.563-12.348 0-1.39-.223-2.73-.635-3.985a.75.75 0 0 0-.722-.516l-.143.001c-2.996 0-5.717-1.17-7.734-3.08Zm3.094 8.016a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z" clipRule="evenodd" />
   ),
   accuracy: (
-    <>
-      <circle cx="16" cy="16" r="11" fill="currentColor" fillOpacity={0.18} />
-      <circle cx="16" cy="16" r="6.5" />
-      <circle cx="16" cy="16" r="2" fill="currentColor" />
-    </>
+    <path fillRule="evenodd" d="M8.603 3.799A4.49 4.49 0 0 1 12 2.25c1.357 0 2.573.6 3.397 1.549a4.49 4.49 0 0 1 3.498 1.307 4.491 4.491 0 0 1 1.307 3.497A4.49 4.49 0 0 1 21.75 12a4.49 4.49 0 0 1-1.549 3.397 4.491 4.491 0 0 1-1.307 3.497 4.491 4.491 0 0 1-3.497 1.307A4.49 4.49 0 0 1 12 21.75a4.49 4.49 0 0 1-3.397-1.549 4.49 4.49 0 0 1-3.498-1.306 4.491 4.491 0 0 1-1.307-3.498A4.49 4.49 0 0 1 2.25 12c0-1.357.6-2.573 1.549-3.397a4.49 4.49 0 0 1 1.307-3.497 4.49 4.49 0 0 1 3.497-1.307Zm7.007 6.387a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z" clipRule="evenodd" />
   ),
   analytics: (
-    <>
-      <path d="M5 27h22" />
-      <rect x="7" y="16" width="4" height="8" rx="1" fill="currentColor" fillOpacity={0.18} />
-      <rect x="14" y="10" width="4" height="14" rx="1" fill="currentColor" fillOpacity={0.18} />
-      <rect x="21" y="5" width="4" height="19" rx="1" fill="currentColor" fillOpacity={0.18} />
-    </>
+    <path fillRule="evenodd" d="M3 3a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h18a1 1 0 1 0 0-2H4V4a1 1 0 0 0-1-1Zm4 10a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-5Zm6-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V9Zm6-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V5Z" clipRule="evenodd" />
   ),
   cycle: (
-    <>
-      <path d="M26 11.5A10.5 10.5 0 0 0 7.2 9M6 20.5A10.5 10.5 0 0 0 24.8 23" />
-      <path d="M7 4.5V9.5h5M25 27.5v-5h-5" />
-      <circle cx="16" cy="16" r="3.5" fill="currentColor" fillOpacity={0.18} />
-    </>
+    <path fillRule="evenodd" d="M4.755 10.059a7.5 7.5 0 0 1 12.548-3.364l1.903 1.903h-3.183a.75.75 0 1 0 0 1.5h4.992a.75.75 0 0 0 .75-.75V4.356a.75.75 0 0 0-1.5 0v3.18l-1.9-1.9A9 9 0 0 0 3.306 9.67a.75.75 0 1 0 1.45.388Zm15.408 3.352a.75.75 0 0 0-.919.53 7.5 7.5 0 0 1-12.548 3.364l-1.902-1.903h3.183a.75.75 0 0 0 0-1.5H2.984a.75.75 0 0 0-.75.75v4.992a.75.75 0 0 0 1.5 0v-3.18l1.9 1.9a9 9 0 0 0 15.059-4.022.75.75 0 0 0-.53-.92Z" clipRule="evenodd" />
   ),
   audit: (
     <>
-      <path d="M21 13V6a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v20a2 2 0 0 0 2 2h7" fill="currentColor" fillOpacity={0.18} />
-      <path d="M10 10h7M10 14.5h4M10 19h3" />
-      <circle cx="21.5" cy="20.5" r="4.5" />
-      <path d="m24.8 23.8 3.2 3.2" />
+      <path fillRule="evenodd" d="M7.5 3.75A1.5 1.5 0 0 0 6 5.25v13.5A1.5 1.5 0 0 0 7.5 20.25h9a1.5 1.5 0 0 0 1.5-1.5V5.25a1.5 1.5 0 0 0-1.5-1.5h-9Zm3.75 3.75a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 0 1.5h-3a.75.75 0 0 1-.75-.75Zm-2.25 4.5a.75.75 0 0 1 .75-.75h6a.75.75 0 0 1 0 1.5h-6a.75.75 0 0 1-.75-.75Zm0 3.75a.75.75 0 0 1 .75-.75h6a.75.75 0 0 1 0 1.5h-6a.75.75 0 0 1-.75-.75Z" clipRule="evenodd" />
+      <path d="M18.75 9.75a.75.75 0 0 0-1.5 0v9.75H7.5a.75.75 0 0 0 0 1.5h10.5a1.5 1.5 0 0 0 1.5-1.5V9.75Z" />
     </>
   ),
   group: (
-    <>
-      <circle cx="11" cy="11" r="4" fill="currentColor" fillOpacity={0.18} />
-      <circle cx="22" cy="12" r="3.2" />
-      <path d="M4 26c0-4.4 3.1-7.5 7-7.5s7 3.1 7 7.5M19 19.2c3.6-.4 7 2.2 7 6.8" />
-    </>
+    <path d="M4.5 6.375a4.125 4.125 0 1 1 8.25 0 4.125 4.125 0 0 1-8.25 0ZM14.25 8.625a3.375 3.375 0 1 1 6.75 0 3.375 3.375 0 0 1-6.75 0ZM1.5 19.125a7.125 7.125 0 0 1 14.25 0v.003l-.001.119a.75.75 0 0 1-.363.63 13.067 13.067 0 0 1-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 0 1-.364-.63l-.001-.122ZM17.25 19.128l-.003.144a2.25 2.25 0 0 1-.233.96 10.088 10.088 0 0 0 5.06-1.232.75.75 0 0 0 .364-.63v-.12a5.625 5.625 0 0 0-5.188-5.615Z" />
   ),
   rules: (
-    <>
-      <circle cx="16" cy="16" r="4" fill="currentColor" fillOpacity={0.18} />
-      <path d="M16 4v4M16 24v4M4 16h4M24 16h4M7.5 7.5l2.8 2.8M21.7 21.7l2.8 2.8M7.5 24.5l2.8-2.8M21.7 10.3l2.8-2.8" />
-    </>
+    <path fillRule="evenodd" d="M11.078 2.25c-.917 0-1.699.663-1.85 1.567L9.05 4.889c-.02.12-.115.26-.297.348a7.493 7.493 0 0 0-.986.57c-.166.115-.334.126-.45.083L6.177 5.48a1.875 1.875 0 0 0-2.282.819l-.92 1.59a1.875 1.875 0 0 0 .432 2.385l1.04.832c.1.082.146.229.117.382a7.525 7.525 0 0 0 0 1.14c.029.153-.017.3-.117.382l-1.04.832a1.875 1.875 0 0 0-.432 2.385l.92 1.59c.527.912 1.636 1.3 2.282.818l1.14-.41c.116-.043.284-.032.45.082.312.214.641.405.986.57.182.088.277.228.297.35l.177 1.071c.151.904.933 1.567 1.85 1.567h1.844c.916 0 1.699-.663 1.85-1.567l.178-1.072c.02-.12.114-.26.297-.349.344-.165.673-.356.985-.57.167-.114.335-.125.45-.082l1.14.409a1.875 1.875 0 0 0 2.282-.818l.92-1.59a1.875 1.875 0 0 0-.432-2.385l-1.04-.832c-.1-.082-.146-.229-.117-.382a7.525 7.525 0 0 0 0-1.14c-.029-.153.017-.3.117-.382l1.04-.832a1.875 1.875 0 0 0 .432-2.385l-.92-1.59a1.875 1.875 0 0 0-2.282-.818l-1.14.41c-.115.042-.283.031-.45-.083a7.49 7.49 0 0 0-.985-.57c-.183-.088-.277-.229-.297-.349l-.178-1.071A1.875 1.875 0 0 0 12.922 2.25h-1.844ZM12 15.75a3.75 3.75 0 1 0 0-7.5 3.75 3.75 0 0 0 0 7.5Z" clipRule="evenodd" />
   ),
   arrears: (
-    <>
-      <rect x="4" y="7" width="24" height="18" rx="2.5" fill="currentColor" fillOpacity={0.18} />
-      <path d="M4 12h24M9 19h5" />
-      <path d="m21 17 3 3-3 3" />
-    </>
+    <path fillRule="evenodd" d="M6.75 2.25A.75.75 0 0 1 7.5 3v1.5h9V3A.75.75 0 0 1 18 3v1.5h.75A3.75 3.75 0 0 1 22.5 8.25v10.5A3.75 3.75 0 0 1 18.75 22.5H5.25A3.75 3.75 0 0 1 1.5 18.75V8.25A3.75 3.75 0 0 1 5.25 4.5H6V3a.75.75 0 0 1 .75-.75Zm13.5 9a1.5 1.5 0 0 0-1.5-1.5H5.25a1.5 1.5 0 0 0-1.5 1.5v7.5a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5v-7.5Z" clipRule="evenodd" />
   ),
   reimbursement: (
-    <>
-      <path d="M8 4h16v24l-4-2.5-4 2.5-4-2.5L8 28Z" fill="currentColor" fillOpacity={0.18} />
-      <path d="M12 10h8M12 14.5h8M12 19h5" />
-    </>
+    <path fillRule="evenodd" d="M4.5 2.25A.75.75 0 0 0 3.75 3v18a.75.75 0 0 0 1.18.614l2.57-1.836 2.57 1.836a.75.75 0 0 0 .88 0l2.57-1.836 2.57 1.836a.75.75 0 0 0 .88 0l2.57-1.836 2.57 1.836A.75.75 0 0 0 20.25 21V3a.75.75 0 0 0-.75-.75H4.5ZM7.5 6a.75.75 0 0 0 0 1.5h9a.75.75 0 0 0 0-1.5h-9Zm0 3.75a.75.75 0 0 0 0 1.5h9a.75.75 0 0 0 0-1.5h-9Zm0 3.75a.75.75 0 0 0 0 1.5h5a.75.75 0 0 0 0-1.5h-5Z" clipRule="evenodd" />
   ),
   loans: (
     <>
-      <circle cx="16" cy="16" r="11" fill="currentColor" fillOpacity={0.18} />
-      <path d="M12 11h8M12 15h8M16 11c3 0 3 8 0 8h-4l6 5" />
+      <path d="M12 7.5a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Z" />
+      <path fillRule="evenodd" d="M1.5 4.875C1.5 3.839 2.34 3 3.375 3h17.25c1.035 0 1.875.84 1.875 1.875v9.75c0 1.036-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 0 1 1.5 14.625v-9.75ZM8.25 9.75a3.75 3.75 0 1 1 7.5 0 3.75 3.75 0 0 1-7.5 0ZM18.75 9a.75.75 0 0 0-.75.75v.005c0 .414.336.75.75.75h.005a.75.75 0 0 0 .75-.75V9.75a.75.75 0 0 0-.75-.75h-.005ZM1.5 18a.75.75 0 0 1 .75-.75h19.5a.75.75 0 0 1 0 1.5H2.25A.75.75 0 0 1 1.5 18Zm0 3a.75.75 0 0 1 .75-.75h19.5a.75.75 0 0 1 0 1.5H2.25A.75.75 0 0 1 1.5 21Z" clipRule="evenodd" />
     </>
   ),
   banking: (
     <>
-      <path d="M4 12 16 5l12 7Z" fill="currentColor" fillOpacity={0.18} />
-      <path d="M4 12h24M7 15v8M13 15v8M19 15v8M25 15v8M4 26.5h24" />
+      <path fillRule="evenodd" d="M11.584 2.376a.75.75 0 0 1 .832 0l9 6a.75.75 0 1 1-.832 1.248L12 3.901 3.416 9.624a.75.75 0 0 1-.832-1.248l9-6Z" clipRule="evenodd" />
+      <path fillRule="evenodd" d="M20.25 10.332v9.918H21a.75.75 0 0 1 0 1.5H3a.75.75 0 0 1 0-1.5h.75v-9.918a.75.75 0 0 1 1.5 0v9.918h3v-9.918a.75.75 0 0 1 1.5 0v9.918h3v-9.918a.75.75 0 0 1 1.5 0v9.918h3v-9.918a.75.75 0 0 1 1.5 0ZM4.5 22.5a.75.75 0 0 0 0 1.5h15a.75.75 0 0 0 0-1.5h-15Z" clipRule="evenodd" />
     </>
   ),
   pf: (
-    <>
-      <path d="M16 4 5 9v2h22V9Z" fill="currentColor" fillOpacity={0.18} />
-      <path d="M8 14v8M13 14v8M19 14v8M24 14v8M5 25h22" />
-    </>
+    <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm.53 5.47a.75.75 0 0 0-1.06 0l-3 3a.75.75 0 1 0 1.06 1.06l1.72-1.72v6.19a.75.75 0 0 0 1.5 0V8.06l1.72 1.72a.75.75 0 1 0 1.06-1.06l-3-3Z" clipRule="evenodd" />
   ),
   esi: (
-    <>
-      <path d="M16 28S5 21.5 5 12.5A5.5 5.5 0 0 1 16 9.5a5.5 5.5 0 0 1 11 3c0 9-11 15.5-11 15.5Z" fill="currentColor" fillOpacity={0.18} />
-      <path d="M16 13v7M12.5 16.5h7" />
-    </>
+    <path d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
   ),
   pt: (
-    <>
-      <rect x="6" y="4" width="20" height="24" rx="2.5" fill="currentColor" fillOpacity={0.18} />
-      <path d="M11 10h10M11 15h10M11 20h6" />
-    </>
+    <path fillRule="evenodd" d="M5.625 1.5H9a3.75 3.75 0 0 1 3.75 3.75v1.875c0 1.036.84 1.875 1.875 1.875H16.5a3.75 3.75 0 0 1 3.75 3.75v7.875c0 1.035-.84 1.875-1.875 1.875H5.625a1.875 1.875 0 0 1-1.875-1.875V3.375c0-1.036.84-1.875 1.875-1.875ZM12.75 12a.75.75 0 0 0 0-1.5h-4.5a.75.75 0 0 0 0 1.5h4.5Zm0 3a.75.75 0 0 0 0-1.5h-4.5a.75.75 0 0 0 0 1.5h4.5Zm-2.25 3a.75.75 0 0 0 0-1.5h-2.25a.75.75 0 0 0 0 1.5h2.25Zm4.5-12.75v1.875a.375.375 0 0 0 .375.375h1.875a2.25 2.25 0 0 0-2.25-2.25Z" clipRule="evenodd" />
   ),
   tds: (
-    <>
-      <rect x="6" y="4" width="20" height="24" rx="2.5" fill="currentColor" fillOpacity={0.18} />
-      <path d="M11 9.5h10M20 22l-8-8M12.5 21a1.5 1.5 0 1 0 0-.01M19.5 15a1.5 1.5 0 1 0 0-.01" />
-    </>
+    <path fillRule="evenodd" d="M6 2.25A2.25 2.25 0 0 0 3.75 4.5v15A2.25 2.25 0 0 0 6 21.75h12A2.25 2.25 0 0 0 20.25 19.5V4.5A2.25 2.25 0 0 0 18 2.25H6Zm1.5 3a.75.75 0 0 0 0 1.5h9a.75.75 0 0 0 0-1.5h-9ZM7.5 9a.75.75 0 0 1 .75-.75h1.5a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-.75.75h-1.5A.75.75 0 0 1 7.5 10.5V9Zm4.5-.75a.75.75 0 0 0-.75.75v1.5c0 .414.336.75.75.75h1.5a.75.75 0 0 0 .75-.75V9a.75.75 0 0 0-.75-.75h-1.5ZM7.5 13.5a.75.75 0 0 1 .75-.75h1.5a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1-.75-.75v-1.5Zm4.5-.75a.75.75 0 0 0-.75.75v1.5c0 .414.336.75.75.75h1.5a.75.75 0 0 0 .75-.75v-1.5a.75.75 0 0 0-.75-.75h-1.5ZM15 9a.75.75 0 0 1 .75-.75h1.5a.75.75 0 0 1 .75.75v6a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1-.75-.75V9Zm-7.5 9a.75.75 0 0 1 .75-.75h9a.75.75 0 0 1 0 1.5h-9a.75.75 0 0 1-.75-.75Z" clipRule="evenodd" />
   ),
   form16: (
-    <>
-      <path d="M19 4H8a2 2 0 0 0-2 2v20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V11Z" fill="currentColor" fillOpacity={0.18} />
-      <path d="M19 4v7h7M11 17h6M11 21.5h10" />
-    </>
+    <path fillRule="evenodd" d="M5.625 1.5H9a3.75 3.75 0 0 1 3.75 3.75v1.875c0 1.036.84 1.875 1.875 1.875H16.5a3.75 3.75 0 0 1 3.75 3.75v7.875c0 1.035-.84 1.875-1.875 1.875H5.625a1.875 1.875 0 0 1-1.875-1.875V3.375c0-1.036.84-1.875 1.875-1.875ZM9.75 14.25a2.25 2.25 0 1 1 4.5 0 2.25 2.25 0 0 1-4.5 0Zm.324 3.594a3.75 3.75 0 0 0 3.852 0l1.358 2.037a.75.75 0 0 1-.624 1.169H9.34a.75.75 0 0 1-.624-1.169l1.358-2.037ZM14.25 3.375v1.875a.375.375 0 0 0 .375.375h1.875a2.25 2.25 0 0 0-2.25-2.25Z" clipRule="evenodd" />
   ),
   bonus: (
-    <>
-      <rect x="5" y="12" width="22" height="15" rx="2" fill="currentColor" fillOpacity={0.18} />
-      <path d="M4 9h24v3H4ZM16 9v18M16 9c-2-5-8-5-8-1.5S13 9 16 9c3 0 8-.5 8-1.5S18 4 16 9Z" />
-    </>
+    <path fillRule="evenodd" d="M12 2.25a2.25 2.25 0 0 0-2.25 2.25v.75H4.5A2.25 2.25 0 0 0 2.25 7.5v2.25a2.25 2.25 0 0 0 2.25 2.25h.75v6.75A2.25 2.25 0 0 0 7.5 21h9a2.25 2.25 0 0 0 2.25-2.25V12h.75a2.25 2.25 0 0 0 2.25-2.25V7.5A2.25 2.25 0 0 0 19.5 5.25h-5.25V4.5A2.25 2.25 0 0 0 12 2.25ZM11.25 12H7.5v6.75a.75.75 0 0 0 .75.75h3V12Zm1.5 7.5h3a.75.75 0 0 0 .75-.75V12h-3.75v7.5ZM4.5 6.75h6.75v3.75H4.5a.75.75 0 0 1-.75-.75V7.5a.75.75 0 0 1 .75-.75Zm8.25 0h6.75a.75.75 0 0 1 .75.75v2.25a.75.75 0 0 1-.75.75H12.75V6.75Z" clipRule="evenodd" />
   ),
   reports: (
-    <>
-      <circle cx="16" cy="16" r="11" fill="currentColor" fillOpacity={0.18} />
-      <path d="M16 5v11h11" />
-    </>
+    <path fillRule="evenodd" d="M2.25 13.5a8.25 8.25 0 0 1 8.25-8.25.75.75 0 0 1 .75.75v6.75H18a.75.75 0 0 1 .75.75 8.25 8.25 0 1 1-16.5 0Zm10.5-9.69a9.75 9.75 0 0 1 8.94 8.94.75.75 0 0 1-.74.75h-7.5a.75.75 0 0 1-.75-.75V4.55a.75.75 0 0 1 .05-.74Z" clipRule="evenodd" />
   ),
 };
 
-function LineIcon({ name, className = "h-7 w-7" }) {
+function LineIcon({ name, className = "h-6 w-6" }) {
   return (
     <svg
-      viewBox="0 0 32 32"
+      viewBox="0 0 24 24"
       aria-hidden="true"
       className={className}
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      fill="currentColor"
     >
       {ICON_PATHS[name]}
     </svg>
   );
 }
 
-function IconTile({ name, bg, color, className = "h-12 w-12", iconClassName = "h-7 w-7" }) {
+function IconTile({ name, bg, className = "h-12 w-12 rounded-[10px]", iconClassName = "h-6 w-6" }) {
   return (
-    <span className={`flex shrink-0 items-center justify-center rounded-[10px] ${iconPop} ${className}`} style={{ background: bg, color }}>
+    <span className={`flex shrink-0 items-center justify-center text-white shadow-sm ${iconPop} ${className}`} style={{ background: bg }}>
       <LineIcon name={name} className={iconClassName} />
     </span>
   );
@@ -326,34 +266,32 @@ const advantages = [
     title: "Access",
     text: "ESS access for TDF self-declaration, comparison of tax amount & document with proof upload, validations with approval workflows",
     icon: "access",
-    bg: "#d8e7fe",
-    color: "#1d64d8",
+    bg: "#0077c2",
   },
   {
     title: "Controls",
     text: "Strong workflows and Audit Controls, maker, checker and approver",
     icon: "controls",
-    bg: "#d1f4e3",
-    color: "#0b8f63",
+    bg: "#0fb880",
   },
 ];
 
 const whyEmpayroll = [
-  { title: "Accuracy", text: "100% accurate and on time payroll.", icon: "accuracy", bg: "#fee6b1", color: "#b07d00" },
-  { title: "Analytics", text: "Slice and dice data and analyse department-wise.", icon: "analytics", bg: "#d8e7fe", color: "#1d64d8" },
+  { title: "Accuracy", text: "100% accurate and on time payroll.", icon: "accuracy", bg: "#f8bb18", color: "#f8bb18" },
+  { title: "Analytics", text: "Slice and dice data and analyse department-wise.", icon: "analytics", bg: "#0077c2", color: "#0077c2" },
   {
     title: "End to End Payroll",
     text: "From attendance, to leaves, payroll, TDS, calculations & loan deductions, 24QR, Form 16, payslip generation to FNF.",
     icon: "cycle",
-    bg: "#d1f4e3",
-    color: "#0b8f63",
+    bg: "#0fb880",
+    color: "#0fb880",
   },
   {
     title: "Audit & Compliance",
     text: "Strong audit trails with tracking for each sensitive transaction or workflow modification. Encryption of sensitive information with GDPR Certification.",
     icon: "audit",
-    bg: "#fdd7d4",
-    color: "#c2362c",
+    bg: "#ef4444",
+    color: "#ef4444",
   },
 ];
 
@@ -363,36 +301,36 @@ const salaryTabs = [
     label: "Salary Calculation",
     text: "Business Vertical agnostic system provides flexibility to create salary structure as required. System offers the freedom to customize Salary Head, create Salary Templates and decide Salary Calculation as per your business norms.",
     image: salaryCalculationImg,
-    imageAlt: "HR and finance team reviewing salary calculation sheets and charts with a calculator and laptop",
+    imageAlt: "HR and finance team collaborating on salary structure calculations and financial review on a laptop",
   },
   {
     id: "salary-computation",
     label: "Salary Computation",
     text: "Calculate salary accurately with all kind of computations included like attendance, statutory deductions, loans if any, all this and more with a single Click and Hold.",
     image: salaryComputationImg,
-    imageAlt: "Payroll executive computing salaries on a calculator over printed salary statements",
+    imageAlt: "Payroll specialist computing employee salaries and statutory deductions on a digital tablet in modern office",
   },
   {
     id: "monthly-reconciliation",
     label: "Monthly Reconciliation",
     text: "User friendly flow which gives power back to the user to select own criteria and get accurate results.",
     image: reconciliationImg,
-    imageAlt: "Accountant reconciling monthly payroll figures against analytics charts on a laptop",
+    imageAlt: "Finance team analyzing monthly payroll reconciliation and variance reports on a laptop in modern office",
   },
   {
     id: "pay-slip-generations",
     label: "Pay Slip Generations",
     text: "Generate payslip as per customized templates. emPayroll makes it instant and effortless.",
     image: payslipImg,
-    imageAlt: "Payroll dashboard illustration with employee cards and a 70% salary processing progress ring",
+    imageAlt: "HR professional generating and downloading employee payslips from the payroll management dashboard",
   },
 ];
 
 const salaryProcessing = [
-  { title: "Arrears", text: "Automated calculation of arrears for number of days worked, in case of increment etc.", icon: "arrears", bg: "#fee6b1", color: "#b07d00" },
-  { title: "Reimbursement", text: "Create and manage different type of reimbursement, give claim approvals, and auto-calculate employee tax.", icon: "reimbursement", bg: "#d8e7fe", color: "#1d64d8" },
-  { title: "Loans", text: "Recover loans if any with fixed monthly or user-defined instalments. Track entire loan lifecycle.", icon: "loans", bg: "#d1f4e3", color: "#0b8f63" },
-  { title: "Banking", text: "All banking related services for employees.", icon: "banking", bg: "#e9eafe", color: "#5b5bd6" },
+  { title: "Arrears", text: "Automated calculation of arrears for number of days worked, in case of increment etc.", icon: "arrears", bg: "#f8bb18" },
+  { title: "Reimbursement", text: "Create and manage different type of reimbursement, give claim approvals, and auto-calculate employee tax.", icon: "reimbursement", bg: "#0077c2" },
+  { title: "Loans", text: "Recover loans if any with fixed monthly or user-defined instalments. Track entire loan lifecycle.", icon: "loans", bg: "#0fb880" },
+  { title: "Banking", text: "All banking related services for employees.", icon: "banking", bg: "#5b5bd6" },
 ];
 
 const statutory = [
@@ -696,11 +634,11 @@ export default function PayrollManagementSolutionPage() {
             </div>
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
               {[
-                { title: "User Groups and Access", text: "Create different user groups and give group-wise access.", icon: "group", bg: "#fee6b1", color: "#b07d00", surface: "#fff5d9" },
-                { title: "Rule Engine", text: "Define rules to access, view, edit, delete or modify any data.", icon: "rules", bg: "#c9f1df", color: "#0b8f63", surface: "#e5fff4" },
+                { title: "User Groups and Access", text: "Create different user groups and give group-wise access.", icon: "group", bg: "#f8bb18", surface: "#fff5d9" },
+                { title: "Rule Engine", text: "Define rules to access, view, edit, delete or modify any data.", icon: "rules", bg: "#0fb880", surface: "#e5fff4" },
               ].map((item) => (
                 <div key={item.title} className={`group/card flex items-center gap-3 rounded-[8px] p-3.5 ${motion} hover:-translate-y-0.5 hover:shadow-[0px_8px_20px_-8px_rgba(0,0,0,0.2)]`} style={{ background: item.surface }}>
-                  <IconTile name={item.icon} bg={item.bg} color={item.color} className="h-11 w-11" iconClassName="h-6 w-6" />
+                  <IconTile name={item.icon} bg={item.bg} className="h-11 w-11 rounded-[8px]" iconClassName="h-6 w-6" />
                   <div>
                     <h3 className="text-[15px] font-semibold text-[#1f1f1f]">{item.title}</h3>
                     <p className={`text-sm leading-[19px] ${mutedText}`}>{item.text}</p>
@@ -906,7 +844,7 @@ export default function PayrollManagementSolutionPage() {
                   style={stagger(index, 100)}
                   className={`${revealUp} group/card flex flex-col items-center text-center gap-3 rounded-2xl bg-white p-5 shadow-[inset_0_0_0_1px_#e5e7eb,0_2px_12px_rgba(0,0,0,0.04)] ${motion} hover:-translate-y-1 hover:shadow-[inset_0_0_0_1.5px_#f8bb18,0_12px_24px_-8px_rgba(0,0,0,0.1)]`}
                 >
-                  <span className={`flex h-11 w-11 items-center justify-center rounded-[10px] bg-[#f8bb18] text-[#1f1f1f] ${iconPop}`}>
+                  <span className={`flex h-11 w-11 items-center justify-center rounded-[10px] bg-[#f8bb18] text-white shadow-sm ${iconPop}`}>
                     <LineIcon name={item.icon} className="h-6 w-6" />
                   </span>
                   <h3 className="text-lg font-semibold text-[#1f1f1f]">{item.title}</h3>
@@ -924,7 +862,7 @@ export default function PayrollManagementSolutionPage() {
                   style={stagger(index, 100)}
                   className={`${revealUp} group/card flex gap-4 rounded-2xl bg-white p-5 shadow-[inset_0_0_0_1px_#e5e7eb,0_2px_12px_rgba(0,0,0,0.04)] ${motion} hover:-translate-y-1 hover:shadow-[inset_0_0_0_1.5px_#f8bb18,0_12px_24px_-8px_rgba(0,0,0,0.1)]`}
                 >
-                  <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-[10px] bg-[#f8bb18] text-[#1f1f1f] ${iconPop}`}>
+                  <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-[10px] bg-[#f8bb18] text-white shadow-sm ${iconPop}`}>
                     <LineIcon name={item.icon} className="h-6 w-6" />
                   </span>
                   <div>
