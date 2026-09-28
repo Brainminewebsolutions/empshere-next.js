@@ -3,24 +3,841 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --brand-blue: #0b78c2;
+  --brand-blue-dark: #095f9c;
+  --brand-gold: #efb000;
+  --brand-gold-dark: #d69e00;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-brand-blue: var(--brand-blue);
+  --color-brand-blue-dark: var(--brand-blue-dark);
+  --color-brand-gold: var(--brand-gold);
+  --color-brand-gold-dark: var(--brand-gold-dark);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  color-scheme: light;
+  scrollbar-gutter: stable;
+  scrollbar-width: auto;
+  scrollbar-color: #efb000 transparent;
+}
+
+/* Lenis smooth scrolling (matching keka.com) */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent],
+.lenis.lenis-smooth [data-lenis-prevent-wheel],
+.lenis.lenis-smooth [data-lenis-prevent-touch] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+
+/* Custom scrollbar: a clean floating gold pill on a transparent track */
+::-webkit-scrollbar {
+  width: 18px;
+  height: 18px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #efb000;
+  background-clip: padding-box;
+  border: 2px solid transparent;
+  border-radius: 9999px;
+  min-height: 48px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--brand-gold-dark, #d69e00);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background-color: #b88600;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Shared hover-underline effect for header + footer navigation */
+.nav-underline {
+  position: relative;
+}
+
+.nav-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 2px;
+  width: 0%;
+  background-color: var(--brand-blue);
+  transition: width 0.25s ease;
+}
+
+.nav-underline:hover::after,
+.nav-underline:focus-visible::after {
+  width: 100%;
+}
+
+/* Staggered fade/slide-in for the mobile off-canvas drawer links */
+@keyframes drawer-link-in {
+  from {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.drawer-link {
+  opacity: 0;
+  animation: drawer-link-in 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drawer-link {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+/* --------------------------------------------------------------------
+   Page entrance + scroll-reveal animations. Same timings and
+   easing as the home page (app/page.jsx), scoped to .animated-page
+   and .hrms-page. Driven by components/ScrollReveal.jsx.
+   -------------------------------------------------------------------- */
+
+@keyframes page-entrance {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.animated-page,
+.hrms-page {
+  --reveal-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  animation: page-entrance 0.65s var(--reveal-ease) both;
+}
+
+/* `translate` / `scale` / `box-shadow` are listed too so Tailwind hover
+   utilities on a revealed element still animate smoothly. */
+.animated-page .reveal-on-scroll,
+.hrms-page .reveal-on-scroll {
+  will-change: opacity, transform;
+  transition:
+    opacity 0.8s var(--reveal-ease),
+    transform 0.8s var(--reveal-ease),
+    translate 0.3s var(--reveal-ease),
+    scale 0.3s var(--reveal-ease),
+    box-shadow 0.5s var(--reveal-ease);
+}
+
+.animated-page .reveal-fade-up,
+.hrms-page .reveal-fade-up {
+  opacity: 0;
+  transform: translateY(36px);
+}
+
+.animated-page .reveal-fade-down,
+.hrms-page .reveal-fade-down {
+  opacity: 0;
+  transform: translateY(-28px);
+}
+
+.animated-page .reveal-fade-left,
+.hrms-page .reveal-fade-left {
+  opacity: 0;
+  transform: translateX(44px);
+}
+
+.animated-page .reveal-fade-right,
+.hrms-page .reveal-fade-right {
+  opacity: 0;
+  transform: translateX(-44px);
+}
+
+.animated-page .reveal-zoom-in,
+.hrms-page .reveal-zoom-in {
+  opacity: 0;
+  transform: scale(0.92);
+}
+
+.animated-page .reveal-on-scroll.reveal-visible,
+.hrms-page .reveal-on-scroll.reveal-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animated-page,
+  .animated-page *,
+  .hrms-page,
+  .hrms-page * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .animated-page .reveal-on-scroll,
+  .hrms-page .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* HRMS product tabs (emPayRoll / emMobile ESS App / emPerformance).
+   Pure CSS — no client JS: each tab is a visually-hidden radio input, and
+   the header/panel with the matching data-tab-item index is shown while its
+   radio is checked. Supports up to 4 tabs; add a line per extra tab. */
+.hrms-showcase [data-tab-item] {
+  display: none;
+}
+
+.hrms-showcase:has([data-tab-index="0"]:checked) [data-tab-item="0"],
+.hrms-showcase:has([data-tab-index="1"]:checked) [data-tab-item="1"],
+.hrms-showcase:has([data-tab-index="2"]:checked) [data-tab-item="2"],
+.hrms-showcase:has([data-tab-index="3"]:checked) [data-tab-item="3"] {
+  display: block;
+}
+
+/* Each header/panel fades up when shown — the animation replays every time
+   its display switches from none back to block. */
+@keyframes hrms-tab-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.hrms-page .hrms-tab-swap {
+  animation: hrms-tab-in 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* HRMS FAQ accordion — smooth open/close with no JS.
+   The answer's height animates from 0 to auto: `interpolate-size` lets
+   `auto` be transitioned, and `content-visibility … allow-discrete` keeps the
+   content visible until the closing slide has finished. Browsers without
+   ::details-content support simply open instantly, and still get the fade. */
+.hrms-page .hrms-faq {
+  interpolate-size: allow-keywords;
+}
+
+.hrms-page .hrms-faq::details-content {
+  block-size: 0;
+  overflow-y: clip;
+  transition:
+    block-size 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    content-visibility 0.45s allow-discrete;
+}
+
+.hrms-page .hrms-faq[open]::details-content {
+  block-size: auto;
+}
+
+.hrms-page .hrms-faq .hrms-faq-answer {
+  opacity: 0;
+  transform: translateY(-6px);
+  transition:
+    opacity 0.35s ease,
+    transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hrms-page .hrms-faq[open] .hrms-faq-answer {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hrms-page .hrms-faq::details-content {
+    transition: none;
+  }
+}
+
+/* Payroll page: gentle floating badges around the hero / advantages images. */
+@keyframes payroll-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0);
+  }
+}
+
+.payroll-page .payroll-float {
+  animation: payroll-float 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .payroll-page .payroll-float {
+    animation: none;
+  }
+}
+
+/* ====================================================================
+   Blog (/blog, /blog/page/N, /blog/[slug])
+   Same palette, type and card language as the home page's "Latest
+   Blogs" section. Reveal animations come from .animated-page above.
+   Kept in the components layer so Tailwind utilities on the same
+   elements (lg:grid, px-*, …) still win.
+   ==================================================================== */
+
+@layer components {
+
+.blog-page {
+  --blog-blue: #0077c2;
+  --blog-blue-dark: #0061af;
+  --blog-gold: #efb000;
+  --blog-gold-dark: #d69e00;
+  --blog-card-bg: #eef8ff;
+  --blog-card-ring: #a7ddff;
+  --blog-card-ring-hover: #72c5ff;
+  font-family: var(--font-blog-heading), "Instrument Sans", system-ui, sans-serif;
+  color: #000;
+  overflow-x: clip;
+}
+
+.blog-page .blog-label {
+  font-family: var(--font-blog-label), "Inter", system-ui, sans-serif;
+}
+
+/* Buttons — identical to the home page .blueButton / .goldButton */
+.blog-page .blog-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 9px;
+  padding: 13px 26px;
+  font-family: var(--font-blog-label), "Inter", system-ui, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #fff;
+  text-decoration: none;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s ease;
+}
+
+.blog-page .blog-btn svg {
+  width: 15px;
+  height: 12px;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.blog-page .blog-btn:hover svg {
+  transform: translateX(3px);
+}
+
+.blog-page .blog-btn-blue {
+  background: var(--blog-blue);
+}
+
+.blog-page .blog-btn-blue:hover {
+  background: var(--blog-blue-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px -4px rgba(0, 119, 194, 0.45);
+}
+
+.blog-page .blog-btn-gold {
+  background: var(--blog-gold);
+  color: #000;
+}
+
+.blog-page .blog-btn-gold:hover {
+  background: var(--blog-gold-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px -4px rgba(239, 176, 0, 0.45);
+}
+
+.blog-page .blog-btn:active {
+  transform: translateY(0);
+}
+
+/* Cards — the home page .blogCard */
+.blog-page .blog-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+  background: var(--blog-card-bg);
+  box-shadow: inset 0 0 0 3px var(--blog-card-ring), 0 0 24px -9px rgba(0, 0, 0, 0.25);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.blog-page .blog-card:hover,
+.blog-page .blog-card:focus-within {
+  transform: translateY(-6px);
+  box-shadow: inset 0 0 0 3px var(--blog-card-ring-hover), 0 18px 36px -8px rgba(0, 0, 0, 0.22);
+}
+
+.blog-page .blog-card-media {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3 / 2;
+  background: linear-gradient(135deg, #d8efff, #eef8ff);
+}
+
+.blog-page .blog-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.blog-page .blog-card:hover .blog-card-media img {
+  transform: scale(1.05);
+}
+
+/* Stretch the title link over the whole card so the entire card is clickable. */
+.blog-page .blog-card-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.blog-page .blog-card-link:focus-visible {
+  outline: none;
+}
+
+.blog-page .blog-card:has(.blog-card-link:focus-visible) {
+  outline: 3px solid var(--blog-gold);
+  outline-offset: 3px;
+}
+
+.blog-page .blog-learn-more svg {
+  transition: transform 0.2s ease;
+}
+
+.blog-page .blog-card:hover .blog-learn-more {
+  color: var(--blog-blue-dark);
+}
+
+.blog-page .blog-card:hover .blog-learn-more svg {
+  transform: translateX(4px);
+}
+
+/* Hero decoration */
+.blog-page .blog-hero-dots {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.09) 1px, transparent 1px);
+  background-size: 22px 22px;
+  mask-image: linear-gradient(to bottom, #000 30%, transparent);
+}
+
+@keyframes blog-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -14px, 0);
+  }
+}
+
+.blog-page .blog-float {
+  animation: blog-float 7s ease-in-out infinite;
+}
+
+/* Pagination */
+.blog-page .blog-page-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 44px;
+  height: 44px;
+  padding: 0 14px;
+  border-radius: 9px;
+  font-family: var(--font-blog-label), "Inter", system-ui, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #000;
+  background: #fff;
+  box-shadow: inset 0 0 0 1.5px #dcdcdc;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.blog-page a.blog-page-link:hover {
+  color: var(--blog-blue-dark);
+  box-shadow: inset 0 0 0 2px var(--blog-card-ring-hover), 0 8px 18px -8px rgba(0, 119, 194, 0.45);
+  transform: translateY(-2px);
+}
+
+.blog-page .blog-page-link[aria-current="page"] {
+  color: #fff;
+  background: var(--blog-blue);
+  box-shadow: 0 8px 18px -6px rgba(0, 119, 194, 0.55);
+}
+
+.blog-page .blog-page-link[aria-disabled="true"] {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* Table of contents */
+.blog-page .blog-toc a {
+  display: block;
+  border-left: 2px solid #dcdcdc;
+  padding: 6px 0 6px 14px;
+  font-size: 14px;
+  line-height: 1.45;
+  color: rgba(0, 0, 0, 0.64);
+  transition: color 0.2s ease, border-color 0.2s ease, padding 0.2s ease;
+}
+
+.blog-page .blog-toc a:hover {
+  color: var(--blog-blue-dark);
+  border-color: var(--blog-blue);
+  padding-left: 18px;
+}
+
+.blog-page .blog-toc-mobile summary::-webkit-details-marker {
+  display: none;
+}
+
+.blog-page .blog-toc-mobile[open] .blog-toc-chevron {
+  transform: rotate(180deg);
+}
+
+/* Reading progress bar */
+.blog-progress {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 60;
+  height: 3px;
+  background: linear-gradient(90deg, var(--brand-gold), #0077c2);
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------
+   Article body — WordPress / Gutenberg / Elementor HTML
+   -------------------------------------------------------------------- */
+
+.blog-prose {
+  font-family: var(--font-blog-label), "Inter", system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.8;
+  color: #2b2b2b;
+  overflow-wrap: break-word;
+  min-width: 0;
+}
+
+.blog-prose > * + *,
+.blog-prose .elementor-widget-container > * + * {
+  margin-top: 1.15em;
+}
+
+.blog-prose h2,
+.blog-prose h3,
+.blog-prose h4 {
+  font-family: var(--font-blog-heading), "Instrument Sans", system-ui, sans-serif;
+  color: #1a1a1a;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  scroll-margin-top: 110px;
+}
+
+.blog-prose h2 {
+  margin-top: 2em;
+  padding-bottom: 0.4em;
+  font-size: 28px;
+  font-weight: 700;
+  background: linear-gradient(var(--brand-gold), var(--brand-gold)) left bottom / 64px 3px no-repeat,
+    linear-gradient(#eaeaea, #eaeaea) left bottom / 100% 1px no-repeat;
+}
+
+.blog-prose h3 {
+  margin-top: 1.7em;
+  font-size: 22px;
+  font-weight: 700;
+  color: #0061af;
+}
+
+.blog-prose h4 {
+  margin-top: 1.5em;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.blog-prose a {
+  color: #0077c2;
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: rgba(0, 119, 194, 0.35);
+  text-underline-offset: 3px;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.blog-prose a:hover {
+  color: #0061af;
+  text-decoration-color: currentColor;
+}
+
+.blog-prose strong {
+  color: #111;
+  font-weight: 700;
+}
+
+.blog-prose ul,
+.blog-prose ol {
+  padding-left: 1.4em;
+}
+
+.blog-prose ul {
+  list-style: none;
+}
+
+.blog-prose ul > li {
+  position: relative;
+}
+
+.blog-prose ul > li::before {
+  content: "";
+  position: absolute;
+  left: -1.1em;
+  top: 0.72em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--brand-gold);
+}
+
+.blog-prose ol {
+  list-style: decimal;
+}
+
+.blog-prose ol > li::marker {
+  color: #0077c2;
+  font-weight: 700;
+}
+
+.blog-prose li + li {
+  margin-top: 0.45em;
+}
+
+.blog-prose blockquote {
+  border-left: 4px solid var(--brand-gold);
+  background: #fffaf0;
+  padding: 18px 22px;
+  border-radius: 0 10px 10px 0;
+  font-style: italic;
+  color: #333;
+}
+
+.blog-prose img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.blog-prose figure {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.blog-prose figcaption {
+  margin-top: 8px;
+  text-align: center;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.blog-prose .alignleft {
+  float: left;
+  margin: 0.3em 1.5em 1em 0;
+  max-width: 50%;
+}
+
+.blog-prose .alignright {
+  float: right;
+  margin: 0.3em 0 1em 1.5em;
+  max-width: 50%;
+}
+
+.blog-prose .aligncenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.blog-prose::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.blog-prose .wp-block-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.blog-prose .wp-block-gallery figure {
+  margin: 0;
+}
+
+/* Tables scroll sideways inside their own box on small screens. */
+.blog-prose .wp-block-table {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.blog-prose table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 15px;
+  line-height: 1.55;
+  border: 1px solid #dcdcdc;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.blog-prose th,
+.blog-prose td {
+  padding: 12px 14px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.blog-prose thead th {
+  background: #0077c2;
+  color: #fff;
+  font-weight: 600;
+}
+
+.blog-prose tbody tr:nth-child(even) td {
+  background: #f5fbff;
+}
+
+.blog-prose tr:last-child td {
+  border-bottom: 0;
+}
+
+.blog-prose iframe,
+.blog-prose video {
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+.blog-prose hr {
+  height: 1px;
+  margin: 2.2em 0;
+  border: 0;
+  background: #e5e5e5;
+}
+
+@media (max-width: 640px) {
+  .blog-prose {
+    font-size: 16px;
+    line-height: 1.75;
+  }
+
+  .blog-prose h2 {
+    font-size: 23px;
+  }
+
+  .blog-prose h3 {
+    font-size: 19px;
+  }
+
+  .blog-prose .alignleft,
+  .blog-prose .alignright {
+    float: none;
+    max-width: 100%;
+    margin: 1em 0;
+  }
+
+  .blog-prose table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .blog-prose th,
+  .blog-prose td {
+    min-width: 140px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blog-page .blog-float {
+    animation: none;
+  }
+}
+}
+
+/* 3D Flip Card Styles */
+.perspective-1000 {
+  perspective: 1000px;
+  -webkit-perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg) !important;
+  -webkit-transform: rotateY(180deg) !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .perspective-1000:hover .transform-style-3d {
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+  }
 }

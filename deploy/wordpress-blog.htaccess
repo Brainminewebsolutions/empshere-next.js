@@ -1,0 +1,56 @@
+# ==============================================================================
+# public_html/blog/.htaccess  — WordPress folder + Next.js blog URLs
+#
+# Upload this file as  public_html/blog/.htaccess  (replacing the existing one).
+#
+# The Next.js blog is exported to  public_html/blogs/  but its public URL is
+# /blog/…  The root .htaccess does the /blog → /blogs mapping (that is what
+# Hostinger's LiteSpeed applies). This file repeats the same rules for servers
+# that hand /blog/… requests to the folder's own .htaccess instead, so the
+# blog works either way.
+#
+#   /blog/                      → /blogs/index.html          (Next.js)
+#   /blog/page/2/               → /blogs/page/2/index.html   (Next.js)
+#   /blog/<post-slug>/          → /blogs/<post-slug>/…       (Next.js)
+#   /blog/wp-admin, wp-json, wp-content, *.php, ?rest_route=  → WordPress
+#
+# WordPress only rewrites the lines between "# BEGIN WordPress" and
+# "# END WordPress", so the Emsphere block above it is kept on updates.
+# ==============================================================================
+
+# BEGIN Emsphere Next.js blog
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /blog/
+
+# 1. WordPress itself: admin, login, REST API, uploads, PHP files and
+#    query-string requests (previews, ?p=, ?rest_route=) stay with WordPress.
+RewriteRule ^(wp-admin|wp-includes|wp-content|wp-json)(/|$) - [L]
+RewriteRule ^[^/]+\.php$ - [L]
+RewriteCond %{QUERY_STRING} (^|&)(rest_route|p|page_id|preview|preview_id)= [NC]
+RewriteRule ^ - [L]
+
+# 2. Blog URL without its trailing slash → canonical URL with the slash.
+RewriteRule ^([^.]*[^/])$ /blog/$1/ [R=301,L]
+
+# 3. Everything else is served from the Next.js export in /blogs, while the
+#    browser keeps showing /blog/… (internal rewrite, not a redirect).
+#    Unknown URLs fall through to the site's 404 page.
+RewriteRule ^(.*)$ /blogs/$1 [L]
+</IfModule>
+# END Emsphere Next.js blog
+
+# BEGIN WordPress
+# The directives (lines) between "BEGIN WordPress" and "END WordPress" are
+# dynamically generated, and should only be modified via WordPress filters.
+# Any changes to the directives between these markers will be overwritten.
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteBase /blog/
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /blog/index.php [L]
+</IfModule>
+# END WordPress

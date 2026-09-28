@@ -1,0 +1,1130 @@
+import { Fragment } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { Instrument_Sans, Inter } from "next/font/google";
+import ScrollReveal from "@/components/ScrollReveal";
+import BackToTop from "@/components/BackToTop";
+import FlagshipProducts from "@/components/FlagshipProducts";
+
+/* --------------------------------------------------------------------
+   Images — every image this page uses lives in
+   app/images/human-resource-management-system and is imported by name.
+   -------------------------------------------------------------------- */
+
+// Hero
+import heroDashboard from "../images/human-resource-management-system/hero-hrms-dashboard-team-overview.webp";
+import iconConfigurable from "../images/human-resource-management-system/icon-configurable-gear-lightbulb.webp";
+import iconUnifiedSystem from "../images/human-resource-management-system/icon-unified-system-monitor.webp";
+import iconAudit from "../images/human-resource-management-system/icon-audit-checklist-magnifier.webp";
+
+// emRecruit / emWelcome / employee Information Management
+import recruitImg from "../images/human-resource-management-system/emrecruit-candidate-shortlisting-laptop.webp";
+import welcomeImg from "../images/human-resource-management-system/emwelcome-new-joiner-handshake.webp";
+import employeeInfoImg from "../images/human-resource-management-system/employee-information-management-profiles.webp";
+import iconCandidateCv from "../images/human-resource-management-system/icon-candidate-cv.webp";
+import iconVendorGroup from "../images/human-resource-management-system/icon-vendor-group.webp";
+import iconOnboardingBadge from "../images/human-resource-management-system/icon-onboarding-badge.webp";
+import iconEasyAccess from "../images/human-resource-management-system/icon-easy-access-clipboard.webp";
+import iconUpskill from "../images/human-resource-management-system/icon-upskill-growth-chart.webp";
+import iconRetainTeam from "../images/human-resource-management-system/icon-retain-team.webp";
+
+// emWorkforce Attendance and Leave Management
+import attendanceImg from "../images/human-resource-management-system/emworkforce-attendance-calendar-laptop.webp";
+import iconAttendance from "../images/human-resource-management-system/icon-attendance-user-check.webp";
+import iconShift from "../images/human-resource-management-system/icon-shift-rotation.webp";
+import iconOvertime from "../images/human-resource-management-system/icon-overtime-clock.webp";
+import iconLeave from "../images/human-resource-management-system/icon-leave-document.webp";
+import iconApprovals from "../images/human-resource-management-system/icon-approvals-workflow.webp";
+import iconMailAlert from "../images/human-resource-management-system/icon-mail-alert-envelope.webp";
+import iconReminderBell from "../images/human-resource-management-system/icon-reminder-bell.webp";
+import iconWeekOff from "../images/human-resource-management-system/icon-week-off-calendar.webp";
+import iconLocationPin from "../images/human-resource-management-system/icon-location-pin.webp";
+
+// emPayRoll
+import payrollImg from "../images/human-resource-management-system/empayroll-dashboard-laptop.webp";
+import iconPayOnTime from "../images/human-resource-management-system/icon-pay-on-time.webp";
+import iconComplianceShield from "../images/human-resource-management-system/icon-compliance-shield.webp";
+// TODO: these two are cropped from the design screenshots (~475px source, upscaled
+// 2x and sharpened). Replace with the full-resolution originals, same file names.
+import mobileAppImg from "../images/human-resource-management-system/emmobile-ess-app-phone-in-hands.webp";
+import performanceImg from "../images/human-resource-management-system/emperformance-analytics-dashboard-laptop.webp";
+
+// emExit / emExpense / emHelpDesk / emWorkforce Analytics
+import exitImg from "../images/human-resource-management-system/emexit-employee-carrying-belongings-box.webp";
+import expenseImg from "../images/human-resource-management-system/emexpense-claims-dashboard-laptop.webp";
+import helpdeskImg from "../images/human-resource-management-system/emhelpdesk-support-agents-headsets.webp";
+import analyticsImg from "../images/human-resource-management-system/emworkforce-analytics-charts-illustration.webp";
+import iconSettlement from "../images/human-resource-management-system/icon-settlement-document.webp";
+import iconAutomation from "../images/human-resource-management-system/icon-automation-gear-cycle.webp";
+import iconHelpdesk from "../images/human-resource-management-system/icon-helpdesk-headset.webp";
+import iconSinglePlatform from "../images/human-resource-management-system/icon-single-platform-layers.webp";
+import iconLeadershipDashboard from "../images/human-resource-management-system/icon-leadership-dashboard.webp";
+import iconTrendsInsights from "../images/human-resource-management-system/icon-trends-insights-lightbulb.webp";
+
+
+// TODO: confirm production domain (layout.js also flags this) before deploying.
+const PAGE_URL = "https://www.emsphere.com/human-resource-management-system/";
+const PAGE_TITLE = "Human Resource Management System, SAP HRMS Software";
+const PAGE_DESCRIPTION =
+  "Emsphere's HRMS System in Pune: Automate and Simplify Your HR Operations with Our Easy-to-Use and Customizable Human Resource Management System!";
+const PAGE_KEYWORDS = [
+  "Human Resource Management System",
+  "SAP HRMS Software",
+  "HRMS System in Pune",
+  "HRMS Software",
+  "Human Resource Management Software",
+  "Customizable HRMS System",
+  "HR Operations Automation",
+  "HR Software Pune",
+  "Employee Management System",
+  "Attendance and Leave Management",
+  "Payroll Management Software",
+  "Emsphere HRMS",
+  "emHRMS",
+  "Emsphere Technologies",
+];
+// TODO: replace with a dedicated 1200x630 OG image; the hero screenshot is a stand-in.
+const OG_IMAGE = heroDashboard.src;
+
+export const metadata = {
+  // `absolute` skips the root layout's "%s | Emsphere Technologies" template,
+  // matching the exact 51-character title from the SEO audit.
+  title: { absolute: PAGE_TITLE },
+  description: PAGE_DESCRIPTION,
+  keywords: null,
+  alternates: { canonical: PAGE_URL },
+  robots: { index: true, follow: true },
+  openGraph: {
+    title: PAGE_TITLE,
+    description: PAGE_DESCRIPTION,
+    url: PAGE_URL,
+    images: [OG_IMAGE],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: PAGE_TITLE,
+    description: PAGE_DESCRIPTION,
+    images: [OG_IMAGE],
+  },
+};
+
+// The design uses Instrument Sans (product cards, CTA) and Inter (buttons).
+const instrumentSans = Instrument_Sans({ subsets: ["latin"], variable: "--font-instrument-sans" });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const fontInstrument = "font-[family-name:var(--font-instrument-sans)]";
+const fontInter = "font-[family-name:var(--font-inter)]";
+
+/* --------------------------------------------------------------------
+   Shared surface styles (colors / shadows carried over from the design)
+   -------------------------------------------------------------------- */
+
+const goldCard =
+  "bg-white rounded-xl shadow-[inset_0_0_0_0.789px_#f8bb18,0px_0px_15.775px_-7.099px_rgba(0,0,0,0.25)]";
+const greyCard =
+  "bg-white rounded-2xl shadow-[inset_0_0_0_0.814px_#dddddd,0px_0px_16.279px_-7.326px_rgba(0,0,0,0.25)]";
+const softCard =
+  "rounded-[11px] shadow-[inset_0_0_0_0.601px_#dddddd,0px_0px_12.029px_-5.413px_rgba(0,0,0,0.25)]";
+const mutedText = "text-[rgba(0,0,0,0.64)]";
+
+/* --------------------------------------------------------------------
+   Motion — mirrors the home page. Scroll reveals come from the
+   `reveal-*` classes in globals.css (driven by <ScrollReveal>); hover
+   effects use Tailwind's `translate` / `scale` utilities, which the
+   reveal transition also animates, so both can sit on one element.
+   -------------------------------------------------------------------- */
+
+const ease = "ease-[cubic-bezier(0.16,1,0.3,1)]";
+const motion = `transition-[translate,scale,box-shadow,background-color] duration-300 ${ease}`;
+const revealUp = "reveal-on-scroll reveal-fade-up";
+const revealFromLeft = "reveal-on-scroll reveal-fade-right";
+const revealFromRight = "reveal-on-scroll reveal-fade-left";
+const revealZoom = "reveal-on-scroll reveal-zoom-in";
+const stagger = (index, step = 120) => ({ transitionDelay: `${index * step}ms` });
+
+// Card lift on hover, one per surface so each keeps its own outline colour.
+const liftGold = `group/card ${motion} hover:-translate-y-1 hover:shadow-[inset_0_0_0_1.5px_#f8bb18,0px_10px_24px_-6px_rgba(0,0,0,0.18)]`;
+const liftGrey = `group/card ${motion} hover:-translate-y-1.5 hover:shadow-[inset_0_0_0_0.814px_#dddddd,0px_14px_28px_-6px_rgba(0,0,0,0.18)]`;
+// Panels hold their own hover cards, so they use a separate group name —
+// hovering a panel zooms its image without popping every icon inside it.
+const liftPanel = `group/panel ${motion} hover:-translate-y-1 hover:shadow-[inset_0_0_0_0.601px_#dddddd,0px_14px_28px_-8px_rgba(0,0,0,0.18)]`;
+const iconPop =`transition-[scale] duration-300 ${ease} group-hover/card:scale-110`;
+const imageZoom = `transition-[scale] duration-500 ${ease} group-hover/card:scale-[1.04]`;
+const panelImageZoom = `transition-[scale] duration-500 ${ease} group-hover/panel:scale-[1.04]`;
+const arrowNudge = `transition-[translate] duration-200 ${ease} group-hover/btn:translate-x-[3px]`;
+
+const primaryButton = `group/btn inline-flex items-center justify-center gap-2 rounded-[9px] bg-[#0077c2] px-6 py-3 ${fontInter} font-semibold text-white ${motion} hover:-translate-y-0.5 hover:bg-[#0061af] hover:shadow-[0_8px_18px_-4px_rgba(0,119,194,0.45)]`;
+const learnMoreButton = `group/btn flex items-center justify-center gap-2 rounded-[5px] bg-[#3b82f6] min-h-11 py-3 text-xs font-medium tracking-wide text-white shadow-[inset_0_0_0_1px_#b3b3b3] ${motion} hover:-translate-y-0.5 hover:bg-[#2563eb] hover:shadow-[inset_0_0_0_1px_#b3b3b3,0_8px_18px_-4px_rgba(59,130,246,0.45)]`;
+
+/* --------------------------------------------------------------------
+   Icons
+   -------------------------------------------------------------------- */
+
+function ArrowCircleIcon({ className = "h-5 w-5", fill = "#ffffff" }) {
+  return (
+    <svg viewBox="0 0 21 21" aria-hidden="true" className={`-scale-x-100 ${arrowNudge} ${className}`}>
+      <path
+        fill={fill}
+        d="M10.5 0C8.423 0 6.393 0.616 4.667 1.77C2.94 2.923 1.594 4.563 0.799 6.482C0.005 8.4 -0.203 10.512 0.202 12.548C0.607 14.585 1.607 16.456 3.075 17.925C4.544 19.393 6.415 20.393 8.452 20.798C10.488 21.203 12.6 20.995 14.518 20.201C16.437 19.406 18.077 18.06 19.23 16.333C20.384 14.607 21 12.577 21 10.5C20.997 7.716 19.89 5.047 17.921 3.079C15.953 1.11 13.284 0.003 10.5 0ZM14.538 11.308L8.411 11.308L10.264 13.159C10.339 13.234 10.398 13.323 10.439 13.422C10.48 13.52 10.5 13.625 10.5 13.731C10.5 13.837 10.48 13.942 10.439 14.04C10.398 14.138 10.339 14.227 10.264 14.302C10.189 14.377 10.1 14.437 10.002 14.477C9.904 14.518 9.798 14.539 9.692 14.539C9.586 14.539 9.481 14.518 9.383 14.477C9.285 14.437 9.196 14.377 9.121 14.302L5.89 11.071C5.815 10.996 5.755 10.907 5.715 10.809C5.674 10.711 5.653 10.606 5.653 10.5C5.653 10.394 5.674 10.289 5.715 10.191C5.755 10.093 5.815 10.004 5.89 9.929L9.121 6.698C9.272 6.546 9.478 6.461 9.692 6.461C9.907 6.461 10.112 6.546 10.264 6.698C10.415 6.849 10.5 7.055 10.5 7.269C10.5 7.484 10.415 7.689 10.264 7.841L8.411 9.692L14.538 9.692C14.753 9.692 14.958 9.777 15.11 9.929C15.261 10.08 15.346 10.286 15.346 10.5C15.346 10.714 15.261 10.92 15.11 11.071C14.958 11.223 14.753 11.308 14.538 11.308Z"
+      />
+    </svg>
+  );
+}
+
+function ArrowOutlineIcon({ className = "h-3.5 w-4" }) {
+  return (
+    <svg
+      viewBox="-8 -8 208 208"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+      className={`${arrowNudge} ${className}`}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.133}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M96 0L192 96L96 192L96 144L64 144L64 48L96 48L96 0Z" vectorEffect="non-scaling-stroke" />
+      <path d="M0 144L0 48" vectorEffect="non-scaling-stroke" />
+      <path d="M32 144L32 48" vectorEffect="non-scaling-stroke" />
+    </svg>
+  );
+}
+
+// FAQ toggle: a plus that morphs into a minus when its <details> (group) opens —
+// the icon turns a half-turn while the vertical bar collapses.
+function FaqToggleIcon() {
+  return (
+    <span className="relative flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white shadow-[inset_0_0_0_0.394px_#f8bb18,0_0_0_0.394px_#f8bb18,0px_0px_15.775px_-7.099px_rgba(0,0,0,0.25)] transition-colors duration-300 group-open:bg-[#fff5d9]">
+      <svg
+        viewBox="0 0 22 22"
+        aria-hidden="true"
+        className={`h-5 w-5 transition-[rotate] duration-400 ${ease} group-open:rotate-180`}
+        stroke="#000000"
+        strokeWidth={2}
+        strokeLinecap="round"
+      >
+        <path d="M4 11H18" />
+        <path
+          d="M11 4V18"
+          className={`origin-center transition-[scale] duration-400 [transform-box:fill-box] ${ease} group-open:scale-y-0`}
+        />
+      </svg>
+    </span>
+  );
+}
+
+// Gold line icons for the emMobile / emPerformance cards (drawn to match the
+// design's yellow tiles; no source assets were exported for these).
+function GoldIcon({ label, children }) {
+  return (
+    <svg
+      viewBox="0 0 32 32"
+      role="img"
+      aria-label={label}
+      className="h-8 w-8"
+      fill="none"
+      stroke="#e0a100"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      {children}
+    </svg>
+  );
+}
+
+const MobilePhoneIcon = () => (
+  <GoldIcon label="Smartphone icon">
+    <rect x="9" y="3" width="14" height="26" rx="2.5" fill="#f8bb18" fillOpacity={0.25} />
+    <path d="M14 6.5h4M14.5 25.5h3" />
+  </GoldIcon>
+);
+
+const TapIcon = () => (
+  <GoldIcon label="Finger tapping icon">
+    <path d="M13 7V4M8.5 9 6.5 7M17.5 9l2-2" />
+    <path
+      d="M12 21v-9.5a2 2 0 0 1 4 0V17l5.2 1a2.4 2.4 0 0 1 1.9 2.7l-.8 5.3a2.4 2.4 0 0 1-2.4 2H14.2a2.4 2.4 0 0 1-1.9-.9L8.6 22.4a1.8 1.8 0 0 1 2.7-2.3Z"
+      fill="#f8bb18"
+      fillOpacity={0.25}
+    />
+  </GoldIcon>
+);
+
+const AppraisalIcon = () => (
+  <GoldIcon label="Appraisal document with a magnifying glass icon">
+    <path d="M20 12V6a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v20a2 2 0 0 0 2 2h7" fill="#f8bb18" fillOpacity={0.25} />
+    <path d="M9 10h7M9 14.5h4M9 19h3" />
+    <circle cx="21" cy="20" r="4.5" />
+    <path d="m24.3 23.3 3.2 3.2" />
+  </GoldIcon>
+);
+
+const MonitorEyeIcon = () => (
+  <GoldIcon label="Eye inside a focus frame icon">
+    <path d="M4 10V6a2 2 0 0 1 2-2h4M22 4h4a2 2 0 0 1 2 2v4M28 22v4a2 2 0 0 1-2 2h-4M10 28H6a2 2 0 0 1-2-2v-4" />
+    <path d="M7 16s3.3-6 9-6 9 6 9 6-3.3 6-9 6-9-6-9-6Z" fill="#f8bb18" fillOpacity={0.25} />
+    <circle cx="16" cy="16" r="2.5" />
+  </GoldIcon>
+);
+
+/* --------------------------------------------------------------------
+   Reusable building blocks
+   -------------------------------------------------------------------- */
+
+function BrandName({ prefix = "em", name, color }) {
+  return (
+    <>
+      {prefix}
+      <span style={{ color }}>{name}</span>
+    </>
+  );
+}
+
+function IconTile({ src, alt, bg, className = "h-12 w-12", imgClassName = "h-7 w-7" }) {
+  return (
+    <span
+      className={`flex shrink-0 items-center justify-center rounded-[5px] ${iconPop} ${className}`}
+      style={{ background: bg }}
+    >
+      <Image src={src} alt={alt} className={`object-contain ${imgClassName}`} />
+    </span>
+  );
+}
+
+function MiniFeature({ icon, iconAlt, iconBg, bg, title, text }) {
+  return (
+    <article
+      className={`group/card flex items-center gap-3 rounded-[5px] p-3.5 ${motion} hover:-translate-y-0.5 hover:shadow-[0px_8px_20px_-8px_rgba(0,0,0,0.2)]`}
+      style={{ background: bg }}
+    >
+      <IconTile src={icon} alt={iconAlt} bg={iconBg} className="h-11 w-11" imgClassName="h-6 w-6" />
+      <div>
+        <h3 className={`text-sm font-medium leading-6 ${mutedText}`}>{title}</h3>
+        <p className={`text-sm leading-[18px] ${mutedText}`}>{text}</p>
+      </div>
+    </article>
+  );
+}
+
+function ShowcaseHeader({ eyebrow, title, titleBreak }) {
+  return (
+    <header>
+      <p className="text-2xl font-semibold text-[#ef4444] md:text-[1.7rem]">{eyebrow}</p>
+      <h2 className="text-2xl font-semibold md:text-3xl md:leading-[39px]">
+        {title} <br className="hidden lg:inline" />
+        {titleBreak}
+      </h2>
+    </header>
+  );
+}
+
+function ShowcasePanel({ bg, intro, cards, image, imageAlt }) {
+  return (
+    <div
+      className="flex flex-col gap-6 rounded-2xl p-4 shadow-[inset_0_0_0_0.744px_#dddddd,0px_0px_14.874px_-6.693px_rgba(0,0,0,0.25)] md:p-8 lg:flex-row lg:items-center lg:p-10"
+      style={{ background: bg }}
+    >
+      <div className="flex flex-col gap-4 lg:w-1/2">
+        <p className={`text-base font-medium leading-[26.5px] ${mutedText}`}>{intro}</p>
+        {cards.map((card) => (
+          <article
+            key={card.title}
+            className={`group/card flex flex-col items-start gap-3 rounded-[14px] bg-white p-5 shadow-[inset_0_0_0_0.744px_#dddddd,0px_0px_14.874px_-6.693px_rgba(0,0,0,0.25)] sm:flex-row sm:items-center sm:gap-4 ${motion} hover:-translate-y-1 hover:shadow-[inset_0_0_0_0.744px_#dddddd,0px_14px_28px_-6px_rgba(0,0,0,0.18)]`}
+          >
+            <span
+              className={`flex h-[3.25rem] w-[3.25rem] shrink-0 items-center justify-center rounded-[5px] ${iconPop}`}
+              style={{ background: card.iconBg }}
+            >
+              {card.icon}
+            </span>
+            <div>
+              <h3 className="text-lg font-semibold md:text-xl">{card.title}</h3>
+              <p className="text-sm leading-[18px]">{card.text}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+      <div
+        className={`group/card overflow-hidden rounded-[14px] bg-white shadow-[inset_0_0_0_0.744px_#dddddd,0px_0px_14.874px_-6.693px_rgba(0,0,0,0.25)] lg:w-1/2 ${motion} hover:-translate-y-1 hover:shadow-[inset_0_0_0_0.744px_#dddddd,0px_18px_40px_-9px_rgba(0,0,0,0.22)]`}
+      >
+        <Image src={image} alt={imageAlt} className={`h-auto w-full ${imageZoom}`} sizes="(min-width: 1024px) 50vw, 100vw" />
+      </div>
+    </div>
+  );
+}
+
+function LearnMoreLink({ href }) {
+  return (
+    <Link href={href} className={`${learnMoreButton} w-full`}>
+      LEARN MORE
+      <ArrowOutlineIcon />
+    </Link>
+  );
+}
+
+/* --------------------------------------------------------------------
+   Content
+   -------------------------------------------------------------------- */
+
+const heroFeatures = [
+  {
+    title: "Highly Configurable & Flexible",
+    text: "Easy to Implement & modify. Available in on premises and cloud versions.",
+    icon: iconConfigurable,
+    alt: "Gear with a lightbulb representing a configurable HR system",
+    bg: "#fee6b1",
+  },
+  {
+    title: "Unified System Experience",
+    text: "A centralized system to manage end to end employee lifecycle bringing a unified experience across all modules.",
+    icon: iconUnifiedSystem,
+    alt: "Desktop monitor representing a single unified HR platform",
+    bg: "#fdd7d4",
+  },
+  {
+    title: "Audit & Compliances",
+    text: "Keep track of Audit Trails. Stay on top of business critical transactions and workflow changes.",
+    icon: iconAudit,
+    alt: "Audit checklist with a magnifying glass",
+    bg: "#d1f4e3",
+  },
+];
+
+const attendanceChips = [
+  { label: "Approvals and workflows", icon: iconApprovals, alt: "Blue approved-document icon", bg: "#d8e7fe" },
+  { label: "Mail alerts", icon: iconMailAlert, alt: "Purple envelope icon for email alerts", bg: "#e9eafe" },
+  { label: "Reminders on leave requests", icon: iconReminderBell, alt: "Green bell icon for leave reminders", bg: "#d5faed" },
+  { label: "Week Off Management", icon: iconWeekOff, alt: "Orange calendar icon for weekly offs", bg: "#fde5d3" },
+];
+
+const attendanceCards = [
+  {
+    title: "Shift Management",
+    icon: iconShift,
+    alt: "Two people with circular arrows representing shift rotation",
+    bg: "#e6e2fc",
+    points: [
+      "Create different type of shifts, Default, Flexi, Cross/Night Shift, Break Shift",
+      "Allocate shift both manually and automatically on rotation basis.",
+    ],
+    href: "/products/emworkforce",
+  },
+  {
+    title: "Overtime Management",
+    icon: iconOvertime,
+    alt: "Green clock icon for overtime tracking",
+    bg: "#dbf7e4",
+    points: [
+      "OT calculation based on In-Out time or on hourly calculation",
+      "OT Policy on holidays and week offs.",
+      "OT Limit warning triggers and approvals.",
+    ],
+    href: "/products/emworkforce",
+  },
+  {
+    title: "Leave Management",
+    icon: iconLeave,
+    alt: "Orange document icon for leave policies",
+    bg: "#fde9da",
+    points: [
+      "Configure Leave policies, L/SL/Maternity / paternity leaves and Comp offs etc.",
+      "Configure leave rules",
+      "Track leave and comp off transaction details for each employee.",
+    ],
+    href: "/products/emworkforce",
+  },
+];
+
+const payrollIconImg = (src, alt) => <Image src={src} alt={alt} className="h-8 w-9 object-contain" />;
+
+const showcaseTabs = [
+  {
+    id: "empayroll",
+    label: "emPayRoll",
+    eyebrow: "emPayRoll",
+    title: "Easy to use Payroll Software",
+    titleBreak: "for enterprise HR teams",
+    bg: "#fdf6e6",
+    intro:
+      "A highly accountable HR team needs a Hassle Free, accurate Payroll system to ensure accurate salary calculation adhering to all statutory compliance.",
+    image: payrollImg,
+    imageAlt: "Laptop on a desk showing the emPayRoll dashboard with total payroll, recent payroll runs and a 100% compliance status",
+    cards: [
+      {
+        title: "Pay on time",
+        text: "Salary Calculation, computation, monthly reconciliation, arrears, claims , reimbursements, and loans all at one place with auto payslip generation. Save time and be accurate with emPayroll.",
+        icon: payrollIconImg(iconPayOnTime, "Hand pressing a yellow PAY button"),
+        iconBg: "rgba(248, 187, 24, 0.35)",
+      },
+      {
+        title: "Compliances",
+        text: "From PF, ESIc to PT and TDS all covered in one module. Be on the right side of compliance with emPayroll.",
+        icon: payrollIconImg(iconComplianceShield, "Yellow shield with a check mark representing statutory compliance"),
+        iconBg: "#fde7ae",
+      },
+    ],
+  },
+  {
+    id: "emmobile",
+    label: "emMobile ESS App",
+    eyebrow: "emMobile ESS App",
+    title: "Help employees self-serve",
+    titleBreak: "anywhere anytime",
+    bg: "#eef6fd",
+    intro: "A quick access mobile app for today’s millennials to access and update information on the go.",
+    image: mobileAppImg,
+    imageAlt: "Employee holding a smartphone showing the emMobile ESS app home screen with attendance, leave, payslip, personal info and documents tiles",
+    cards: [
+      {
+        title: "Technology",
+        text: "Works seamlessly on both Android and iOS, is GPS enabled for location based attendance tracking.",
+        icon: <MobilePhoneIcon />,
+        iconBg: "#fde7ae",
+      },
+      {
+        title: "Power on finger tips",
+        text: "From attendance, leaves, salary details, tax, investment declaration, reimbursement to leave applications and status, updating employee information or documents, all can be managed on emMobile.",
+        icon: <TapIcon />,
+        iconBg: "#fde7ae",
+      },
+    ],
+  },
+  {
+    id: "emperformance",
+    label: "emPerformance",
+    eyebrow: "emPerformance",
+    title: "Manage, Monitor, Measure",
+    titleBreak: "performance with Analytics",
+    bg: "#fdf6e6",
+    intro:
+      "Get deep insights into individual, team and organizational performance on a periodic basis to help identify goals vs actual achievement, gap analysis, behaviour analysis and training needs.",
+    image: performanceImg,
+    imageAlt: "Laptop showing the emPerformance overview dashboard with high performers, a performance distribution chart, goal achievement bars and a performance trend line",
+    cards: [
+      {
+        title: "Appraisal for the deserving",
+        text: "Fully automated self-serve appraiser module with details of both employee and the Reviewer with reports and email alerts.",
+        icon: <AppraisalIcon />,
+        iconBg: "#fde7ae",
+      },
+      {
+        title: "Monitor everyone",
+        text: "Monitor employee, supervisor, manager and department head at one place. Identify gaps, training needs to achieve revenue goals.",
+        icon: <MonitorEyeIcon />,
+        iconBg: "#fde7ae",
+      },
+    ],
+  },
+];
+
+const skillStats = [
+  {
+    value: "85M",
+    text: "According to a Korn Ferry study called Global Talent Crunch, the current talent shortage could create 85 Million unfilled jobs and close to $8.5 trillion in unrealized revenues if unaddressed by 2030.",
+  },
+  {
+    value: "87M",
+    text: "of McKinsey Global Survey respondents agree that they are already experiencing gaps now or are expecting them within a few years.",
+  },
+  {
+    value: "62%",
+    text: "of HR directors believe that workers will need to re-skill or upskill at least once a year to remain competitive and address the skills gap.",
+  },
+  {
+    value: "95%",
+    text: "of employees would stay at a company if it invested in their career development, as per the 2018 LinkedIn Learning Report.",
+  },
+];
+
+const moduleSections = [
+  {
+    id: "emexit",
+    name: "Exit",
+    nameColor: "#ef4444",
+    tagline: "Make parting ways a good experience",
+    intro: "An exit is an equally important part of the employee lifecycle, so why drop the ball at the end? Keep the brand experience intact.",
+    image: exitImg,
+    imageAlt: "Departing employee carrying a cardboard box of personal belongings out of the office",
+    imageFirst: true,
+    cards: [
+      {
+        title: "Settlement and Documentation",
+        text: "Correction of payroll, employee data, Timely calculation of liabilities and dues if any, documentation like Exit Interview Form, Form 16 and Relieving letter, all can be processed on emExit with ease.",
+        icon: iconSettlement,
+        alt: "Blue document icon for exit settlement paperwork",
+      },
+      {
+        title: "Automate with a human touch!",
+        text: "emExit allows employee to place resignation request, track approval, get clearance and no dues check from all departments and SBUs, access separation and notice period policy, track progress with no need of manual follow up.",
+        icon: iconAutomation,
+        alt: "Gear with circular arrows representing an automated exit workflow",
+      },
+    ],
+  },
+  {
+    id: "emexpense",
+    name: "Expense",
+    nameColor: "#ef4444",
+    tagline: "Travel & Spend Managed Better!",
+    intro: "Today’s enterprise is data driven. Our aim is to help you with analytics for an aligned HR.",
+    image: expenseImg,
+    imageAlt: "Laptop showing the emSphere expense dashboard with recent claims and an expense category chart",
+    imageFirst: false,
+    cards: [
+      {
+        title: "Efficient and Productive Helpdesk",
+        text: "Faster turnaround times on claim settlement increases employee satisfaction, brings transparency and with reduction in time spend on follow- ups increases over all productivity.",
+        icon: iconHelpdesk,
+        alt: "Blue headset icon for the expense claims helpdesk",
+      },
+      {
+        title: "Single Platform",
+        text: "Whether it is raising a claim, categorizing it as per spend or priority, automated responses to these claims, or escalation to unresolved ones, all this can be achieved in single platform.",
+        icon: iconSinglePlatform,
+        alt: "Stacked blue layers icon representing a single platform",
+      },
+    ],
+  },
+  {
+    id: "emhelpdesk",
+    name: "HelpDesk",
+    nameColor: "#ef4444",
+    tagline: "Efficient HR Desk!",
+    intro: "Say NO to a buzzing HR desk, by automating HR queries.",
+    image: helpdeskImg,
+    imageAlt: "Two HR helpdesk agents wearing headsets answering employee queries at their desks",
+    imageFirst: true,
+    cards: [
+      {
+        title: "Efficient and Productive Helpdesk",
+        text: "Faster turn-around times on queries increases employee satisfaction, frees HR time for routine tasks, brings transparency and with reduction in foot fall at HR desk increases productivity.",
+        icon: iconHelpdesk,
+        alt: "Blue headset icon for the HR query helpdesk",
+      },
+      {
+        title: "Single Platform",
+        text: "Whether it is raising a query, classifying it as per category, sub category or priority, automated responses to these queries, or escalation to unresolved ones, all this can be achieved in single platform.",
+        icon: iconSinglePlatform,
+        alt: "Stacked blue layers icon representing a single query platform",
+      },
+    ],
+  },
+  {
+    id: "emworkforce-analytics",
+    name: "Workforce Analytics",
+    nameColor: "#ef4444",
+    tagline: "For the enterprise that learns!",
+    intro: "Today’s enterprise is data-driven. Our aim, is to help you with analytics for an aligned HR.",
+    image: analyticsImg,
+    imageAlt: "Illustration of workforce analytics with progress bars, a donut chart and a rising line graph",
+    imageFirst: false,
+    cards: [
+      {
+        title: "Leadership Dashboards",
+        text: "All these analytics and reports help in preparation of leadership dashboards, which is required for stakeholders to make insight-driven decisions.",
+        icon: iconLeadershipDashboard,
+        alt: "Dashboard icon with a pie chart and bar graph",
+      },
+      {
+        title: "Trends and Insights",
+        text: "Get holistic analytics for various HRMS functions like recruitment and exit, attendance & leave, salary, overtime & cost, employee performance, gender & attrition, demographic, employee life cycle as detailed reports with alerts",
+        icon: iconTrendsInsights,
+        alt: "Glowing lightbulb icon representing HR insights",
+      },
+    ],
+  },
+];
+
+const faqs = [
+  {
+    question: "How long does it take for emSphere HRMS to be implemented?",
+    answer:
+      "emSphere HRMS is a ready-to-use HRMS platform that can be configured easily based on organization requirements. The actual time for implementation varies as per module & customization requirements, but typically it is between 6-10 weeks depending on the size & scale of implementation.",
+  },
+  {
+    question: "Can the emSphere HRMS be customized?",
+    answer:
+      "emSphere HRMS is a fully in-house developed product, and we undertake customizations as required by organizations during emSphere HRMS implementations",
+  },
+  {
+    question: "Does emSphere HRMS offer a payroll module?",
+    answer:
+      "Yes, the Payroll module is an add-on module part of emSphere HRMS software for companies who want to manage all aspects of HR applications in-house including payroll.",
+  },
+  {
+    question: "Is a Mobile app available for emSphere HRMS?",
+    answer: "All-important ESS portal options for managing Attendance, Leave & Payroll are available on IOS & Android platforms.",
+  },
+  {
+    question: "emSphere HRMS is available as On-Premise License Or as a SaaS Cloud Subscription?",
+    answer:
+      "emSphere HRMS is offered in both options On-Premise license model hosted on customer premises as well as the cloud subscription model hosted on emSphere Microsoft Azure Cloud platform depending on the mode of implementation preferred by the organizations.",
+  },
+];
+
+
+/* --------------------------------------------------------------------
+   Page
+   -------------------------------------------------------------------- */
+
+export default function HumanResourceManagementSystemPage() {
+  return (
+    <main className={`${instrumentSans.variable} ${inter.variable} hrms-page w-full overflow-x-hidden bg-white font-sans text-[#4c4c4c]`}>
+      <ScrollReveal root=".hrms-page" />
+
+      {/* Hero */}
+      <section
+        aria-labelledby="hrms-hero-heading"
+        className="bg-[radial-gradient(circle_at_0%_60%,rgba(248,187,24,0.3),transparent_30%),radial-gradient(circle_at_50%_0%,rgba(248,187,24,0.25),transparent_35%),radial-gradient(circle_at_40%_75%,rgba(239,68,68,0.12),transparent_20%),radial-gradient(circle_at_65%_65%,rgba(15,184,128,0.12),transparent_20%),radial-gradient(circle_at_100%_75%,rgba(248,187,24,0.3),transparent_25%)] px-4 py-10 md:px-12 md:py-16"
+      >
+        <div className="mx-auto flex max-w-7xl flex-col gap-10">
+          <div className="flex flex-col items-center gap-8 lg:flex-row lg:justify-between lg:gap-12">
+            <header className={`${revealFromLeft} flex flex-col gap-5 lg:max-w-lg`}>
+              <h1 id="hrms-hero-heading" className="text-3xl font-semibold leading-tight md:text-4xl">
+                A Single All-In One System <br className="hidden md:inline" />
+                for your HR Needs
+              </h1>
+              <p className={`text-base leading-[25.5px] ${mutedText}`}>
+                Select an HR System that helps you stay on top of your daily activities, saves you time to focus on people and create engaging experiences.
+              </p>
+              <Link href="/contact-us" className={`${primaryButton} self-start text-[15px]`}>
+                Book a Demo
+                <ArrowCircleIcon />
+              </Link>
+            </header>
+            <div className={`${revealFromRight} w-full max-w-2xl lg:w-1/2 lg:max-w-none`}>
+              <Image
+                src={heroDashboard}
+                alt="emSphere HRMS dashboard showing team attendance, absenteeism, late log-in and attrition metrics, payroll status, an interview timeline and a task list"
+                className={`h-auto w-full ${motion} hover:-translate-y-1`}
+                fetchPriority="high"
+                loading="eager"
+                sizes="(min-width: 1024px) 50vw, 100vw"
+              />
+            </div>
+          </div>
+
+          <ul className="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-5">
+            {heroFeatures.map((feature, index) => (
+              <li
+                key={feature.title}
+                style={stagger(index)}
+                className={`${revealUp} group/card flex flex-col items-center gap-3 rounded-lg bg-white/10 px-5 py-5 text-center sm:px-4 lg:px-6 shadow-[inset_0_0_0_1px_#acacac] backdrop-blur-[10px] ${motion} hover:-translate-y-1 hover:shadow-[inset_0_0_0_1px_#acacac,0px_16px_36px_-9px_rgba(0,0,0,0.22)]`}
+              >
+                <span className={`flex h-[4.375rem] w-[4.375rem] items-center justify-center rounded-full ${iconPop}`} style={{ background: feature.bg }}>
+                  <Image src={feature.icon} alt={feature.alt} className="h-10 w-10 object-contain" />
+                </span>
+                <h2 className="text-lg font-semibold sm:text-base lg:text-lg">{feature.title}</h2>
+                <p className={`text-base font-medium sm:text-sm lg:text-base leading-[25px] ${mutedText}`}>{feature.text}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* emRecruit / emWelcome / employee Information Management */}
+      <section aria-label="Recruitment, onboarding and employee information" className="px-4 py-10 md:px-12">
+        <div className="mx-auto flex max-w-7xl flex-col gap-6 md:gap-11">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-14">
+            <article className={`${revealFromLeft} ${softCard} ${liftPanel} flex flex-col gap-5 bg-[rgba(249,241,230,0.5)] p-4 md:p-6`}>
+              <div className={`${softCard} overflow-hidden bg-white`}>
+                <Image
+                  src={recruitImg}
+                  alt="Laptop screen of candidate profile cards with a magnifying glass highlighting a shortlisted candidate"
+                  className={`h-auto w-full ${panelImageZoom}`}
+                  sizes="(min-width: 768px) 45vw, 100vw"
+                />
+              </div>
+              <header className="text-center">
+                <h2 className="text-xl font-semibold md:text-2xl">
+                  <BrandName name="Recruit" color="#f8bb18" />
+                </h2>
+                <p className="text-xl font-semibold md:text-2xl">Hire and work with the best</p>
+              </header>
+              <p className={`text-center text-base leading-6 ${mutedText}`}>
+                A reliable module for everything from manpower requisition to resume parsing, scheduling interviews, rate candidates, rolling out offers, candidate documentation, background verification and vendor management.
+              </p>
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-1 xl:grid-cols-2">
+                <MiniFeature
+                  icon={iconCandidateCv}
+                  iconAlt="Curriculum vitae document icon"
+                  iconBg="#f8bb18"
+                  bg="#fff5d9"
+                  title="Candidate Selection"
+                  text="Simplifies recruitment, and documentation with a great interview experience."
+                />
+                <MiniFeature
+                  icon={iconVendorGroup}
+                  iconAlt="Group of people icon representing recruitment agencies"
+                  iconBg="#0fb880"
+                  bg="#e5fff4"
+                  title="Vendor Selection"
+                  text="Simplifies hiring the best agencies and starts a smooth vendor relation."
+                />
+              </div>
+            </article>
+
+            <article className={`${revealFromRight} ${softCard} ${liftPanel} flex flex-col gap-5 bg-[rgba(235,243,255,0.5)] p-4 md:p-6`}>
+              <div className={`${softCard} overflow-hidden bg-white`}>
+                <Image
+                  src={welcomeImg}
+                  alt="HR manager shaking hands with a smiling new joiner while colleagues applaud in the office"
+                  className={`h-auto w-full ${panelImageZoom}`}
+                  sizes="(min-width: 768px) 45vw, 100vw"
+                />
+              </div>
+              <header className="text-center">
+                <h2 className="text-xl font-semibold md:text-2xl">
+                  <BrandName name="Welcome" color="#f8bb18" />
+                </h2>
+                <p className="text-xl font-semibold md:text-2xl">Ensure a warm welcome</p>
+              </header>
+              <p className={`text-center text-base leading-6 ${mutedText}`}>
+                Make new joiner at home from the word go! Give easy access to offer letter, file documents, create digital signatures, enter details in HR portal, get mail alerts for orientation, asset issuance, team welcome and training.
+              </p>
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-1 xl:grid-cols-2">
+                <MiniFeature
+                  icon={iconOnboardingBadge}
+                  iconAlt="Award badge with a check mark icon"
+                  iconBg="#f8bb18"
+                  bg="#fff5d9"
+                  title="Interactive Onboarding"
+                  text="A great interactive and warm welcome experience."
+                />
+                <MiniFeature
+                  icon={iconEasyAccess}
+                  iconAlt="Clipboard icon for new joiner information"
+                  iconBg="#0fb880"
+                  bg="#e5fff4"
+                  title="Easy Access"
+                  text="Easy access to all information and next steps for the new member."
+                />
+              </div>
+            </article>
+          </div>
+
+          <article className={`${revealUp} ${softCard} ${liftPanel} flex flex-col gap-6 bg-[rgba(255,226,228,0.3)] p-4 md:p-6 lg:flex-row lg:items-center`}>
+            <div className={`${softCard} overflow-hidden bg-white lg:w-[45%] lg:shrink-0`}>
+              <Image
+                src={employeeInfoImg}
+                alt="HR professional working on a laptop beside an employee directory screen with verified employee profile cards"
+                className={`h-auto w-full ${panelImageZoom}`}
+                sizes="(min-width: 768px) 45vw, 100vw"
+              />
+            </div>
+            <div className="flex flex-col gap-4">
+              <header>
+                <h2 className="text-2xl font-semibold leading-snug md:text-[1.75rem]">
+                  employee <span className="text-[#f8bb18]">Information Management</span>
+                </h2>
+                <p className="text-xl font-semibold md:text-2xl">on finger tips</p>
+              </header>
+              <p className={`text-base leading-6 ${mutedText}`}>
+                A few clicks and you know everything from employee joining date, general information, to employee history within the organization.
+              </p>
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+                <MiniFeature
+                  icon={iconUpskill}
+                  iconAlt="Rising bar chart with an upward arrow icon"
+                  iconBg="#f8bb18"
+                  bg="#fff5d9"
+                  title="Upskill your employee"
+                  text="Keep tab on employee skills and look out for opportunities to help employee upgrade skills."
+                />
+                <MiniFeature
+                  icon={iconRetainTeam}
+                  iconAlt="Team of three people icon"
+                  iconBg="#0fb880"
+                  bg="#e5fff4"
+                  title="Retain the best"
+                  text="Promotion and rating history to know your best pool of employees."
+                />
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      {/* emWorkforce Attendance and Leave Management */}
+      <section aria-labelledby="attendance-heading" className="bg-[#fcfcfc] px-4 py-10 md:px-12 md:py-16">
+        <div className="mx-auto flex max-w-7xl flex-col gap-8">
+          <header className={`${revealUp} mx-auto flex max-w-3xl flex-col gap-3 text-center`}>
+            <h2 id="attendance-heading" className="text-2xl font-bold md:text-3xl">
+              emWorkforce Attendance and Leave Management
+            </h2>
+            <p className="mx-auto max-w-xl text-lg md:text-xl">
+              A rule-driven system that connects all modern technologies to stay on top of Time and Attendance management.
+            </p>
+          </header>
+
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+            {/* Photo card: the image fills the card as a background and the
+                feature chips + banner sit on top of it in normal flow. */}
+            <div className={`${revealZoom} ${greyCard} group/photo relative isolate flex flex-col overflow-hidden md:min-h-[26rem] lg:col-span-2 ${motion} hover:-translate-y-1.5 hover:shadow-[inset_0_0_0_0.814px_#dddddd,0px_14px_28px_-6px_rgba(0,0,0,0.18)]`}>
+              <div className="relative aspect-[16/9] w-full md:absolute md:inset-0 md:-z-10 md:aspect-auto">
+                <Image
+                  src={attendanceImg}
+                  alt="Employee using a laptop with an HR portal attendance calendar, surrounded by mail, settings, alert, calendar and location icons"
+                  fill
+                  className={`object-cover object-[70%_center] transition-[scale] duration-700 ${ease} group-hover/photo:scale-[1.04]`}
+                  sizes="(min-width: 1024px) 60vw, 100vw"
+                />
+              </div>
+              <div className="flex flex-1 flex-col justify-between gap-4 bg-[linear-gradient(180deg,rgba(255,255,255,0)_33.679%,rgba(248,187,24,0.47)_100%)] p-4 md:gap-6 md:p-5">
+                <div className="flex flex-col gap-2.5 md:w-3/5 lg:w-1/2">
+                  <ul className="grid grid-cols-2 gap-2.5">
+                    {attendanceChips.map((chip) => (
+                      <li
+                        key={chip.label}
+                        className={`group/card flex min-h-16 items-center gap-2.5 rounded-[5px] bg-white px-2.5 py-3 text-xs font-medium leading-[17.5px] text-black shadow-[inset_0_0_0_0.84px_#959595,0px_0px_16.803px_-7.561px_rgba(0,0,0,0.25)] md:text-sm ${motion} hover:-translate-y-0.5 hover:shadow-[inset_0_0_0_0.84px_#959595,0px_8px_18px_-6px_rgba(0,0,0,0.3)]`}
+                      >
+                        <IconTile src={chip.icon} alt={chip.alt} bg={chip.bg} className="h-9 w-9 rounded" imgClassName="h-5 w-5" />
+                        <span>{chip.label}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="flex items-center justify-center gap-2 rounded-[10px] bg-[#0f162a] px-3 py-4 text-sm font-medium text-white shadow-[inset_0_0_0_0.814px_#dddddd,0px_0px_16.279px_-7.326px_rgba(0,0,0,0.25)]">
+                    <Image src={iconLocationPin} alt="White map location pin icon" className="h-5 w-auto" />
+                    Location based Holidays
+                  </p>
+                </div>
+
+                <div className="flex flex-col gap-3 rounded-[10px] bg-[#eef3f8] p-3.5 shadow-[inset_0_0_0_0.814px_#dddddd,0px_0px_16.279px_-7.326px_rgba(0,0,0,0.25)] sm:flex-row sm:items-center sm:gap-4">
+                  <span aria-hidden="true" className="flex shrink-0 -space-x-1.5">
+                    <span className="h-8 w-8 rounded-full bg-[#101f37]" />
+                    <span className="h-8 w-8 rounded-full bg-[#1e7efe]" />
+                    <span className="h-8 w-8 rounded-full bg-[#abb4c3]" />
+                  </span>
+                  <div className="flex-1 text-sm leading-[21px] sm:text-left">
+                    <p className="font-medium">Customizable to Fit Your Business</p>
+                    <p>Build a workforce management system that works for you</p>
+                  </div>
+                  <Link href="/products/emworkforce" className={`${learnMoreButton} shrink-0 px-10 py-2.5`}>
+                    LEARN MORE
+                    <ArrowOutlineIcon />
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            <article style={stagger(1)} className={`${revealFromRight} ${greyCard} ${liftGrey} flex flex-col gap-5 p-5 md:p-6`}>
+              <div className="flex flex-1 flex-col justify-center gap-4 px-1">
+                <IconTile src={iconAttendance} alt="Blue user icon with a check mark for attendance" bg="#dfecfd" className="h-14 w-14" imgClassName="h-9 w-9" />
+                <h3 className="text-xl font-semibold md:text-[1.375rem]">Attendance Management</h3>
+                <ul className="flex list-disc flex-col gap-1.5 pl-5 text-base font-medium leading-[22px] md:text-[17px]">
+                  <li>Integration with 3rd Party Devices and Biometrics</li>
+                  <li>Geo Fencing</li>
+                  <li>Attendance Capture via Mobile App and GPS.</li>
+                </ul>
+              </div>
+              <LearnMoreLink href="/products/emworkforce" />
+            </article>
+          </div>
+
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {attendanceCards.map((card, index) => (
+              <article key={card.title} style={stagger(index)} className={`${revealUp} ${greyCard} ${liftGrey} flex flex-col gap-4 p-5 sm:last:col-span-2 md:p-6 lg:last:col-span-1`}>
+                <div className="flex items-center gap-3">
+                  <IconTile src={card.icon} alt={card.alt} bg={card.bg} className="h-11 w-11" imgClassName="h-6 w-6" />
+                  <h3 className="text-lg font-semibold md:text-xl">{card.title}</h3>
+                </div>
+                <ul className="flex list-disc flex-col gap-2 pl-5 text-base leading-[21px]">
+                  {card.points.map((point) => (
+                    <li key={point}>{point}</li>
+                  ))}
+                </ul>
+                <div className="mt-auto pt-2">
+                  <LearnMoreLink href={card.href} />
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* emPayRoll / emMobile ESS App / emPerformance — tabbed */}
+      <section aria-label="emPayRoll, emMobile ESS App and emPerformance" className="px-4 py-10 md:px-12 md:py-16">
+        <div className="mx-auto flex max-w-7xl flex-col gap-6">
+          {/* Pure-CSS tabs (no client JS): each tab label wraps a hidden radio,
+              and globals.css shows the header/panel whose data-tab-item matches
+              the checked radio. All three products stay in the HTML for crawlers,
+              and the radios give arrow-key navigation between tabs for free. */}
+          <div className={`${revealUp} hrms-showcase flex flex-col gap-6`}>
+            <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+              {showcaseTabs.map((tab, i) => (
+                <div key={tab.id} data-tab-item={i} className="hrms-tab-swap">
+                  <ShowcaseHeader eyebrow={tab.eyebrow} title={tab.title} titleBreak={tab.titleBreak} />
+                </div>
+              ))}
+
+              {/* Phones: an even 3-column tab bar with a bottom rule. From sm up:
+                  the design's plain text links, underlined when active. */}
+              <div
+                role="radiogroup"
+                aria-label="HR products"
+                className="grid grid-cols-3 border-b border-black/10 sm:-mx-1 sm:flex sm:flex-wrap sm:gap-x-3 sm:border-0 lg:shrink-0"
+              >
+                {showcaseTabs.map((tab, i) => (
+                  <label
+                    key={tab.id}
+                    className="-mb-px flex min-h-12 cursor-pointer items-center justify-center rounded-t-md border-b-2 border-transparent px-1 text-center text-sm leading-tight text-black underline-offset-4 transition-colors duration-200 hover:text-[#854d0e] has-[:checked]:border-[#854d0e] has-[:checked]:font-medium has-[:checked]:text-[#854d0e] has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-[#0077c2] sm:mb-0 sm:min-h-11 sm:border-b-0 sm:px-2 sm:text-lg sm:has-[:checked]:font-normal sm:has-[:checked]:underline md:text-xl"
+                  >
+                    <input
+                      type="radio"
+                      name="hrms-showcase-tab"
+                      value={tab.id}
+                      data-tab-index={i}
+                      defaultChecked={i === 0}
+                      className="sr-only"
+                    />
+                    {tab.label}
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            {showcaseTabs.map((tab, i) => (
+              <div key={tab.id} data-tab-item={i} className="hrms-tab-swap">
+                <ShowcasePanel bg={tab.bg} intro={tab.intro} cards={tab.cards} image={tab.image} imageAlt={tab.imageAlt} />
+              </div>
+            ))}
+          </div>
+
+          <Link href="/contact-us" className={`${revealUp} ${learnMoreButton} w-full px-10 text-sm sm:mx-auto sm:w-auto`}>
+            Book a Demo
+            <ArrowOutlineIcon />
+          </Link>
+        </div>
+      </section>
+
+      {/* emSkills */}
+      <section aria-labelledby="emskills-heading" className="bg-[#eef4fd] px-4 py-10 md:px-12 md:py-16">
+        <div className="mx-auto flex max-w-7xl flex-col gap-8">
+          <header className={`${revealUp} mx-auto flex max-w-xl flex-col gap-3 text-center`}>
+            <h2 id="emskills-heading" className="text-3xl font-semibold md:text-[2.375rem] md:leading-[49px]">
+              <BrandName name="Skills" color="#efb000" />
+            </h2>
+            <p className="text-xl font-medium md:text-2xl">
+              Build personalized learning experience based on employee interaction
+            </p>
+          </header>
+          <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {skillStats.map((stat, index) => (
+              <li key={stat.value} style={stagger(index, 80)} className={`${revealUp} ${goldCard} ${liftGold} flex flex-col items-center gap-3 px-7 py-6 text-center`}>
+                <p className="text-3xl font-semibold md:text-[2.375rem] md:leading-[49px]">{stat.value}</p>
+                <p className="text-base leading-[22px]">{stat.text}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* emExit / emExpense / emHelpDesk / emWorkforce Analytics */}
+      {moduleSections.map((section) => (
+        <section key={section.id} aria-labelledby={`${section.id}-heading`} className="px-4 py-10 md:px-12">
+          <div className={`mx-auto flex max-w-7xl flex-col gap-8 lg:items-center lg:gap-12 ${section.imageFirst ? "lg:flex-row-reverse" : "lg:flex-row"}`}>
+            <div className={`${section.imageFirst ? revealFromRight : revealFromLeft} flex flex-col gap-5 lg:w-1/2`}>
+              <header>
+                <h2 id={`${section.id}-heading`} className="text-2xl font-semibold md:text-[1.8rem] md:leading-[38px]">
+                  <BrandName name={section.name} color={section.nameColor} />
+                </h2>
+                <p className="text-xl font-semibold md:text-[1.45rem]">{section.tagline}</p>
+              </header>
+              <p className={`text-[17px] font-medium leading-[25.5px] ${mutedText}`}>{section.intro}</p>
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                {section.cards.map((card, index) => (
+                  <article
+                    key={card.title}
+                    style={stagger(index + 1)}
+                    className={`${revealUp} group/card flex flex-col items-center gap-2 rounded-xl bg-white p-5 text-center shadow-[inset_0_0_0_0.67px_#f8bb18,0px_0px_13.393px_-6.027px_rgba(0,0,0,0.25)] ${motion} hover:-translate-y-1 hover:shadow-[inset_0_0_0_1.5px_#f8bb18,0px_10px_24px_-6px_rgba(0,0,0,0.18)]`}
+                  >
+                    <span className={`flex h-12 w-12 items-center justify-center rounded-[5px] bg-[rgba(59,130,246,0.35)] ${iconPop}`}>
+                      <Image src={card.icon} alt={card.alt} className="h-8 w-8 object-contain" />
+                    </span>
+                    <h3 className="text-lg font-semibold">{card.title}</h3>
+                    <p className="text-sm leading-[18px]">{card.text}</p>
+                  </article>
+                ))}
+              </div>
+            </div>
+            <Image
+              src={section.image}
+              alt={section.imageAlt}
+              className={`${section.imageFirst ? revealFromLeft : revealFromRight} mx-auto h-auto w-full max-w-2xl lg:w-1/2 lg:max-w-none ${motion} hover:scale-[1.02]`}
+              sizes="(min-width: 768px) 50vw, 100vw"
+            />
+          </div>
+        </section>
+      ))}
+
+      {/* FAQ */}
+      <section
+        aria-labelledby="faq-heading"
+        className="bg-[#fdf6e6] bg-[radial-gradient(circle_at_10%_15%,rgba(248,187,24,0.3),transparent_25%),radial-gradient(circle_at_95%_75%,rgba(248,187,24,0.3),transparent_25%)] px-4 py-10 md:px-12 md:py-24"
+      >
+        <div className="mx-auto flex max-w-5xl flex-col gap-8">
+          <header className={`${revealUp} flex flex-col gap-2 text-center`}>
+            <h2 id="faq-heading" className="text-3xl font-semibold md:text-[2.375rem] md:leading-[49px]">
+              FAQ
+            </h2>
+            <p className="text-xl font-semibold md:text-3xl">Answers to your immediate HRMS questions</p>
+          </header>
+          <ul className="flex flex-col gap-4">
+            {/* Native accordion, no client JS: the shared `name` makes the browser
+                close the open <details> when another opens (one at a time), and
+                the smooth open/close lives in globals.css (.hrms-faq). */}
+            {faqs.map((faq, index) => (
+              <li key={faq.question} style={stagger(index, 80)} className={`${revealUp} ${goldCard} ${liftGold} overflow-hidden`}>
+                <details name="hrms-faq" open={index === 0} className="hrms-faq group">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-4 py-4 sm:px-5 md:px-7 rounded-xl outline-none focus-visible:outline-2 focus-visible:outline-solid focus-visible:-outline-offset-2 focus-visible:outline-[#0077c2] [&::-webkit-details-marker]:hidden">
+                    <h3 className="text-base font-semibold sm:text-lg md:text-xl">{faq.question}</h3>
+                    <FaqToggleIcon />
+                  </summary>
+                  <p className="hrms-faq-answer px-4 pb-5 text-[15px] leading-[23px] sm:px-5 sm:text-base md:px-7 md:text-lg">{faq.answer}</p>
+                </details>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Our Flagship Products */}
+      <FlagshipProducts />
+
+      {/* Contact CTA */}
+      {/* Mirrors the home page CTA (.cta / .ctaRow / .ctaCol / .ctaDivider in
+          app/page.jsx): two equal columns centred either side of a short
+          divider, stacking below 1081px, with 24px titles below 769px. */}
+      <section aria-label="Contact emSphere" className="bg-white px-6 py-12 min-[769px]:py-[88px]">
+        <div className="mx-auto flex max-w-275 flex-col items-center justify-center gap-9 text-black min-[1081px]:flex-row min-[1081px]:gap-20">
+          {[
+            { title: "Ready to talk?", cta: "Talk to Sale", reveal: revealFromLeft },
+            { title: "Want to know more?", cta: "Book Demo", reveal: revealFromRight },
+          ].map((col, index) => (
+            <Fragment key={col.title}>
+              {index > 0 && (
+                <span aria-hidden="true" className="hidden h-30 w-0.5 shrink-0 bg-[rgba(139,138,138,0.4)] min-[1081px]:block" />
+              )}
+              <div className={`${col.reveal} flex w-full flex-1 flex-col items-center gap-6 text-center`}>
+                <h2
+                  className={`${fontInstrument} text-2xl leading-[1.5] font-semibold tracking-[-0.01em] min-[769px]:text-[38px] min-[769px]:whitespace-nowrap`}
+                >
+                  {col.title}
+                </h2>
+                <Link
+                  href="/contact-us"
+                  className={`group/btn inline-flex w-full max-w-65 items-center justify-center rounded-lg bg-[#0077c2] px-6 py-[13px] ${fontInter} text-[15px] font-semibold tracking-[0.02em] text-white ${motion} hover:-translate-y-0.5 hover:bg-[#0061af] hover:shadow-[0_8px_18px_-4px_rgba(0,119,194,0.45)] active:translate-y-0 min-[769px]:w-auto min-[769px]:max-w-none min-[769px]:min-w-[145px] min-[769px]:px-[30px]`}
+                >
+                  {col.cta}
+                </Link>
+              </div>
+            </Fragment>
+          ))}
+        </div>
+      </section>
+      <BackToTop />
+    </main>
+  );
+}

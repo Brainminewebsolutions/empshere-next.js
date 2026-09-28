@@ -1,0 +1,152 @@
+# ==============================================================================
+# Hostinger Apache / LiteSpeed Configuration for Emsphere Next.js Static Export
+# ==============================================================================
+
+# 1. Default Directory Index
+#    index.php stays last so the WordPress backend in /blog (wp-admin, REST
+#    API via /blog/index.php) keeps working; Next.js index.html wins elsewhere.
+DirectoryIndex index.html index.htm index.php
+
+# 2. Custom 404 Error Page
+ErrorDocument 404 /404.html
+
+# 3. Default Charset
+AddDefaultCharset UTF-8
+
+# 4. URL Rewriting & 404 Prevention
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Force HTTPS for SEO & Security (Hostinger SSL)
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # ---------------------------------------------------------------------------
+  # Blog: the Next.js export lives in /blogs, but its public URL is /blog.
+  # /blog is also the WordPress folder, so its admin, API, media and PHP files
+  # are passed through untouched; every other /blog URL is served from /blogs.
+  # ---------------------------------------------------------------------------
+
+  # a) Anyone opening /blogs/* directly is sent to /blog/* (one indexable
+  #    copy). THE_REQUEST is the browser's original request, so the internal
+  #    /blog → /blogs rewrite below never triggers this redirect.
+  RewriteCond %{THE_REQUEST} \s/blogs(/\S*)?\s
+  RewriteRule ^blogs(/.*)?$ /blog$1 [R=301,L]
+
+  # b) WordPress: wp-admin, wp-json, wp-content, wp-includes, *.php files and
+  #    query-string requests (?rest_route=, ?p=, previews) go to WordPress.
+  RewriteRule ^blog/(wp-admin|wp-includes|wp-content|wp-json)(/|$) - [L]
+  RewriteRule ^blog/[^/]+\.php$ - [L]
+  RewriteCond %{QUERY_STRING} (^|&)(rest_route|p|page_id|preview|preview_id)= [NC]
+  RewriteRule ^blog(/.*)?$ - [L]
+
+  # c) Blog URL without its trailing slash → canonical URL with the slash.
+  RewriteRule ^blog/([^.]*[^/])$ /blog/$1/ [R=301,L]
+
+  # d) Serve the Next.js blog from /blogs; the address bar keeps /blog/….
+  RewriteRule ^blog(/.*)?$ /blogs$1 [L]
+
+  # 1. Serve existing files directly (CSS, JS, images, etc.)
+  RewriteCond %{REQUEST_FILENAME} -f
+  RewriteRule ^ - [L]
+
+  # 2. Serve existing directories directly
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # 3. If requested path + /index.html exists, serve it (e.g. /About-us or /About-us/)
+  RewriteCond %{REQUEST_FILENAME}/index.html -f
+  RewriteRule ^(.*)/?$ $1/index.html [L]
+
+  # 4. If requested path + .html exists, serve it (e.g. /About-us -> /About-us.html)
+  RewriteCond %{REQUEST_FILENAME}.html -f
+  RewriteRule ^(.*)$ $1.html [L]
+
+  # 5. Otherwise, serve our custom 404 page
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^ /404.html [L]
+</IfModule>
+
+# 5. GZIP & Deflate Compression (Speed & Core Web Vitals)
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/plain
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/xml
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE text/javascript
+  AddOutputFilterByType DEFLATE application/xml
+  AddOutputFilterByType DEFLATE application/xhtml+xml
+  AddOutputFilterByType DEFLATE application/rss+xml
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE application/x-javascript
+  AddOutputFilterByType DEFLATE application/json
+  AddOutputFilterByType DEFLATE image/svg+xml
+  AddOutputFilterByType DEFLATE font/ttf
+  AddOutputFilterByType DEFLATE font/otf
+  AddOutputFilterByType DEFLATE font/woff
+  AddOutputFilterByType DEFLATE font/woff2
+</IfModule>
+
+# 6. Browser Caching (SEO & PageSpeed Insights)
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 month"
+
+  # HTML documents - revalidate so updates are immediately visible
+  ExpiresByType text/html "access plus 0 seconds"
+
+  # CSS & JavaScript - 1 year (Next.js assets use unique content hashes)
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/javascript "access plus 1 year"
+
+  # Images & Icons - 1 month
+  ExpiresByType image/webp "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType image/x-icon "access plus 1 month"
+  ExpiresByType image/vnd.microsoft.icon "access plus 1 month"
+
+  # Fonts - 1 year
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType font/woff "access plus 1 year"
+  ExpiresByType font/ttf "access plus 1 year"
+</IfModule>
+
+# 7. Security & HTTP Headers
+<IfModule mod_headers.c>
+  # Prevent MIME type sniffing
+  Header set X-Content-Type-Options "nosniff"
+
+  # Prevent clickjacking
+  Header set X-Frame-Options "SAMEORIGIN"
+
+  # Referrer policy
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+
+  # Cache-Control: HTML documents always revalidate
+  <FilesMatch "\.(html|htm)$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+  </FilesMatch>
+
+  # Cache-Control: Static hashed Next.js assets are immutable
+  <FilesMatch "^(?!.*\.html$).*\.(js|css|woff2|webp|png|jpg|svg)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>
+
+# 8. Protect Hidden & Sensitive Files
+<FilesMatch "^\.(?!well-known)">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>

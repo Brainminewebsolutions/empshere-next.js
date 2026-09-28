@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.emsphere.com
+
+# Sitemaps
+Sitemap: https://www.emsphere.com/sitemap.xml
