@@ -1,7 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, Fragment } from "react";
 import BackToTop from "@/components/BackToTop";
+import StopwatchCounter from "@/components/StopwatchCounter";
+import { Brain, ChartLineUp, ChatsCircle, CloudCheck, Code, Cpu, CurrencyInr, ForkKnife, GearSix, Handshake, HardHat, IdentificationBadge, MagicWand, Medal, Money, PlugsConnected, SealCheck, Sparkle, ThumbsUp, UserCheck, UsersThree } from "@phosphor-icons/react/ssr";
 
 /* --------------------------------------------------------------------
    Images — every image the home page uses lives in app/images/homeimages
@@ -36,31 +38,15 @@ import logoDow from "./images/homeimages/logo-dow.png";
 // Enhance Workforce and Labor Management
 import workforceBuilding from "./images/homeimages/emsphere-corporate-office-building.png";
 import workforceEngineers from "./images/homeimages/emsphere-site-engineers-reviewing-plans.png";
-import iconExperienceBadge from "./images/homeimages/icon-15-years-experience-badge.png";
-import iconInHouseProducts from "./images/homeimages/icon-in-house-developed-products.png";
-import iconCustomerCentric from "./images/homeimages/icon-customer-centric-approach.png";
-import iconIntelligent from "./images/homeimages/icon-intelligent-hr-solutions.png";
-import iconInsightDriven from "./images/homeimages/icon-insight-driven-analytics.png";
-import iconAutomation from "./images/homeimages/icon-hr-process-automation.png";
-import iconAiDriven from "./images/homeimages/icon-ai-driven-technology.png";
 
 // Shop floor / Corporate team
 import shopFloorTeam from "./images/homeimages/shop-floor-workforce-management-team.png";
 import corporateTeam from "./images/homeimages/corporate-hr-team-collaboration.jpg";
 
 // emHRMS product showcase
-import iconEmhrms from "./images/homeimages/icon-emhrms-module.png";
 import emhrmsDashboard from "./images/homeimages/emhrms-dashboard-screenshot.png";
 
 // Change from legacy system
-import iconIntuitiveAi from "./images/homeimages/icon-intuitive-with-ai.png";
-import iconDataOnCloud from "./images/homeimages/icon-data-on-cloud.png";
-import iconErpIntegration from "./images/homeimages/icon-erp-integration.png";
-import iconConsultative from "./images/homeimages/icon-consultative-implementation.png";
-import iconIso from "./images/homeimages/icon-iso-iec-27001-certified.png";
-import iconCompetitiveCosting from "./images/homeimages/icon-competitive-costing.png";
-import iconHardwarePartnership from "./images/homeimages/icon-hardware-partnership.png";
-import iconUserFeedback from "./images/homeimages/icon-developed-on-user-feedback.png";
 
 // Testimonials
 import logoVarrocTestimonial from "./images/homeimages/logo-varroc-excellence-testimonial.png";
@@ -76,6 +62,7 @@ import logoMahindraMahindraTestimonial from "./images/homeimages/logo-mahindra-m
 import blogContractLabour from "./images/homeimages/blog-contract-labour-management-guide.png";
 import blogPayroll from "./images/homeimages/blog-payroll-management-automation.png";
 import blogVisitorManagement from "./images/homeimages/blog-visitor-management-system-security.png";
+import latestBlogs from "@/data/latest-blogs.json";
 
 /* --------------------------------------------------------------------
    Content data — edit copy, numbers, and labels here.
@@ -103,14 +90,14 @@ const HERO_SLIDES = [
 ];
 
 const HERO_STATS = [
-  { value: "500+", target: 500, suffix: "+", label: "Happy Client" },
-  { value: "8+", target: 8, suffix: "+", label: "Products" },
-  { value: "2,000,000", target: 2000000, suffix: "", label: "Satisfied Users" },
-  { value: "10+", target: 10, suffix: "+", label: "Industries" },
-  { value: "855+", target: 855, suffix: "+", label: "Project Completed" },
+  { value: "500", suffix: "+", label: "Happy Client" },
+  { value: "8", suffix: "+", label: "Products" },
+  { value: "2,000,000", suffix: "", label: "Satisfied Users" },
+  { value: "10", suffix: "+", label: "Industries" },
+  { value: "855", suffix: "+", label: "Project Completed" },
 ];
 
-const TRUSTED_LOGOS = [
+const TRUSTED_ROW_1 = [
   { src: logoMahindra, alt: "Mahindra" },
   { src: logoCapgemini, alt: "Capgemini" },
   { src: logoMercedesBenz, alt: "Mercedes-Benz" },
@@ -120,9 +107,11 @@ const TRUSTED_LOGOS = [
   { src: logoLtDefence, alt: "L&T Defence" },
   { src: logoZf, alt: "ZF" },
   { src: logoGarware, alt: "Garware Polyester Limited" },
+];
+
+const TRUSTED_ROW_2 = [
   { src: logoVarroc, alt: "Varroc Excellence" },
   { src: logoTataAutocomp, alt: "Tata Autocomp" },
-  { src: logoVishay, alt: "Vishay" },
   { src: logoVishay, alt: "Vishay" },
   { src: logoNayara, alt: "Nayara Energy" },
   { src: logoKirloskar, alt: "Kirloskar" },
@@ -131,33 +120,28 @@ const TRUSTED_LOGOS = [
   { src: logoDow, alt: "Dow" },
 ];
 
-// 6 logos per slide. Pages are chunked once here; the slider then loops
-// forever by repeating the first page after the last and the last page
-// before the first, so it can animate seamlessly in either direction.
-const TRUSTED_LOGOS_PER_SLIDE = 6;
-const TRUSTED_PAGES = Array.from(
-  { length: Math.ceil(TRUSTED_LOGOS.length / TRUSTED_LOGOS_PER_SLIDE) },
-  (_, i) =>
-    TRUSTED_LOGOS.slice(
-      i * TRUSTED_LOGOS_PER_SLIDE,
-      i * TRUSTED_LOGOS_PER_SLIDE + TRUSTED_LOGOS_PER_SLIDE
-    )
-);
-const TRUSTED_SLIDES = [
-  TRUSTED_PAGES[TRUSTED_PAGES.length - 1],
-  ...TRUSTED_PAGES,
-  TRUSTED_PAGES[0],
+const TRUSTED_LOGOS = [...TRUSTED_ROW_1, ...TRUSTED_ROW_2];
+
+// Seamless repeating arrays for infinite loop marquee tracks
+const TRUSTED_ROW_1_ITEMS = [
+  ...TRUSTED_ROW_1,
+  ...TRUSTED_ROW_1,
+  ...TRUSTED_ROW_1,
 ];
-// Each slide's share of the track's own (much wider) box, e.g. 20% for 5 slides.
-const TRUSTED_SLIDE_BASIS = 100 / TRUSTED_SLIDES.length;
+
+const TRUSTED_ROW_2_ITEMS = [
+  ...TRUSTED_ROW_2,
+  ...TRUSTED_ROW_2,
+  ...TRUSTED_ROW_2,
+];
 
 const WORKFORCE_FEATURES = [
-  { icon: iconInHouseProducts, label: "In-house developed\nproducts" },
-  { icon: iconCustomerCentric, label: "Customer centric \napproach" },
-  { icon: iconIntelligent, label: "Intelligent" },
-  { icon: iconInsightDriven, label: "Insight Driven" },
-  { icon: iconAutomation, label: "Automation" },
-  { icon: iconAiDriven, label: "AI Driven" },
+  { icon: Code, label: "In-house developed\nproducts" },
+  { icon: Handshake, label: "Customer centric \napproach" },
+  { icon: Brain, label: "Intelligent" },
+  { icon: ChartLineUp, label: "Insight Driven" },
+  { icon: GearSix, label: "Automation" },
+  { icon: Sparkle, label: "AI Driven" },
 ];
 
 const DIVISIONS = [
@@ -216,17 +200,27 @@ const SHOWCASE_PRODUCTS = [
   },
 ];
 
+// Section icons from Phosphor (https://phosphoricons.com), white on the #EFB000 tile.
+const SHOWCASE_ICONS = {
+  emHRMS: UsersThree,
+  emCLMS: HardHat,
+  emPayroll: Money,
+  emWorkForce: UserCheck,
+  emVisit: IdentificationBadge,
+  emMeal: ForkKnife,
+};
+
 const SHOWCASE_TABS = SHOWCASE_PRODUCTS.map((p) => p.name);
 
 const REASONS = [
-  { icon: iconIntuitiveAi, label: "Intutive With AI" },
-  { icon: iconErpIntegration, label: "ERP Integration" },
-  { icon: iconIso, label: "ISO/IEC 27001:2022" },
-  { icon: iconHardwarePartnership, label: "Hardware Partnership" },
-  { icon: iconDataOnCloud, label: "Data On Cloud" },
-  { icon: iconConsultative, label: "Consultative \nImplementation" },
-  { icon: iconCompetitiveCosting, label: "Competitive Costing" },
-  { icon: iconUserFeedback, label: "Developed On \nUser Feedback" },
+  { icon: MagicWand, label: "Intutive With AI" },
+  { icon: PlugsConnected, label: "ERP Integration" },
+  { icon: SealCheck, label: "ISO/IEC 27001:2022" },
+  { icon: Cpu, label: "Hardware Partnership" },
+  { icon: CloudCheck, label: "Data On Cloud" },
+  { icon: ChatsCircle, label: "Consultative \nImplementation" },
+  { icon: CurrencyInr, label: "Competitive Costing" },
+  { icon: ThumbsUp, label: "Developed On \nUser Feedback" },
 ];
 
 const TESTIMONIALS = [
@@ -304,24 +298,42 @@ const TESTIMONIALS = [
   },
 ];
 
-const BLOG_POSTS = [
+const FALLBACK_BLOGS = [
   {
-    image: blogContractLabour,
-    title: "Contract And Labor \nManagement",
+    slug: "contract-labour-management-indian-principal-employers",
+    title: "Contract And Labor Management",
     excerpt:
       "One System, Zero Compliance Gaps: The Complete Guide to Contract Labour Management for Indian Principal Employers",
+    featuredImage: {
+      src: blogContractLabour.src,
+      width: blogContractLabour.width,
+      height: blogContractLabour.height,
+      alt: "Contract And Labor Management",
+    },
   },
   {
-    image: blogPayroll,
-    title: "In Payroll \nManagement",
+    slug: "payroll-management-system-compliance-india",
+    title: "In Payroll Management",
     excerpt:
       "Payroll Without the Pain: How Emsphere’s Payroll Management System Automates Compliance for Indian Enterprises",
+    featuredImage: {
+      src: blogPayroll.src,
+      width: blogPayroll.width,
+      height: blogPayroll.height,
+      alt: "In Payroll Management",
+    },
   },
   {
-    image: blogVisitorManagement,
-    title: "Visitor \nManagement System",
+    slug: "visitor-management-system-business-security-investment",
+    title: "Visitor Management System",
     excerpt:
       "Why a Visitor Management System Is Now a Business-Critical Security Investment",
+    featuredImage: {
+      src: blogVisitorManagement.src,
+      width: blogVisitorManagement.width,
+      height: blogVisitorManagement.height,
+      alt: "Visitor Management System",
+    },
   },
 ];
 
@@ -368,62 +380,6 @@ function StarIcon(props) {
   );
 }
 
-function AnimatedCounter({ target, suffix = "", duration = 1800 }) {
-  const [count, setCount] = useState(0);
-  const ref = useRef(null);
-  const hasAnimated = useRef(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-
-    const startAnimation = () => {
-      const startTime = performance.now();
-
-      const step = (currentTime) => {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-
-        // easeOutCubic: starts fast and decelerates smoothly to the final number
-        const ease = 1 - Math.pow(1 - progress, 3);
-        const current = Math.floor(ease * target);
-
-        setCount(current);
-
-        if (progress < 1) {
-          requestAnimationFrame(step);
-        } else {
-          setCount(target);
-        }
-      };
-
-      requestAnimationFrame(step);
-    };
-
-    if (typeof IntersectionObserver !== "undefined") {
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting && !hasAnimated.current) {
-            hasAnimated.current = true;
-            startAnimation();
-          }
-        },
-        { threshold: 0.1 }
-      );
-      observer.observe(el);
-      return () => observer.disconnect();
-    } else {
-      startAnimation();
-    }
-  }, [target, duration]);
-
-  return (
-    <span ref={ref}>
-      {count.toLocaleString()}
-      {suffix}
-    </span>
-  );
-}
 
 /* --------------------------------------------------------------------
    Page CSS — plain hand-written CSS (no Tailwind), kept in this same
@@ -743,36 +699,69 @@ const PAGE_CSS = `
 
 .home-page .heroStatsWrap {
   position: absolute;
-  left: 39.58%;
-  top: 513px;
-  width: 55.7%;
-  max-width: 802px;
+  left: 38%;
+  top: 504px;
+  width: 58%;
+  max-width: 820px;
   z-index: 2;
 }
 
 .home-page .heroStats {
-  background: #ffffff;
-  box-shadow: inset 0 0 0 1px #acacac, 0px 0px 24px -9px rgba(0, 0, 0, 0.25);
-  border-radius: 10px;
+  position: relative;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(0, 119, 194, 0.14);
+  border-radius: 14px;
+  box-shadow:
+    0 18px 40px -12px rgba(0, 48, 100, 0.12),
+    0 6px 16px -4px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  gap: 24px;
   width: 100%;
-  padding: 38px 40px;
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 24px 28px;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease;
   will-change: transform;
+  overflow: hidden;
+}
+
+.home-page .heroStats::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gold, #efb000);
 }
 
 .home-page .heroStats:hover {
   transform: translateY(-4px);
-  box-shadow: inset 0 0 0 1px #acacac, 0px 16px 36px -9px rgba(0, 0, 0, 0.22);
+  border-color: rgba(239, 176, 0, 0.45);
+  box-shadow:
+    0 24px 48px -12px rgba(0, 80, 160, 0.18),
+    0 10px 24px -6px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+.home-page .heroStatDivider {
+  width: 1px;
+  height: 38px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.02) 0%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0.02) 100%);
+  flex-shrink: 0;
 }
 
 .home-page .heroStat {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  min-width: 90px;
+  padding: 4px 6px;
+  min-width: 0;
   transition: transform 0.25s ease;
 }
 
@@ -781,21 +770,33 @@ const PAGE_CSS = `
 }
 
 .home-page .heroStatValue {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: var(--font-heading);
-  font-weight: 600;
-  font-size: 25px;
-  color: var(--text-64);
+  font-weight: 800;
+  font-size: 26px;
+  color: #0b192c;
   margin-bottom: 4px;
   font-variant-numeric: tabular-nums;
+  line-height: 1.15;
+}
+
+.home-page .heroStopwatchNumber {
+  font-family: var(--font-heading) !important;
+  font-weight: 800 !important;
+  color: #0b192c;
+  letter-spacing: -0.02em;
 }
 
 .home-page .heroStatLabel {
   display: block;
-  font-family: var(--font-heading);
+  font-family: var(--font-label);
   font-weight: 600;
-  font-size: 16px;
-  color: var(--text-64);
+  font-size: 13.5px;
+  color: rgba(15, 23, 42, 0.65);
+  line-height: 1.3;
+  white-space: nowrap;
 }
 
 .home-page .heroDots {
@@ -820,12 +821,12 @@ const PAGE_CSS = `
 
 .home-page .heroDot:hover {
   transform: scale(1.15);
-  border-color: #0b78c2;
+  border-color: var(--gold, #efb000);
 }
 
 .home-page .heroDotActive {
-  background: var(--blue-alt);
-  border-color: var(--blue-alt);
+  background: var(--gold, #efb000);
+  border-color: var(--gold, #efb000);
   transform: scale(1.2);
 }
 
@@ -834,9 +835,10 @@ const PAGE_CSS = `
    ========================================================================== */
 
 .home-page .trusted {
-  background: var(--bg-gray-3);
+  background: #FFFFFA;
   box-shadow: inset 0 0 0 1px rgba(172, 172, 172, 0.1);
-  padding: 80px 0;
+  padding: 80px 0 88px;
+  overflow: hidden;
 }
 
 .home-page .trustedTitle {
@@ -844,67 +846,68 @@ const PAGE_CSS = `
   font-size: 24px;
   font-weight: 600;
   color: var(--heading-gray);
-  margin: 0 0 44px;
+  margin: 0 0 46px;
 }
 
-/* Desktop: Normal static grid as shown in reference image */
-.home-page .trustedDesktopGrid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 48px 32px;
+.home-page .trustedMarqueeWrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 8px 0;
+  mask-image: linear-gradient(to right, transparent 0%, black 7%, black 93%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 7%, black 93%, transparent 100%);
+}
+
+.home-page .trustedMarqueeRow {
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  width: 100%;
+  margin-bottom: 28px;
+}
+
+.home-page .trustedMarqueeRow:last-child {
+  margin-bottom: 0;
+}
+
+.home-page .trustedMarqueeTrack {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+.home-page .trustedMarqueeTrackRight {
+  animation: trustedMarqueeScrollRight 48s linear infinite;
+}
+
+.home-page .trustedMarqueeTrackLeft {
+  animation: trustedMarqueeScrollLeft 43s linear infinite;
+}
+
+.home-page .trustedMarqueeRow:hover .trustedMarqueeTrack {
+  animation-play-state: paused;
+}
+
+.home-page .trustedMarqueeGroup {
+  display: flex;
   align-items: center;
-  justify-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
+  gap: 52px;
+  padding-right: 52px;
+  flex-shrink: 0;
 }
 
 .home-page .trustedLogoWrap {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: 152px;
   height: 60px;
-}
-
-/* Hide mobile slider on desktop */
-.home-page .trustedMobileSlider {
-  display: none;
-}
-
-/* Mobile slider styles (preserved for mobile view) */
-.home-page .trustedSlider {
-  overflow: hidden;
-  touch-action: pan-y;
-  user-select: none;
-}
-
-.home-page .trustedTrack {
-  display: flex;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-  cursor: grab;
-}
-
-.home-page .trustedTrackInstant {
-  transition: none;
-}
-
-.home-page .trustedTrackDragging {
-  transition: none;
-  cursor: grabbing;
-}
-
-.home-page .trustedSlide {
-  flex: 0 0 100%;
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 32px 24px;
-  align-items: center;
-  justify-items: center;
+  flex-shrink: 0;
 }
 
 .home-page .trustedLogo {
-  max-height: 52px;
-  max-width: 136px;
+  max-height: 48px;
+  max-width: 132px;
   width: auto;
   height: auto;
   object-fit: contain;
@@ -915,38 +918,27 @@ const PAGE_CSS = `
   user-drag: none;
 }
 
-.home-page .trustedLogo:hover {
-  transform: translateY(-4px) scale(1.08);
-  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.09));
+.home-page .trustedLogoWrap:hover .trustedLogo {
+  transform: scale(1.1);
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.12));
 }
 
-.home-page .trustedDots {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  margin-top: 32px;
+@keyframes trustedMarqueeScrollRight {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
 }
 
-.home-page .trustedDot {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  border: none;
-  background: var(--border-gray);
-  padding: 0;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.home-page .trustedDot:hover {
-  transform: scale(1.2);
-}
-
-.home-page .trustedDotActive {
-  width: 22px;
-  border-radius: 5px;
-  background: var(--blue-alt);
+@keyframes trustedMarqueeScrollLeft {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
 }
 
 /* ==========================================================================
@@ -955,7 +947,7 @@ const PAGE_CSS = `
 
 .home-page .workforce {
   padding: 88px 0;
-  background: #ffffff;
+  background: #FFFFFA;
 }
 
 .home-page .workforceGrid {
@@ -1041,6 +1033,13 @@ const PAGE_CSS = `
 .home-page .workforceBadgeIcon {
   width: 40px;
   height: 40px;
+  border-radius: 9px;
+  background: var(--gold);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
 }
 
 .home-page .workforceBadgeNumber {
@@ -1107,8 +1106,9 @@ const PAGE_CSS = `
   flex-shrink: 0;
   width: 47px;
   height: 47px;
-  border-radius: 50%;
-  background: rgba(239, 176, 0, 0.3);
+  border-radius: 10px;
+  background: var(--gold);
+  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1122,7 +1122,6 @@ const PAGE_CSS = `
 .home-page .workforceFeatureIcon {
   width: 24px;
   height: 24px;
-  object-fit: contain;
 }
 
 .home-page .workforceFeatureLabel {
@@ -1138,7 +1137,7 @@ const PAGE_CSS = `
 
 .home-page .divisions {
   padding: 88px 0;
-  background: linear-gradient(180deg, #ffffff 0%, #fff8e4 100%);
+  background: #FFFFFA;
   position: relative;
   overflow: hidden;
 }
@@ -1153,38 +1152,70 @@ const PAGE_CSS = `
 
 .home-page .divisionCard {
   position: relative;
-  background: rgba(255, 248, 228, 0.4);
-  box-shadow: inset 0 0 0 1px #acacac, 0px 0px 24px -9px rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border-radius: 10px;
-  padding: 28px 28px 32px;
+  perspective: 1200px;
+  -webkit-perspective: 1200px;
+  background: transparent;
   cursor: pointer;
-  overflow: hidden;
-  transition: box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   outline: none;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform;
 }
 
 .home-page .divisionCard:hover,
 .home-page .divisionCard:focus-visible,
 .home-page .divisionCard.divisionCardActive {
-  box-shadow: inset 0 0 0 1.5px rgba(239, 176, 0, 0.7), 0px 18px 38px -8px rgba(0, 0, 0, 0.22);
   transform: translateY(-5px);
 }
 
-.home-page .divisionCardDefault {
-  transition: opacity 0.35s ease, filter 0.35s ease, transform 0.35s ease;
-  will-change: opacity, filter;
+.home-page .divisionCardInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+  will-change: transform;
 }
 
-.home-page .divisionCard:hover .divisionCardDefault,
-.home-page .divisionCard:focus-visible .divisionCardDefault,
-.home-page .divisionCard.divisionCardActive .divisionCardDefault {
-  opacity: 0;
-  filter: blur(4px);
-  transform: scale(0.98);
-  pointer-events: none;
+.home-page .divisionCard:hover .divisionCardInner,
+.home-page .divisionCard:focus-visible .divisionCardInner,
+.home-page .divisionCard.divisionCardActive .divisionCardInner {
+  transform: rotateY(180deg);
+}
+
+.home-page .divisionCardFront,
+.home-page .divisionCardBack {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  border-radius: 10px;
+  box-shadow: inset 0 0 0 1px #acacac, 0px 0px 24px -9px rgba(0, 0, 0, 0.25);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transition: box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.home-page .divisionCard:hover .divisionCardFront,
+.home-page .divisionCard:hover .divisionCardBack,
+.home-page .divisionCard:focus-visible .divisionCardFront,
+.home-page .divisionCard:focus-visible .divisionCardBack,
+.home-page .divisionCard.divisionCardActive .divisionCardFront,
+.home-page .divisionCard.divisionCardActive .divisionCardBack {
+  box-shadow: inset 0 0 0 1.5px rgba(239, 176, 0, 0.7), 0px 18px 38px -8px rgba(0, 0, 0, 0.22);
+}
+
+.home-page .divisionCardFront {
+  position: relative;
+  background: rgba(255, 248, 228, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 28px 28px 32px;
+  display: flex;
+  flex-direction: column;
+  transform: rotateY(0deg) translateZ(1px);
+  z-index: 2;
 }
 
 .home-page .divisionImage {
@@ -1194,12 +1225,7 @@ const PAGE_CSS = `
   border-radius: 11px;
   box-shadow: 0px 0px 24px -9px rgba(0, 0, 0, 0.25);
   margin-bottom: 20px;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform;
-}
-
-.home-page .divisionCard:hover .divisionImage {
-  transform: scale(1.04);
+  display: block;
 }
 
 .home-page .divisionTitle {
@@ -1216,7 +1242,7 @@ const PAGE_CSS = `
   margin: 0;
 }
 
-.home-page .divisionHoverOverlay {
+.home-page .divisionCardBack {
   position: absolute;
   inset: 0;
   display: flex;
@@ -1228,20 +1254,8 @@ const PAGE_CSS = `
   background: linear-gradient(145deg, rgba(255, 252, 244, 0.98) 0%, rgba(255, 247, 230, 0.98) 100%);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border-radius: 10px;
-  opacity: 0;
-  pointer-events: none;
-  transform: scale(0.96);
-  transition: opacity 0.35s ease-in-out, transform 0.35s ease-out;
-  will-change: opacity, transform;
-}
-
-.home-page .divisionCard:hover .divisionHoverOverlay,
-.home-page .divisionCard:focus-visible .divisionHoverOverlay,
-.home-page .divisionCard.divisionCardActive .divisionHoverOverlay {
-  opacity: 1;
-  pointer-events: auto;
-  transform: scale(1);
+  transform: rotateY(180deg) translateZ(1px);
+  z-index: 1;
 }
 
 .home-page .divisionHoverTitle {
@@ -1276,7 +1290,7 @@ const PAGE_CSS = `
    ========================================================================== */
 
 .home-page .showcase {
-  background: #f0f0f0;
+  background: #FFFFFA;
   padding: 88px 0;
   width: 100%;
 }
@@ -1327,15 +1341,11 @@ const PAGE_CSS = `
   height: 65px;
   border-radius: 7px;
   background: var(--gold);
+  color: #ffffff;
+  font-size: 38px;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.home-page .showcaseIcon img {
-  width: 38px;
-  height: 41px;
-  object-fit: contain;
 }
 
 .home-page .showcaseProductName {
@@ -1412,8 +1422,8 @@ const PAGE_CSS = `
   font-family: var(--font-heading);
   font-size: 15px;
   font-weight: 600;
-  background: #e5e5e5;
-  box-shadow: inset 0 0 0 1px #b4b4b4;
+  background: #ffffff;
+  box-shadow: inset 0 0 0 1px #dcdcdc;
   color: var(--text);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
@@ -1424,7 +1434,7 @@ const PAGE_CSS = `
 }
 
 .home-page .showcaseTab:hover {
-  background: #d8d8d8;
+  background: #f7f7f7;
   transform: translateY(-2px);
 }
 
@@ -1467,7 +1477,7 @@ const PAGE_CSS = `
 
 .home-page .reasons {
   padding: 88px 0;
-  background: #ffffff;
+  background: #FFFFFA;
 }
 
 .home-page .reasonsGrid {
@@ -1500,7 +1510,13 @@ const PAGE_CSS = `
 .home-page .reasonIcon {
   width: 56px;
   height: 56px;
-  object-fit: contain;
+  border-radius: 12px;
+  background: var(--gold);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform;
 }
@@ -1537,7 +1553,7 @@ const PAGE_CSS = `
    ========================================================================== */
 
 .home-page .testimonials {
-  background: var(--bg-gray-1);
+  background: #FFFFFA;
   padding: 88px 0;
   position: relative;
   overflow: hidden;
@@ -1826,7 +1842,7 @@ const PAGE_CSS = `
    ========================================================================== */
 
 .home-page .blogs {
-  background: var(--gold);
+  background: #FFFFFA;
   padding: 72px 0;
   overflow: hidden;
 }
@@ -1859,6 +1875,7 @@ const PAGE_CSS = `
   white-space: pre-line;
 }
 
+.home-page .blogsHeading .goldButton,
 .home-page .blogsHeading .blueButton {
   margin-bottom: 28px;
 }
@@ -1880,8 +1897,8 @@ const PAGE_CSS = `
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  border: none;
-  background: #fbfdff;
+  border: 1px solid #dcdcdc;
+  background: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1899,6 +1916,13 @@ const PAGE_CSS = `
   transform: scale(0.96);
 }
 
+.home-page .blogsArrow:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
 .home-page .blogsArrow svg {
   width: 7px;
   height: 12px;
@@ -1911,8 +1935,8 @@ const PAGE_CSS = `
 }
 
 .home-page .blogCard {
-  background: #eef8ff;
-  box-shadow: inset 0 0 0 3px #a7ddff, 0px 0px 24px -9px rgba(0, 0, 0, 0.25);
+  background: #ffffff;
+  box-shadow: inset 0 0 0 1px #e2e8f0, 0px 4px 16px -4px rgba(0, 0, 0, 0.08);
   border-radius: 10px;
   overflow: hidden;
   display: flex;
@@ -1923,7 +1947,13 @@ const PAGE_CSS = `
 
 .home-page .blogCard:hover {
   transform: translateY(-6px);
-  box-shadow: inset 0 0 0 3px #72c5ff, 0px 18px 36px -8px rgba(0, 0, 0, 0.22);
+  box-shadow: inset 0 0 0 1px var(--gold), 0px 18px 36px -8px rgba(0, 0, 0, 0.16);
+}
+
+.home-page .blogImageLink {
+  display: block;
+  overflow: hidden;
+  text-decoration: none;
 }
 
 .home-page .blogImage {
@@ -1952,19 +1982,36 @@ const PAGE_CSS = `
   font-family: var(--font-heading);
   font-size: 18px;
   font-weight: 700;
-  color: var(--blue-dark);
+  color: var(--text);
   margin: 0;
-  white-space: pre-line;
-  line-height: 1.3;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.home-page .blogTitleLink {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.home-page .blogCard:hover .blogTitleLink {
+  color: var(--blue-dark);
 }
 
 .home-page .blogExcerpt {
   font-size: 15px;
-  font-weight: 600;
-  line-height: 1.4;
-  color: rgba(0, 0, 0, 0.5);
+  font-weight: 500;
+  line-height: 1.45;
+  color: rgba(0, 0, 0, 0.55);
   margin: 0;
   flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .home-page .blogCard:hover .learnMore {
@@ -1981,7 +2028,7 @@ const PAGE_CSS = `
 
 .home-page .cta {
   padding: 88px 0;
-  background: #ffffff;
+  background: #FFFFFA;
 }
 
 .home-page .ctaRow {
@@ -2081,6 +2128,10 @@ const PAGE_CSS = `
     gap: 20px;
   }
 
+  .home-page .heroStatDivider {
+    display: none;
+  }
+
   .home-page .workforceGrid,
   .home-page .showcaseGrid {
     grid-template-columns: 1fr;
@@ -2096,10 +2147,6 @@ const PAGE_CSS = `
     margin: 0 auto 50px;
   }
 
-  .home-page .trustedSlide {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px 20px;
-  }
 
   .home-page .divisionsGrid,
   .home-page .blogsGrid,
@@ -2282,10 +2329,14 @@ const PAGE_CSS = `
   .home-page .heroStats {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    padding: 22px 16px;
+    padding: 20px 16px;
     gap: 16px 12px;
     border-radius: 12px;
-    box-shadow: inset 0 0 0 1px #dcdcdc, 0px 8px 24px -6px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 10px 25px -8px rgba(0, 48, 100, 0.1), inset 0 0 0 1px rgba(0, 119, 194, 0.12);
+  }
+
+  .home-page .heroStatDivider {
+    display: none;
   }
 
   .home-page .heroStat {
@@ -2293,6 +2344,7 @@ const PAGE_CSS = `
     text-align: center;
   }
 
+  .home-page .heroStat.heroStatLast,
   .home-page .heroStat:nth-child(5) {
     grid-column: span 2;
   }
@@ -2303,31 +2355,45 @@ const PAGE_CSS = `
   }
 
   .home-page .heroStatLabel {
-    font-size: 13px;
+    font-size: 12.5px;
+    white-space: normal;
   }
 
   /* Trusted */
-  .home-page .trustedDesktopGrid {
-    display: none;
-  }
-
-  .home-page .trustedMobileSlider {
-    display: block;
+  .home-page .trusted {
+    padding: 56px 0 60px;
   }
 
   .home-page .trustedTitle {
     font-size: 20px;
-    margin-bottom: 24px;
+    margin-bottom: 28px;
   }
 
-  .home-page .trustedSlide {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px 14px;
+  .home-page .trustedMarqueeRow {
+    margin-bottom: 20px;
+  }
+
+  .home-page .trustedMarqueeGroup {
+    gap: 36px;
+    padding-right: 36px;
+  }
+
+  .home-page .trustedLogoWrap {
+    width: 120px;
+    height: 48px;
   }
 
   .home-page .trustedLogo {
     max-height: 38px;
-    max-width: 96px;
+    max-width: 104px;
+  }
+
+  .home-page .trustedMarqueeTrackRight {
+    animation-duration: 38s;
+  }
+
+  .home-page .trustedMarqueeTrackLeft {
+    animation-duration: 34s;
   }
 
   /* Workforce */
@@ -2419,6 +2485,8 @@ const PAGE_CSS = `
   .home-page .workforceBadgeIcon {
     width: 28px;
     height: 28px;
+    font-size: 17px;
+    border-radius: 7px;
   }
 
   .home-page .workforceBadgeNumber {
@@ -2437,8 +2505,12 @@ const PAGE_CSS = `
     max-width: 480px;
   }
 
-  .home-page .divisionCard {
+  .home-page .divisionCardFront {
     padding: 20px 18px 24px;
+  }
+
+  .home-page .divisionCardBack {
+    padding: 24px 18px;
   }
 
   .home-page .divisionImage {
@@ -2454,10 +2526,6 @@ const PAGE_CSS = `
   .home-page .divisionText {
     font-size: 14px;
     line-height: 1.5;
-  }
-
-  .home-page .divisionHoverOverlay {
-    padding: 24px 18px;
   }
 
   .home-page .divisionHoverTitle {
@@ -2549,6 +2617,8 @@ const PAGE_CSS = `
   .home-page .reasonIcon {
     width: 42px;
     height: 42px;
+    font-size: 23px;
+    border-radius: 10px;
   }
 
   .home-page .reasonLabel {
@@ -2748,9 +2818,19 @@ const PAGE_CSS = `
     font-size: 12px;
   }
 
-  .home-page .trustedSlide {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px 12px;
+  .home-page .trustedMarqueeGroup {
+    gap: 26px;
+    padding-right: 26px;
+  }
+
+  .home-page .trustedLogoWrap {
+    width: 100px;
+    height: 40px;
+  }
+
+  .home-page .trustedLogo {
+    max-height: 32px;
+    max-width: 88px;
   }
 
   .home-page .reasonsGrid {
@@ -2800,15 +2880,7 @@ const PAGE_CSS = `
 
 export default function LandingPage() {
   const [heroIndex, setHeroIndex] = useState(0);
-  // Slides run [lastPageClone, ...realPages, firstPageClone]; index 1 is the
-  // real first page, so the slider always starts there.
-  const [trustedIndex, setTrustedIndex] = useState(1);
-  const [trustedInstant, setTrustedInstant] = useState(false);
-  const [trustedDragging, setTrustedDragging] = useState(false);
-  const trustedTrackRef = useRef(null);
-  const trustedInteractingRef = useRef(false);
-  const trustedResumeTimeoutRef = useRef(null);
-  const trustedDragRef = useRef({ active: false, startX: 0, deltaX: 0 });
+
   const [activeTab, setActiveTab] = useState(SHOWCASE_TABS[0]);
   const [activeDivision, setActiveDivision] = useState(null);
   const divisionCardRefs = useRef([]);
@@ -2822,6 +2894,9 @@ export default function LandingPage() {
   const mobileInteractingRef = useRef(false);
   const mobileResumeTimeoutRef = useRef(null);
   const mobileScrollDebounceRef = useRef(null);
+
+  const blogsList = latestBlogs && latestBlogs.length > 0 ? latestBlogs : FALLBACK_BLOGS;
+  const visibleBlogs = blogsList.slice(0, 3);
 
   useEffect(() => {
     const mq = window.matchMedia("(max-width: 768px)");
@@ -2956,6 +3031,7 @@ export default function LandingPage() {
 
   const activeProduct =
     SHOWCASE_PRODUCTS.find((p) => p.name === activeTab) || SHOWCASE_PRODUCTS[0];
+  const ShowcaseIcon = SHOWCASE_ICONS[activeProduct.id];
 
   const handlePrevProduct = () => {
     const currentIndex = SHOWCASE_TABS.indexOf(activeTab);
@@ -2976,106 +3052,7 @@ export default function LandingPage() {
     return () => clearInterval(timer);
   }, []);
 
-  /* ----------------------------------------------------------------
-     Trusted-by logos slider — 6 logos per slide, auto-advances every
-     2.4s, loops forever in both directions, and can also be dragged
-     (mouse/touch) or jumped to directly via the dot indicators.
-     ---------------------------------------------------------------- */
-  const trustedPageCount = TRUSTED_PAGES.length;
-  const trustedActivePage =
-    ((trustedIndex - 1) % trustedPageCount + trustedPageCount) % trustedPageCount;
 
-  const pauseTrustedAutoplay = () => {
-    trustedInteractingRef.current = true;
-    if (trustedResumeTimeoutRef.current) clearTimeout(trustedResumeTimeoutRef.current);
-    trustedResumeTimeoutRef.current = setTimeout(() => {
-      trustedInteractingRef.current = false;
-    }, 2400);
-  };
-
-  const goToTrustedPage = (page) => {
-    pauseTrustedAutoplay();
-    setTrustedInstant(false);
-    setTrustedIndex(page + 1);
-  };
-
-  const handleTrustedPointerDown = (event) => {
-    pauseTrustedAutoplay();
-    trustedDragRef.current = { active: true, startX: event.clientX, deltaX: 0 };
-    setTrustedDragging(true);
-    event.currentTarget.setPointerCapture?.(event.pointerId);
-  };
-
-  const handleTrustedPointerMove = (event) => {
-    const drag = trustedDragRef.current;
-    const track = trustedTrackRef.current;
-    if (!drag.active || !track) return;
-    drag.deltaX = event.clientX - drag.startX;
-    // Percent is relative to the track's OWN (much wider) box, so a full
-    // visible-width drag must only cover one slide's basis share of it.
-    const width = track.parentElement?.clientWidth || 1;
-    const percent = (drag.deltaX / width) * TRUSTED_SLIDE_BASIS;
-    track.style.transform = `translateX(calc(-${trustedIndex * TRUSTED_SLIDE_BASIS}% + ${percent}%))`;
-  };
-
-  const endTrustedDrag = () => {
-    const drag = trustedDragRef.current;
-    if (!drag.active) return;
-    drag.active = false;
-    setTrustedDragging(false);
-    const track = trustedTrackRef.current;
-    const width = track?.parentElement?.clientWidth || track?.clientWidth || 1;
-    if (track) track.style.transform = "";
-    const threshold = width * 0.12;
-    setTrustedInstant(false);
-    if (drag.deltaX <= -threshold) {
-      setTrustedIndex((current) => current + 1);
-    } else if (drag.deltaX >= threshold) {
-      setTrustedIndex((current) => current - 1);
-    }
-    pauseTrustedAutoplay();
-  };
-
-  const handleTrustedPointerLeave = () => {
-    if (trustedDragRef.current.active) endTrustedDrag();
-  };
-
-  useEffect(() => {
-    if (!isMobile) return;
-    const timer = setInterval(() => {
-      if (trustedInteractingRef.current) return;
-      setTrustedInstant(false);
-      setTrustedIndex((current) => current + 1);
-    }, 2400);
-    return () => clearInterval(timer);
-  }, [isMobile]);
-
-  // Reached the cloned first/last page — snap back to the real one right
-  // after the slide transition finishes, with no visible jump.
-  useEffect(() => {
-    if (trustedIndex === TRUSTED_SLIDES.length - 1) {
-      const timer = setTimeout(() => {
-        setTrustedInstant(true);
-        setTrustedIndex(1);
-      }, 620);
-      return () => clearTimeout(timer);
-    }
-    if (trustedIndex === 0) {
-      const timer = setTimeout(() => {
-        setTrustedInstant(true);
-        setTrustedIndex(trustedPageCount);
-      }, 620);
-      return () => clearTimeout(timer);
-    }
-  }, [trustedIndex, trustedPageCount]);
-
-  useEffect(() => {
-    if (!trustedInstant) return;
-    const raf = requestAnimationFrame(() => {
-      requestAnimationFrame(() => setTrustedInstant(false));
-    });
-    return () => cancelAnimationFrame(raf);
-  }, [trustedInstant]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -3188,7 +3165,7 @@ export default function LandingPage() {
               <div className="heroSlideContent">
                 <h1 className="heroTitle">{slide.title}</h1>
                 <p className="heroText">{slide.text}</p>
-                <a className="blueButton heroCta" href="#request-demo">
+                <a className="goldButton heroCta" href="#request-demo">
                   {slide.cta.toUpperCase()}
                   <ArrowRightIcon className="buttonIcon" />
                 </a>
@@ -3211,13 +3188,23 @@ export default function LandingPage() {
 
         <div className="heroStatsWrap">
           <div className="heroStats">
-            {HERO_STATS.map((stat) => (
-              <div className="heroStat" key={stat.label}>
-                <span className="heroStatValue">
-                  <AnimatedCounter target={stat.target} suffix={stat.suffix} />
-                </span>
-                <span className="heroStatLabel">{stat.label}</span>
-              </div>
+            {HERO_STATS.map((stat, index) => (
+              <Fragment key={stat.label}>
+                {index > 0 && <span className="heroStatDivider" aria-hidden="true" />}
+                <div
+                  className={`heroStat ${index === HERO_STATS.length - 1 ? "heroStatLast" : ""}`}
+                >
+                  <span className="heroStatValue">
+                    <StopwatchCounter
+                      value={stat.value}
+                      suffix={stat.suffix}
+                      delay={index * 90}
+                      className="heroStopwatchNumber"
+                    />
+                  </span>
+                  <span className="heroStatLabel">{stat.label}</span>
+                </div>
+              </Fragment>
             ))}
           </div>
         </div>
@@ -3229,76 +3216,78 @@ export default function LandingPage() {
           <h2 className="trustedTitle reveal-on-scroll reveal-fade-up">
             Trusted By Leading Organizations
           </h2>
+        </div>
 
-          {/* Desktop: Normal static grid with all logos (no slider) as shown in image */}
-          <div className="trustedDesktopGrid reveal-on-scroll reveal-fade-up">
-            {TRUSTED_LOGOS.map((logo, index) => (
-              <div
-                key={`trusted-desktop-${logo.alt}-${index}`}
-                className="trustedLogoWrap"
-              >
-                <img
-                  className="trustedLogo"
-                  src={logo.src.src}
-                  alt={logo.alt}
-                  width={logo.src.width}
-                  height={logo.src.height}
-                  loading="lazy"
-                />
+        <div className="trustedMarqueeWrapper reveal-on-scroll reveal-fade-up">
+          {/* Row 1: Left to Right */}
+          <div className="trustedMarqueeRow" aria-label="Trusted client logos row 1">
+            <div className="trustedMarqueeTrack trustedMarqueeTrackRight">
+              <div className="trustedMarqueeGroup">
+                {TRUSTED_ROW_1_ITEMS.map((logo, index) => (
+                  <div key={`r1-a-${index}`} className="trustedLogoWrap">
+                    <img
+                      className="trustedLogo"
+                      src={logo.src.src}
+                      alt={logo.alt}
+                      width={logo.src.width}
+                      height={logo.src.height}
+                      loading="lazy"
+                      draggable={false}
+                    />
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-
-          {/* Mobile: Preserved slider with touch/drag and pagination dots */}
-          <div className="trustedMobileSlider">
-            <div className="trustedSlider">
-              <div
-                ref={trustedTrackRef}
-                className={`trustedTrack ${trustedInstant ? "trustedTrackInstant" : ""} ${
-                  trustedDragging ? "trustedTrackDragging" : ""
-                }`}
-                style={{
-                  width: `${TRUSTED_SLIDES.length * 100}%`,
-                  transform: `translateX(-${trustedIndex * TRUSTED_SLIDE_BASIS}%)`,
-                }}
-                onPointerDown={handleTrustedPointerDown}
-                onPointerMove={handleTrustedPointerMove}
-                onPointerUp={endTrustedDrag}
-                onPointerLeave={handleTrustedPointerLeave}
-                onPointerCancel={handleTrustedPointerLeave}
-              >
-                {TRUSTED_SLIDES.map((page, slideIndex) => (
-                  <div
-                    className="trustedSlide"
-                    key={`trusted-slide-${slideIndex}`}
-                    style={{ flex: `0 0 ${TRUSTED_SLIDE_BASIS}%` }}
-                  >
-                    {page.map((logo, logoIndex) => (
-                      <img
-                        key={`${logo.alt}-${slideIndex}-${logoIndex}`}
-                        className="trustedLogo"
-                        src={logo.src.src}
-                        alt={logo.alt}
-                        width={logo.src.width}
-                        height={logo.src.height}
-                        loading="lazy"
-                        draggable={false}
-                      />
-                    ))}
+              <div className="trustedMarqueeGroup" aria-hidden="true">
+                {TRUSTED_ROW_1_ITEMS.map((logo, index) => (
+                  <div key={`r1-b-${index}`} className="trustedLogoWrap">
+                    <img
+                      className="trustedLogo"
+                      src={logo.src.src}
+                      alt={logo.alt}
+                      width={logo.src.width}
+                      height={logo.src.height}
+                      loading="lazy"
+                      draggable={false}
+                    />
                   </div>
                 ))}
               </div>
             </div>
-            <div className="trustedDots">
-              {TRUSTED_PAGES.map((_, page) => (
-                <button
-                  key={`trusted-dot-${page}`}
-                  type="button"
-                  aria-label={`Show logos, page ${page + 1}`}
-                  className={`trustedDot ${page === trustedActivePage ? "trustedDotActive" : ""}`}
-                  onClick={() => goToTrustedPage(page)}
-                />
-              ))}
+          </div>
+
+          {/* Row 2: Right to Left */}
+          <div className="trustedMarqueeRow" aria-label="Trusted client logos row 2">
+            <div className="trustedMarqueeTrack trustedMarqueeTrackLeft">
+              <div className="trustedMarqueeGroup">
+                {TRUSTED_ROW_2_ITEMS.map((logo, index) => (
+                  <div key={`r2-a-${index}`} className="trustedLogoWrap">
+                    <img
+                      className="trustedLogo"
+                      src={logo.src.src}
+                      alt={logo.alt}
+                      width={logo.src.width}
+                      height={logo.src.height}
+                      loading="lazy"
+                      draggable={false}
+                    />
+                  </div>
+                ))}
+              </div>
+              <div className="trustedMarqueeGroup" aria-hidden="true">
+                {TRUSTED_ROW_2_ITEMS.map((logo, index) => (
+                  <div key={`r2-b-${index}`} className="trustedLogoWrap">
+                    <img
+                      className="trustedLogo"
+                      src={logo.src.src}
+                      alt={logo.alt}
+                      width={logo.src.width}
+                      height={logo.src.height}
+                      loading="lazy"
+                      draggable={false}
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -3326,14 +3315,9 @@ export default function LandingPage() {
                 loading="lazy"
               />
               <div className="workforceBadge">
-                <img
-                  className="workforceBadgeIcon"
-                  src={iconExperienceBadge.src}
-                  alt=""
-                  aria-hidden="true"
-                  width={iconExperienceBadge.width}
-                  height={iconExperienceBadge.height}
-                />
+                <span className="workforceBadgeIcon" aria-hidden="true">
+                  <Medal weight="fill" />
+                </span>
                 <span className="workforceBadgeNumber">15+</span>
                 <span className="workforceBadgeLabel">Years of Experience</span>
               </div>
@@ -3357,14 +3341,7 @@ export default function LandingPage() {
                     key={feature.label}
                   >
                     <span className="workforceFeatureIconWrap">
-                      <img
-                        className="workforceFeatureIcon"
-                        src={feature.icon.src}
-                        alt=""
-                        aria-hidden="true"
-                        width={feature.icon.width}
-                        height={feature.icon.height}
-                      />
+                      <feature.icon className="workforceFeatureIcon" weight="fill" aria-hidden="true" />
                     </span>
                     <span className="workforceFeatureLabel">{feature.label}</span>
                   </div>
@@ -3406,23 +3383,25 @@ export default function LandingPage() {
                 role="region"
                 aria-label={division.title}
               >
-                <div className="divisionCardDefault">
-                  <img
-                    className="divisionImage"
-                    src={division.image.src}
-                    alt={division.title}
-                    width={division.image.width}
-                    height={division.image.height}
-                    loading="lazy"
-                  />
-                  <h3 className="divisionTitle">{division.title}</h3>
-                  <p className="divisionText">{division.text}</p>
-                </div>
+                <div className="divisionCardInner">
+                  <div className="divisionCardFront">
+                    <img
+                      className="divisionImage"
+                      src={division.image.src}
+                      alt={division.title}
+                      width={division.image.width}
+                      height={division.image.height}
+                      loading="lazy"
+                    />
+                    <h3 className="divisionTitle">{division.title}</h3>
+                    <p className="divisionText">{division.text}</p>
+                  </div>
 
-                <div className="divisionHoverOverlay" aria-hidden="true">
-                  <h3 className="divisionHoverTitle">{division.title}</h3>
-                  <span className="divisionHoverDivider" />
-                  <p className="divisionHoverText">{division.hoverText}</p>
+                  <div className="divisionCardBack" aria-hidden="true">
+                    <h3 className="divisionHoverTitle">{division.title}</h3>
+                    <span className="divisionHoverDivider" />
+                    <p className="divisionHoverText">{division.hoverText}</p>
+                  </div>
                 </div>
               </article>
             ))}
@@ -3439,14 +3418,8 @@ export default function LandingPage() {
               <h2 className="showcaseTitle">{"Serving the HR and \nIndustrial Relations"}</h2>
 
               <div className="showcaseInfo" key={activeProduct.id}>
-                <span className="showcaseIcon">
-                  <img
-                    src={iconEmhrms.src}
-                    alt=""
-                    aria-hidden="true"
-                    width={iconEmhrms.width}
-                    height={iconEmhrms.height}
-                  />
+                <span className="showcaseIcon" aria-hidden="true">
+                  <ShowcaseIcon weight="fill" />
                 </span>
                 <h3 className="showcaseProductName">{activeProduct.name}</h3>
                 <p className="showcaseDesc">{activeProduct.desc}</p>
@@ -3520,14 +3493,9 @@ export default function LandingPage() {
                 style={{ transitionDelay: `${(index % 4) * 80}ms` }}
                 key={reason.label}
               >
-                <img
-                  className="reasonIcon"
-                  src={reason.icon.src}
-                  alt=""
-                  aria-hidden="true"
-                  width={reason.icon.width}
-                  height={reason.icon.height}
-                />
+                <span className="reasonIcon" aria-hidden="true">
+                  <reason.icon weight="fill" />
+                </span>
                 <span className="reasonLabel">{reason.label}</span>
                 <span className="reasonBar" />
               </div>
@@ -3700,46 +3668,51 @@ export default function LandingPage() {
                   "HR Teams stay updated with the latest \nHRTech trends, insights, and \ninnovations through our expert blogs."
                 }
               </p>
-              <a className="blueButton" href="/blog/">
+              <a className="goldButton" href="/blog/">
                 DISCOVER MORE
                 <ArrowRightIcon className="buttonIcon" />
               </a>
-              <div className="blogsArrows">
-                <button type="button" className="blogsArrow" aria-label="Previous blog post">
-                  <ChevronIcon direction="left" />
-                </button>
-                <span className="blogsArrowDivider" />
-                <button type="button" className="blogsArrow" aria-label="Next blog post">
-                  <ChevronIcon direction="right" />
-                </button>
-              </div>
             </div>
 
             <div className="blogsGrid">
-              {BLOG_POSTS.map((post, index) => (
-                <article
-                  className="blogCard reveal-on-scroll reveal-fade-up"
-                  style={{ transitionDelay: `${index * 120}ms` }}
-                  key={post.title}
-                >
-                  <img
-                    className="blogImage"
-                    src={post.image.src}
-                    alt={post.title.replace("\n", " ")}
-                    width={post.image.width}
-                    height={post.image.height}
-                    loading="lazy"
-                  />
-                  <div className="blogBody">
-                    <h3 className="blogTitle">{post.title}</h3>
-                    <p className="blogExcerpt">{post.excerpt}</p>
-                    <span className="learnMore">
-                      Learn More
-                      <ArrowRightIcon />
-                    </span>
-                  </div>
-                </article>
-              ))}
+              {visibleBlogs.map((post, index) => {
+                const postHref = post.slug ? `/blog/${post.slug}/` : "/blog/";
+                const imageSrc = post.featuredImage?.src || blogContractLabour.src;
+                const imageAlt = post.featuredImage?.alt || post.title;
+                const imageWidth = post.featuredImage?.width || 600;
+                const imageHeight = post.featuredImage?.height || 400;
+
+                return (
+                  <article
+                    className="blogCard reveal-on-scroll reveal-fade-up"
+                    style={{ transitionDelay: `${index * 120}ms` }}
+                    key={post.slug || post.title || index}
+                  >
+                    <a href={postHref} className="blogImageLink" aria-label={post.title}>
+                      <img
+                        className="blogImage"
+                        src={imageSrc}
+                        alt={imageAlt}
+                        width={imageWidth}
+                        height={imageHeight}
+                        loading="lazy"
+                      />
+                    </a>
+                    <div className="blogBody">
+                      <h3 className="blogTitle">
+                        <a href={postHref} className="blogTitleLink">
+                          {post.title}
+                        </a>
+                      </h3>
+                      <p className="blogExcerpt">{post.excerpt}</p>
+                      <a href={postHref} className="learnMore">
+                        Learn More
+                        <ArrowRightIcon />
+                      </a>
+                    </div>
+                  </article>
+                );
+              })}
             </div>
           </div>
         </div>

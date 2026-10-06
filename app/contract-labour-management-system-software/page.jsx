@@ -38,10 +38,6 @@ import complianceAutomationImg from "../images/contract-labour-management-system
 import badgeGdpr from "../images/contract-labour-management-system-software/badge-gdpr-certified.webp";
 
 // How emContract helps to manage compliance
-import iconComplianceReports from "../images/contract-labour-management-system-software/icon-compliance-reports-registers.webp";
-import iconPfEsic from "../images/contract-labour-management-system-software/icon-pf-esic-contractor-challan.webp";
-import iconLicenseExpiry from "../images/contract-labour-management-system-software/icon-license-expiry-alerts.webp";
-import iconOshas from "../images/contract-labour-management-system-software/icon-oshas-health-safety.webp";
 
 // Turn key solution partners
 import partnerSuprema from "../images/contract-labour-management-system-software/partner-logo-suprema.webp";
@@ -55,6 +51,7 @@ import partnerG4s from "../images/contract-labour-management-system-software/par
 import partnerHanvon from "../images/contract-labour-management-system-software/partner-logo-hanvon-faceid.webp";
 import partnerVirdi from "../images/contract-labour-management-system-software/partner-logo-virdi.webp";
 import partnerNitgen from "../images/contract-labour-management-system-software/partner-logo-nitgen.webp";
+import { ArrowsOut, CalendarCheck, ChartBar, ChartLineUp, ChartPieSlice, Clock, Cloud, CursorClick, EnvelopeSimple, FileText, FirstAidKit, GearSix, HardDrives, HardHat, Headset, IdentificationCard, ListChecks, ListMagnifyingGlass, Money, PlugsConnected, Scales, ShieldCheck, SlidersHorizontal, Sparkle, Stamp, Star, TrendUp, Trophy, UserCheck, UserGear, UsersThree } from "@phosphor-icons/react/ssr";
 
 
 // Title and description are the page's Rank Math values on the current site.
@@ -147,105 +144,49 @@ function FaqToggleIcon() {
   );
 }
 
-// Solid icons drawn for this page matching the HRMS vibrant solid-tile + white icon style.
-const ICON_PATHS = {
-  automation: (
-    <path fillRule="evenodd" d="M11.078 2.25c-.917 0-1.699.663-1.85 1.567L9.05 4.889c-.02.12-.115.26-.297.348a7.493 7.493 0 0 0-.986.57c-.166.115-.334.126-.45.083L6.177 5.48a1.875 1.875 0 0 0-2.282.819l-.92 1.59a1.875 1.875 0 0 0 .432 2.385l1.04.832c.1.082.146.229.117.382a7.525 7.525 0 0 0 0 1.14c.029.153-.017.3-.117.382l-1.04.832a1.875 1.875 0 0 0-.432 2.385l.92 1.59c.527.912 1.636 1.3 2.282.818l1.14-.41c.116-.043.284-.032.45.082.312.214.641.405.986.57.182.088.277.228.297.35l.177 1.071c.151.904.933 1.567 1.85 1.567h1.844c.916 0 1.699-.663 1.85-1.567l.178-1.072c.02-.12.114-.26.297-.349.344-.165.673-.356.985-.57.167-.114.335-.125.45-.082l1.14.409a1.875 1.875 0 0 0 2.282-.818l.92-1.59a1.875 1.875 0 0 0-.432-2.385l-1.04-.832c-.1-.082-.146-.229-.117-.382a7.525 7.525 0 0 0 0-1.14c-.029-.153.017-.3.117-.382l1.04-.832a1.875 1.875 0 0 0 .432-2.385l-.92-1.59a1.875 1.875 0 0 0-2.282-.818l-1.14.41c-.115.042-.283.031-.45-.083a7.49 7.49 0 0 0-.985-.57c-.183-.088-.277-.229-.297-.349l-.178-1.071A1.875 1.875 0 0 0 12.922 2.25h-1.844ZM12 15.75a3.75 3.75 0 1 0 0-7.5 3.75 3.75 0 0 0 0 7.5Z" clipRule="evenodd" />
-  ),
-  shield: (
-    <path fillRule="evenodd" d="M12.516 2.17a.75.75 0 0 0-1.032 0 11.209 11.209 0 0 1-7.877 3.08.75.75 0 0 0-.722.515A12.74 12.74 0 0 0 2.25 9.75c0 5.942 4.064 10.933 9.563 12.348a.749.749 0 0 0 .374 0c5.499-1.415 9.563-6.406 9.563-12.348 0-1.39-.223-2.73-.635-3.985a.75.75 0 0 0-.722-.516l-.143.001c-2.996 0-5.717-1.17-7.734-3.08Zm3.094 8.016a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z" clipRule="evenodd" />
-  ),
-  master: (
-    <path fillRule="evenodd" d="M4.5 3.75A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V6A2.25 2.25 0 0 0 19.5 3.75h-15ZM8.25 8.25a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5ZM5.25 15.75a3 3 0 0 1 6 0H5.25Zm8.25-6.75a.75.75 0 0 0 0 1.5h5.25a.75.75 0 0 0 0-1.5H13.5Zm0 3.75a.75.75 0 0 0 0 1.5h5.25a.75.75 0 0 0 0-1.5H13.5Zm0 3.75a.75.75 0 0 0 0 1.5h3a.75.75 0 0 0 0-1.5H13.5Z" clipRule="evenodd" />
-  ),
-  clock: (
-    <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 6a.75.75 0 0 0-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 0 0 0-1.5h-3.75V6Z" clipRule="evenodd" />
-  ),
-  dashboard: (
-    <path fillRule="evenodd" d="M3 4.5A2.25 2.25 0 0 1 5.25 2.25h13.5A2.25 2.25 0 0 1 21.75 4.5v15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 19.5v-15ZM5.25 3.75a.75.75 0 0 0-.75.75v5.25h15V4.5a.75.75 0 0 0-.75-.75H5.25Zm-.75 7.5v8.25c0 .414.336.75.75.75h5.25v-9H4.5Zm7.5 9h7.5a.75.75 0 0 0 .75-.75v-8.25h-8.25v9Z" clipRule="evenodd" />
-  ),
-  wages: (
-    <path fillRule="evenodd" d="M12 1.5c-5.799 0-10.5 4.701-10.5 10.5s4.701 10.5 10.5 10.5 10.5-4.701 10.5-10.5S17.799 1.5 12 1.5Zm1.125 5.25a.75.75 0 0 0 0 1.5h2.25a.75.75 0 0 1 0 1.5h-3.375a.75.75 0 0 0 0 1.5h1.875a2.25 2.25 0 0 1 0 4.5h-.75v1.5a.75.75 0 0 1-1.5 0V16.5H9.375a.75.75 0 0 1 0-1.5h2.25a.75.75 0 0 0 0-1.5H9.75a2.25 2.25 0 0 1 0-4.5h2.625V7.5a.75.75 0 0 1 1.5 0v.75h1.5a.75.75 0 0 0 0-1.5h-2.25Z" clipRule="evenodd" />
-  ),
-  star: (
-    <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clipRule="evenodd" />
-  ),
-  planning: (
-    <path fillRule="evenodd" d="M2.25 18a.75.75 0 0 1 .75-.75h18a.75.75 0 0 1 0 1.5H3a.75.75 0 0 1-.75-.75Zm1.72-8.03a.75.75 0 0 1 1.06 0l4.22 4.22 3.97-3.97a.75.75 0 0 1 1.06 0l5.72 5.72a.75.75 0 1 1-1.06 1.06l-5.19-5.19-3.97 3.97a.75.75 0 0 1-1.06 0L4.5 11.03a.75.75 0 0 1 0-1.06Zm13.5-3.22a.75.75 0 0 1 .75-.75h4.5a.75.75 0 0 1 .75.75v4.5a.75.75 0 0 1-1.5 0V7.5H18.22a.75.75 0 0 1-.75-.75Z" clipRule="evenodd" />
-  ),
-  contractor: (
-    <path fillRule="evenodd" d="M12 1.5a4.5 4.5 0 0 0-4.5 4.5v.75a4.5 4.5 0 0 0 9 0V6a4.5 4.5 0 0 0-4.5-4.5Zm-7.5 16.5A4.5 4.5 0 0 1 9 13.5h6a4.5 4.5 0 0 1 4.5 4.5v1.5a1.5 1.5 0 0 1-1.5 1.5h-12A1.5 1.5 0 0 1 4.5 19.5V18Z" clipRule="evenodd" />
-  ),
-  reports: (
-    <path fillRule="evenodd" d="M5.625 1.5H9a3.75 3.75 0 0 1 3.75 3.75v1.875c0 1.036.84 1.875 1.875 1.875H16.5a3.75 3.75 0 0 1 3.75 3.75v7.875c0 1.035-.84 1.875-1.875 1.875H5.625a1.875 1.875 0 0 1-1.875-1.875V3.375c0-1.036.84-1.875 1.875-1.875ZM12.75 12a.75.75 0 0 0 0-1.5h-4.5a.75.75 0 0 0 0 1.5h4.5Zm0 3a.75.75 0 0 0 0-1.5h-4.5a.75.75 0 0 0 0 1.5h4.5Zm-2.25 3a.75.75 0 0 0 0-1.5h-2.25a.75.75 0 0 0 0 1.5h2.25Zm4.5-12.75v1.875a.375.375 0 0 0 .375.375h1.875a2.25 2.25 0 0 0-2.25-2.25Z" clipRule="evenodd" />
-  ),
-  mail: (
-    <path fillRule="evenodd" d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67Zm19.5-3.42H3a3 3 0 0 0-1.5.405l9.263 5.7a1.5 1.5 0 0 0 1.474 0l9.263-5.7A3 3 0 0 0 21 5.25Z" clipRule="evenodd" />
-  ),
-  integration: (
-    <path fillRule="evenodd" d="M18.75 3a2.25 2.25 0 0 0-2.25 2.25v2.25H7.5V5.25A2.25 2.25 0 0 0 5.25 3h-1.5A2.25 2.25 0 0 0 1.5 5.25v1.5A2.25 2.25 0 0 0 3.75 9h1.5v6H3.75A2.25 2.25 0 0 0 1.5 17.25v1.5A2.25 2.25 0 0 0 3.75 21h1.5a2.25 2.25 0 0 0 2.25-2.25v-2.25h9v2.25a2.25 2.25 0 0 0 2.25 2.25h1.5a2.25 2.25 0 0 0 2.25-2.25v-1.5a2.25 2.25 0 0 0-2.25-2.25H18.75V9h1.5A2.25 2.25 0 0 0 22.5 6.75v-1.5A2.25 2.25 0 0 0 20.25 3h-1.5ZM6.75 9h10.5v6H6.75V9Z" clipRule="evenodd" />
-  ),
-  ai: (
-    <path fillRule="evenodd" d="M9 4.5a.75.75 0 0 1 .721.544l.813 2.846a3.75 3.75 0 0 0 2.576 2.576l2.846.813a.75.75 0 0 1 0 1.442l-2.846.813a3.75 3.75 0 0 0-2.576 2.576l-.813 2.846a.75.75 0 0 1-1.442 0l-.813-2.846a3.75 3.75 0 0 0-2.576-2.576l-2.846-.813a.75.75 0 0 1 0-1.442l2.846-.813A3.75 3.75 0 0 0 7.466 7.89l.813-2.846A.75.75 0 0 1 9 4.5ZM18 1.5a.75.75 0 0 1 .728.568l.258.972a2.25 2.25 0 0 0 1.544 1.544l.972.258a.75.75 0 0 1 0 1.456l-.972.258a2.25 2.25 0 0 0-1.544 1.544l-.258.972a.75.75 0 0 1-1.456 0l-.258-.972a2.25 2.25 0 0 0-1.544-1.544l-.972-.258a.75.75 0 0 1 0-1.456l.972-.258a2.25 2.25 0 0 0 1.544-1.544l.258-.972A.75.75 0 0 1 18 1.5Z" clipRule="evenodd" />
-  ),
-  law: (
-    <path fillRule="evenodd" d="M12 2.25a.75.75 0 0 1 .75.75v1.5h6.75a.75.75 0 0 1 .75.75v.75a.75.75 0 0 1-.75.75h-.814l2.127 5.319a2.25 2.25 0 0 1-1.393 2.977l-.695.232a4.498 4.498 0 0 1-3.045 0l-.695-.232a2.25 2.25 0 0 1-1.393-2.977L15.765 6h-3.015v14.25h3a.75.75 0 0 1 0 1.5h-7.5a.75.75 0 0 1 0-1.5h3V6H8.235l2.127 5.319a2.25 2.25 0 0 1-1.393 2.977l-.695.232a4.498 4.498 0 0 1-3.045 0l-.695-.232a2.25 2.25 0 0 1-1.393-2.977L5.314 6H4.5a.75.75 0 0 1-.75-.75V4.5a.75.75 0 0 1 .75-.75h6.75V3a.75.75 0 0 1 .75-.75Z" clipRule="evenodd" />
-  ),
-  attendance: (
-    <path fillRule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695ZM17.28 11.22a.75.75 0 0 1 1.06 0l2.25 2.25a.75.75 0 0 1-1.06 1.06l-1.72-1.72-1.72 1.72a.75.75 0 1 1-1.06-1.06l2.25-2.25Z" clipRule="evenodd" />
-  ),
-  calendar: (
-    <path fillRule="evenodd" d="M6.75 2.25A.75.75 0 0 1 7.5 3v1.5h9V3A.75.75 0 0 1 18 3v1.5h.75A3.75 3.75 0 0 1 22.5 8.25v10.5A3.75 3.75 0 0 1 18.75 22.5H5.25A3.75 3.75 0 0 1 1.5 18.75V8.25A3.75 3.75 0 0 1 5.25 4.5H6V3a.75.75 0 0 1 .75-.75Zm13.5 9a1.5 1.5 0 0 0-1.5-1.5H5.25a1.5 1.5 0 0 0-1.5 1.5v7.5a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5v-7.5Z" clipRule="evenodd" />
-  ),
-  performance: (
-    <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75 0 2.457.91 4.7 2.41 6.417a.75.75 0 0 0 1.118-.999A8.25 8.25 0 1 1 19.98 12a8.217 8.217 0 0 1-1.758 5.097.75.75 0 0 0 1.18.924A9.718 9.718 0 0 0 21.75 12c0-5.385-4.365-9.75-9.75-9.75ZM12 8.25a.75.75 0 0 1 .75.75v1.69l2.47-1.425a.75.75 0 1 1 .75 1.3l-3.22 1.86a1.5 1.5 0 1 1-1.5-1.5V9a.75.75 0 0 1 .75-.75Z" clipRule="evenodd" />
-  ),
-  tasks: (
-    <path fillRule="evenodd" d="M7.5 3.75A1.5 1.5 0 0 0 6 5.25v13.5A1.5 1.5 0 0 0 7.5 20.25h9a1.5 1.5 0 0 0 1.5-1.5V5.25a1.5 1.5 0 0 0-1.5-1.5h-9Zm6.78 6.28a.75.75 0 0 0-1.06-1.06l-2.47 2.47-1.19-1.19a.75.75 0 0 0-1.06 1.06l1.72 1.72a.75.75 0 0 0 1.06 0l3-3Zm0 5.25a.75.75 0 0 0-1.06-1.06l-2.47 2.47-1.19-1.19a.75.75 0 0 0-1.06 1.06l1.72 1.72a.75.75 0 0 0 1.06 0l3-3Z" clipRule="evenodd" />
-  ),
-  selfservice: (
-    <>
-      <path d="M7 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H7zm0 2h10v13H7V4zm5 14.25a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-      <path d="M12 7a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-3 7a3 3 0 0 1 6 0H9z" />
-    </>
-  ),
-  analytics: (
-    <path fillRule="evenodd" d="M3 3a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h18a1 1 0 1 0 0-2H4V4a1 1 0 0 0-1-1Zm4 10a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-5Zm6-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V9Zm6-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V5Z" clipRule="evenodd" />
-  ),
-  tailored: (
-    <path fillRule="evenodd" d="M3 6a1 1 0 0 1 1-1h2.17a3.001 3.001 0 0 1 5.66 0H20a1 1 0 1 1 0 2H11.83a3.001 3.001 0 0 1-5.66 0H4a1 1 0 0 1-1-1Zm0 6a1 1 0 0 1 1-1h8.17a3.001 3.001 0 0 1 5.66 0H20a1 1 0 1 1 0 2h-2.17a3.001 3.001 0 0 1-5.66 0H4a1 1 0 0 1-1-1Zm0 6a1 1 0 0 1 1-1h4.17a3.001 3.001 0 0 1 5.66 0H20a1 1 0 1 1 0 2h-6.17a3.001 3.001 0 0 1-5.66 0H4a1 1 0 0 1-1-1Z" clipRule="evenodd" />
-  ),
-  cloud: (
-    <path fillRule="evenodd" d="M4.5 9.75a6 6 0 0 1 11.573-2.226 3.75 3.75 0 0 1 4.177 4.226H20.25A4.5 4.5 0 0 1 20.25 20.25H5.25A4.5 4.5 0 0 1 4.5 11.25v-1.5Zm7.5 1.5a.75.75 0 0 0-1.06 0l-3 3a.75.75 0 0 0 1.06 1.06l1.72-1.72v4.66a.75.75 0 0 0 1.5 0v-4.66l1.72 1.72a.75.75 0 0 0 1.06-1.06l-3-3Z" clipRule="evenodd" />
-  ),
-  scale: (
-    <path fillRule="evenodd" d="M3.75 3a.75.75 0 0 0-.75.75v5.25a.75.75 0 0 0 1.5 0V5.56l4.72 4.72a.75.75 0 0 0 1.06-1.06L5.56 4.5h3.44a.75.75 0 0 0 0-1.5H3.75Zm16.5 0a.75.75 0 0 0-.75.75v3.44l-4.72 4.72a.75.75 0 1 0 1.06 1.06L20.56 8.25v3.44a.75.75 0 0 0 1.5 0V3.75a.75.75 0 0 0-.75-.75h-5.25a.75.75 0 0 0 0 1.5h3.44ZM3.75 21a.75.75 0 0 0 .75-.75v-3.44l4.72-4.72a.75.75 0 1 0-1.06-1.06L3.44 15.75V12.31a.75.75 0 0 0-1.5 0v5.25a.75.75 0 0 0 .75.75h5.25a.75.75 0 0 0 0-1.5H4.5v-3.44Zm16.5 0a.75.75 0 0 0 .75-.75v-5.25a.75.75 0 0 0-1.5 0v3.44l-4.72-4.72a.75.75 0 0 0-1.06 1.06l4.72 4.72h-3.44a.75.75 0 0 0 0 1.5h5.25Z" clipRule="evenodd" />
-  ),
-  pointer: (
-    <path d="M4 2.5a.75.75 0 0 1 1.28-.53l14.25 14.25a.75.75 0 0 1-.7 1.28h-5.58l3.4 6.8a.75.75 0 1 1-1.34.68l-3.52-7.03-3.79 3.79a.75.75 0 0 1-1.28-.53V2.5z" />
-  ),
-  headset: (
-    <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75v4.5A3.75 3.75 0 0 0 6 20.25h1.5a2.25 2.25 0 0 0 2.25-2.25v-3a2.25 2.25 0 0 0-2.25-2.25H4.5V12a7.5 7.5 0 0 1 15 0v.75h-3A2.25 2.25 0 0 0 14.25 15v3a2.25 2.25 0 0 0 2.25 2.25h.75v.75a2.25 2.25 0 0 1-2.25 2.25h-2.25a.75.75 0 0 0 0 1.5h2.25a3.75 3.75 0 0 0 3.75-3.75v-.75H18A3.75 3.75 0 0 0 21.75 16.5V12c0-5.385-4.365-9.75-9.75-9.75Z" clipRule="evenodd" />
-  ),
-  trophy: (
-    <path fillRule="evenodd" d="M5.166 2.621v.858c-1.035.148-2.059.33-3.071.543a.75.75 0 0 0-.584.859 6.753 6.753 0 0 0 6.138 5.6c.45 1.391 1.381 2.571 2.601 3.324v2.795H8.25a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-2v-2.795a6.002 6.002 0 0 0 2.601-3.324 6.754 6.754 0 0 0 6.138-5.6.75.75 0 0 0-.584-.859 27.68 27.68 0 0 0-3.071-.543v-.858a.75.75 0 0 0-.75-.75h-12a.75.75 0 0 0-.75.75Zm1.5 2.378v4.218a5.255 5.255 0 0 1-3.585-2.915 26.246 26.246 0 0 1 3.585-1.303Zm10.668 0a26.246 26.246 0 0 1 3.585 1.303 5.255 5.255 0 0 1-3.585 2.915V4.999Z" clipRule="evenodd" />
-  ),
-  server: (
-    <path fillRule="evenodd" d="M2.25 5.25a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3v2.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V5.25Zm1.5 0a1.5 1.5 0 0 1 1.5-1.5h13.5a1.5 1.5 0 0 1 1.5 1.5v2.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5V5.25Zm14.25.75a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm-2.25.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM2.25 13.5a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3v2.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V13.5Zm1.5 0a1.5 1.5 0 0 1 1.5-1.5h13.5a1.5 1.5 0 0 1 1.5 1.5v2.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5V13.5Zm14.25.75a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm-2.25.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" clipRule="evenodd" />
-  ),
+// Section icons from Phosphor (https://phosphoricons.com), white on the #EFB000 tile.
+const ICONS = {
+  automation: GearSix,
+  shield: ShieldCheck,
+  master: UsersThree,
+  clock: Clock,
+  dashboard: ChartPieSlice,
+  wages: Money,
+  star: Star,
+  planning: ChartLineUp,
+  contractor: HardHat,
+  reports: FileText,
+  mail: EnvelopeSimple,
+  integration: PlugsConnected,
+  ai: Sparkle,
+  law: Scales,
+  attendance: UserCheck,
+  calendar: CalendarCheck,
+  performance: TrendUp,
+  tasks: ListChecks,
+  selfservice: UserGear,
+  analytics: ChartBar,
+  tailored: SlidersHorizontal,
+  cloud: Cloud,
+  scale: ArrowsOut,
+  pointer: CursorClick,
+  headset: Headset,
+  trophy: Trophy,
+  server: HardDrives,
+  complianceReports: ListMagnifyingGlass,
+  pfEsic: IdentificationCard,
+  licenseExpiry: Stamp,
+  oshas: FirstAidKit,
 };
 
 function LineIcon({ name, className = "h-6 w-6" }) {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className={className} fill="currentColor">
-      {ICON_PATHS[name]}
-    </svg>
-  );
+  const Icon = ICONS[name];
+  return <Icon weight="fill" aria-hidden="true" className={className} />;
 }
 
-function IconTile({ name, bg, color = "#ffffff", className = "h-12 w-12 rounded-[10px]", iconClassName = "h-6 w-6" }) {
+function IconTile({ name, className = "h-12 w-12 rounded-[10px]", iconClassName = "h-6 w-6" }) {
   return (
-    <span className={`flex shrink-0 items-center justify-center text-white shadow-sm ${iconPop} ${className}`} style={{ background: bg }}>
+    <span className={`flex shrink-0 items-center justify-center bg-[#EFB000] text-white shadow-sm ${iconPop} ${className}`}>
       <LineIcon name={name} className={iconClassName} />
     </span>
   );
@@ -273,15 +214,6 @@ function SectionHeader({ id, eyebrow, title, text, align = "center", className =
 }
 
 // A vibrant solid palette the cards cycle through (blue / green / gold / red / violet).
-const TONES = [
-  { bg: "#0077c2", color: "#ffffff" },
-  { bg: "#0fb880", color: "#ffffff" },
-  { bg: "#f8bb18", color: "#ffffff" },
-  { bg: "#ef4444", color: "#ffffff" },
-  { bg: "#5b5bd6", color: "#ffffff" },
-];
-const tone = (index) => TONES[index % TONES.length];
-
 /* --------------------------------------------------------------------
    Content — all copy from
    https://www.emsphere.com/contract-labour-management-system-software/
@@ -332,26 +264,22 @@ const complianceItems = [
   {
     title: "Compliance Reports",
     text: "Manage all that you have to maintain as a Principal employer namely Registers for Contractor, Overtime, Wage Slips, Muster Role and Employer ID.",
-    icon: iconComplianceReports,
-    alt: "Checklist with a magnifying glass icon for compliance registers",
+    icon: "complianceReports",
   },
   {
     title: "PF/ESIC",
     text: "Give Login to contractor and enable to upload the challan for ECR and verify details submitted by contractor automatically.",
-    icon: iconPfEsic,
-    alt: "Contractor profile card icon for PF and ESIC challan uploads",
+    icon: "pfEsic",
   },
   {
     title: "License Expiry",
     text: "Get timely alerts for expiry of license, WC between contractor and employee. Get notified if any employee tries to work without any week off.",
-    icon: iconLicenseExpiry,
-    alt: "Approved document with a stamp icon for licence expiry alerts",
+    icon: "licenseExpiry",
   },
   {
     title: "OSHAS",
     text: "Manage health and safety compliance by capturing Background check, Policy Verification, Medical verification, Induction , Training details, PPE details etc",
-    icon: iconOshas,
-    alt: "Health checklist with a heart and safety shield icon",
+    icon: "oshas",
   },
 ];
 
@@ -698,7 +626,7 @@ export default function ContractLabourManagementSystemPage() {
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
               {pillars.map((item, index) => (
                 <article key={item.title} style={stagger(index + 1)} className={`${revealUp} ${greyCard} ${liftGrey} flex flex-col items-center text-center gap-3 p-6`}>
-                  <IconTile name={item.icon} bg={tone(index * 2).bg} color={tone(index * 2).color} />
+                  <IconTile name={item.icon} />
                   <h3 className="text-xl font-semibold text-[#1f1f1f]">{item.title}</h3>
                   <p className={`text-[15px] leading-[23px] ${mutedText}`}>{item.text}</p>
                 </article>
@@ -729,7 +657,7 @@ export default function ContractLabourManagementSystemPage() {
               {modules.map((item, index) => (
                 <article key={item.title} className={`${goldCard} ${liftGold} relative flex w-full flex-col gap-3 p-6`}>
                   <span className={`${fontInter} absolute right-5 top-5 text-sm font-bold text-black/15`}>{String(index + 1).padStart(2, "0")}</span>
-                  <IconTile name={item.icon} bg={tone(index).bg} color={tone(index).color} />
+                  <IconTile name={item.icon} />
                   <h3 className="pr-6 text-lg font-semibold leading-snug text-[#1f1f1f]">{item.title}</h3>
                   <p className={`text-[15px] leading-[23px] ${mutedText}`}>{item.text}</p>
                 </article>
@@ -760,9 +688,7 @@ export default function ContractLabourManagementSystemPage() {
                 style={stagger(index, 100)}
                 className={`${revealUp} group/card flex flex-col items-center text-center gap-4 rounded-2xl bg-white p-6 shadow-[inset_0_0_0_1px_#ececec,0_2px_12px_rgba(0,0,0,0.04)] ${motion} hover:-translate-y-1 hover:shadow-[inset_0_0_0_1.5px_#efb000,0_12px_24px_-8px_rgba(0,0,0,0.1)]`}
               >
-                <span className={`flex h-16 w-16 items-center justify-center rounded-2xl bg-[#fff5d9] ${iconPop}`}>
-                  <Image src={item.icon} alt={item.alt} className="h-10 w-10 object-contain" sizes="40px" />
-                </span>
+                <IconTile name={item.icon} className="h-16 w-16 rounded-2xl" iconClassName="h-9 w-9" />
                 <h3 className="text-lg font-semibold text-[#1f1f1f]">{item.title}</h3>
                 <p className="text-sm leading-[22px] text-[#595959]">{item.text}</p>
               </li>
@@ -873,9 +799,7 @@ export default function ContractLabourManagementSystemPage() {
                 <div className="flex items-center justify-between sm:block">
                   <IconTile
                     name={item.icon}
-                    bg={tone(index).bg}
-                    color={tone(index).color}
-                    className="h-14 w-14 shrink-0 shadow-sm"
+                    className="h-14 w-14 shrink-0 shadow-sm rounded-[10px]"
                     iconClassName="h-8 w-8"
                   />
                   <span className="text-xs font-bold tracking-wider text-black/30 sm:hidden">

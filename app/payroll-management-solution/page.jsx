@@ -36,6 +36,7 @@ import salaryCalculationImg from "../images/payroll-management-solution/salary-c
 import salaryComputationImg from "../images/payroll-management-solution/salary-computation-calculator.webp";
 import reconciliationImg from "../images/payroll-management-solution/salary-monthly-reconciliation-reports.webp";
 import payslipImg from "../images/payroll-management-solution/payslip-generation-dashboard.webp";
+import { ArrowsClockwise, Bank, Briefcase, Certificate, ChartBar, ClockCounterClockwise, Files, FirstAidKit, Gift, HandCoins, Key, ListMagnifyingGlass, Percent, PiggyBank, Receipt, SlidersHorizontal, Target, TreeStructure, UsersThree } from "@phosphor-icons/react/ssr";
 
 
 // Title and description are the page's Rank Math values on the current site.
@@ -147,92 +148,37 @@ function CheckIcon({ className = "h-4 w-4" }) {
   );
 }
 
-// Solid icons drawn for this page matching the HRMS vibrant solid-tile + white icon style.
-const ICON_PATHS = {
-  access: (
-    <path fillRule="evenodd" d="M12 1.5a5.25 5.25 0 0 0-5.25 5.25v3a3 3 0 0 0-3 3v6.75a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3v-6.75a3 3 0 0 0-3-3v-3c0-2.9-2.35-5.25-5.25-5.25Zm3.75 8.25v-3a3.75 3.75 0 1 0-7.5 0v3h7.5Z" clipRule="evenodd" />
-  ),
-  controls: (
-    <path fillRule="evenodd" d="M12.516 2.17a.75.75 0 0 0-1.032 0 11.209 11.209 0 0 1-7.877 3.08.75.75 0 0 0-.722.515A12.74 12.74 0 0 0 2.25 9.75c0 5.942 4.064 10.933 9.563 12.348a.749.749 0 0 0 .374 0c5.499-1.415 9.563-6.406 9.563-12.348 0-1.39-.223-2.73-.635-3.985a.75.75 0 0 0-.722-.516l-.143.001c-2.996 0-5.717-1.17-7.734-3.08Zm3.094 8.016a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z" clipRule="evenodd" />
-  ),
-  accuracy: (
-    <path fillRule="evenodd" d="M8.603 3.799A4.49 4.49 0 0 1 12 2.25c1.357 0 2.573.6 3.397 1.549a4.49 4.49 0 0 1 3.498 1.307 4.491 4.491 0 0 1 1.307 3.497A4.49 4.49 0 0 1 21.75 12a4.49 4.49 0 0 1-1.549 3.397 4.491 4.491 0 0 1-1.307 3.497 4.491 4.491 0 0 1-3.497 1.307A4.49 4.49 0 0 1 12 21.75a4.49 4.49 0 0 1-3.397-1.549 4.49 4.49 0 0 1-3.498-1.306 4.491 4.491 0 0 1-1.307-3.498A4.49 4.49 0 0 1 2.25 12c0-1.357.6-2.573 1.549-3.397a4.49 4.49 0 0 1 1.307-3.497 4.49 4.49 0 0 1 3.497-1.307Zm7.007 6.387a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z" clipRule="evenodd" />
-  ),
-  analytics: (
-    <path fillRule="evenodd" d="M3 3a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h18a1 1 0 1 0 0-2H4V4a1 1 0 0 0-1-1Zm4 10a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-5Zm6-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V9Zm6-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V5Z" clipRule="evenodd" />
-  ),
-  cycle: (
-    <path fillRule="evenodd" d="M4.755 10.059a7.5 7.5 0 0 1 12.548-3.364l1.903 1.903h-3.183a.75.75 0 1 0 0 1.5h4.992a.75.75 0 0 0 .75-.75V4.356a.75.75 0 0 0-1.5 0v3.18l-1.9-1.9A9 9 0 0 0 3.306 9.67a.75.75 0 1 0 1.45.388Zm15.408 3.352a.75.75 0 0 0-.919.53 7.5 7.5 0 0 1-12.548 3.364l-1.902-1.903h3.183a.75.75 0 0 0 0-1.5H2.984a.75.75 0 0 0-.75.75v4.992a.75.75 0 0 0 1.5 0v-3.18l1.9 1.9a9 9 0 0 0 15.059-4.022.75.75 0 0 0-.53-.92Z" clipRule="evenodd" />
-  ),
-  audit: (
-    <>
-      <path fillRule="evenodd" d="M7.5 3.75A1.5 1.5 0 0 0 6 5.25v13.5A1.5 1.5 0 0 0 7.5 20.25h9a1.5 1.5 0 0 0 1.5-1.5V5.25a1.5 1.5 0 0 0-1.5-1.5h-9Zm3.75 3.75a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 0 1.5h-3a.75.75 0 0 1-.75-.75Zm-2.25 4.5a.75.75 0 0 1 .75-.75h6a.75.75 0 0 1 0 1.5h-6a.75.75 0 0 1-.75-.75Zm0 3.75a.75.75 0 0 1 .75-.75h6a.75.75 0 0 1 0 1.5h-6a.75.75 0 0 1-.75-.75Z" clipRule="evenodd" />
-      <path d="M18.75 9.75a.75.75 0 0 0-1.5 0v9.75H7.5a.75.75 0 0 0 0 1.5h10.5a1.5 1.5 0 0 0 1.5-1.5V9.75Z" />
-    </>
-  ),
-  group: (
-    <path d="M4.5 6.375a4.125 4.125 0 1 1 8.25 0 4.125 4.125 0 0 1-8.25 0ZM14.25 8.625a3.375 3.375 0 1 1 6.75 0 3.375 3.375 0 0 1-6.75 0ZM1.5 19.125a7.125 7.125 0 0 1 14.25 0v.003l-.001.119a.75.75 0 0 1-.363.63 13.067 13.067 0 0 1-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 0 1-.364-.63l-.001-.122ZM17.25 19.128l-.003.144a2.25 2.25 0 0 1-.233.96 10.088 10.088 0 0 0 5.06-1.232.75.75 0 0 0 .364-.63v-.12a5.625 5.625 0 0 0-5.188-5.615Z" />
-  ),
-  rules: (
-    <path fillRule="evenodd" d="M11.078 2.25c-.917 0-1.699.663-1.85 1.567L9.05 4.889c-.02.12-.115.26-.297.348a7.493 7.493 0 0 0-.986.57c-.166.115-.334.126-.45.083L6.177 5.48a1.875 1.875 0 0 0-2.282.819l-.92 1.59a1.875 1.875 0 0 0 .432 2.385l1.04.832c.1.082.146.229.117.382a7.525 7.525 0 0 0 0 1.14c.029.153-.017.3-.117.382l-1.04.832a1.875 1.875 0 0 0-.432 2.385l.92 1.59c.527.912 1.636 1.3 2.282.818l1.14-.41c.116-.043.284-.032.45.082.312.214.641.405.986.57.182.088.277.228.297.35l.177 1.071c.151.904.933 1.567 1.85 1.567h1.844c.916 0 1.699-.663 1.85-1.567l.178-1.072c.02-.12.114-.26.297-.349.344-.165.673-.356.985-.57.167-.114.335-.125.45-.082l1.14.409a1.875 1.875 0 0 0 2.282-.818l.92-1.59a1.875 1.875 0 0 0-.432-2.385l-1.04-.832c-.1-.082-.146-.229-.117-.382a7.525 7.525 0 0 0 0-1.14c-.029-.153.017-.3.117-.382l1.04-.832a1.875 1.875 0 0 0 .432-2.385l-.92-1.59a1.875 1.875 0 0 0-2.282-.818l-1.14.41c-.115.042-.283.031-.45-.083a7.49 7.49 0 0 0-.985-.57c-.183-.088-.277-.229-.297-.349l-.178-1.071A1.875 1.875 0 0 0 12.922 2.25h-1.844ZM12 15.75a3.75 3.75 0 1 0 0-7.5 3.75 3.75 0 0 0 0 7.5Z" clipRule="evenodd" />
-  ),
-  arrears: (
-    <path fillRule="evenodd" d="M6.75 2.25A.75.75 0 0 1 7.5 3v1.5h9V3A.75.75 0 0 1 18 3v1.5h.75A3.75 3.75 0 0 1 22.5 8.25v10.5A3.75 3.75 0 0 1 18.75 22.5H5.25A3.75 3.75 0 0 1 1.5 18.75V8.25A3.75 3.75 0 0 1 5.25 4.5H6V3a.75.75 0 0 1 .75-.75Zm13.5 9a1.5 1.5 0 0 0-1.5-1.5H5.25a1.5 1.5 0 0 0-1.5 1.5v7.5a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5v-7.5Z" clipRule="evenodd" />
-  ),
-  reimbursement: (
-    <path fillRule="evenodd" d="M4.5 2.25A.75.75 0 0 0 3.75 3v18a.75.75 0 0 0 1.18.614l2.57-1.836 2.57 1.836a.75.75 0 0 0 .88 0l2.57-1.836 2.57 1.836a.75.75 0 0 0 .88 0l2.57-1.836 2.57 1.836A.75.75 0 0 0 20.25 21V3a.75.75 0 0 0-.75-.75H4.5ZM7.5 6a.75.75 0 0 0 0 1.5h9a.75.75 0 0 0 0-1.5h-9Zm0 3.75a.75.75 0 0 0 0 1.5h9a.75.75 0 0 0 0-1.5h-9Zm0 3.75a.75.75 0 0 0 0 1.5h5a.75.75 0 0 0 0-1.5h-5Z" clipRule="evenodd" />
-  ),
-  loans: (
-    <>
-      <path d="M12 7.5a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Z" />
-      <path fillRule="evenodd" d="M1.5 4.875C1.5 3.839 2.34 3 3.375 3h17.25c1.035 0 1.875.84 1.875 1.875v9.75c0 1.036-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 0 1 1.5 14.625v-9.75ZM8.25 9.75a3.75 3.75 0 1 1 7.5 0 3.75 3.75 0 0 1-7.5 0ZM18.75 9a.75.75 0 0 0-.75.75v.005c0 .414.336.75.75.75h.005a.75.75 0 0 0 .75-.75V9.75a.75.75 0 0 0-.75-.75h-.005ZM1.5 18a.75.75 0 0 1 .75-.75h19.5a.75.75 0 0 1 0 1.5H2.25A.75.75 0 0 1 1.5 18Zm0 3a.75.75 0 0 1 .75-.75h19.5a.75.75 0 0 1 0 1.5H2.25A.75.75 0 0 1 1.5 21Z" clipRule="evenodd" />
-    </>
-  ),
-  banking: (
-    <>
-      <path fillRule="evenodd" d="M11.584 2.376a.75.75 0 0 1 .832 0l9 6a.75.75 0 1 1-.832 1.248L12 3.901 3.416 9.624a.75.75 0 0 1-.832-1.248l9-6Z" clipRule="evenodd" />
-      <path fillRule="evenodd" d="M20.25 10.332v9.918H21a.75.75 0 0 1 0 1.5H3a.75.75 0 0 1 0-1.5h.75v-9.918a.75.75 0 0 1 1.5 0v9.918h3v-9.918a.75.75 0 0 1 1.5 0v9.918h3v-9.918a.75.75 0 0 1 1.5 0v9.918h3v-9.918a.75.75 0 0 1 1.5 0ZM4.5 22.5a.75.75 0 0 0 0 1.5h15a.75.75 0 0 0 0-1.5h-15Z" clipRule="evenodd" />
-    </>
-  ),
-  pf: (
-    <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm.53 5.47a.75.75 0 0 0-1.06 0l-3 3a.75.75 0 1 0 1.06 1.06l1.72-1.72v6.19a.75.75 0 0 0 1.5 0V8.06l1.72 1.72a.75.75 0 1 0 1.06-1.06l-3-3Z" clipRule="evenodd" />
-  ),
-  esi: (
-    <path d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
-  ),
-  pt: (
-    <path fillRule="evenodd" d="M5.625 1.5H9a3.75 3.75 0 0 1 3.75 3.75v1.875c0 1.036.84 1.875 1.875 1.875H16.5a3.75 3.75 0 0 1 3.75 3.75v7.875c0 1.035-.84 1.875-1.875 1.875H5.625a1.875 1.875 0 0 1-1.875-1.875V3.375c0-1.036.84-1.875 1.875-1.875ZM12.75 12a.75.75 0 0 0 0-1.5h-4.5a.75.75 0 0 0 0 1.5h4.5Zm0 3a.75.75 0 0 0 0-1.5h-4.5a.75.75 0 0 0 0 1.5h4.5Zm-2.25 3a.75.75 0 0 0 0-1.5h-2.25a.75.75 0 0 0 0 1.5h2.25Zm4.5-12.75v1.875a.375.375 0 0 0 .375.375h1.875a2.25 2.25 0 0 0-2.25-2.25Z" clipRule="evenodd" />
-  ),
-  tds: (
-    <path fillRule="evenodd" d="M6 2.25A2.25 2.25 0 0 0 3.75 4.5v15A2.25 2.25 0 0 0 6 21.75h12A2.25 2.25 0 0 0 20.25 19.5V4.5A2.25 2.25 0 0 0 18 2.25H6Zm1.5 3a.75.75 0 0 0 0 1.5h9a.75.75 0 0 0 0-1.5h-9ZM7.5 9a.75.75 0 0 1 .75-.75h1.5a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-.75.75h-1.5A.75.75 0 0 1 7.5 10.5V9Zm4.5-.75a.75.75 0 0 0-.75.75v1.5c0 .414.336.75.75.75h1.5a.75.75 0 0 0 .75-.75V9a.75.75 0 0 0-.75-.75h-1.5ZM7.5 13.5a.75.75 0 0 1 .75-.75h1.5a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1-.75-.75v-1.5Zm4.5-.75a.75.75 0 0 0-.75.75v1.5c0 .414.336.75.75.75h1.5a.75.75 0 0 0 .75-.75v-1.5a.75.75 0 0 0-.75-.75h-1.5ZM15 9a.75.75 0 0 1 .75-.75h1.5a.75.75 0 0 1 .75.75v6a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1-.75-.75V9Zm-7.5 9a.75.75 0 0 1 .75-.75h9a.75.75 0 0 1 0 1.5h-9a.75.75 0 0 1-.75-.75Z" clipRule="evenodd" />
-  ),
-  form16: (
-    <path fillRule="evenodd" d="M5.625 1.5H9a3.75 3.75 0 0 1 3.75 3.75v1.875c0 1.036.84 1.875 1.875 1.875H16.5a3.75 3.75 0 0 1 3.75 3.75v7.875c0 1.035-.84 1.875-1.875 1.875H5.625a1.875 1.875 0 0 1-1.875-1.875V3.375c0-1.036.84-1.875 1.875-1.875ZM9.75 14.25a2.25 2.25 0 1 1 4.5 0 2.25 2.25 0 0 1-4.5 0Zm.324 3.594a3.75 3.75 0 0 0 3.852 0l1.358 2.037a.75.75 0 0 1-.624 1.169H9.34a.75.75 0 0 1-.624-1.169l1.358-2.037ZM14.25 3.375v1.875a.375.375 0 0 0 .375.375h1.875a2.25 2.25 0 0 0-2.25-2.25Z" clipRule="evenodd" />
-  ),
-  bonus: (
-    <path fillRule="evenodd" d="M12 2.25a2.25 2.25 0 0 0-2.25 2.25v.75H4.5A2.25 2.25 0 0 0 2.25 7.5v2.25a2.25 2.25 0 0 0 2.25 2.25h.75v6.75A2.25 2.25 0 0 0 7.5 21h9a2.25 2.25 0 0 0 2.25-2.25V12h.75a2.25 2.25 0 0 0 2.25-2.25V7.5A2.25 2.25 0 0 0 19.5 5.25h-5.25V4.5A2.25 2.25 0 0 0 12 2.25ZM11.25 12H7.5v6.75a.75.75 0 0 0 .75.75h3V12Zm1.5 7.5h3a.75.75 0 0 0 .75-.75V12h-3.75v7.5ZM4.5 6.75h6.75v3.75H4.5a.75.75 0 0 1-.75-.75V7.5a.75.75 0 0 1 .75-.75Zm8.25 0h6.75a.75.75 0 0 1 .75.75v2.25a.75.75 0 0 1-.75.75H12.75V6.75Z" clipRule="evenodd" />
-  ),
-  reports: (
-    <path fillRule="evenodd" d="M2.25 13.5a8.25 8.25 0 0 1 8.25-8.25.75.75 0 0 1 .75.75v6.75H18a.75.75 0 0 1 .75.75 8.25 8.25 0 1 1-16.5 0Zm10.5-9.69a9.75 9.75 0 0 1 8.94 8.94.75.75 0 0 1-.74.75h-7.5a.75.75 0 0 1-.75-.75V4.55a.75.75 0 0 1 .05-.74Z" clipRule="evenodd" />
-  ),
+// Section icons from Phosphor (https://phosphoricons.com), white on the #EFB000 tile.
+const ICONS = {
+  access: Key,
+  controls: SlidersHorizontal,
+  accuracy: Target,
+  analytics: ChartBar,
+  cycle: ArrowsClockwise,
+  audit: ListMagnifyingGlass,
+  group: UsersThree,
+  rules: TreeStructure,
+  arrears: ClockCounterClockwise,
+  reimbursement: Receipt,
+  loans: HandCoins,
+  banking: Bank,
+  pf: PiggyBank,
+  esi: FirstAidKit,
+  pt: Briefcase,
+  tds: Percent,
+  form16: Certificate,
+  bonus: Gift,
+  reports: Files,
 };
 
 function LineIcon({ name, className = "h-6 w-6" }) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      aria-hidden="true"
-      className={className}
-      fill="currentColor"
-    >
-      {ICON_PATHS[name]}
-    </svg>
-  );
+  const Icon = ICONS[name];
+  return <Icon weight="fill" aria-hidden="true" className={className} />;
 }
 
-function IconTile({ name, bg, className = "h-12 w-12 rounded-[10px]", iconClassName = "h-6 w-6" }) {
+function IconTile({ name, className = "h-12 w-12 rounded-[10px]", iconClassName = "h-6 w-6" }) {
   return (
-    <span className={`flex shrink-0 items-center justify-center text-white shadow-sm ${iconPop} ${className}`} style={{ background: bg }}>
+    <span className={`flex shrink-0 items-center justify-center bg-[#EFB000] text-white shadow-sm ${iconPop} ${className}`}>
       <LineIcon name={name} className={iconClassName} />
     </span>
   );
@@ -368,8 +314,8 @@ const reportTeams = [
   {
     team: "Compliance Team",
     text: "will get all the reports on State & Central acts, Factory Acts, Shop and Establishment Act & labour Law etc. All the Register and Return format will be updated as per government guidelines and same gets updated at client end automatically.",
-    accent: "#ef4444",
-    bg: "#fff0ef",
+    accent: "#F8BB18",
+    bg: "#fff5d9",
   },
 ];
 
@@ -557,7 +503,7 @@ export default function PayrollManagementSolutionPage() {
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
               {advantages.map((item, index) => (
                 <article key={item.title} style={stagger(index + 1)} className={`${revealUp} ${greyCard} ${liftGrey} flex flex-col items-center text-center gap-3 p-6`}>
-                  <IconTile name={item.icon} bg={item.bg} color={item.color} />
+                  <IconTile name={item.icon} />
                   <h3 className="text-xl font-semibold text-[#1f1f1f]">{item.title}</h3>
                   <p className={`text-[15px] leading-[23px] ${mutedText}`}>{item.text}</p>
                   <Link href="/contact-us" className={`group/btn mt-auto inline-flex items-center justify-center gap-2 pt-1 ${fontInter} text-sm font-semibold text-[#f8bb18]`}>
@@ -579,7 +525,7 @@ export default function PayrollManagementSolutionPage() {
             {whyEmpayroll.map((item, index) => (
               <li key={item.title} style={stagger(index, 100)} className={`${revealUp} ${goldCard} ${liftGold} relative flex flex-col items-center gap-3 overflow-hidden px-6 pb-7 pt-8 text-center`}>
                 <span aria-hidden="true" className="absolute inset-x-0 top-0 h-1" style={{ background: item.color }} />
-                <IconTile name={item.icon} bg={item.bg} color={item.color} className="h-16 w-16 rounded-full" iconClassName="h-8 w-8" />
+                <IconTile name={item.icon} className="h-16 w-16 rounded-2xl" iconClassName="h-8 w-8" />
                 <h3 className="text-lg font-semibold text-[#1f1f1f]">{item.title}</h3>
                 <p className={`text-[15px] leading-[23px] ${mutedText}`}>{item.text}</p>
               </li>
@@ -638,7 +584,7 @@ export default function PayrollManagementSolutionPage() {
                 { title: "Rule Engine", text: "Define rules to access, view, edit, delete or modify any data.", icon: "rules", bg: "#0fb880", surface: "#e5fff4" },
               ].map((item) => (
                 <div key={item.title} className={`group/card flex items-center gap-3 rounded-[8px] p-3.5 ${motion} hover:-translate-y-0.5 hover:shadow-[0px_8px_20px_-8px_rgba(0,0,0,0.2)]`} style={{ background: item.surface }}>
-                  <IconTile name={item.icon} bg={item.bg} className="h-11 w-11 rounded-[8px]" iconClassName="h-6 w-6" />
+                  <IconTile name={item.icon} className="h-11 w-11 rounded-[8px]" iconClassName="h-6 w-6" />
                   <div>
                     <h3 className="text-[15px] font-semibold text-[#1f1f1f]">{item.title}</h3>
                     <p className={`text-sm leading-[19px] ${mutedText}`}>{item.text}</p>
@@ -699,9 +645,9 @@ export default function PayrollManagementSolutionPage() {
             </div>
             <div className="flex flex-1 flex-col justify-between gap-5 p-6 sm:p-7 md:p-8">
               <div className="flex flex-col gap-2.5">
-                <p className="text-xs font-bold uppercase tracking-wider text-[#ef4444] sm:text-sm">Smooth Separation Process</p>
+                <p className="text-xs font-bold uppercase tracking-wider text-[#F8BB18] sm:text-sm">Smooth Separation Process</p>
                 <h2 className="text-xl font-bold leading-snug text-[#1f1f1f] sm:text-2xl md:text-[1.75rem]">
-                  Parting ways made <span className="text-[#ef4444]">frictionless</span>
+                  Parting ways made <span className="text-[#F8BB18]">frictionless</span>
                 </h2>
                 <p className="text-[14.5px] leading-relaxed text-[#595959] sm:text-base">
                   Lets you support your employee even when they have decided to move on, with quick exit reports and easy access to information on full and final settlement.
@@ -729,7 +675,7 @@ export default function PayrollManagementSolutionPage() {
             id="salary-heading"
             title={
               <>
-                Salary Management <span className="text-[#ef4444]">Money Matters!</span>
+                Salary Management <span className="text-[#F8BB18]">Money Matters!</span>
               </>
             }
             text="An intuitive system to Calculate, Compute, Reconcile Salary accurately and generate Pay Slips instantly."
@@ -813,7 +759,7 @@ export default function PayrollManagementSolutionPage() {
           <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {salaryProcessing.map((item, index) => (
               <li key={item.title} style={stagger(index, 100)} className={`${revealUp} ${greyCard} ${liftGrey} flex flex-col items-center text-center gap-3 p-6`}>
-                <IconTile name={item.icon} bg={item.bg} color={item.color} />
+                <IconTile name={item.icon} />
                 <h3 className="text-lg font-semibold text-[#1f1f1f]">{item.title}</h3>
                 <p className={`text-[15px] leading-[23px] ${mutedText}`}>{item.text}</p>
               </li>
@@ -844,7 +790,7 @@ export default function PayrollManagementSolutionPage() {
                   style={stagger(index, 100)}
                   className={`${revealUp} group/card flex flex-col items-center text-center gap-3 rounded-2xl bg-white p-5 shadow-[inset_0_0_0_1px_#e5e7eb,0_2px_12px_rgba(0,0,0,0.04)] ${motion} hover:-translate-y-1 hover:shadow-[inset_0_0_0_1.5px_#f8bb18,0_12px_24px_-8px_rgba(0,0,0,0.1)]`}
                 >
-                  <span className={`flex h-11 w-11 items-center justify-center rounded-[10px] bg-[#f8bb18] text-white shadow-sm ${iconPop}`}>
+                  <span className={`flex h-11 w-11 items-center justify-center rounded-[10px] bg-[#EFB000] text-white shadow-sm ${iconPop}`}>
                     <LineIcon name={item.icon} className="h-6 w-6" />
                   </span>
                   <h3 className="text-lg font-semibold text-[#1f1f1f]">{item.title}</h3>
@@ -862,7 +808,7 @@ export default function PayrollManagementSolutionPage() {
                   style={stagger(index, 100)}
                   className={`${revealUp} group/card flex gap-4 rounded-2xl bg-white p-5 shadow-[inset_0_0_0_1px_#e5e7eb,0_2px_12px_rgba(0,0,0,0.04)] ${motion} hover:-translate-y-1 hover:shadow-[inset_0_0_0_1.5px_#f8bb18,0_12px_24px_-8px_rgba(0,0,0,0.1)]`}
                 >
-                  <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-[10px] bg-[#f8bb18] text-white shadow-sm ${iconPop}`}>
+                  <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-[10px] bg-[#EFB000] text-white shadow-sm ${iconPop}`}>
                     <LineIcon name={item.icon} className="h-6 w-6" />
                   </span>
                   <div>

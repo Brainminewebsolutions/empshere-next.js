@@ -14,9 +14,8 @@ import PinnedScrollSection from "@/components/PinnedScrollSection";
    -------------------------------------------------------------------- */
 
 import heroImg from "../images/canteen-management-system/hero-emmeal-meal-planner-mobile-app.webp";
-import iconFixedMenu from "../images/canteen-management-system/icon-fixed-menu-cloche.webp";
-import iconAlaCarte from "../images/canteen-management-system/icon-ala-carte-order.webp";
 import appScreenImg from "../images/canteen-management-system/emmeal-find-meals-app-screen.webp";
+import { ArrowsOut, CallBell, Clock, ClockCountdown, CookingPot, CursorClick, Desktop, EnvelopeSimple, FileText, Fingerprint, ForkKnife, GearSix, Headset, Lightning, Package, PiggyBank, PlugsConnected, Receipt, SlidersHorizontal, Smiley, Stack, Storefront, Ticket, Trophy, Warning } from "@phosphor-icons/react/ssr";
 
 // Title and description are the page's Rank Math values on the current site.
 const PAGE_URL = "https://www.emsphere.com/canteen-management-system/";
@@ -113,90 +112,43 @@ function FaqToggleIcon() {
   );
 }
 
-// Solid icons drawn for this page matching the HRMS vibrant solid-tile + white icon style.
-const ICON_PATHS = {
-  portal: (
-    <path fillRule="evenodd" d="M2.25 4.5A2.25 2.25 0 0 1 4.5 2.25h15A2.25 2.25 0 0 1 21.75 4.5v10.5A2.25 2.25 0 0 1 19.5 17.25h-5.69l.72 2.25h2.22a.75.75 0 0 1 0 1.5H7.25a.75.75 0 0 1 0-1.5h2.22l.72-2.25H4.5A2.25 2.25 0 0 1 2.25 15V4.5Zm2.25-.75a.75.75 0 0 0-.75.75v10.5c0 .414.336.75.75.75h15a.75.75 0 0 0 .75-.75V4.5a.75.75 0 0 0-.75-.75H4.5Z" clipRule="evenodd" />
-  ),
-  clock: (
-    <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 6a.75.75 0 0 0-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 0 0 0-1.5h-3.75V6Z" clipRule="evenodd" />
-  ),
-  billing: (
-    <path fillRule="evenodd" d="M4.5 2.25A.75.75 0 0 0 3.75 3v18a.75.75 0 0 0 1.18.614l2.57-1.836 2.57 1.836a.75.75 0 0 0 .88 0l2.57-1.836 2.57 1.836a.75.75 0 0 0 .88 0l2.57-1.836 2.57 1.836A.75.75 0 0 0 20.25 21V3a.75.75 0 0 0-.75-.75H4.5ZM7.5 6a.75.75 0 0 0 0 1.5h9a.75.75 0 0 0 0-1.5h-9Zm0 3.75a.75.75 0 0 0 0 1.5h9a.75.75 0 0 0 0-1.5h-9Zm0 3.75a.75.75 0 0 0 0 1.5h5a.75.75 0 0 0 0-1.5h-5Z" clipRule="evenodd" />
-  ),
-  reports: (
-    <path fillRule="evenodd" d="M5.625 1.5H9a3.75 3.75 0 0 1 3.75 3.75v1.875c0 1.036.84 1.875 1.875 1.875H16.5a3.75 3.75 0 0 1 3.75 3.75v7.875c0 1.035-.84 1.875-1.875 1.875H5.625a1.875 1.875 0 0 1-1.875-1.875V3.375c0-1.036.84-1.875 1.875-1.875ZM12.75 12a.75.75 0 0 0 0-1.5h-4.5a.75.75 0 0 0 0 1.5h4.5Zm0 3a.75.75 0 0 0 0-1.5h-4.5a.75.75 0 0 0 0 1.5h4.5Zm-2.25 3a.75.75 0 0 0 0-1.5h-2.25a.75.75 0 0 0 0 1.5h2.25Zm4.5-12.75v1.875a.375.375 0 0 0 .375.375h1.875a2.25 2.25 0 0 0-2.25-2.25Z" clipRule="evenodd" />
-  ),
-  mail: (
-    <path fillRule="evenodd" d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67Zm19.5-3.42H3a3 3 0 0 0-1.5.405l9.263 5.7a1.5 1.5 0 0 0 1.474 0l9.263-5.7A3 3 0 0 0 21 5.25Z" clipRule="evenodd" />
-  ),
-  menu: (
-    <path fillRule="evenodd" d="M12 3a1 1 0 0 1 1 1v1.05A9.004 9.004 0 0 1 21 14v1a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-1a9.004 9.004 0 0 1 8-8.95V4a1 1 0 0 1 1-1ZM5.05 14h13.9A7.002 7.002 0 0 0 12 7.05 7.002 7.002 0 0 0 5.05 14ZM3 18a1 1 0 0 1 1-1h16a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1Z" clipRule="evenodd" />
-  ),
-  kiosk: (
-    <path fillRule="evenodd" d="M6 3a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 6 18h4.5v3H8.25a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5H13.5v-3H18a2.25 2.25 0 0 0 2.25-2.25V5.25A2.25 2.25 0 0 0 18 3H6Zm-.75 2.25a.75.75 0 0 1 .75-.75h12a.75.75 0 0 1 .75.75v8.25a.75.75 0 0 1-.75.75H6a.75.75 0 0 1-.75-.75V5.25Zm6.75 10.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Z" clipRule="evenodd" />
-  ),
-  integration: (
-    <path fillRule="evenodd" d="M18.75 3a2.25 2.25 0 0 0-2.25 2.25v2.25H7.5V5.25A2.25 2.25 0 0 0 5.25 3h-1.5A2.25 2.25 0 0 0 1.5 5.25v1.5A2.25 2.25 0 0 0 3.75 9h1.5v6H3.75A2.25 2.25 0 0 0 1.5 17.25v1.5A2.25 2.25 0 0 0 3.75 21h1.5a2.25 2.25 0 0 0 2.25-2.25v-2.25h9v2.25a2.25 2.25 0 0 0 2.25 2.25h1.5a2.25 2.25 0 0 0 2.25-2.25v-1.5a2.25 2.25 0 0 0-2.25-2.25H18.75V9h1.5A2.25 2.25 0 0 0 22.5 6.75v-1.5A2.25 2.25 0 0 0 20.25 3h-1.5ZM6.75 9h10.5v6H6.75V9Z" clipRule="evenodd" />
-  ),
-  coupon: (
-    <path fillRule="evenodd" d="M1.5 6.375c0-1.036.84-1.875 1.875-1.875h17.25c1.035 0 1.875.84 1.875 1.875v3.188a2.25 2.25 0 0 0 0 4.874v3.188c0 1.035-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 0 1 1.5 17.625V14.437a2.25 2.25 0 0 0 0-4.874V6.375ZM15 7.5a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 15 7.5Zm0 4.5a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5a.75.75 0 0 1 .75-.75Z" clipRule="evenodd" />
-  ),
-  overtime: (
-    <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 6a.75.75 0 0 0-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 0 0 0-1.5h-3.75V6Zm4.5 12a.75.75 0 0 1 .75-.75h2.25a.75.75 0 0 1 0 1.5H18a.75.75 0 0 1-.75-.75Z" clipRule="evenodd" />
-  ),
-  vendor: (
-    <path fillRule="evenodd" d="M3 4.5A1.5 1.5 0 0 1 4.5 3h15A1.5 1.5 0 0 1 21 4.5v3a3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1-3 3 3 3 0 0 1-3-3v-3ZM4.5 12h1.875a4.49 4.49 0 0 0 2.625-.845A4.49 4.49 0 0 0 12 12a4.49 4.49 0 0 0 2.625-.845A4.49 4.49 0 0 0 17.625 12H19.5v7.5A1.5 1.5 0 0 1 18 21H6a1.5 1.5 0 0 1-1.5-1.5V12Zm4.5 3a.75.75 0 0 1 .75.75v3a.75.75 0 0 1-1.5 0v-3a.75.75 0 0 1 .75-.75Zm6 0a.75.75 0 0 1 .75.75v3a.75.75 0 0 1-1.5 0v-3a.75.75 0 0 1 .75-.75Z" clipRule="evenodd" />
-  ),
-  inventory: (
-    <path fillRule="evenodd" d="M3.375 3C2.339 3 1.5 3.84 1.5 4.875v.75c0 1.036.84 1.875 1.875 1.875h17.25c1.035 0 1.875-.84 1.875-1.875v-.75C22.5 3.839 21.66 3 20.625 3H3.375ZM3 9h18v10.125c0 1.036-.84 1.875-1.875 1.875H4.875A1.875 1.875 0 0 1 3 19.125V9Zm6 3.75a.75.75 0 0 1 .75-.75h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1-.75-.75Z" clipRule="evenodd" />
-  ),
-  pointer: (
-    <path d="M4 2.5a.75.75 0 0 1 1.28-.53l14.25 14.25a.75.75 0 0 1-.7 1.28h-5.58l3.4 6.8a.75.75 0 1 1-1.34.68l-3.52-7.03-3.79 3.79a.75.75 0 0 1-1.28-.53V2.5z" />
-  ),
-  savings: (
-    <path fillRule="evenodd" d="M12 1.5c-5.799 0-10.5 4.701-10.5 10.5s4.701 10.5 10.5 10.5 10.5-4.701 10.5-10.5S17.799 1.5 12 1.5Zm1.125 5.25a.75.75 0 0 0 0 1.5h2.25a.75.75 0 0 1 0 1.5h-3.375a.75.75 0 0 0 0 1.5h1.875a2.25 2.25 0 0 1 0 4.5h-.75v1.5a.75.75 0 0 1-1.5 0V16.5H9.375a.75.75 0 0 1 0-1.5h2.25a.75.75 0 0 0 0-1.5H9.75a2.25 2.25 0 0 1 0-4.5h2.625V7.5a.75.75 0 0 1 1.5 0v.75h1.5a.75.75 0 0 0 0-1.5h-2.25Z" clipRule="evenodd" />
-  ),
-  bolt: (
-    <path fillRule="evenodd" d="M14.615 1.595a.75.75 0 0 1 .359.852L12.982 9.75h7.268a.75.75 0 0 1 .548 1.262l-10.5 11.25a.75.75 0 0 1-1.272-.71l1.992-7.302H3.75a.75.75 0 0 1-.548-1.262l10.5-11.25a.75.75 0 0 1 .913-.143Z" clipRule="evenodd" />
-  ),
-  smile: (
-    <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-2.625 6a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25Zm5.25 0a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25ZM8.53 14.47a.75.75 0 0 1 1.06 0 3.75 3.75 0 0 0 4.82 0 .75.75 0 0 1 .98 1.14 5.25 5.25 0 0 1-6.86 0 .75.75 0 0 1 0-1.14Z" clipRule="evenodd" />
-  ),
-  layers: (
-    <path fillRule="evenodd" d="M11.644 1.34a.75.75 0 0 1 .712 0l9.75 5.25a.75.75 0 0 1 0 1.32l-9.75 5.25a.75.75 0 0 1-.712 0l-9.75-5.25a.75.75 0 0 1 0-1.32l9.75-5.25Zm0 7.82 7.74-4.168-7.74-4.168-7.74 4.168 7.74 4.168ZM2.25 12.33l9.394 5.06a.75.75 0 0 0 .712 0l9.394-5.06a.75.75 0 1 1 .712 1.32l-9.75 5.25a.75.75 0 0 1-.712 0l-9.75-5.25a.75.75 0 1 1 .712-1.32Zm0 4.5 9.394 5.06a.75.75 0 0 0 .712 0l9.394-5.06a.75.75 0 1 1 .712 1.32l-9.75 5.25a.75.75 0 0 1-.712 0l-9.75-5.25a.75.75 0 1 1 .712-1.32Z" clipRule="evenodd" />
-  ),
-  tailored: (
-    <path fillRule="evenodd" d="M3 6a1 1 0 0 1 1-1h2.17a3.001 3.001 0 0 1 5.66 0H20a1 1 0 1 1 0 2H11.83a3.001 3.001 0 0 1-5.66 0H4a1 1 0 0 1-1-1Zm0 6a1 1 0 0 1 1-1h8.17a3.001 3.001 0 0 1 5.66 0H20a1 1 0 1 1 0 2h-2.17a3.001 3.001 0 0 1-5.66 0H4a1 1 0 0 1-1-1Zm0 6a1 1 0 0 1 1-1h4.17a3.001 3.001 0 0 1 5.66 0H20a1 1 0 1 1 0 2h-6.17a3.001 3.001 0 0 1-5.66 0H4a1 1 0 0 1-1-1Z" clipRule="evenodd" />
-  ),
-  automation: (
-    <path fillRule="evenodd" d="M11.078 2.25c-.917 0-1.699.663-1.85 1.567L9.05 4.889c-.02.12-.115.26-.297.348a7.493 7.493 0 0 0-.986.57c-.166.115-.334.126-.45.083L6.177 5.48a1.875 1.875 0 0 0-2.282.819l-.92 1.59a1.875 1.875 0 0 0 .432 2.385l1.04.832c.1.082.146.229.117.382a7.525 7.525 0 0 0 0 1.14c.029.153-.017.3-.117.382l-1.04.832a1.875 1.875 0 0 0-.432 2.385l.92 1.59c.527.912 1.636 1.3 2.282.818l1.14-.41c.116-.043.284-.032.45.082.312.214.641.405.986.57.182.088.277.228.297.35l.177 1.071c.151.904.933 1.567 1.85 1.567h1.844c.916 0 1.699-.663 1.85-1.567l.178-1.072c.02-.12.114-.26.297-.349.344-.165.673-.356.985-.57.167-.114.335-.125.45-.082l1.14.409a1.875 1.875 0 0 0 2.282-.818l.92-1.59a1.875 1.875 0 0 0-.432-2.385l-1.04-.832c-.1-.082-.146-.229-.117-.382a7.525 7.525 0 0 0 0-1.14c-.029-.153.017-.3.117-.382l1.04-.832a1.875 1.875 0 0 0 .432-2.385l-.92-1.59a1.875 1.875 0 0 0-2.282-.818l-1.14.41c-.115.042-.283.031-.45-.083a7.49 7.49 0 0 0-.985-.57c-.183-.088-.277-.229-.297-.349l-.178-1.071A1.875 1.875 0 0 0 12.922 2.25h-1.844ZM12 15.75a3.75 3.75 0 1 0 0-7.5 3.75 3.75 0 0 0 0 7.5Z" clipRule="evenodd" />
-  ),
-  scale: (
-    <path fillRule="evenodd" d="M3.75 3a.75.75 0 0 0-.75.75v5.25a.75.75 0 0 0 1.5 0V5.56l4.72 4.72a.75.75 0 0 0 1.06-1.06L5.56 4.5h3.44a.75.75 0 0 0 0-1.5H3.75Zm16.5 0a.75.75 0 0 0-.75.75v3.44l-4.72 4.72a.75.75 0 1 0 1.06 1.06L20.56 8.25v3.44a.75.75 0 0 0 1.5 0V3.75a.75.75 0 0 0-.75-.75h-5.25a.75.75 0 0 0 0 1.5h3.44ZM3.75 21a.75.75 0 0 0 .75-.75v-3.44l4.72-4.72a.75.75 0 1 0-1.06-1.06L3.44 15.75V12.31a.75.75 0 0 0-1.5 0v5.25a.75.75 0 0 0 .75.75h5.25a.75.75 0 0 0 0-1.5H4.5v-3.44Zm16.5 0a.75.75 0 0 0 .75-.75v-5.25a.75.75 0 0 0-1.5 0v3.44l-4.72-4.72a.75.75 0 0 0-1.06 1.06l4.72 4.72h-3.44a.75.75 0 0 0 0 1.5h5.25Z" clipRule="evenodd" />
-  ),
-  headset: (
-    <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75v4.5A3.75 3.75 0 0 0 6 20.25h1.5a2.25 2.25 0 0 0 2.25-2.25v-3a2.25 2.25 0 0 0-2.25-2.25H4.5V12a7.5 7.5 0 0 1 15 0v.75h-3A2.25 2.25 0 0 0 14.25 15v3a2.25 2.25 0 0 0 2.25 2.25h.75v.75a2.25 2.25 0 0 1-2.25 2.25h-2.25a.75.75 0 0 0 0 1.5h2.25a3.75 3.75 0 0 0 3.75-3.75v-.75H18A3.75 3.75 0 0 0 21.75 16.5V12c0-5.385-4.365-9.75-9.75-9.75Z" clipRule="evenodd" />
-  ),
-  trophy: (
-    <path fillRule="evenodd" d="M5.166 2.621v.858c-1.035.148-2.059.33-3.071.543a.75.75 0 0 0-.584.859 6.753 6.753 0 0 0 6.138 5.6c.45 1.391 1.381 2.571 2.601 3.324v2.795H8.25a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-2v-2.795a6.002 6.002 0 0 0 2.601-3.324 6.754 6.754 0 0 0 6.138-5.6.75.75 0 0 0-.584-.859 27.68 27.68 0 0 0-3.071-.543v-.858a.75.75 0 0 0-.75-.75h-12a.75.75 0 0 0-.75.75Zm1.5 2.378v4.218a5.255 5.255 0 0 1-3.585-2.915 26.246 26.246 0 0 1 3.585-1.303Zm10.668 0a26.246 26.246 0 0 1 3.585 1.303 5.255 5.255 0 0 1-3.585 2.915V4.999Z" clipRule="evenodd" />
-  ),
-  warning: (
-    <path fillRule="evenodd" d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003ZM12 8.25a.75.75 0 0 1 .75.75v3.75a.75.75 0 0 1-1.5 0V9a.75.75 0 0 1 .75-.75Zm0 8.25a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" clipRule="evenodd" />
-  ),
+// Section icons from Phosphor (https://phosphoricons.com), white on the #EFB000 tile.
+const ICONS = {
+  portal: Desktop,
+  clock: Clock,
+  billing: Receipt,
+  reports: FileText,
+  mail: EnvelopeSimple,
+  menu: ForkKnife,
+  kiosk: Fingerprint,
+  integration: PlugsConnected,
+  coupon: Ticket,
+  overtime: ClockCountdown,
+  vendor: Storefront,
+  inventory: Package,
+  pointer: CursorClick,
+  savings: PiggyBank,
+  bolt: Lightning,
+  smile: Smiley,
+  layers: Stack,
+  tailored: SlidersHorizontal,
+  automation: GearSix,
+  scale: ArrowsOut,
+  headset: Headset,
+  trophy: Trophy,
+  warning: Warning,
+  fixedMenu: CookingPot,
+  alaCarte: CallBell,
 };
 
 function LineIcon({ name, className = "h-6 w-6" }) {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className={className} fill="currentColor">
-      {ICON_PATHS[name]}
-    </svg>
-  );
+  const Icon = ICONS[name];
+  return <Icon weight="fill" aria-hidden="true" className={className} />;
 }
 
-function IconTile({ name, bg, color = "#ffffff", className = "h-12 w-12 rounded-[10px]", iconClassName = "h-6 w-6" }) {
+function IconTile({ name, className = "h-12 w-12 rounded-[10px]", iconClassName = "h-6 w-6" }) {
   return (
-    <span className={`flex shrink-0 items-center justify-center text-white shadow-sm ${iconPop} ${className}`} style={{ background: bg }}>
+    <span className={`flex shrink-0 items-center justify-center bg-[#EFB000] text-white shadow-sm ${iconPop} ${className}`}>
       <LineIcon name={name} className={iconClassName} />
     </span>
   );
@@ -231,16 +183,12 @@ const menuModules = [
   {
     title: "Fixed Menu",
     text: "From admin portal to time slot definition, restricting employees, mail notifications, canteen billing and reports everything can be managed on this system",
-    icon: iconFixedMenu,
-    alt: "Orange menu card with a serving cloche",
-    bg: "#fff1e3",
+    icon: "fixedMenu",
   },
   {
     title: "Ala-carte",
     text: "This module offers everything that comes with Fixed Menu module, on top of that, you get employee login on kiosks via RFID, Daily Menu Management and Virtual Cash Deductions",
-    icon: iconAlaCarte,
-    alt: "Order slip with a yellow serving cloche",
-    bg: "#fff8d6",
+    icon: "alaCarte",
   },
 ];
 
@@ -493,7 +441,7 @@ export default function CanteenManagementSystemPage() {
               sizes="(min-width: 1024px) 36vw, 100vw"
             />
             <div className="payroll-float absolute bottom-6 -left-2 flex items-center gap-3 rounded-2xl bg-white p-2.5 sm:p-3 pr-4 sm:pr-5 shadow-[0_16px_36px_-14px_rgba(0,0,0,0.25)] sm:-left-6">
-              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#f8bb18] text-white shadow-sm">
+              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#EFB000] text-white shadow-sm">
                 <LineIcon name="menu" className="h-6 w-6" />
               </span>
               <div>
@@ -521,9 +469,7 @@ export default function CanteenManagementSystemPage() {
           <ul className="grid grid-cols-1 gap-6 md:grid-cols-2">
             {menuModules.map((item, index) => (
               <li key={item.title} style={stagger(index)} className={`${index === 0 ? revealFromLeft : revealFromRight} ${goldCard} ${liftGold} flex flex-col items-start gap-5 p-7 sm:flex-row sm:p-8`}>
-                <span className={`flex h-24 w-24 shrink-0 items-center justify-center rounded-2xl ${iconPop}`} style={{ background: item.bg }}>
-                  <Image src={item.icon} alt={item.alt} className="h-16 w-16 object-contain" sizes="64px" />
-                </span>
+                <IconTile name={item.icon} className="h-24 w-24 rounded-2xl" iconClassName="h-14 w-14" />
                 <div>
                   <h3 className="text-2xl font-semibold text-[#1f1f1f]">{item.title}</h3>
                   <p className={`mt-2 text-[15px] leading-[25px] md:text-base ${mutedText}`}>{item.text}</p>
@@ -578,7 +524,7 @@ export default function CanteenManagementSystemPage() {
           <ul className="grid grid-cols-1 gap-5 md:grid-cols-3">
             {convenience.map((item, index) => (
               <li key={item.icon} style={stagger(index)} className={`${revealUp} ${greyCard} ${liftGrey} flex flex-col items-center gap-4 p-6 text-center`}>
-                <IconTile name={item.icon} bg={tone(index * 2).bg} color={tone(index * 2).color} className="h-14 w-14" iconClassName="h-8 w-8" />
+                <IconTile name={item.icon} className="h-14 w-14 rounded-[10px]" iconClassName="h-8 w-8" />
                 <p className="text-base font-medium leading-[26px] text-[#1f1f1f]">{item.text}</p>
               </li>
             ))}
@@ -597,7 +543,7 @@ export default function CanteenManagementSystemPage() {
                 style={stagger(index % 4, 80)}
                 className={`${revealUp} ${goldCard} ${liftGold} flex flex-col items-center gap-3 px-4 py-6 text-center`}
               >
-                <IconTile name={item.icon} bg={tone(index).bg} color={tone(index).color} className="h-14 w-14 rounded-full" iconClassName="h-7 w-7" />
+                <IconTile name={item.icon} className="h-14 w-14 rounded-xl" iconClassName="h-7 w-7" />
                 <h3 className="text-[15px] font-semibold leading-snug text-[#1f1f1f] md:text-base">{item.title}</h3>
               </li>
             ))}
@@ -605,7 +551,7 @@ export default function CanteenManagementSystemPage() {
           <p
             className={`${revealZoom} mx-auto flex items-center gap-3 rounded-full bg-[#fdf6e6] px-6 py-3.5 text-center text-base font-semibold text-[#1f1f1f] shadow-[inset_0_0_0_1px_#f0deba,0_18px_40px_-22px_rgba(0,0,0,0.25)] md:text-lg`}
           >
-            <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#efb000] text-[#0f162a]">
+            <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#efb000] text-white">
               <CheckIcon className="h-4 w-4" />
             </span>
             We can guarantee a hassle free experience.
@@ -643,7 +589,7 @@ export default function CanteenManagementSystemPage() {
           <ul className="flex flex-col gap-3">
             {challenges.map(([term, text]) => (
               <li key={term} className="flex gap-3">
-                <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#ef4444] text-white shadow-sm">
+                <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-[#EFB000] text-white shadow-sm">
                   <LineIcon name="warning" className="h-4 w-4" />
                 </span>
                 <p className={`text-[15px] leading-[24px] ${mutedText}`}>
@@ -684,7 +630,7 @@ export default function CanteenManagementSystemPage() {
           <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {functionalities.map((item, index) => (
               <li key={item.title} style={stagger(index, 100)} className={`${revealUp} ${greyCard} ${liftGrey} flex flex-col items-center gap-3 p-6 text-center`}>
-                <IconTile name={item.icon} bg={tone(index).bg} color={tone(index).color} />
+                <IconTile name={item.icon} />
                 <h3 className="text-lg font-semibold text-[#1f1f1f]">{item.title}</h3>
                 <p className={`text-[15px] leading-[24px] ${mutedText}`}>{item.text}</p>
               </li>
@@ -709,7 +655,7 @@ export default function CanteenManagementSystemPage() {
             {benefits.map((item, index) => (
               <li key={item.title} style={stagger(index)} className={`${revealUp} ${goldCard} ${liftGold} relative flex flex-col items-center gap-4 overflow-hidden p-7 text-center`}>
                 <span aria-hidden="true" className="absolute inset-x-0 top-0 h-1" style={{ background: tone(index * 2 + 1).color }} />
-                <IconTile name={item.icon} bg={tone(index * 2 + 1).bg} color={tone(index * 2 + 1).color} className="h-14 w-14" iconClassName="h-8 w-8" />
+                <IconTile name={item.icon} className="h-14 w-14 rounded-[10px]" iconClassName="h-8 w-8" />
                 <h3 className="text-xl font-semibold text-[#1f1f1f]">{item.title}</h3>
                 <p className={`text-[15px] leading-[24px] ${mutedText}`}>{item.text}</p>
               </li>
@@ -734,7 +680,7 @@ export default function CanteenManagementSystemPage() {
             {reasons.map((item, index) => (
               <li key={item.title} style={stagger(index % 4, 90)} className={`${revealUp} ${goldCard} ${liftGold} relative flex flex-col items-center gap-3 p-6 text-center`}>
                 <span className={`${fontInter} absolute right-5 top-5 text-sm font-bold text-black/15`}>{String(index + 1).padStart(2, "0")}</span>
-                <IconTile name={item.icon} bg={tone(index).bg} color={tone(index).color} />
+                <IconTile name={item.icon} />
                 <h3 className="px-6 text-lg font-semibold leading-snug text-[#1f1f1f]">{item.title}</h3>
                 <p className={`text-[15px] leading-[23px] ${mutedText}`}>{item.text}</p>
               </li>

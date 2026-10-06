@@ -5,6 +5,7 @@ import { Instrument_Sans, Inter } from "next/font/google";
 import ScrollReveal from "@/components/ScrollReveal";
 import BackToTop from "@/components/BackToTop";
 import FlagshipProducts from "@/components/FlagshipProducts";
+import { ArrowsClockwise, BellRinging, CalendarCheck, ChartLineUp, ChartPieSlice, ClipboardText, Clock, Desktop, DeviceMobile, EnvelopeSimple, Eye, FileText, GearSix, HandCoins, HandTap, Headset, IdentificationCard, Lightbulb, ListMagnifyingGlass, MapPin, Medal, Notepad, SealCheck, ShieldCheck, SlidersHorizontal, Stack, Stamp, UserCheck, UsersFour, UsersThree } from "@phosphor-icons/react/ssr";
 
 /* --------------------------------------------------------------------
    Images — every image this page uses lives in
@@ -13,37 +14,17 @@ import FlagshipProducts from "@/components/FlagshipProducts";
 
 // Hero
 import heroDashboard from "../images/human-resource-management-system/hero-hrms-dashboard-team-overview.webp";
-import iconConfigurable from "../images/human-resource-management-system/icon-configurable-gear-lightbulb.webp";
-import iconUnifiedSystem from "../images/human-resource-management-system/icon-unified-system-monitor.webp";
-import iconAudit from "../images/human-resource-management-system/icon-audit-checklist-magnifier.webp";
 
 // emRecruit / emWelcome / employee Information Management
 import recruitImg from "../images/human-resource-management-system/emrecruit-candidate-shortlisting-laptop.webp";
 import welcomeImg from "../images/human-resource-management-system/emwelcome-new-joiner-handshake.webp";
 import employeeInfoImg from "../images/human-resource-management-system/employee-information-management-profiles.webp";
-import iconCandidateCv from "../images/human-resource-management-system/icon-candidate-cv.webp";
-import iconVendorGroup from "../images/human-resource-management-system/icon-vendor-group.webp";
-import iconOnboardingBadge from "../images/human-resource-management-system/icon-onboarding-badge.webp";
-import iconEasyAccess from "../images/human-resource-management-system/icon-easy-access-clipboard.webp";
-import iconUpskill from "../images/human-resource-management-system/icon-upskill-growth-chart.webp";
-import iconRetainTeam from "../images/human-resource-management-system/icon-retain-team.webp";
 
 // emWorkforce Attendance and Leave Management
 import attendanceImg from "../images/human-resource-management-system/emworkforce-attendance-calendar-laptop.webp";
-import iconAttendance from "../images/human-resource-management-system/icon-attendance-user-check.webp";
-import iconShift from "../images/human-resource-management-system/icon-shift-rotation.webp";
-import iconOvertime from "../images/human-resource-management-system/icon-overtime-clock.webp";
-import iconLeave from "../images/human-resource-management-system/icon-leave-document.webp";
-import iconApprovals from "../images/human-resource-management-system/icon-approvals-workflow.webp";
-import iconMailAlert from "../images/human-resource-management-system/icon-mail-alert-envelope.webp";
-import iconReminderBell from "../images/human-resource-management-system/icon-reminder-bell.webp";
-import iconWeekOff from "../images/human-resource-management-system/icon-week-off-calendar.webp";
-import iconLocationPin from "../images/human-resource-management-system/icon-location-pin.webp";
 
 // emPayRoll
 import payrollImg from "../images/human-resource-management-system/empayroll-dashboard-laptop.webp";
-import iconPayOnTime from "../images/human-resource-management-system/icon-pay-on-time.webp";
-import iconComplianceShield from "../images/human-resource-management-system/icon-compliance-shield.webp";
 // TODO: these two are cropped from the design screenshots (~475px source, upscaled
 // 2x and sharpened). Replace with the full-resolution originals, same file names.
 import mobileAppImg from "../images/human-resource-management-system/emmobile-ess-app-phone-in-hands.webp";
@@ -54,12 +35,6 @@ import exitImg from "../images/human-resource-management-system/emexit-employee-
 import expenseImg from "../images/human-resource-management-system/emexpense-claims-dashboard-laptop.webp";
 import helpdeskImg from "../images/human-resource-management-system/emhelpdesk-support-agents-headsets.webp";
 import analyticsImg from "../images/human-resource-management-system/emworkforce-analytics-charts-illustration.webp";
-import iconSettlement from "../images/human-resource-management-system/icon-settlement-document.webp";
-import iconAutomation from "../images/human-resource-management-system/icon-automation-gear-cycle.webp";
-import iconHelpdesk from "../images/human-resource-management-system/icon-helpdesk-headset.webp";
-import iconSinglePlatform from "../images/human-resource-management-system/icon-single-platform-layers.webp";
-import iconLeadershipDashboard from "../images/human-resource-management-system/icon-leadership-dashboard.webp";
-import iconTrendsInsights from "../images/human-resource-management-system/icon-trends-insights-lightbulb.webp";
 
 
 // TODO: confirm production domain (layout.js also flags this) before deploying.
@@ -214,61 +189,6 @@ function FaqToggleIcon() {
   );
 }
 
-// Gold line icons for the emMobile / emPerformance cards (drawn to match the
-// design's yellow tiles; no source assets were exported for these).
-function GoldIcon({ label, children }) {
-  return (
-    <svg
-      viewBox="0 0 32 32"
-      role="img"
-      aria-label={label}
-      className="h-8 w-8"
-      fill="none"
-      stroke="#e0a100"
-      strokeWidth={2}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      {children}
-    </svg>
-  );
-}
-
-const MobilePhoneIcon = () => (
-  <GoldIcon label="Smartphone icon">
-    <rect x="9" y="3" width="14" height="26" rx="2.5" fill="#f8bb18" fillOpacity={0.25} />
-    <path d="M14 6.5h4M14.5 25.5h3" />
-  </GoldIcon>
-);
-
-const TapIcon = () => (
-  <GoldIcon label="Finger tapping icon">
-    <path d="M13 7V4M8.5 9 6.5 7M17.5 9l2-2" />
-    <path
-      d="M12 21v-9.5a2 2 0 0 1 4 0V17l5.2 1a2.4 2.4 0 0 1 1.9 2.7l-.8 5.3a2.4 2.4 0 0 1-2.4 2H14.2a2.4 2.4 0 0 1-1.9-.9L8.6 22.4a1.8 1.8 0 0 1 2.7-2.3Z"
-      fill="#f8bb18"
-      fillOpacity={0.25}
-    />
-  </GoldIcon>
-);
-
-const AppraisalIcon = () => (
-  <GoldIcon label="Appraisal document with a magnifying glass icon">
-    <path d="M20 12V6a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v20a2 2 0 0 0 2 2h7" fill="#f8bb18" fillOpacity={0.25} />
-    <path d="M9 10h7M9 14.5h4M9 19h3" />
-    <circle cx="21" cy="20" r="4.5" />
-    <path d="m24.3 23.3 3.2 3.2" />
-  </GoldIcon>
-);
-
-const MonitorEyeIcon = () => (
-  <GoldIcon label="Eye inside a focus frame icon">
-    <path d="M4 10V6a2 2 0 0 1 2-2h4M22 4h4a2 2 0 0 1 2 2v4M28 22v4a2 2 0 0 1-2 2h-4M10 28H6a2 2 0 0 1-2-2v-4" />
-    <path d="M7 16s3.3-6 9-6 9 6 9 6-3.3 6-9 6-9-6-9-6Z" fill="#f8bb18" fillOpacity={0.25} />
-    <circle cx="16" cy="16" r="2.5" />
-  </GoldIcon>
-);
-
 /* --------------------------------------------------------------------
    Reusable building blocks
    -------------------------------------------------------------------- */
@@ -282,24 +202,22 @@ function BrandName({ prefix = "em", name, color }) {
   );
 }
 
-function IconTile({ src, alt, bg, className = "h-12 w-12", imgClassName = "h-7 w-7" }) {
+// Section icons from Phosphor (https://phosphoricons.com), white on the #EFB000 tile.
+function IconTile({ icon: Icon, className = "h-12 w-12 rounded-lg", iconClassName = "h-7 w-7" }) {
   return (
-    <span
-      className={`flex shrink-0 items-center justify-center rounded-[5px] ${iconPop} ${className}`}
-      style={{ background: bg }}
-    >
-      <Image src={src} alt={alt} className={`object-contain ${imgClassName}`} />
+    <span className={`flex shrink-0 items-center justify-center bg-[#EFB000] text-white shadow-sm ${iconPop} ${className}`}>
+      <Icon weight="fill" aria-hidden="true" className={iconClassName} />
     </span>
   );
 }
 
-function MiniFeature({ icon, iconAlt, iconBg, bg, title, text }) {
+function MiniFeature({ icon, bg, title, text }) {
   return (
     <article
       className={`group/card flex items-center gap-3 rounded-[5px] p-3.5 ${motion} hover:-translate-y-0.5 hover:shadow-[0px_8px_20px_-8px_rgba(0,0,0,0.2)]`}
       style={{ background: bg }}
     >
-      <IconTile src={icon} alt={iconAlt} bg={iconBg} className="h-11 w-11" imgClassName="h-6 w-6" />
+      <IconTile icon={icon} className="h-11 w-11 rounded-[10px]" iconClassName="h-6 w-6" />
       <div>
         <h3 className={`text-sm font-medium leading-6 ${mutedText}`}>{title}</h3>
         <p className={`text-sm leading-[18px] ${mutedText}`}>{text}</p>
@@ -311,7 +229,7 @@ function MiniFeature({ icon, iconAlt, iconBg, bg, title, text }) {
 function ShowcaseHeader({ eyebrow, title, titleBreak }) {
   return (
     <header>
-      <p className="text-2xl font-semibold text-[#ef4444] md:text-[1.7rem]">{eyebrow}</p>
+      <p className="text-2xl font-semibold text-[#F8BB18] md:text-[1.7rem]">{eyebrow}</p>
       <h2 className="text-2xl font-semibold md:text-3xl md:leading-[39px]">
         {title} <br className="hidden lg:inline" />
         {titleBreak}
@@ -333,12 +251,7 @@ function ShowcasePanel({ bg, intro, cards, image, imageAlt }) {
             key={card.title}
             className={`group/card flex flex-col items-start gap-3 rounded-[14px] bg-white p-5 shadow-[inset_0_0_0_0.744px_#dddddd,0px_0px_14.874px_-6.693px_rgba(0,0,0,0.25)] sm:flex-row sm:items-center sm:gap-4 ${motion} hover:-translate-y-1 hover:shadow-[inset_0_0_0_0.744px_#dddddd,0px_14px_28px_-6px_rgba(0,0,0,0.18)]`}
           >
-            <span
-              className={`flex h-[3.25rem] w-[3.25rem] shrink-0 items-center justify-center rounded-[5px] ${iconPop}`}
-              style={{ background: card.iconBg }}
-            >
-              {card.icon}
-            </span>
+            <IconTile icon={card.icon} className="h-[3.25rem] w-[3.25rem] rounded-[10px]" iconClassName="h-8 w-8" />
             <div>
               <h3 className="text-lg font-semibold md:text-xl">{card.title}</h3>
               <p className="text-sm leading-[18px]">{card.text}</p>
@@ -372,39 +285,31 @@ const heroFeatures = [
   {
     title: "Highly Configurable & Flexible",
     text: "Easy to Implement & modify. Available in on premises and cloud versions.",
-    icon: iconConfigurable,
-    alt: "Gear with a lightbulb representing a configurable HR system",
-    bg: "#fee6b1",
+    icon: SlidersHorizontal,
   },
   {
     title: "Unified System Experience",
     text: "A centralized system to manage end to end employee lifecycle bringing a unified experience across all modules.",
-    icon: iconUnifiedSystem,
-    alt: "Desktop monitor representing a single unified HR platform",
-    bg: "#fdd7d4",
+    icon: Desktop,
   },
   {
     title: "Audit & Compliances",
     text: "Keep track of Audit Trails. Stay on top of business critical transactions and workflow changes.",
-    icon: iconAudit,
-    alt: "Audit checklist with a magnifying glass",
-    bg: "#d1f4e3",
+    icon: ListMagnifyingGlass,
   },
 ];
 
 const attendanceChips = [
-  { label: "Approvals and workflows", icon: iconApprovals, alt: "Blue approved-document icon", bg: "#d8e7fe" },
-  { label: "Mail alerts", icon: iconMailAlert, alt: "Purple envelope icon for email alerts", bg: "#e9eafe" },
-  { label: "Reminders on leave requests", icon: iconReminderBell, alt: "Green bell icon for leave reminders", bg: "#d5faed" },
-  { label: "Week Off Management", icon: iconWeekOff, alt: "Orange calendar icon for weekly offs", bg: "#fde5d3" },
+  { label: "Approvals and workflows", icon: Stamp },
+  { label: "Mail alerts", icon: EnvelopeSimple },
+  { label: "Reminders on leave requests", icon: BellRinging },
+  { label: "Week Off Management", icon: CalendarCheck },
 ];
 
 const attendanceCards = [
   {
     title: "Shift Management",
-    icon: iconShift,
-    alt: "Two people with circular arrows representing shift rotation",
-    bg: "#e6e2fc",
+    icon: ArrowsClockwise,
     points: [
       "Create different type of shifts, Default, Flexi, Cross/Night Shift, Break Shift",
       "Allocate shift both manually and automatically on rotation basis.",
@@ -413,9 +318,7 @@ const attendanceCards = [
   },
   {
     title: "Overtime Management",
-    icon: iconOvertime,
-    alt: "Green clock icon for overtime tracking",
-    bg: "#dbf7e4",
+    icon: Clock,
     points: [
       "OT calculation based on In-Out time or on hourly calculation",
       "OT Policy on holidays and week offs.",
@@ -425,9 +328,7 @@ const attendanceCards = [
   },
   {
     title: "Leave Management",
-    icon: iconLeave,
-    alt: "Orange document icon for leave policies",
-    bg: "#fde9da",
+    icon: Notepad,
     points: [
       "Configure Leave policies, L/SL/Maternity / paternity leaves and Comp offs etc.",
       "Configure leave rules",
@@ -436,8 +337,6 @@ const attendanceCards = [
     href: "/products/emworkforce",
   },
 ];
-
-const payrollIconImg = (src, alt) => <Image src={src} alt={alt} className="h-8 w-9 object-contain" />;
 
 const showcaseTabs = [
   {
@@ -455,14 +354,12 @@ const showcaseTabs = [
       {
         title: "Pay on time",
         text: "Salary Calculation, computation, monthly reconciliation, arrears, claims , reimbursements, and loans all at one place with auto payslip generation. Save time and be accurate with emPayroll.",
-        icon: payrollIconImg(iconPayOnTime, "Hand pressing a yellow PAY button"),
-        iconBg: "rgba(248, 187, 24, 0.35)",
+        icon: HandCoins,
       },
       {
         title: "Compliances",
         text: "From PF, ESIc to PT and TDS all covered in one module. Be on the right side of compliance with emPayroll.",
-        icon: payrollIconImg(iconComplianceShield, "Yellow shield with a check mark representing statutory compliance"),
-        iconBg: "#fde7ae",
+        icon: ShieldCheck,
       },
     ],
   },
@@ -480,14 +377,12 @@ const showcaseTabs = [
       {
         title: "Technology",
         text: "Works seamlessly on both Android and iOS, is GPS enabled for location based attendance tracking.",
-        icon: <MobilePhoneIcon />,
-        iconBg: "#fde7ae",
+        icon: DeviceMobile,
       },
       {
         title: "Power on finger tips",
         text: "From attendance, leaves, salary details, tax, investment declaration, reimbursement to leave applications and status, updating employee information or documents, all can be managed on emMobile.",
-        icon: <TapIcon />,
-        iconBg: "#fde7ae",
+        icon: HandTap,
       },
     ],
   },
@@ -506,14 +401,12 @@ const showcaseTabs = [
       {
         title: "Appraisal for the deserving",
         text: "Fully automated self-serve appraiser module with details of both employee and the Reviewer with reports and email alerts.",
-        icon: <AppraisalIcon />,
-        iconBg: "#fde7ae",
+        icon: Medal,
       },
       {
         title: "Monitor everyone",
         text: "Monitor employee, supervisor, manager and department head at one place. Identify gaps, training needs to achieve revenue goals.",
-        icon: <MonitorEyeIcon />,
-        iconBg: "#fde7ae",
+        icon: Eye,
       },
     ],
   },
@@ -542,7 +435,7 @@ const moduleSections = [
   {
     id: "emexit",
     name: "Exit",
-    nameColor: "#ef4444",
+    nameColor: "#F8BB18",
     tagline: "Make parting ways a good experience",
     intro: "An exit is an equally important part of the employee lifecycle, so why drop the ball at the end? Keep the brand experience intact.",
     image: exitImg,
@@ -552,21 +445,19 @@ const moduleSections = [
       {
         title: "Settlement and Documentation",
         text: "Correction of payroll, employee data, Timely calculation of liabilities and dues if any, documentation like Exit Interview Form, Form 16 and Relieving letter, all can be processed on emExit with ease.",
-        icon: iconSettlement,
-        alt: "Blue document icon for exit settlement paperwork",
+        icon: FileText,
       },
       {
         title: "Automate with a human touch!",
         text: "emExit allows employee to place resignation request, track approval, get clearance and no dues check from all departments and SBUs, access separation and notice period policy, track progress with no need of manual follow up.",
-        icon: iconAutomation,
-        alt: "Gear with circular arrows representing an automated exit workflow",
+        icon: GearSix,
       },
     ],
   },
   {
     id: "emexpense",
     name: "Expense",
-    nameColor: "#ef4444",
+    nameColor: "#F8BB18",
     tagline: "Travel & Spend Managed Better!",
     intro: "Today’s enterprise is data driven. Our aim is to help you with analytics for an aligned HR.",
     image: expenseImg,
@@ -576,21 +467,19 @@ const moduleSections = [
       {
         title: "Efficient and Productive Helpdesk",
         text: "Faster turnaround times on claim settlement increases employee satisfaction, brings transparency and with reduction in time spend on follow- ups increases over all productivity.",
-        icon: iconHelpdesk,
-        alt: "Blue headset icon for the expense claims helpdesk",
+        icon: Headset,
       },
       {
         title: "Single Platform",
         text: "Whether it is raising a claim, categorizing it as per spend or priority, automated responses to these claims, or escalation to unresolved ones, all this can be achieved in single platform.",
-        icon: iconSinglePlatform,
-        alt: "Stacked blue layers icon representing a single platform",
+        icon: Stack,
       },
     ],
   },
   {
     id: "emhelpdesk",
     name: "HelpDesk",
-    nameColor: "#ef4444",
+    nameColor: "#F8BB18",
     tagline: "Efficient HR Desk!",
     intro: "Say NO to a buzzing HR desk, by automating HR queries.",
     image: helpdeskImg,
@@ -600,21 +489,19 @@ const moduleSections = [
       {
         title: "Efficient and Productive Helpdesk",
         text: "Faster turn-around times on queries increases employee satisfaction, frees HR time for routine tasks, brings transparency and with reduction in foot fall at HR desk increases productivity.",
-        icon: iconHelpdesk,
-        alt: "Blue headset icon for the HR query helpdesk",
+        icon: Headset,
       },
       {
         title: "Single Platform",
         text: "Whether it is raising a query, classifying it as per category, sub category or priority, automated responses to these queries, or escalation to unresolved ones, all this can be achieved in single platform.",
-        icon: iconSinglePlatform,
-        alt: "Stacked blue layers icon representing a single query platform",
+        icon: Stack,
       },
     ],
   },
   {
     id: "emworkforce-analytics",
     name: "Workforce Analytics",
-    nameColor: "#ef4444",
+    nameColor: "#F8BB18",
     tagline: "For the enterprise that learns!",
     intro: "Today’s enterprise is data-driven. Our aim, is to help you with analytics for an aligned HR.",
     image: analyticsImg,
@@ -624,14 +511,12 @@ const moduleSections = [
       {
         title: "Leadership Dashboards",
         text: "All these analytics and reports help in preparation of leadership dashboards, which is required for stakeholders to make insight-driven decisions.",
-        icon: iconLeadershipDashboard,
-        alt: "Dashboard icon with a pie chart and bar graph",
+        icon: ChartPieSlice,
       },
       {
         title: "Trends and Insights",
         text: "Get holistic analytics for various HRMS functions like recruitment and exit, attendance & leave, salary, overtime & cost, employee performance, gender & attrition, demographic, employee life cycle as detailed reports with alerts",
-        icon: iconTrendsInsights,
-        alt: "Glowing lightbulb icon representing HR insights",
+        icon: Lightbulb,
       },
     ],
   },
@@ -713,9 +598,7 @@ export default function HumanResourceManagementSystemPage() {
                 style={stagger(index)}
                 className={`${revealUp} group/card flex flex-col items-center gap-3 rounded-lg bg-white/10 px-5 py-5 text-center sm:px-4 lg:px-6 shadow-[inset_0_0_0_1px_#acacac] backdrop-blur-[10px] ${motion} hover:-translate-y-1 hover:shadow-[inset_0_0_0_1px_#acacac,0px_16px_36px_-9px_rgba(0,0,0,0.22)]`}
               >
-                <span className={`flex h-[4.375rem] w-[4.375rem] items-center justify-center rounded-full ${iconPop}`} style={{ background: feature.bg }}>
-                  <Image src={feature.icon} alt={feature.alt} className="h-10 w-10 object-contain" />
-                </span>
+                <IconTile icon={feature.icon} className="h-[4.375rem] w-[4.375rem] rounded-2xl" iconClassName="h-10 w-10" />
                 <h2 className="text-lg font-semibold sm:text-base lg:text-lg">{feature.title}</h2>
                 <p className={`text-base font-medium sm:text-sm lg:text-base leading-[25px] ${mutedText}`}>{feature.text}</p>
               </li>
@@ -748,17 +631,13 @@ export default function HumanResourceManagementSystemPage() {
               </p>
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-1 xl:grid-cols-2">
                 <MiniFeature
-                  icon={iconCandidateCv}
-                  iconAlt="Curriculum vitae document icon"
-                  iconBg="#f8bb18"
+                  icon={IdentificationCard}
                   bg="#fff5d9"
                   title="Candidate Selection"
                   text="Simplifies recruitment, and documentation with a great interview experience."
                 />
                 <MiniFeature
-                  icon={iconVendorGroup}
-                  iconAlt="Group of people icon representing recruitment agencies"
-                  iconBg="#0fb880"
+                  icon={UsersThree}
                   bg="#e5fff4"
                   title="Vendor Selection"
                   text="Simplifies hiring the best agencies and starts a smooth vendor relation."
@@ -786,17 +665,13 @@ export default function HumanResourceManagementSystemPage() {
               </p>
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-1 xl:grid-cols-2">
                 <MiniFeature
-                  icon={iconOnboardingBadge}
-                  iconAlt="Award badge with a check mark icon"
-                  iconBg="#f8bb18"
+                  icon={SealCheck}
                   bg="#fff5d9"
                   title="Interactive Onboarding"
                   text="A great interactive and warm welcome experience."
                 />
                 <MiniFeature
-                  icon={iconEasyAccess}
-                  iconAlt="Clipboard icon for new joiner information"
-                  iconBg="#0fb880"
+                  icon={ClipboardText}
                   bg="#e5fff4"
                   title="Easy Access"
                   text="Easy access to all information and next steps for the new member."
@@ -826,17 +701,13 @@ export default function HumanResourceManagementSystemPage() {
               </p>
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
                 <MiniFeature
-                  icon={iconUpskill}
-                  iconAlt="Rising bar chart with an upward arrow icon"
-                  iconBg="#f8bb18"
+                  icon={ChartLineUp}
                   bg="#fff5d9"
                   title="Upskill your employee"
                   text="Keep tab on employee skills and look out for opportunities to help employee upgrade skills."
                 />
                 <MiniFeature
-                  icon={iconRetainTeam}
-                  iconAlt="Team of three people icon"
-                  iconBg="#0fb880"
+                  icon={UsersFour}
                   bg="#e5fff4"
                   title="Retain the best"
                   text="Promotion and rating history to know your best pool of employees."
@@ -880,13 +751,13 @@ export default function HumanResourceManagementSystemPage() {
                         key={chip.label}
                         className={`group/card flex min-h-16 items-center gap-2.5 rounded-[5px] bg-white px-2.5 py-3 text-xs font-medium leading-[17.5px] text-black shadow-[inset_0_0_0_0.84px_#959595,0px_0px_16.803px_-7.561px_rgba(0,0,0,0.25)] md:text-sm ${motion} hover:-translate-y-0.5 hover:shadow-[inset_0_0_0_0.84px_#959595,0px_8px_18px_-6px_rgba(0,0,0,0.3)]`}
                       >
-                        <IconTile src={chip.icon} alt={chip.alt} bg={chip.bg} className="h-9 w-9 rounded" imgClassName="h-5 w-5" />
+                        <IconTile icon={chip.icon} className="h-9 w-9 rounded-md" iconClassName="h-5 w-5" />
                         <span>{chip.label}</span>
                       </li>
                     ))}
                   </ul>
                   <p className="flex items-center justify-center gap-2 rounded-[10px] bg-[#0f162a] px-3 py-4 text-sm font-medium text-white shadow-[inset_0_0_0_0.814px_#dddddd,0px_0px_16.279px_-7.326px_rgba(0,0,0,0.25)]">
-                    <Image src={iconLocationPin} alt="White map location pin icon" className="h-5 w-auto" />
+                    <IconTile icon={MapPin} className="h-7 w-7 rounded-md" iconClassName="h-4 w-4" />
                     Location based Holidays
                   </p>
                 </div>
@@ -911,7 +782,7 @@ export default function HumanResourceManagementSystemPage() {
 
             <article style={stagger(1)} className={`${revealFromRight} ${greyCard} ${liftGrey} flex flex-col gap-5 p-5 md:p-6`}>
               <div className="flex flex-1 flex-col justify-center gap-4 px-1">
-                <IconTile src={iconAttendance} alt="Blue user icon with a check mark for attendance" bg="#dfecfd" className="h-14 w-14" imgClassName="h-9 w-9" />
+                <IconTile icon={UserCheck} className="h-14 w-14 rounded-[10px]" iconClassName="h-9 w-9" />
                 <h3 className="text-xl font-semibold md:text-[1.375rem]">Attendance Management</h3>
                 <ul className="flex list-disc flex-col gap-1.5 pl-5 text-base font-medium leading-[22px] md:text-[17px]">
                   <li>Integration with 3rd Party Devices and Biometrics</li>
@@ -927,7 +798,7 @@ export default function HumanResourceManagementSystemPage() {
             {attendanceCards.map((card, index) => (
               <article key={card.title} style={stagger(index)} className={`${revealUp} ${greyCard} ${liftGrey} flex flex-col gap-4 p-5 sm:last:col-span-2 md:p-6 lg:last:col-span-1`}>
                 <div className="flex items-center gap-3">
-                  <IconTile src={card.icon} alt={card.alt} bg={card.bg} className="h-11 w-11" imgClassName="h-6 w-6" />
+                  <IconTile icon={card.icon} className="h-11 w-11 rounded-[10px]" iconClassName="h-6 w-6" />
                   <h3 className="text-lg font-semibold md:text-xl">{card.title}</h3>
                 </div>
                 <ul className="flex list-disc flex-col gap-2 pl-5 text-base leading-[21px]">
@@ -1040,9 +911,7 @@ export default function HumanResourceManagementSystemPage() {
                     style={stagger(index + 1)}
                     className={`${revealUp} group/card flex flex-col items-center gap-2 rounded-xl bg-white p-5 text-center shadow-[inset_0_0_0_0.67px_#f8bb18,0px_0px_13.393px_-6.027px_rgba(0,0,0,0.25)] ${motion} hover:-translate-y-1 hover:shadow-[inset_0_0_0_1.5px_#f8bb18,0px_10px_24px_-6px_rgba(0,0,0,0.18)]`}
                   >
-                    <span className={`flex h-12 w-12 items-center justify-center rounded-[5px] bg-[rgba(59,130,246,0.35)] ${iconPop}`}>
-                      <Image src={card.icon} alt={card.alt} className="h-8 w-8 object-contain" />
-                    </span>
+                    <IconTile icon={card.icon} className="h-12 w-12 rounded-[10px]" iconClassName="h-8 w-8" />
                     <h3 className="text-lg font-semibold">{card.title}</h3>
                     <p className="text-sm leading-[18px]">{card.text}</p>
                   </article>

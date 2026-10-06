@@ -28,37 +28,37 @@ const CLMS_SUB_ITEMS = {
   col1: [
     {
       title: "CLMS-Onboarding-Gatepass-Management",
-      href: "/product#clms-onboarding-gatepass",
+      href: "/clms-onboarding-gatepass-management",
     },
     {
       title: "CLMS-Attendance-Shift-Overtime-Management",
-      href: "/product#clms-attendance-shift-overtime",
+      href: "/clms-attendance-shift-overtime-management",
     },
     {
       title: "CLMS-Contractor-Portal",
-      href: "/product#clms-contractor-portal",
+      href: "/clms-contractor-portal",
     },
     {
       title: "CLMS-Contractor-Contract-Employee-Masters",
-      href: "/product#clms-contractor-employee-masters",
+      href: "/clms-contractor-contract-employee-masters",
     },
   ],
   col2: [
     {
       title: "CLMS-Compliances-Statutory-Reports",
-      href: "/product#clms-compliances-statutory-reports",
+      href: "/clms-compliances-statutory-reports",
     },
     {
       title: "CLMS-Realtime-Dashboards",
-      href: "/product#clms-realtime-dashboards",
+      href: "/clms-realtime-dashboards",
     },
     {
       title: "CLMS-Wages-Contractor-Billing",
-      href: "/product#clms-wages-contractor-billing",
+      href: "/clms-wages-contractor-billing",
     },
     {
       title: "CLMS-Manpower-Planning",
-      href: "/product#clms-manpower-planning",
+      href: "/clms-manpower-planning",
     },
   ],
 };
@@ -239,7 +239,7 @@ export default function Header() {
           {/* Logo */}
           <Link
             href="/"
-            className="flex shrink-0 items-center rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue/60 focus-visible:ring-offset-2"
+            className="flex shrink-0 items-center rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EFB000]/60 focus-visible:ring-offset-2"
             aria-label="Emsphere Technologies home"
           >
             <Image
@@ -270,13 +270,13 @@ export default function Header() {
                         onClick={() => setIsProductOpen((prev) => !prev)}
                         aria-expanded={isProductOpen}
                         className={`nav-underline inline-flex items-center gap-1.5 h-10 px-1 text-[16px] xl:text-[16.5px] font-semibold transition-colors focus-visible:outline-none ${
-                          isProductOpen ? "text-brand-blue" : "text-black hover:text-brand-blue"
+                          isProductOpen ? "text-[#EFB000]" : "text-black hover:text-[#EFB000]"
                         }`}
                       >
                         <span>{link.label}</span>
                         <ChevronDownIcon
                           className={`h-4 w-4 transition-transform duration-250 ease-out ${
-                            isProductOpen ? "rotate-180 text-brand-blue" : "text-slate-500"
+                            isProductOpen ? "rotate-180 text-[#EFB000]" : "text-slate-500"
                           }`}
                         />
                       </button>
@@ -311,7 +311,7 @@ export default function Header() {
                                 onClick={() => setIsProductOpen(false)}
                                 className="group block focus-visible:outline-none"
                               >
-                                <div className="text-[16px] font-semibold text-slate-900 transition-colors group-hover:text-brand-blue">
+                                <div className="text-[16px] font-semibold text-slate-900 transition-colors group-hover:text-[#EFB000]">
                                   emHRMS
                                 </div>
                                 <div className="mt-1 text-[13.5px] text-slate-500 leading-normal">
@@ -334,8 +334,8 @@ export default function Header() {
                                     <div
                                       className={`text-[16px] font-semibold transition-colors ${
                                         isClmsOpen
-                                          ? "text-brand-blue"
-                                          : "text-slate-900 group-hover:text-brand-blue"
+                                          ? "text-[#EFB000]"
+                                          : "text-slate-900 group-hover:text-[#EFB000]"
                                       }`}
                                     >
                                       Contract Labour management Software
@@ -348,11 +348,11 @@ export default function Header() {
                                     type="button"
                                     onClick={toggleClmsClick}
                                     aria-label="Toggle Contract Labour modules"
-                                    className="ml-3 shrink-0 rounded p-1 text-slate-500 transition-colors hover:bg-slate-100 hover:text-brand-blue focus-visible:outline-none"
+                                    className="ml-3 shrink-0 rounded p-1 text-slate-500 transition-colors hover:bg-slate-100 hover:text-[#EFB000] focus-visible:outline-none"
                                   >
                                     <ChevronDownIcon
                                       className={`h-4 w-4 transition-transform duration-300 ease-in-out ${
-                                        isClmsOpen ? "rotate-180 text-brand-blue" : "text-brand-blue/80"
+                                        isClmsOpen ? "rotate-180 text-[#EFB000]" : "text-[#EFB000]/80"
                                       }`}
                                     />
                                   </button>
@@ -378,7 +378,7 @@ export default function Header() {
                                               href={item.href}
                                               onMouseEnter={handleMenuEnter}
                                               onClick={() => setIsProductOpen(false)}
-                                              className="text-[13.5px] font-medium text-slate-700 transition-colors hover:text-brand-blue focus-visible:outline-none"
+                                              className="text-[13.5px] font-medium text-slate-700 transition-colors hover:text-[#EFB000] focus-visible:outline-none"
                                             >
                                               {item.title}
                                             </Link>
@@ -393,7 +393,7 @@ export default function Header() {
                                               href={item.href}
                                               onMouseEnter={handleMenuEnter}
                                               onClick={() => setIsProductOpen(false)}
-                                              className="text-[13.5px] font-medium text-slate-700 transition-colors hover:text-brand-blue focus-visible:outline-none"
+                                              className="text-[13.5px] font-medium text-slate-700 transition-colors hover:text-[#EFB000] focus-visible:outline-none"
                                             >
                                               {item.title}
                                             </Link>
@@ -412,7 +412,7 @@ export default function Header() {
                                 onClick={() => setIsProductOpen(false)}
                                 className="group block focus-visible:outline-none"
                               >
-                                <div className="text-[16px] font-semibold text-slate-900 transition-colors group-hover:text-brand-blue">
+                                <div className="text-[16px] font-semibold text-slate-900 transition-colors group-hover:text-[#EFB000]">
                                   emCount Emergency Headcount System
                                 </div>
                                 <div className="mt-1 text-[13.5px] text-slate-500 leading-normal">
@@ -427,7 +427,7 @@ export default function Header() {
                                 onClick={() => setIsProductOpen(false)}
                                 className="group block focus-visible:outline-none"
                               >
-                                <div className="text-[16px] font-semibold text-slate-900 transition-colors group-hover:text-brand-blue">
+                                <div className="text-[16px] font-semibold text-slate-900 transition-colors group-hover:text-[#EFB000]">
                                   emMeal-Canteen Management System
                                 </div>
                                 <div className="mt-1 text-[13.5px] text-slate-500 leading-normal">
@@ -445,7 +445,7 @@ export default function Header() {
                                 onClick={() => setIsProductOpen(false)}
                                 className="group block focus-visible:outline-none"
                               >
-                                <div className="text-[16px] font-semibold text-slate-900 transition-colors group-hover:text-brand-blue">
+                                <div className="text-[16px] font-semibold text-slate-900 transition-colors group-hover:text-[#EFB000]">
                                   emPayroll Management Software
                                 </div>
                                 <div className="mt-1 text-[13.5px] text-slate-500 leading-normal">
@@ -460,7 +460,7 @@ export default function Header() {
                                 onClick={() => setIsProductOpen(false)}
                                 className="group block focus-visible:outline-none"
                               >
-                                <div className="text-[16px] font-semibold text-slate-900 transition-colors group-hover:text-brand-blue">
+                                <div className="text-[16px] font-semibold text-slate-900 transition-colors group-hover:text-[#EFB000]">
                                   emWorkforce – System
                                 </div>
                                 <div className="mt-1 text-[13.5px] text-slate-500 leading-normal">
@@ -475,7 +475,7 @@ export default function Header() {
                                 onClick={() => setIsProductOpen(false)}
                                 className="group block focus-visible:outline-none"
                               >
-                                <div className="text-[16px] font-semibold text-slate-900 transition-colors group-hover:text-brand-blue">
+                                <div className="text-[16px] font-semibold text-slate-900 transition-colors group-hover:text-[#EFB000]">
                                   emVisit Visitor Management System
                                 </div>
                                 <div className="mt-1 text-[13.5px] text-slate-500 leading-normal">
@@ -504,13 +504,13 @@ export default function Header() {
                         onClick={() => setIsAboutOpen((prev) => !prev)}
                         aria-expanded={isAboutOpen}
                         className={`nav-underline inline-flex items-center gap-1.5 h-10 px-1 text-[16px] xl:text-[16.5px] font-semibold transition-colors focus-visible:outline-none ${
-                          isAboutOpen ? "text-brand-blue" : "text-black hover:text-brand-blue"
+                          isAboutOpen ? "text-[#EFB000]" : "text-black hover:text-[#EFB000]"
                         }`}
                       >
                         <span>{link.label}</span>
                         <ChevronDownIcon
                           className={`h-4 w-4 transition-transform duration-250 ease-out ${
-                            isAboutOpen ? "rotate-180 text-brand-blue" : "text-slate-500"
+                            isAboutOpen ? "rotate-180 text-[#EFB000]" : "text-slate-500"
                           }`}
                         />
                       </button>
@@ -540,9 +540,9 @@ export default function Header() {
                               href={ABOUT_SUB_ITEMS.story.href}
                               onMouseEnter={handleAboutEnter}
                               onClick={() => setIsAboutOpen(false)}
-                              className="group flex flex-col justify-center rounded-xl bg-slate-50/80 p-5 sm:p-6 border border-slate-100/90 transition-all duration-200 hover:bg-slate-100/90 hover:border-brand-blue/20 focus-visible:outline-none"
+                              className="group flex flex-col justify-center rounded-xl bg-slate-50/80 p-5 sm:p-6 border border-slate-100/90 transition-all duration-200 hover:bg-slate-100/90 hover:border-[#EFB000]/30 focus-visible:outline-none"
                             >
-                              <div className="text-[16px] font-semibold text-slate-900 transition-colors group-hover:text-brand-blue">
+                              <div className="text-[16px] font-semibold text-slate-900 transition-colors group-hover:text-[#EFB000]">
                                 {ABOUT_SUB_ITEMS.story.title}
                               </div>
                               <div className="mt-1 text-[13.5px] text-slate-500 leading-normal">
@@ -560,7 +560,7 @@ export default function Header() {
                                   onClick={() => setIsAboutOpen(false)}
                                   className="group block focus-visible:outline-none"
                                 >
-                                  <div className="text-[16px] font-semibold text-slate-900 transition-colors group-hover:text-brand-blue">
+                                  <div className="text-[16px] font-semibold text-slate-900 transition-colors group-hover:text-[#EFB000]">
                                     {item.title}
                                   </div>
                                   <div className="mt-1 text-[13.5px] text-slate-500 leading-normal">
@@ -580,7 +580,7 @@ export default function Header() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="nav-underline inline-flex items-center h-10 px-1 text-[16px] xl:text-[16.5px] font-semibold text-black transition-colors hover:text-brand-blue focus-visible:outline-none"
+                      className="nav-underline inline-flex items-center h-10 px-1 text-[16px] xl:text-[16.5px] font-semibold text-black transition-colors hover:text-[#EFB000] focus-visible:outline-none"
                     >
                       {link.label}
                     </Link>
@@ -604,7 +604,7 @@ export default function Header() {
           <button
             type="button"
             onClick={() => (isMenuOpen ? closeAllMenus() : openMobileMenu())}
-            className="relative z-[60] inline-flex h-11 w-11 items-center justify-center rounded-md text-black transition-colors hover:bg-black/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue/60 lg:hidden"
+            className="relative z-[60] inline-flex h-11 w-11 items-center justify-center rounded-md text-black transition-colors hover:bg-black/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EFB000]/60 lg:hidden"
             aria-expanded={isMenuOpen}
             aria-controls="mobile-nav"
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
@@ -661,7 +661,7 @@ export default function Header() {
             type="button"
             onClick={closeAllMenus}
             aria-label="Close menu"
-            className="inline-flex h-9 w-9 items-center justify-center rounded-md text-black transition-colors hover:bg-black/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue/60"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-md text-black transition-colors hover:bg-black/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EFB000]/60"
           >
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
               <path
@@ -690,12 +690,12 @@ export default function Header() {
                       onClick={() => setIsMobileProductOpen((prev) => !prev)}
                       className="flex w-full items-center justify-between py-3 text-base font-semibold text-black focus-visible:outline-none"
                     >
-                      <span className={isMobileProductOpen ? "text-brand-blue" : ""}>
+                      <span className={isMobileProductOpen ? "text-[#EFB000]" : ""}>
                         {link.label}
                       </span>
                       <ChevronDownIcon
                         className={`h-4 w-4 transition-transform duration-300 ${
-                          isMobileProductOpen ? "rotate-180 text-brand-blue" : "text-slate-400"
+                          isMobileProductOpen ? "rotate-180 text-[#EFB000]" : "text-slate-400"
                         }`}
                       />
                     </button>
@@ -708,12 +708,12 @@ export default function Header() {
                           : "grid-rows-[0fr] opacity-0 mb-0 pointer-events-none"
                       }`}
                     >
-                      <div className="overflow-hidden space-y-2 pl-3 border-l-2 border-brand-blue/30 text-[14px]">
+                      <div className="overflow-hidden space-y-2 pl-3 border-l-2 border-[#EFB000]/30 text-[14px]">
                         {/* 1. emHRMS */}
                         <Link
                           href="/human-resource-management-system"
                           onClick={closeAllMenus}
-                          className="block py-1.5 font-medium text-slate-800 hover:text-brand-blue"
+                          className="block py-1.5 font-medium text-slate-800 hover:text-[#EFB000]"
                         >
                           emHRMS
                         </Link>
@@ -724,9 +724,9 @@ export default function Header() {
                             <Link
                               href="/contract-labour-management-system-software"
                               onClick={closeAllMenus}
-                              className="flex-1 hover:text-brand-blue"
+                              className="flex-1 hover:text-[#EFB000]"
                             >
-                              <span className={isMobileClmsOpen ? "text-brand-blue" : ""}>
+                              <span className={isMobileClmsOpen ? "text-[#EFB000]" : ""}>
                                 Contract Labour management Software
                               </span>
                             </Link>
@@ -734,11 +734,11 @@ export default function Header() {
                               type="button"
                               onClick={() => setIsMobileClmsOpen((prev) => !prev)}
                               aria-label="Toggle Contract Labour sub-menu"
-                              className="p-1 text-slate-400 hover:text-brand-blue focus-visible:outline-none"
+                              className="p-1 text-slate-400 hover:text-[#EFB000] focus-visible:outline-none"
                             >
                               <ChevronDownIcon
                                 className={`h-3.5 w-3.5 transition-transform duration-300 ${
-                                  isMobileClmsOpen ? "rotate-180 text-brand-blue" : "text-slate-400"
+                                  isMobileClmsOpen ? "rotate-180 text-[#EFB000]" : "text-slate-400"
                                 }`}
                               />
                             </button>
@@ -757,7 +757,7 @@ export default function Header() {
                                   key={item.title}
                                   href={item.href}
                                   onClick={closeAllMenus}
-                                  className="block py-1 hover:text-brand-blue"
+                                  className="block py-1 hover:text-[#EFB000]"
                                 >
                                   {item.title}
                                 </Link>
@@ -770,7 +770,7 @@ export default function Header() {
                         <Link
                           href="/payroll-management-solution"
                           onClick={closeAllMenus}
-                          className="block py-1.5 font-medium text-slate-800 hover:text-brand-blue"
+                          className="block py-1.5 font-medium text-slate-800 hover:text-[#EFB000]"
                         >
                           emPayroll Management Software
                         </Link>
@@ -779,7 +779,7 @@ export default function Header() {
                         <Link
                           href="/workforce-management-system"
                           onClick={closeAllMenus}
-                          className="block py-1.5 font-medium text-slate-800 hover:text-brand-blue"
+                          className="block py-1.5 font-medium text-slate-800 hover:text-[#EFB000]"
                         >
                           emWorkforce – System
                         </Link>
@@ -788,7 +788,7 @@ export default function Header() {
                         <Link
                           href="/headcount-management-software"
                           onClick={closeAllMenus}
-                          className="block py-1.5 font-medium text-slate-800 hover:text-brand-blue"
+                          className="block py-1.5 font-medium text-slate-800 hover:text-[#EFB000]"
                         >
                           emCount Emergency Headcount System
                         </Link>
@@ -797,7 +797,7 @@ export default function Header() {
                         <Link
                           href="/visitor-management-system"
                           onClick={closeAllMenus}
-                          className="block py-1.5 font-medium text-slate-800 hover:text-brand-blue"
+                          className="block py-1.5 font-medium text-slate-800 hover:text-[#EFB000]"
                         >
                           emVisit Visitor Management System
                         </Link>
@@ -806,7 +806,7 @@ export default function Header() {
                         <Link
                           href="/canteen-management-system"
                           onClick={closeAllMenus}
-                          className="block py-1.5 font-medium text-slate-800 hover:text-brand-blue"
+                          className="block py-1.5 font-medium text-slate-800 hover:text-[#EFB000]"
                         >
                           emMeal-Canteen Management System
                         </Link>
@@ -828,12 +828,12 @@ export default function Header() {
                       onClick={() => setIsMobileAboutOpen((prev) => !prev)}
                       className="flex w-full items-center justify-between py-3 text-base font-semibold text-black focus-visible:outline-none"
                     >
-                      <span className={isMobileAboutOpen ? "text-brand-blue" : ""}>
+                      <span className={isMobileAboutOpen ? "text-[#EFB000]" : ""}>
                         {link.label}
                       </span>
                       <ChevronDownIcon
                         className={`h-4 w-4 transition-transform duration-300 ${
-                          isMobileAboutOpen ? "rotate-180 text-brand-blue" : "text-slate-400"
+                          isMobileAboutOpen ? "rotate-180 text-[#EFB000]" : "text-slate-400"
                         }`}
                       />
                     </button>
@@ -846,14 +846,14 @@ export default function Header() {
                           : "grid-rows-[0fr] opacity-0 mb-0 pointer-events-none"
                       }`}
                     >
-                      <div className="overflow-hidden space-y-2.5 pl-3 border-l-2 border-brand-blue/30 text-[14px]">
+                      <div className="overflow-hidden space-y-2.5 pl-3 border-l-2 border-[#EFB000]/30 text-[14px]">
                         {/* 1. Our story */}
                         <Link
                           href={ABOUT_SUB_ITEMS.story.href}
                           onClick={closeAllMenus}
                           className="group block py-1"
                         >
-                          <div className="font-semibold text-slate-900 group-hover:text-brand-blue">
+                          <div className="font-semibold text-slate-900 group-hover:text-[#EFB000]">
                             {ABOUT_SUB_ITEMS.story.title}
                           </div>
                           <div className="text-[12.5px] text-slate-500">
@@ -867,7 +867,7 @@ export default function Header() {
                           onClick={closeAllMenus}
                           className="group block py-1"
                         >
-                          <div className="font-semibold text-slate-900 group-hover:text-brand-blue">
+                          <div className="font-semibold text-slate-900 group-hover:text-[#EFB000]">
                             {ABOUT_SUB_ITEMS.rightCol[0].title}
                           </div>
                           <div className="text-[12.5px] text-slate-500">
@@ -881,7 +881,7 @@ export default function Header() {
                           onClick={closeAllMenus}
                           className="group block py-1"
                         >
-                          <div className="font-semibold text-slate-900 group-hover:text-brand-blue">
+                          <div className="font-semibold text-slate-900 group-hover:text-[#EFB000]">
                             {ABOUT_SUB_ITEMS.rightCol[1].title}
                           </div>
                           <div className="text-[12.5px] text-slate-500">
@@ -903,7 +903,7 @@ export default function Header() {
                   <Link
                     href={link.href}
                     onClick={closeAllMenus}
-                    className="nav-underline block w-full py-3.5 text-base font-semibold text-black focus-visible:outline-none"
+                    className="nav-underline block w-full py-3.5 text-base font-semibold text-black transition-colors hover:text-[#EFB000] focus-visible:outline-none"
                   >
                     {link.label}
                   </Link>

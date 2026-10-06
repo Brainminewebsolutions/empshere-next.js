@@ -35,6 +35,7 @@ const WORDPRESS_URL = (process.env.WORDPRESS_URL || "https://olivedrab-dove-1733
 const SITE_URL = (process.env.SITE_URL || "https://www.emsphere.com").replace(/\/+$/, "");
 const BRAND_NAME = "Emsphere";
 const OUT_FILE = path.join(__dirname, "..", "data", "blog-posts.json");
+const LATEST_OUT_FILE = path.join(__dirname, "..", "data", "latest-blogs.json");
 const ALLOW_EMPTY = process.argv.includes("--allow-empty");
 
 // "pretty" = /blog/wp-json/…, "query" = /blog/index.php?rest_route=…
@@ -630,7 +631,26 @@ async function main() {
     JSON.stringify({ generatedAt: new Date().toISOString(), source: WORDPRESS_URL, blogIndexSeo, posts }, null, 0)
   );
 
+  const latestPosts = posts.slice(0, 9).map((p) => ({
+    id: p.id,
+    slug: p.slug,
+    title: p.title,
+    excerpt: p.excerpt,
+    date: p.date,
+    featuredImage: p.featuredImage
+      ? {
+          src: p.featuredImage.src,
+          width: p.featuredImage.width,
+          height: p.featuredImage.height,
+          alt: p.featuredImage.alt,
+          srcSet: p.featuredImage.srcSet,
+        }
+      : null,
+  }));
+  fs.writeFileSync(LATEST_OUT_FILE, JSON.stringify(latestPosts, null, 2));
+
   console.log(`✔ [blog] Saved ${posts.length} posts to data/blog-posts.json`);
+  console.log(`✔ [blog] Saved ${latestPosts.length} latest posts to data/latest-blogs.json`);
   console.log(`  SEO source: ${Object.entries(bySource).map(([k, v]) => `${k}: ${v}`).join(", ")}`);
   if (missing.length) {
     console.warn(`⚠ [blog] No Rank Math data for ${missing.length} post(s): ${missing.slice(0, 5).join(", ")}${missing.length > 5 ? " …" : ""}`);
@@ -648,6 +668,9 @@ main().catch((err) => {
   if (ALLOW_EMPTY) {
     fs.mkdirSync(path.dirname(OUT_FILE), { recursive: true });
     fs.writeFileSync(OUT_FILE, JSON.stringify({ generatedAt: null, blogIndexSeo: null, posts: [] }));
+    if (!fs.existsSync(LATEST_OUT_FILE)) {
+      fs.writeFileSync(LATEST_OUT_FILE, JSON.stringify([]));
+    }
     console.warn("⚠ [blog] Wrote an empty snapshot so the dev server can start.");
     return;
   }

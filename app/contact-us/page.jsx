@@ -1,6 +1,8 @@
 import BackToTop from "@/components/BackToTop";
 import ContactForm from "@/components/ContactForm";
 import ScrollReveal from "@/components/ScrollReveal";
+import PhosphorIconTile from "@/components/PhosphorIconTile";
+import { Buildings, Clock, EnvelopeSimple, MapPin, Phone } from "@phosphor-icons/react/ssr";
 
 export const metadata = {
   title: "Contact Us | Emsphere Technologies - HRMS & Workforce Management",
@@ -24,35 +26,21 @@ const OFFICES = [
     badge: "Head Office",
     address: "2nd Floor, Sapphire Chambers, Above Axis Bank, Baner Road, Baner, Pune, Maharashtra – 411045",
     phones: ["020-27292732", "020-27292733", "+91-7798981534"],
-    icon: (
-      <svg className="h-5 w-5 text-brand-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-      </svg>
-    ),
+    icon: Buildings,
   },
   {
     city: "Delhi",
     badge: "Branch Office",
     address: "Plot No. 11, 1st Floor, Sector 12A, Dwarka, Near Dwarka Metro Station, New Delhi – 110075",
     phones: ["+91-9823185585", "+91-7798981117"],
-    icon: (
-      <svg className="h-5 w-5 text-brand-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-      </svg>
-    ),
+    icon: MapPin,
   },
   {
     city: "Bengaluru",
     badge: "Branch Office",
     address: "Aarya Center, Opposite 8th Block Post Office, Near Ganesh Temple, Koramangala, Bengaluru, Karnataka – 560095",
     phones: ["+91-9922412060", "+91-7798981117"],
-    icon: (
-      <svg className="h-5 w-5 text-brand-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-      </svg>
-    ),
+    icon: MapPin,
   },
 ];
 
@@ -123,11 +111,7 @@ export default function ContactUsPage() {
                 <div className="space-y-4 text-sm">
                   {/* Email */}
                   <div className="flex items-start gap-3.5">
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-sky-50 text-brand-blue mt-0.5">
-                      <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                      </svg>
-                    </div>
+                    <PhosphorIconTile icon={EnvelopeSimple} className="mt-0.5 h-9 w-9 rounded-lg" iconClassName="h-5 w-5" />
                     <div>
                       <div className="text-xs font-semibold uppercase tracking-wider text-slate-400">Sales &amp; Demos</div>
                       <a href="mailto:sales@emsphere.com" className="font-semibold text-slate-800 hover:text-brand-blue transition-colors">
@@ -138,11 +122,7 @@ export default function ContactUsPage() {
 
                   {/* Phone */}
                   <div className="flex items-start gap-3.5">
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-sky-50 text-brand-blue mt-0.5">
-                      <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                      </svg>
-                    </div>
+                    <PhosphorIconTile icon={Phone} className="mt-0.5 h-9 w-9 rounded-lg" iconClassName="h-5 w-5" />
                     <div>
                       <div className="text-xs font-semibold uppercase tracking-wider text-slate-400">Contact Numbers</div>
                       <div className="flex flex-col gap-0.5 font-medium text-slate-800">
@@ -155,11 +135,7 @@ export default function ContactUsPage() {
 
                   {/* Hours */}
                   <div className="flex items-start gap-3.5">
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-amber-50 text-brand-gold-dark mt-0.5">
-                      <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                    </div>
+                    <PhosphorIconTile icon={Clock} className="mt-0.5 h-9 w-9 rounded-lg" iconClassName="h-5 w-5" />
                     <div>
                       <div className="text-xs font-semibold uppercase tracking-wider text-slate-400">Working Hours</div>
                       <div className="font-medium text-slate-800">Monday – Friday: 9:00 AM – 6:00 PM IST</div>
@@ -183,7 +159,7 @@ export default function ContactUsPage() {
                   >
                     <div className="flex items-center justify-between gap-2 mb-2">
                       <div className="flex items-center gap-2">
-                        {office.icon}
+                        <PhosphorIconTile icon={office.icon} className="h-8 w-8 rounded-lg" iconClassName="h-[18px] w-[18px]" />
                         <h4 className="font-bold text-slate-900">{office.city}</h4>
                       </div>
                       <span className="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-medium text-slate-600">

@@ -18,6 +18,7 @@ import WorkforceHeroVector from "@/components/WorkforceHeroVector";
 import heroImg from "../images/workforce-management-system/hero-workforce-global-enterprise-interface.webp";
 import whyImg from "../images/workforce-management-system/why-emworkforce-centralized-management-dashboard.webp";
 import consultingImg from "../images/workforce-management-system/consulting-session-sme-workforce-analytics.webp";
+import { CalendarCheck, CheckCircle, Clock, DeviceMobile, FileText, FlowArrow, Lock, MapTrifold, Money, Pulse, ShieldCheck, Star, UserCheck, Users, UsersThree } from "@phosphor-icons/react/ssr";
 
 // Title and description are the page's Rank Math values on the current site.
 const PAGE_URL = "https://www.emsphere.com/workforce-management-system/";
@@ -115,48 +116,33 @@ function FaqToggleIcon() {
   );
 }
 
-// Solid icons drawn for this page matching the HRMS vibrant solid-tile + white icon style.
-const ICON_PATHS = {
-  employee: (
-    <path fillRule="evenodd" d="M12 1.5a4.5 4.5 0 0 0-4.5 4.5v.75a4.5 4.5 0 0 0 9 0V6a4.5 4.5 0 0 0-4.5-4.5Zm-7.5 16.5A4.5 4.5 0 0 1 9 13.5h6a4.5 4.5 0 0 1 4.5 4.5v1.5a1.5 1.5 0 0 1-1.5 1.5h-12A1.5 1.5 0 0 1 4.5 19.5V18Z" clipRule="evenodd" />
-  ),
-  clock: (
-    <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 6a.75.75 0 0 0-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 0 0 0-1.5h-3.75V6Z" clipRule="evenodd" />
-  ),
-  payroll: (
-    <path fillRule="evenodd" d="M12 1.5c-5.799 0-10.5 4.701-10.5 10.5s4.701 10.5 10.5 10.5 10.5-4.701 10.5-10.5S17.799 1.5 12 1.5Zm1.125 5.25a.75.75 0 0 0 0 1.5h2.25a.75.75 0 0 1 0 1.5h-3.375a.75.75 0 0 0 0 1.5h1.875a2.25 2.25 0 0 1 0 4.5h-.75v1.5a.75.75 0 0 1-1.5 0V16.5H9.375a.75.75 0 0 1 0-1.5h2.25a.75.75 0 0 0 0-1.5H9.75a2.25 2.25 0 0 1 0-4.5h2.625V7.5a.75.75 0 0 1 1.5 0v.75h1.5a.75.75 0 0 0 0-1.5h-2.25Z" clipRule="evenodd" />
-  ),
-  mobile: (
-    <>
-      <path d="M7 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H7zm0 2h10v13H7V4zm5 14.25a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-      <path d="M12 7a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-3 7a3 3 0 0 1 6 0H9z" />
-    </>
-  ),
-  calendar: (
-    <path fillRule="evenodd" d="M6.75 2.25A.75.75 0 0 1 7.5 3v1.5h9V3A.75.75 0 0 1 18 3v1.5h.75A3.75 3.75 0 0 1 22.5 8.25v10.5A3.75 3.75 0 0 1 18.75 22.5H5.25A3.75 3.75 0 0 1 1.5 18.75V8.25A3.75 3.75 0 0 1 5.25 4.5H6V3a.75.75 0 0 1 .75-.75Zm13.5 9a1.5 1.5 0 0 0-1.5-1.5H5.25a1.5 1.5 0 0 0-1.5 1.5v7.5a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5v-7.5Z" clipRule="evenodd" />
-  ),
-  lock: (
-    <path fillRule="evenodd" d="M12 1.5a5.25 5.25 0 0 0-5.25 5.25v3a3 3 0 0 0-3 3v6.75a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3v-6.75a3 3 0 0 0-3-3v-3c0-2.9-2.35-5.25-5.25-5.25Zm3.75 8.25v-3a3.75 3.75 0 1 0-7.5 0v3h7.5Z" clipRule="evenodd" />
-  ),
-  workflow: (
-    <path fillRule="evenodd" d="M6 2a3 3 0 0 0-3 3v.5a3 3 0 0 0 2 2.82v7.36A3 3 0 0 0 3 18.5v.5a3 3 0 1 0 6 0v-.5a3 3 0 0 0-2-2.82V9.82A3.001 3.001 0 0 0 8.82 8H13a3 3 0 0 1 3 3v2.18a3 3 0 1 0 2 0V11a5 5 0 0 0-5-5H8.82A3 3 0 0 0 6 2Z" clipRule="evenodd" />
-  ),
-  reports: (
-    <path fillRule="evenodd" d="M5.625 1.5H9a3.75 3.75 0 0 1 3.75 3.75v1.875c0 1.036.84 1.875 1.875 1.875H16.5a3.75 3.75 0 0 1 3.75 3.75v7.875c0 1.035-.84 1.875-1.875 1.875H5.625a1.875 1.875 0 0 1-1.875-1.875V3.375c0-1.036.84-1.875 1.875-1.875ZM12.75 12a.75.75 0 0 0 0-1.5h-4.5a.75.75 0 0 0 0 1.5h4.5Zm0 3a.75.75 0 0 0 0-1.5h-4.5a.75.75 0 0 0 0 1.5h4.5Zm-2.25 3a.75.75 0 0 0 0-1.5h-2.25a.75.75 0 0 0 0 1.5h2.25Zm4.5-12.75v1.875a.375.375 0 0 0 .375.375h1.875a2.25 2.25 0 0 0-2.25-2.25Z" clipRule="evenodd" />
-  ),
+// Section icons from Phosphor (https://phosphoricons.com), white on the #EFB000 tile.
+const ICONS = {
+  employee: Users,
+  clock: Clock,
+  payroll: Money,
+  mobile: DeviceMobile,
+  calendar: CalendarCheck,
+  lock: Lock,
+  workflow: FlowArrow,
+  reports: FileText,
+  customers: UsersThree,
+  compliance: ShieldCheck,
+  projects: CheckCircle,
+  satisfaction: Star,
+  advice: UserCheck,
+  assessment: Pulse,
+  roadmap: MapTrifold,
 };
 
 function LineIcon({ name, className = "h-6 w-6" }) {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className={className} fill="currentColor">
-      {ICON_PATHS[name]}
-    </svg>
-  );
+  const Icon = ICONS[name];
+  return <Icon weight="fill" aria-hidden="true" className={className} />;
 }
 
-function IconTile({ name, bg, color = "#ffffff", className = "h-12 w-12 rounded-[10px]", iconClassName = "h-6 w-6" }) {
+function IconTile({ name, className = "h-12 w-12 rounded-[10px]", iconClassName = "h-6 w-6" }) {
   return (
-    <span className={`flex shrink-0 items-center justify-center text-white shadow-sm ${iconPop} ${className}`} style={{ background: bg }}>
+    <span className={`flex shrink-0 items-center justify-center bg-[#EFB000] text-white shadow-sm ${iconPop} ${className}`}>
       <LineIcon name={name} className={iconClassName} />
     </span>
   );
@@ -174,15 +160,6 @@ function SectionHeader({ id, title, text, align = "center", className = "", dark
   );
 }
 
-const TONES = [
-  { bg: "#0077c2", color: "#ffffff" },
-  { bg: "#0fb880", color: "#ffffff" },
-  { bg: "#f8bb18", color: "#ffffff" },
-  { bg: "#ef4444", color: "#ffffff" },
-  { bg: "#5b5bd6", color: "#ffffff" },
-];
-const tone = (index) => TONES[index % TONES.length];
-
 /* --------------------------------------------------------------------
    Content — all copy from https://www.emsphere.com/workforce-management-system/
    -------------------------------------------------------------------- */
@@ -193,52 +170,28 @@ const stats = [
     suffix: "+",
     label: "Happy Customers",
     desc: "Enterprise clients worldwide",
-    bg: "#0077c2",
-    color: "#ffffff",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
-        <path d="M4.5 6.375a4.125 4.125 0 1 1 8.25 0 4.125 4.125 0 0 1-8.25 0ZM14.25 8.625a3.375 3.375 0 1 1 6.75 0 3.375 3.375 0 0 1-6.75 0ZM1.5 19.125a7.125 7.125 0 0 1 14.25 0v.003l-.001.119a.75.75 0 0 1-.363.63 13.067 13.067 0 0 1-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 0 1-.364-.63l-.001-.122ZM17.25 19.128l-.003.144a2.25 2.25 0 0 1-.233.96 10.088 10.088 0 0 0 5.06-1.232.75.75 0 0 0 .364-.63v-.12a5.625 5.625 0 0 0-5.188-5.615Z" />
-      </svg>
-    ),
+    icon: "customers",
   },
   {
     value: 100,
     suffix: "+",
     label: "Compliance Reports",
     desc: "State & central statutory acts",
-    bg: "#f8bb18",
-    color: "#ffffff",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
-        <path fillRule="evenodd" d="M12.516 2.17a.75.75 0 0 0-1.032 0 11.209 11.209 0 0 1-7.877 3.08.75.75 0 0 0-.722.515A12.74 12.74 0 0 0 2.25 9.75c0 5.942 4.064 10.933 9.563 12.348a.749.749 0 0 0 .374 0c5.499-1.415 9.563-6.406 9.563-12.348 0-1.39-.223-2.73-.635-3.985a.75.75 0 0 0-.722-.516l-.143.001c-2.996 0-5.717-1.17-7.734-3.08Zm3.094 8.016a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z" clipRule="evenodd" />
-      </svg>
-    ),
+    icon: "compliance",
   },
   {
     value: 250,
     suffix: "+",
     label: "Successful projects",
     desc: "Multi-site implementations",
-    bg: "#0fb880",
-    color: "#ffffff",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
-        <path fillRule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z" clipRule="evenodd" />
-      </svg>
-    ),
+    icon: "projects",
   },
   {
     value: 99,
     suffix: "%",
     label: "Customer Satisfaction",
     desc: "Verified SLA delivery rating",
-    bg: "#ef4444",
-    color: "#ffffff",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
-        <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clipRule="evenodd" />
-      </svg>
-    ),
+    icon: "satisfaction",
   },
 ];
 
@@ -430,12 +383,7 @@ export default function WorkforceManagementSystemPage() {
                   style={stagger(index, 80)}
                   className={`${revealUp} ${goldCard} ${liftGold} group/stat relative flex items-start gap-3.5 rounded-xl bg-white p-4 sm:p-4.5 transition-[translate,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[inset_0_0_0_1.5px_#f8bb18,0px_12px_28px_-6px_rgba(0,0,0,0.18)]`}
                 >
-                  <span
-                    className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-[9px] ${iconPop}`}
-                    style={{ background: stat.bg, color: stat.color }}
-                  >
-                    {stat.icon}
-                  </span>
+                  <IconTile name={stat.icon} className="h-11 w-11 rounded-[9px]" iconClassName="h-5 w-5" />
                   <div className="flex flex-col">
                     <StopwatchCounter
                       value={stat.value}
@@ -468,7 +416,7 @@ export default function WorkforceManagementSystemPage() {
               {modules.map((item, index) => (
                 <article key={item.title} className={`${goldCard} ${liftGold} relative flex w-full flex-col gap-3 p-6`}>
                   <span className={`${fontInter} absolute right-5 top-5 text-sm font-bold text-black/15`}>{String(index + 1).padStart(2, "0")}</span>
-                  <IconTile name={item.icon} bg={tone(index).bg} color={tone(index).color} />
+                  <IconTile name={item.icon} />
                   <h3 className="pr-6 text-lg font-semibold leading-snug text-[#1f1f1f]">{item.title}</h3>
                   <p className={`text-[15px] leading-[23px] ${mutedText}`}>{item.text}</p>
                 </article>
@@ -515,13 +463,7 @@ export default function WorkforceManagementSystemPage() {
             {/* Consulting value badges matching HRMS style */}
             <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-3">
               <div className="flex items-center gap-2.5 rounded-xl bg-white/90 px-3 py-2 shadow-[inset_0_0_0_0.75px_#dddddd,0_2px_8px_-2px_rgba(0,0,0,0.06)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[inset_0_0_0_1px_#f8bb18,0_6px_14px_-4px_rgba(0,0,0,0.1)]">
-                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[#fee6b1] text-[#b07d00]">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
-                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                    <circle cx="9" cy="7" r="4" />
-                    <polyline points="16 11 18 13 22 9" />
-                  </svg>
-                </span>
+                <IconTile name="advice" className="h-7 w-7 rounded-lg" iconClassName="h-4 w-4" />
                 <div className="flex flex-col">
                   <span className="text-[10px] font-bold uppercase tracking-wider text-black/50">Step 1</span>
                   <span className="text-xs font-semibold text-[#1f1f1f]">1-on-1 SME Advice</span>
@@ -529,11 +471,7 @@ export default function WorkforceManagementSystemPage() {
               </div>
 
               <div className="flex items-center gap-2.5 rounded-xl bg-white/90 px-3 py-2 shadow-[inset_0_0_0_0.75px_#dddddd,0_2px_8px_-2px_rgba(0,0,0,0.06)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[inset_0_0_0_1px_#f8bb18,0_6px_14px_-4px_rgba(0,0,0,0.1)]">
-                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[#d8e7fe] text-[#1d64d8]">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
-                    <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-                  </svg>
-                </span>
+                <IconTile name="assessment" className="h-7 w-7 rounded-lg" iconClassName="h-4 w-4" />
                 <div className="flex flex-col">
                   <span className="text-[10px] font-bold uppercase tracking-wider text-black/50">Step 2</span>
                   <span className="text-xs font-semibold text-[#1f1f1f]">System Assessment</span>
@@ -541,11 +479,7 @@ export default function WorkforceManagementSystemPage() {
               </div>
 
               <div className="flex items-center gap-2.5 rounded-xl bg-white/90 px-3 py-2 shadow-[inset_0_0_0_0.75px_#dddddd,0_2px_8px_-2px_rgba(0,0,0,0.06)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[inset_0_0_0_1px_#f8bb18,0_6px_14px_-4px_rgba(0,0,0,0.1)]">
-                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[#d1f4e3] text-[#0b8f63]">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                  </svg>
-                </span>
+                <IconTile name="roadmap" className="h-7 w-7 rounded-lg" iconClassName="h-4 w-4" />
                 <div className="flex flex-col">
                   <span className="text-[10px] font-bold uppercase tracking-wider text-black/50">Step 3</span>
                   <span className="text-xs font-semibold text-[#1f1f1f]">Tailored Roadmap</span>

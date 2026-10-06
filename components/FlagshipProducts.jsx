@@ -1,14 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Instrument_Sans, Inter } from "next/font/google";
+import PhosphorIconTile from "@/components/PhosphorIconTile";
+import { ForkKnife, HardHat, IdentificationBadge, UserList, UsersFour, UsersThree, Wallet } from "@phosphor-icons/react/ssr";
 
-import productEmhrms from "@/app/images/human-resource-management-system/product-icon-emhrms.webp";
-import productEmclms from "@/app/images/human-resource-management-system/product-icon-emclms.webp";
-import productEmpayroll from "@/app/images/human-resource-management-system/product-icon-empayroll-wallet.webp";
-import productEmworkforce from "@/app/images/human-resource-management-system/product-icon-emworkforce.webp";
-import productEmvisit from "@/app/images/human-resource-management-system/product-icon-emvisit.webp";
-import productEmmeal from "@/app/images/human-resource-management-system/product-icon-emmeal.webp";
-import productEmcount from "@/app/images/human-resource-management-system/product-icon-emcount.webp";
 
 const instrumentSans = Instrument_Sans({
   subsets: ["latin"],
@@ -52,48 +46,42 @@ export const DEFAULT_PRODUCTS = [
   {
     name: "emHRMS",
     text: "emHRMS can manage a life cycle of an employee and helps to automate all the HR Process in the company. It can reduce the day to day work effort by 40%.",
-    icon: productEmhrms,
-    alt: "White icon of a team with a gear representing emHRMS",
+    icon: UsersThree,
     href: "/human-resource-management-system",
     font: fontInstrument,
   },
   {
     name: "emCLMS",
     text: "emContract Labour management software is an end to end system covering all aspects of labour management.",
-    icon: productEmclms,
-    alt: "White icon of a construction worker in a hard hat representing emCLMS",
+    icon: HardHat,
     href: "/contract-labour-management-system-software",
     font: fontInstrument,
   },
   {
     name: "emPayroll",
     text: "emPayroll helps organizations to manage the complete payroll activities.",
-    icon: productEmpayroll,
-    alt: "White wallet with banknotes icon representing emPayroll",
+    icon: Wallet,
     href: "/payroll-management-solution",
     font: `${fontInter} tracking-[-0.416px]`,
   },
   {
     name: "emWorkForce",
     text: "Manage your employee life cycle from onboarding to exit, publish letters and more.",
-    icon: productEmworkforce,
-    alt: "White icon of a group of workers in hard hats representing emWorkForce",
+    icon: UsersFour,
     href: "/workforce-management-system",
     font: fontInstrument,
   },
   {
     name: "emVisit",
     text: "emVisit is a fully automated and comprehensive cloud based visitor management system software.",
-    icon: productEmvisit,
-    alt: "White visitor ID badge with a check mark representing emVisit",
+    icon: IdentificationBadge,
     href: "/visitor-management-system",
     font: fontInstrument,
   },
   {
     name: "emMeal",
     text: "emMeal helps you orchestrate a quick and efficient operation to cover a large section of employees in a systematic and hassle-free manner.",
-    icon: productEmmeal,
-    alt: "White plate with a fork and spoon icon representing emMeal",
+    icon: ForkKnife,
     href: "/canteen-management-system",
     font: `${fontInter} tracking-[-0.416px]`,
   },
@@ -104,8 +92,7 @@ export const ALL_FLAGSHIP_PRODUCTS = [
   {
     name: "emCount",
     text: "We provide effective integration of technologies to simplify our customer’s workflow and boost efficiency.",
-    icon: productEmcount,
-    alt: "Icon representing emCount headcount",
+    icon: UserList,
     href: "/headcount-management-software",
     font: fontInstrument,
   },
@@ -119,6 +106,7 @@ export default function FlagshipProducts({
   exclude,
   className = "",
   id = "products-heading",
+  accentColor = "#0b78c2",
 }) {
   const displaySubtitle = description !== undefined ? description : subtitle;
   const excludeList = Array.isArray(exclude) ? exclude : exclude ? [exclude] : [];
@@ -151,13 +139,7 @@ export default function FlagshipProducts({
               style={stagger(index % 3)}
               className={`${revealUp} ${productCardGlow} group/card flex flex-col items-center gap-3 rounded-[17px] bg-white px-6 py-5 text-center text-black drop-shadow-[0px_2.603px_4.338px_rgba(0,0,0,0.25)]`}
             >
-              <span className={`flex h-16 w-16 items-center justify-center rounded-[9px] bg-[#efb000] ${iconPop}`}>
-                <Image
-                  src={product.icon}
-                  alt={product.alt || `${product.name} icon`}
-                  className="h-10 w-10 object-contain"
-                />
-              </span>
+              <PhosphorIconTile icon={product.icon} className={`h-16 w-16 rounded-[9px] ${iconPop}`} iconClassName="h-10 w-10" />
               <h3 className={`text-[17px] font-bold leading-[23px] ${product.font || fontInstrument}`}>
                 {product.name}
               </h3>
@@ -166,10 +148,11 @@ export default function FlagshipProducts({
               </p>
               <Link
                 href={product.href}
-                className={`group/btn mt-auto inline-flex min-h-11 items-center gap-2 px-2 ${fontInter} text-[13px] font-semibold leading-6 text-[#0b78c2] hover:underline`}
+                className={`group/btn mt-auto inline-flex min-h-11 items-center gap-2 px-2 ${fontInter} text-[13px] font-semibold leading-6 hover:underline`}
+                style={{ color: accentColor }}
               >
                 {product.ctaText || "Know More"}
-                <ArrowCircleIcon className="size-4.5" fill="#0b78c2" />
+                <ArrowCircleIcon className="size-4.5" fill={accentColor} />
               </Link>
             </li>
           ))}

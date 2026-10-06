@@ -19,6 +19,7 @@ import heroImg from "../images/headcount-management-software/hero-connected-empl
 import dashboardImg from "../images/headcount-management-software/feature-realtime-floor-zone-dashboard.webp";
 import automationImg from "../images/headcount-management-software/feature-automated-evacuation-list.webp";
 import alertsImg from "../images/headcount-management-software/feature-red-zone-sms-email-alerts.webp";
+import { Lifebuoy, ShieldCheck, UsersFour } from "@phosphor-icons/react/ssr";
 
 
 // Title and description are the page's Rank Math values on the current site.
@@ -104,30 +105,21 @@ function CheckIcon({ className = "h-4 w-4" }) {
   );
 }
 
-// Solid icons drawn for this page matching the HRMS vibrant solid-tile + white icon style.
-const ICON_PATHS = {
-  count: (
-    <path d="M4.5 6.375a4.125 4.125 0 1 1 8.25 0 4.125 4.125 0 0 1-8.25 0ZM14.25 8.625a3.375 3.375 0 1 1 6.75 0 3.375 3.375 0 0 1-6.75 0ZM1.5 19.125a7.125 7.125 0 0 1 14.25 0v.003l-.001.119a.75.75 0 0 1-.363.63 13.067 13.067 0 0 1-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 0 1-.364-.63l-.001-.122ZM17.25 19.128l-.003.144a2.25 2.25 0 0 1-.233.96 10.088 10.088 0 0 0 5.06-1.232.75.75 0 0 0 .364-.63v-.12a5.625 5.625 0 0 0-5.188-5.615Z" />
-  ),
-  rescue: (
-    <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 6a.75.75 0 0 0-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 0 0 0-1.5h-3.75V6Z" clipRule="evenodd" />
-  ),
-  safety: (
-    <path fillRule="evenodd" d="M12.516 2.17a.75.75 0 0 0-1.032 0 11.209 11.209 0 0 1-7.877 3.08.75.75 0 0 0-.722.515A12.74 12.74 0 0 0 2.25 9.75c0 5.942 4.064 10.933 9.563 12.348a.749.749 0 0 0 .374 0c5.499-1.415 9.563-6.406 9.563-12.348 0-1.39-.223-2.73-.635-3.985a.75.75 0 0 0-.722-.516l-.143.001c-2.996 0-5.717-1.17-7.734-3.08Zm3.094 8.016a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z" clipRule="evenodd" />
-  ),
+// Section icons from Phosphor (https://phosphoricons.com), white on the #EFB000 tile.
+const ICONS = {
+  count: UsersFour,
+  rescue: Lifebuoy,
+  safety: ShieldCheck,
 };
 
-function LineIcon({ name, className = "h-8 w-8" }) {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className={className} fill="currentColor">
-      {ICON_PATHS[name]}
-    </svg>
-  );
+function LineIcon({ name, className = "h-6 w-6" }) {
+  const Icon = ICONS[name];
+  return <Icon weight="fill" aria-hidden="true" className={className} />;
 }
 
-function IconTile({ name, bg, className = "h-20 w-20 rounded-2xl", iconClassName = "h-10 w-10" }) {
+function IconTile({ name, className = "h-12 w-12 rounded-[10px]", iconClassName = "h-6 w-6" }) {
   return (
-    <span className={`flex shrink-0 items-center justify-center text-white shadow-sm ${iconPop} ${className}`} style={{ background: bg }}>
+    <span className={`flex shrink-0 items-center justify-center bg-[#EFB000] text-white shadow-sm ${iconPop} ${className}`}>
       <LineIcon name={name} className={iconClassName} />
     </span>
   );
@@ -302,7 +294,7 @@ export default function HeadcountManagementSoftwarePage() {
           <ul className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {benefits.map((item, index) => (
               <li key={item.title} style={stagger(index)} className={`${revealUp} ${goldCard} ${liftGold} flex flex-col items-center gap-4 px-6 pb-8 pt-8 text-center`}>
-                <IconTile name={item.icon} bg={item.bg} className="h-20 w-20 rounded-2xl" iconClassName="h-10 w-10" />
+                <IconTile name={item.icon} className="h-20 w-20 rounded-2xl" iconClassName="h-10 w-10" />
                 <h3 className="text-xl font-semibold text-[#1f1f1f]">{item.title}</h3>
                 <p className={`text-[15px] leading-[24px] ${mutedText}`}>{item.text}</p>
               </li>

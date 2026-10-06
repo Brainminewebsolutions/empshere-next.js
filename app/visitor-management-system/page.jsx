@@ -20,6 +20,7 @@ import heroImg from "../images/visitor-management-system/hero-verified-visitor-c
 import mobileImg from "../images/visitor-management-system/visitor-analytics-mobile-app-dashboard.webp";
 import securityImg from "../images/visitor-management-system/workplace-security-visitor-scheduling-illustration.webp";
 import transformImg from "../images/visitor-management-system/visitor-qr-pass-scan-reception-kiosk.webp";
+import { AddressBook, ArrowsOut, Bell, ChartLineDown, ChatsCircle, ClipboardText, Database, DoorOpen, Hourglass, IdentificationBadge, IdentificationCard, Lightning, Lock, Note, PersonSimpleRun, PiggyBank, PlugsConnected, QrCode, ShieldCheck, SignIn, Signature, Smiley, Warning } from "@phosphor-icons/react/ssr";
 
 
 // Title and description are the page's Rank Math values on the current site.
@@ -118,94 +119,41 @@ function FaqToggleIcon() {
   );
 }
 
-// Line icons drawn for this page (the live site uses an icon font here).
-// Solid icons drawn for this page matching the HRMS vibrant solid-tile + white icon style.
-const ICON_PATHS = {
-  checkin: (
-    <path fillRule="evenodd" d="M7.5 3.75A1.5 1.5 0 0 0 6 5.25v13.5A1.5 1.5 0 0 0 7.5 20.25h9a1.5 1.5 0 0 0 1.5-1.5V5.25a1.5 1.5 0 0 0-1.5-1.5h-9Zm6.78 6.28a.75.75 0 0 0-1.06-1.06l-2.47 2.47-1.19-1.19a.75.75 0 0 0-1.06 1.06l1.72 1.72a.75.75 0 0 0 1.06 0l3-3Z" clipRule="evenodd" />
-  ),
-  record: (
-    <path fillRule="evenodd" d="M5.625 1.5H9a3.75 3.75 0 0 1 3.75 3.75v1.875c0 1.036.84 1.875 1.875 1.875H16.5a3.75 3.75 0 0 1 3.75 3.75v7.875c0 1.035-.84 1.875-1.875 1.875H5.625a1.875 1.875 0 0 1-1.875-1.875V3.375c0-1.036.84-1.875 1.875-1.875ZM12.75 12a.75.75 0 0 0 0-1.5h-4.5a.75.75 0 0 0 0 1.5h4.5Zm0 3a.75.75 0 0 0 0-1.5h-4.5a.75.75 0 0 0 0 1.5h4.5Zm-2.25 3a.75.75 0 0 0 0-1.5h-2.25a.75.75 0 0 0 0 1.5h2.25Zm4.5-12.75v1.875a.375.375 0 0 0 .375.375h1.875a2.25 2.25 0 0 0-2.25-2.25Z" clipRule="evenodd" />
-  ),
-  chat: (
-    <path fillRule="evenodd" d="M4.848 2.771A49.144 49.144 0 0 1 12 2.25c2.43 0 4.817.177 7.152.521 1.957.288 3.348 1.94 3.348 3.911v5.836c0 1.971-1.391 3.623-3.348 3.911a49.852 49.852 0 0 1-3.652.417V21a.75.75 0 0 1-1.28.53l-4.72-4.72a49.52 49.52 0 0 1-4.652-.417C2.891 16.095 1.5 14.443 1.5 12.472V6.182c0-1.97 1.391-3.623 3.348-3.911Z" clipRule="evenodd" />
-  ),
-  note: (
-    <path fillRule="evenodd" d="M3 4.5A2.25 2.25 0 0 1 5.25 2.25h13.5A2.25 2.25 0 0 1 21.75 4.5v15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 19.5v-15ZM6.75 7.5a.75.75 0 0 0 0 1.5h10.5a.75.75 0 0 0 0-1.5H6.75Zm0 4.5a.75.75 0 0 0 0 1.5h10.5a.75.75 0 0 0 0-1.5H6.75Zm0 4.5a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5H6.75Z" clipRule="evenodd" />
-  ),
-  bell: (
-    <path fillRule="evenodd" d="M5.25 9a6.75 6.75 0 0 1 13.5 0v4.755l1.624 2.435A.75.75 0 0 1 19.75 17.5H4.25a.75.75 0 0 1-.624-1.31L5.25 13.755V9Zm4.5 10.5a2.25 2.25 0 0 0 4.5 0h-4.5Z" clipRule="evenodd" />
-  ),
-  signature: (
-    <path fillRule="evenodd" d="M21.731 2.269a2.625 2.625 0 0 0-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 0 0 0-3.712ZM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 0 0-1.32 2.214l-.8 2.685a.75.75 0 0 0 .933.933l2.685-.8a5.25 5.25 0 0 0 2.214-1.32L19.513 8.2Z" clipRule="evenodd" />
-  ),
-  badge: (
-    <path fillRule="evenodd" d="M7.5 1.5a.75.75 0 0 1 .75.75V3h7.5V2.25a.75.75 0 0 1 1.5 0V3h.75A2.25 2.25 0 0 1 20.25 5.25v14.25A2.25 2.25 0 0 1 18 21.75H6a2.25 2.25 0 0 1-2.25-2.25V5.25A2.25 2.25 0 0 1 6 3h.75V2.25a.75.75 0 0 1 .75-.75ZM12 7.5a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Zm-3.75 8.25a3.75 3.75 0 0 1 7.5 0H8.25Z" clipRule="evenodd" />
-  ),
-  qr: (
-    <path fillRule="evenodd" d="M3 4.5A1.5 1.5 0 0 1 4.5 3h4.5A1.5 1.5 0 0 1 10.5 4.5v4.5A1.5 1.5 0 0 1 9 10.5H4.5A1.5 1.5 0 0 1 3 9V4.5Zm1.5 0v4.5h4.5V4.5H4.5ZM13.5 4.5A1.5 1.5 0 0 1 15 3h4.5A1.5 1.5 0 0 1 21 4.5v4.5a1.5 1.5 0 0 1-1.5 1.5H15a1.5 1.5 0 0 1-1.5-1.5V4.5Zm1.5 0v4.5H19.5V4.5H15ZM3 15a1.5 1.5 0 0 1 1.5-1.5h4.5a1.5 1.5 0 0 1 1.5 1.5v4.5A1.5 1.5 0 0 1 9 21H4.5A1.5 1.5 0 0 1 3 19.5V15Zm1.5 0v4.5h4.5V15H4.5ZM13.5 13.5a.75.75 0 0 1 .75-.75h2.25a.75.75 0 0 1 .75.75v2.25a.75.75 0 0 1-.75.75H14.25a.75.75 0 0 1-.75-.75V13.5Zm3.75 3.75a.75.75 0 0 1 .75-.75H20.25a.75.75 0 0 1 .75.75v2.25a.75.75 0 0 1-.75.75H18a.75.75 0 0 1-.75-.75V17.25ZM13.5 18a.75.75 0 0 1 .75-.75h1.5a.75.75 0 0 1 0 1.5h-1.5a.75.75 0 0 1-.75-.75Zm4.5-4.5a.75.75 0 0 1 .75-.75h1.5a.75.75 0 0 1 0 1.5h-1.5a.75.75 0 0 1-.75-.75Z" clipRule="evenodd" />
-  ),
-  idcard: (
-    <path fillRule="evenodd" d="M4.5 3.75A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V6A2.25 2.25 0 0 0 19.5 3.75h-15ZM8.25 8.25a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5ZM5.25 15.75a3 3 0 0 1 6 0H5.25Zm8.25-6.75a.75.75 0 0 0 0 1.5h5.25a.75.75 0 0 0 0-1.5H13.5Zm0 3.75a.75.75 0 0 0 0 1.5h5.25a.75.75 0 0 0 0-1.5H13.5Zm0 3.75a.75.75 0 0 0 0 1.5h3a.75.75 0 0 0 0-1.5H13.5Z" clipRule="evenodd" />
-  ),
-  integration: (
-    <path fillRule="evenodd" d="M18.75 3a2.25 2.25 0 0 0-2.25 2.25v2.25H7.5V5.25A2.25 2.25 0 0 0 5.25 3h-1.5A2.25 2.25 0 0 0 1.5 5.25v1.5A2.25 2.25 0 0 0 3.75 9h1.5v6H3.75A2.25 2.25 0 0 0 1.5 17.25v1.5A2.25 2.25 0 0 0 3.75 21h1.5a2.25 2.25 0 0 0 2.25-2.25v-2.25h9v2.25a2.25 2.25 0 0 0 2.25 2.25h1.5a2.25 2.25 0 0 0 2.25-2.25v-1.5a2.25 2.25 0 0 0-2.25-2.25H18.75V9h1.5A2.25 2.25 0 0 0 22.5 6.75v-1.5A2.25 2.25 0 0 0 20.25 3h-1.5ZM6.75 9h10.5v6H6.75V9Z" clipRule="evenodd" />
-  ),
-  lock: (
-    <path fillRule="evenodd" d="M12 1.5a5.25 5.25 0 0 0-5.25 5.25v3a3 3 0 0 0-3 3v6.75a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3v-6.75a3 3 0 0 0-3-3v-3c0-2.9-2.35-5.25-5.25-5.25Zm3.75 8.25v-3a3.75 3.75 0 1 0-7.5 0v3h7.5Z" clipRule="evenodd" />
-  ),
-  shield: (
-    <path fillRule="evenodd" d="M12.516 2.17a.75.75 0 0 0-1.032 0 11.209 11.209 0 0 1-7.877 3.08.75.75 0 0 0-.722.515A12.74 12.74 0 0 0 2.25 9.75c0 5.942 4.064 10.933 9.563 12.348a.749.749 0 0 0 .374 0c5.499-1.415 9.563-6.406 9.563-12.348 0-1.39-.223-2.73-.635-3.985a.75.75 0 0 0-.722-.516l-.143.001c-2.996 0-5.717-1.17-7.734-3.08Zm3.094 8.016a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z" clipRule="evenodd" />
-  ),
-  bolt: (
-    <path fillRule="evenodd" d="M14.615 1.595a.75.75 0 0 1 .359.852L12.982 9.75h7.268a.75.75 0 0 1 .548 1.262l-10.5 11.25a.75.75 0 0 1-1.272-.71l1.992-7.302H3.75a.75.75 0 0 1-.548-1.262l10.5-11.25a.75.75 0 0 1 .913-.143Z" clipRule="evenodd" />
-  ),
-  savings: (
-    <path fillRule="evenodd" d="M12 1.5c-5.799 0-10.5 4.701-10.5 10.5s4.701 10.5 10.5 10.5 10.5-4.701 10.5-10.5S17.799 1.5 12 1.5Zm1.125 5.25a.75.75 0 0 0 0 1.5h2.25a.75.75 0 0 1 0 1.5h-3.375a.75.75 0 0 0 0 1.5h1.875a2.25 2.25 0 0 1 0 4.5h-.75v1.5a.75.75 0 0 1-1.5 0V16.5H9.375a.75.75 0 0 1 0-1.5h2.25a.75.75 0 0 0 0-1.5H9.75a2.25 2.25 0 0 1 0-4.5h2.625V7.5a.75.75 0 0 1 1.5 0v.75h1.5a.75.75 0 0 0 0-1.5h-2.25Z" clipRule="evenodd" />
-  ),
-  smile: (
-    <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-2.625 6a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25Zm5.25 0a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25ZM8.53 14.47a.75.75 0 0 1 1.06 0 3.75 3.75 0 0 0 4.82 0 .75.75 0 0 1 .98 1.14 5.25 5.25 0 0 1-6.86 0 .75.75 0 0 1 0-1.14Z" clipRule="evenodd" />
-  ),
-  audit: (
-    <path fillRule="evenodd" d="M7.5 3.75A1.5 1.5 0 0 0 6 5.25v13.5A1.5 1.5 0 0 0 7.5 20.25h9a1.5 1.5 0 0 0 1.5-1.5V5.25a1.5 1.5 0 0 0-1.5-1.5h-9Zm3.75 3.75a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 0 1.5h-3a.75.75 0 0 1-.75-.75Zm-2.25 4.5a.75.75 0 0 1 .75-.75h6a.75.75 0 0 1 0 1.5h-6a.75.75 0 0 1-.75-.75Zm0 3.75a.75.75 0 0 1 .75-.75h6a.75.75 0 0 1 0 1.5h-6a.75.75 0 0 1-.75-.75Z" clipRule="evenodd" />
-  ),
-  hourglass: (
-    <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 6a.75.75 0 0 0-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 0 0 0-1.5h-3.75V6Z" clipRule="evenodd" />
-  ),
-  warning: (
-    <path fillRule="evenodd" d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003ZM12 8.25a.75.75 0 0 1 .75.75v3.75a.75.75 0 0 1-1.5 0V9a.75.75 0 0 1 .75-.75Zm0 8.25a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" clipRule="evenodd" />
-  ),
-  chartOff: (
-    <>
-      <path d="M3 3a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h16a1 1 0 1 0 0-2H4V4a1 1 0 0 0-1-1zm5 10a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-5zm6-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V9z" />
-      <path d="M21.7 4.3a1 1 0 0 0-1.4 0L17 7.6 13.7 4.3a1 1 0 1 0-1.4 1.4l3.3 3.3-3.3 3.3a1 1 0 0 0 1.4 1.4l3.3-3.3 3.3 3.3a1 1 0 0 0 1.4-1.4l-3.3-3.3 3.3-3.3a1 1 0 0 0 0-1.4z" />
-    </>
-  ),
-  scale: (
-    <path fillRule="evenodd" d="M3.75 3a.75.75 0 0 0-.75.75v5.25a.75.75 0 0 0 1.5 0V5.56l4.72 4.72a.75.75 0 0 0 1.06-1.06L5.56 4.5h3.44a.75.75 0 0 0 0-1.5H3.75Zm16.5 0a.75.75 0 0 0-.75.75v3.44l-4.72 4.72a.75.75 0 1 0 1.06 1.06L20.56 8.25v3.44a.75.75 0 0 0 1.5 0V3.75a.75.75 0 0 0-.75-.75h-5.25a.75.75 0 0 0 0 1.5h3.44ZM3.75 21a.75.75 0 0 0 .75-.75v-3.44l4.72-4.72a.75.75 0 1 0-1.06-1.06L3.44 15.75V12.31a.75.75 0 0 0-1.5 0v5.25a.75.75 0 0 0 .75.75h5.25a.75.75 0 0 0 0-1.5H4.5v-3.44Zm16.5 0a.75.75 0 0 0 .75-.75v-5.25a.75.75 0 0 0-1.5 0v3.44l-4.72-4.72a.75.75 0 0 0-1.06 1.06l4.72 4.72h-3.44a.75.75 0 0 0 0 1.5h5.25Z" clipRule="evenodd" />
-  ),
-  gate: (
-    <path fillRule="evenodd" d="M3 4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4zm12 0a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2V4zm-6 4a1 1 0 0 1 1-1h2a1 1 0 1 1 0 2h-2a1 1 0 0 1-1-1zm0 4a1 1 0 0 1 1-1h2a1 1 0 1 1 0 2h-2a1 1 0 0 1-1-1zm0 4a1 1 0 0 1 1-1h2a1 1 0 1 1 0 2h-2a1 1 0 0 1-1-1z" clipRule="evenodd" />
-  ),
-  evacuation: (
-    <path fillRule="evenodd" d="M15.75 2.25H6.75A2.25 2.25 0 0 0 4.5 4.5v15a2.25 2.25 0 0 0 2.25 2.25h9a2.25 2.25 0 0 0 2.25-2.25V18a.75.75 0 0 0-1.5 0v1.5a.75.75 0 0 1-.75.75h-9a.75.75 0 0 1-.75-.75V4.5a.75.75 0 0 1 .75-.75h9a.75.75 0 0 1 .75.75V6a.75.75 0 0 0 1.5 0V4.5a2.25 2.25 0 0 0-2.25-2.25Zm2.78 6.97a.75.75 0 0 1 0 1.06l-2.25 2.25a.75.75 0 0 1-1.06-1.06l.97-.97H9.75a.75.75 0 0 1 0-1.5h6.44l-.97-.97a.75.75 0 0 1 1.06-1.06l2.25 2.25Z" clipRule="evenodd" />
-  ),
-  database: (
-    <path fillRule="evenodd" d="M2.25 5.25a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3v2.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V5.25Zm1.5 0a1.5 1.5 0 0 1 1.5-1.5h13.5a1.5 1.5 0 0 1 1.5 1.5v2.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5V5.25Zm14.25.75a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm-2.25.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM2.25 13.5a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3v2.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V13.5Zm1.5 0a1.5 1.5 0 0 1 1.5-1.5h13.5a1.5 1.5 0 0 1 1.5 1.5v2.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5V13.5Zm14.25.75a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm-2.25.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" clipRule="evenodd" />
-  ),
+// Section icons from Phosphor (https://phosphoricons.com), white on the #EFB000 tile.
+const ICONS = {
+  checkin: SignIn,
+  record: AddressBook,
+  chat: ChatsCircle,
+  note: Note,
+  bell: Bell,
+  signature: Signature,
+  badge: IdentificationBadge,
+  qr: QrCode,
+  idcard: IdentificationCard,
+  integration: PlugsConnected,
+  lock: Lock,
+  shield: ShieldCheck,
+  bolt: Lightning,
+  savings: PiggyBank,
+  smile: Smiley,
+  audit: ClipboardText,
+  hourglass: Hourglass,
+  warning: Warning,
+  chartOff: ChartLineDown,
+  scale: ArrowsOut,
+  gate: DoorOpen,
+  evacuation: PersonSimpleRun,
+  database: Database,
 };
 
 function LineIcon({ name, className = "h-6 w-6" }) {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className={className} fill="currentColor">
-      {ICON_PATHS[name]}
-    </svg>
-  );
+  const Icon = ICONS[name];
+  return <Icon weight="fill" aria-hidden="true" className={className} />;
 }
 
-function IconTile({ name, bg, color = "#ffffff", className = "h-12 w-12 rounded-[10px]", iconClassName = "h-6 w-6" }) {
+function IconTile({ name, className = "h-12 w-12 rounded-[10px]", iconClassName = "h-6 w-6" }) {
   return (
-    <span className={`flex shrink-0 items-center justify-center text-white shadow-sm ${iconPop} ${className}`} style={{ background: bg }}>
+    <span className={`flex shrink-0 items-center justify-center bg-[#EFB000] text-white shadow-sm ${iconPop} ${className}`}>
       <LineIcon name={name} className={iconClassName} />
     </span>
   );
@@ -529,7 +477,7 @@ export default function VisitorManagementSystemPage() {
               {features.map((item, index) => (
                 <article key={item.title} className={`${goldCard} ${liftGold} relative flex w-full flex-col items-center gap-3 p-6 text-center`}>
                   <span className={`${fontInter} absolute right-5 top-5 text-sm font-bold text-black/15`}>{String(index + 1).padStart(2, "0")}</span>
-                  <IconTile name={item.icon} bg={tone(index).bg} color={tone(index).color} />
+                  <IconTile name={item.icon} />
                   <h3 className="px-6 text-lg font-semibold leading-snug text-[#1f1f1f]">{item.title}</h3>
                   <p className={`text-[15px] leading-[23px] ${mutedText}`}>{item.text}</p>
                 </article>
@@ -555,7 +503,7 @@ export default function VisitorManagementSystemPage() {
             {benefits.map((item, index) => (
               <li key={item.title} style={stagger(index % 3, 100)} className={`${revealUp} ${greyCard} ${liftGrey} flex flex-col gap-3 p-6`}>
                 <div className="flex items-center gap-3">
-                  <IconTile name={item.icon} bg={tone(index + 1).bg} color={tone(index + 1).color} />
+                  <IconTile name={item.icon} />
                   <h3 className="text-lg font-semibold leading-snug text-[#1f1f1f]">{item.title}</h3>
                 </div>
                 <p className={`text-[15px] leading-[24px] ${mutedText}`}>{item.text}</p>
@@ -624,7 +572,7 @@ export default function VisitorManagementSystemPage() {
                 style={stagger(index, 100)}
                 className={`${revealUp} group/card flex flex-col items-center gap-3 rounded-2xl bg-white p-6 text-center shadow-[inset_0_0_0_1px_#f0deba,0px_10px_24px_-10px_rgba(0,0,0,0.08)] ${motion} hover:-translate-y-1 hover:shadow-[inset_0_0_0_1.5px_#f8bb18,0px_14px_28px_-6px_rgba(0,0,0,0.14)]`}
               >
-                <span className={`flex h-12 w-12 items-center justify-center rounded-[10px] bg-[#ef4444] text-white shadow-sm ${iconPop}`}>
+                <span className={`flex h-12 w-12 items-center justify-center rounded-[10px] bg-[#EFB000] text-white shadow-sm ${iconPop}`}>
                   <LineIcon name={item.icon} className="h-6 w-6" />
                 </span>
                 <h3 className="text-lg font-semibold text-[#1f1f1f]">{item.title}</h3>
@@ -670,7 +618,7 @@ export default function VisitorManagementSystemPage() {
             {enhancements.map((item, index) => (
               <li key={item.title} style={stagger(index)} className={`${revealUp} ${goldCard} ${liftGold} relative flex flex-col items-center gap-4 overflow-hidden p-7 text-center`}>
                 <span aria-hidden="true" className="absolute inset-x-0 top-0 h-1" style={{ background: tone(index * 2).color }} />
-                <IconTile name={item.icon} bg={tone(index * 2).bg} color={tone(index * 2).color} className="h-14 w-14" iconClassName="h-8 w-8" />
+                <IconTile name={item.icon} className="h-14 w-14 rounded-[10px]" iconClassName="h-8 w-8" />
                 <h3 className="text-xl font-semibold leading-snug text-[#1f1f1f]">{item.title}</h3>
                 <p className={`text-[15px] leading-[24px] ${mutedText}`}>{item.text}</p>
               </li>
