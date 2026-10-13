@@ -278,7 +278,7 @@ export default function HeadcountHeroVector() {
 
         {/* Floating Badge 3 (Top-Right): Zero Red-Zone Breaches */}
         <div
-          className="payroll-float absolute -right-2 top-[10%] sm:-right-5 sm:top-[10%] flex items-center gap-2.5 sm:gap-3 rounded-2xl border border-white/85 bg-white/95 px-3 py-2 sm:px-4 sm:py-2.5 shadow-[0_14px_32px_-10px_rgba(0,0,0,0.16),0_0_0_1px_rgba(0,0,0,0.04)] backdrop-blur-md transition-all duration-300 hover:scale-105"
+          className="payroll-float absolute -right-1 top-[46%] sm:-right-5 sm:top-[10%] flex items-center gap-2.5 sm:gap-3 rounded-2xl border border-white/85 bg-white/95 px-3 py-2 sm:px-4 sm:py-2.5 shadow-[0_14px_32px_-10px_rgba(0,0,0,0.16),0_0_0_1px_rgba(0,0,0,0.04)] backdrop-blur-md transition-all duration-300 hover:scale-105"
           style={{ animationDelay: "-1.5s" }}
         >
           <span className="flex h-8 w-8 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-[9px] bg-[#f8bb18] text-white shadow-sm">

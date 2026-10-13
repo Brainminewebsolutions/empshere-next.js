@@ -32,6 +32,7 @@ export default function CardCarousel({ children, interval = 1700, label = "Cards
   const [paused, setPaused] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
   const [hidden, setHidden] = useState(false);
+  const [isPhone, setIsPhone] = useState(false);
 
   const viewportRef = useRef(null);
   const drag = useRef(null);
@@ -43,26 +44,33 @@ export default function CardCarousel({ children, interval = 1700, label = "Cards
     setIndex(next);
   }, []);
 
-  // Reduced motion + tab visibility.
+  // Reduced motion + tab visibility + phone width (one card in view).
   useEffect(() => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const phone = window.matchMedia("(max-width: 639px)");
     const syncMotion = () => setReducedMotion(media.matches);
+    const syncPhone = () => setIsPhone(phone.matches);
     const syncHidden = () => setHidden(document.hidden);
     syncMotion();
+    syncPhone();
     media.addEventListener("change", syncMotion);
+    phone.addEventListener("change", syncPhone);
     document.addEventListener("visibilitychange", syncHidden);
     return () => {
       media.removeEventListener("change", syncMotion);
+      phone.removeEventListener("change", syncPhone);
       document.removeEventListener("visibilitychange", syncHidden);
     };
   }, []);
 
-  // Autoplay: one step per interval.
+  // Autoplay: one step per interval. Phones show a single card, so each one
+  // stays up longer there to leave time to read it.
+  const delay = isPhone ? Math.max(interval * 2, 3500) : interval;
   useEffect(() => {
     if (paused || dragging || hidden || reducedMotion || count < 2) return undefined;
-    const timer = setTimeout(() => go(index + 1), interval);
+    const timer = setTimeout(() => go(index + 1), delay);
     return () => clearTimeout(timer);
-  }, [index, paused, dragging, hidden, reducedMotion, count, interval, go]);
+  }, [index, paused, dragging, hidden, reducedMotion, count, delay, go]);
 
   // After sliding onto a clone, snap (without animation) to the real card
   // it mirrors. transitionend is the fast path; the timer is the fallback
@@ -186,7 +194,7 @@ export default function CardCarousel({ children, interval = 1700, label = "Cards
             aria-label={dotLabels[i] || `Show card ${i + 1}`}
             aria-current={i === active ? "true" : undefined}
             onClick={() => go(CLONES + i)}
-            className={`h-2.5 rounded-full transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0077c2] ${
+            className={`h-2.5 rounded-full transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#b07d00] ${
               i === active ? "w-7 bg-[#efb000] shadow-[0_2px_8px_-2px_rgba(239,176,0,0.8)]" : "w-2.5 bg-[#efb000]/30 hover:bg-[#efb000]/60"
             }`}
           />

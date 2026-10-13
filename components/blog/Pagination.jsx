@@ -14,7 +14,7 @@ export default function Pagination({ current, total }) {
   const renderRange = (range) =>
     range.map((item) =>
       typeof item === "string" ? (
-        <li key={item} aria-hidden="true" className="blog-label flex h-11 w-7 items-end justify-center pb-2 text-black/40">
+        <li key={item} aria-hidden="true" className="blog-label flex h-11 w-6 items-end justify-center pb-2 text-black/40">
           …
         </li>
       ) : (
@@ -60,11 +60,15 @@ export default function Pagination({ current, total }) {
 
   return (
     <nav aria-label="Blog pagination" className="reveal-on-scroll reveal-fade-up mt-14 sm:mt-16">
-      <div className="flex items-center justify-center gap-2 sm:gap-3">
-        {prev}
-        <ul className="hidden items-center gap-2 sm:flex">{renderRange(desktopRange)}</ul>
-        <ul className="flex items-center gap-1.5 sm:hidden">{renderRange(mobileRange)}</ul>
-        {next}
+      <div className="flex justify-center">
+        <div className="blog-pager">
+          {prev}
+          <span aria-hidden="true" className="mx-1 h-6 w-px bg-[#efe1bd]" />
+          <ul className="hidden items-center gap-1 sm:flex">{renderRange(desktopRange)}</ul>
+          <ul className="flex items-center gap-0.5 sm:hidden">{renderRange(mobileRange)}</ul>
+          <span aria-hidden="true" className="mx-1 h-6 w-px bg-[#efe1bd]" />
+          {next}
+        </div>
       </div>
       <p className="blog-label mt-4 text-center text-[13px] font-medium text-black/50">
         Page {current} of {total}

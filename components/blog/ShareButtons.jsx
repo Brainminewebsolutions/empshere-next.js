@@ -42,7 +42,7 @@ export default function ShareButtons({ url, title, className = "" }) {
   };
 
   const buttonClass =
-    "inline-flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#0061af] shadow-[inset_0_0_0_1.5px_#a7ddff] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#0077c2] hover:text-white hover:shadow-[0_8px_18px_-6px_rgba(0,119,194,0.55)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#efb000]";
+    "inline-flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#b37e00] shadow-[inset_0_0_0_1.5px_#EFB000] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#EFB000] hover:text-white hover:shadow-[0_8px_18px_-6px_rgba(239,176,0,0.55)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#efb000]";
 
   return (
     <div className={`flex flex-wrap items-center gap-2.5 ${className}`}>
@@ -77,7 +77,7 @@ export default function ShareButtons({ url, title, className = "" }) {
           </svg>
         )}
       </button>
-      <span role="status" className="blog-label text-[13px] font-medium text-[#0077c2]">
+      <span role="status" className="blog-label text-[13px] font-medium text-[#EFB000]">
         {copied ? "Link copied!" : ""}
       </span>
     </div>

@@ -5,8 +5,10 @@ import { Instrument_Sans, Inter } from "next/font/google";
 import ScrollReveal from "@/components/ScrollReveal";
 import BackToTop from "@/components/BackToTop";
 import FlagshipProducts from "@/components/FlagshipProducts";
+import FeatureCard from "@/components/FeatureCard";
 import DemoRequestForm from "@/components/DemoRequestForm";
 import PinnedScrollSection from "@/components/PinnedScrollSection";
+import WhyChooseFlipCards from "@/components/WhyChooseFlipCards";
 
 /* --------------------------------------------------------------------
    Images — every image this page uses lives in
@@ -57,9 +59,9 @@ const fontInter = "font-[family-name:var(--font-inter)]";
    -------------------------------------------------------------------- */
 
 const goldCard =
-  "bg-white rounded-xl shadow-[inset_0_0_0_0.789px_#f8bb18,0px_0px_15.775px_-7.099px_rgba(0,0,0,0.25)]";
+  "bg-white rounded-xl shadow-[inset_0_0_0_0.789px_#EFB000,0px_3px_12px_-4px_rgba(0,0,0,0.07)]";
 const greyCard =
-  "bg-white rounded-2xl shadow-[inset_0_0_0_0.814px_#dddddd,0px_0px_16.279px_-7.326px_rgba(0,0,0,0.25)]";
+  "bg-white rounded-2xl shadow-[inset_0_0_0_0.814px_#e5e5e5,0px_3px_12px_-4px_rgba(0,0,0,0.06)]";
 const mutedText = "text-[rgba(0,0,0,0.64)]";
 
 const ease = "ease-[cubic-bezier(0.16,1,0.3,1)]";
@@ -70,13 +72,13 @@ const revealFromRight = "reveal-on-scroll reveal-fade-left";
 const revealZoom = "reveal-on-scroll reveal-zoom-in";
 const stagger = (index, step = 120) => ({ transitionDelay: `${index * step}ms` });
 
-const liftGold = `group/card ${motion} hover:-translate-y-1 hover:shadow-[inset_0_0_0_1.5px_#f8bb18,0px_10px_24px_-6px_rgba(0,0,0,0.18)]`;
-const liftGrey = `group/card ${motion} hover:-translate-y-1.5 hover:shadow-[inset_0_0_0_0.814px_#dddddd,0px_14px_28px_-6px_rgba(0,0,0,0.18)]`;
+const liftGold = `group/card ${motion} hover:-translate-y-1 hover:shadow-[inset_0_0_0_1.5px_#EFB000,0px_8px_20px_-6px_rgba(239,176,0,0.2)]`;
+const liftGrey = `group/card ${motion} hover:-translate-y-1.5 hover:shadow-[inset_0_0_0_0.814px_#dddddd,0px_10px_22px_-6px_rgba(0,0,0,0.1)]`;
 const iconPop = `transition-[scale] duration-300 ${ease} group-hover/card:scale-110`;
 const arrowNudge = `transition-[translate] duration-200 ${ease} group-hover/btn:translate-x-[3px]`;
 
-const primaryButton = `group/btn inline-flex items-center justify-center gap-2 rounded-[9px] bg-[#0077c2] px-6 py-3 ${fontInter} font-semibold text-white ${motion} hover:-translate-y-0.5 hover:bg-[#0061af] hover:shadow-[0_8px_18px_-4px_rgba(0,119,194,0.45)]`;
-const outlineButton = `group/btn inline-flex items-center justify-center gap-2 rounded-[9px] bg-white px-6 py-3 ${fontInter} font-semibold text-[#f8bb18] shadow-[inset_0_0_0_1.5px_#f8bb18] ${motion} hover:-translate-y-0.5 hover:bg-[#fffdf5]`;
+const primaryButton = `group/btn inline-flex items-center justify-center gap-2 rounded-[9px] bg-[#EFB000] px-6 py-3 ${fontInter} font-semibold text-white ${motion} hover:-translate-y-0.5 hover:bg-[#d99e00] hover:shadow-[0_8px_18px_-4px_rgba(239,176,0,0.45)]`;
+const outlineButton = `group/btn inline-flex items-center justify-center gap-2 rounded-[9px] bg-white px-6 py-3 ${fontInter} font-semibold text-[#EFB000] shadow-[inset_0_0_0_1.5px_#EFB000] ${motion} hover:-translate-y-0.5 hover:bg-[#fffdf5]`;
 
 /* --------------------------------------------------------------------
    Icons
@@ -386,14 +388,14 @@ const jsonLd = {
 
 export default function CanteenManagementSystemPage() {
   return (
-    <main className={`${instrumentSans.variable} ${inter.variable} hrms-page payroll-page cms-page w-full overflow-x-clip bg-white font-sans text-[#4c4c4c]`}>
+    <main className={`${instrumentSans.variable} ${inter.variable} hrms-page payroll-page cms-page w-full overflow-x-clip bg-[#FFFFFA] font-sans text-[#4c4c4c]`}>
       <ScrollReveal root=".cms-page" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
 
       {/* Hero */}
       <section
         aria-labelledby="cms-hero-heading"
-        className="relative flex flex-col justify-center bg-[radial-gradient(circle_at_0%_20%,rgba(0,119,194,0.14),transparent_32%),radial-gradient(circle_at_55%_0%,rgba(248,187,24,0.25),transparent_35%),radial-gradient(circle_at_100%_80%,rgba(248,187,24,0.3),transparent_30%),radial-gradient(circle_at_30%_100%,rgba(15,184,128,0.1),transparent_25%)] px-4 py-8 md:px-12 lg:min-h-[calc(100vh-88px)] lg:py-6"
+        className="relative flex flex-col justify-center bg-[#FFFFFA] px-4 py-8 md:px-12 lg:min-h-[calc(100vh-88px)] lg:py-6"
       >
         <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-8 lg:flex-row lg:items-center lg:justify-between lg:gap-10 xl:gap-14">
           <header className={`${revealFromLeft} flex flex-col gap-4 lg:gap-4.5 lg:max-w-xl xl:max-w-2xl`}>
@@ -432,7 +434,6 @@ export default function CanteenManagementSystemPage() {
           </header>
 
           <div className={`${revealFromRight} relative mx-auto w-full max-w-[340px] sm:max-w-md lg:mx-0 lg:w-[36%] lg:max-w-[420px]`}>
-            <div aria-hidden="true" className="absolute inset-8 rounded-full bg-[#fff1c7] blur-3xl" />
             <Image
               src={heroImg}
               alt="Hand holding a phone showing the emMeal meal planner with today's lunch booking, canteen menu and meal pass"
@@ -454,7 +455,7 @@ export default function CanteenManagementSystemPage() {
       </section>
 
       {/* Fixed Menu / Ala-carte */}
-      <section aria-labelledby="modules-heading" className="px-4 py-14 md:px-12 md:py-20">
+      <section aria-labelledby="modules-heading" className="bg-[#FFFFFA] px-4 py-14 md:px-12 md:py-20">
         <div className="mx-auto flex max-w-6xl flex-col gap-10">
           <SectionHeader
             id="modules-heading"
@@ -466,14 +467,35 @@ export default function CanteenManagementSystemPage() {
             }
             className="max-w-4xl"
           />
-          <ul className="grid grid-cols-1 gap-6 md:grid-cols-2">
+          <ul className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
             {menuModules.map((item, index) => (
-              <li key={item.title} style={stagger(index)} className={`${index === 0 ? revealFromLeft : revealFromRight} ${goldCard} ${liftGold} flex flex-col items-start gap-5 p-7 sm:flex-row sm:p-8`}>
-                <IconTile name={item.icon} className="h-24 w-24 rounded-2xl" iconClassName="h-14 w-14" />
-                <div>
-                  <h3 className="text-2xl font-semibold text-[#1f1f1f]">{item.title}</h3>
-                  <p className={`mt-2 text-[15px] leading-[25px] md:text-base ${mutedText}`}>{item.text}</p>
-                </div>
+              <li key={item.title} style={stagger(index)} className={`${index === 0 ? revealFromLeft : revealFromRight} flex`}>
+                <article className="group/card relative isolate flex w-full flex-col gap-6 overflow-hidden rounded-3xl bg-gradient-to-br from-[#fff8e6] via-white to-white p-7 shadow-[inset_0_0_0_1px_#f0deba,0_10px_30px_-18px_rgba(176,125,0,0.35)] transition-[translate,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1.5 hover:shadow-[inset_0_0_0_1.5px_#efb000,0_28px_50px_-24px_rgba(176,125,0,0.45)] sm:p-9">
+                  {/* Gold top rule that draws in on hover */}
+                  <span aria-hidden="true" className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-[#efb000] transition-[scale] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/card:scale-x-100" />
+                  {/* Oversized watermark icon */}
+                  <span aria-hidden="true" className="pointer-events-none absolute -bottom-8 -right-6 -z-10 text-[#efb000]/[0.07] transition-[rotate,scale] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/card:-rotate-12 group-hover/card:scale-110">
+                    <LineIcon name={item.icon} className="h-48 w-48" />
+                  </span>
+                  <div className="flex items-center justify-between gap-4">
+                    <IconTile name={item.icon} className="h-16 w-16 rounded-2xl shadow-[0_12px_24px_-10px_rgba(239,176,0,0.7)]" iconClassName="h-9 w-9" />
+                    <span className={`${fontInter} rounded-full bg-white px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-[#9a7400] shadow-[inset_0_0_0_1px_#f0deba]`}>
+                      Module {String(index + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+                  <div className="flex flex-col gap-3">
+                    <h3 className="text-2xl font-semibold text-[#1f1f1f] md:text-[1.75rem]">{item.title}</h3>
+                    <p className={`text-[15px] leading-[26px] md:text-base md:leading-[27px] ${mutedText}`}>{item.text}</p>
+                  </div>
+                  {index === 1 && (
+                    <p className={`${fontInter} mt-auto inline-flex w-fit items-center gap-2 rounded-full bg-[#fff5d9] px-3.5 py-1.5 text-[13px] font-semibold text-[#7a5c00]`}>
+                      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#efb000] text-white">
+                        <CheckIcon className="h-3 w-3" />
+                      </span>
+                      Includes everything in Fixed Menu
+                    </p>
+                  )}
+                </article>
               </li>
             ))}
           </ul>
@@ -481,9 +503,7 @@ export default function CanteenManagementSystemPage() {
       </section>
 
       {/* We're talking system for food!! — app screen + demo form */}
-      <section aria-labelledby="food-heading" className="relative overflow-hidden bg-[#fdf6e6] px-4 py-14 text-[#1f1f1f] md:px-12 md:py-20">
-        <div aria-hidden="true" className="absolute -right-24 -top-24 h-80 w-80 rounded-full bg-[#f8bb18]/25 blur-3xl" />
-        <div aria-hidden="true" className="absolute -bottom-32 -left-24 h-80 w-80 rounded-full bg-[#f8bb18]/15 blur-3xl" />
+      <section aria-labelledby="food-heading" className="relative overflow-hidden bg-[#FFFFFA] px-4 py-14 text-[#1f1f1f] md:px-12 md:py-20">
         <div className="relative mx-auto flex max-w-7xl flex-col items-center gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-14">
           <div className={`${revealFromLeft} flex w-full flex-col gap-6 lg:max-w-xl`}>
             <SectionHeader
@@ -511,7 +531,7 @@ export default function CanteenManagementSystemPage() {
       </section>
 
       {/* Convenience with integration */}
-      <section aria-labelledby="convenience-heading" className="px-4 py-14 md:px-12 md:py-20">
+      <section aria-labelledby="convenience-heading" className="bg-[#FFFFFA] px-4 py-14 md:px-12 md:py-20">
         <div className="mx-auto flex max-w-7xl flex-col gap-10">
           <SectionHeader
             id="convenience-heading"
@@ -521,31 +541,41 @@ export default function CanteenManagementSystemPage() {
               </>
             }
           />
-          <ul className="grid grid-cols-1 gap-5 md:grid-cols-3">
+          <ol className="relative grid grid-cols-1 gap-12 pt-8 md:grid-cols-3 md:gap-6 md:before:absolute md:before:left-[16%] md:before:right-[16%] md:before:top-[36px] md:before:border-t-2 md:before:border-dashed md:before:border-[#efb000]/40">
             {convenience.map((item, index) => (
-              <li key={item.icon} style={stagger(index)} className={`${revealUp} ${greyCard} ${liftGrey} flex flex-col items-center gap-4 p-6 text-center`}>
-                <IconTile name={item.icon} className="h-14 w-14 rounded-[10px]" iconClassName="h-8 w-8" />
-                <p className="text-base font-medium leading-[26px] text-[#1f1f1f]">{item.text}</p>
+              <li key={item.icon} style={stagger(index, 140)} className={`${revealUp} flex`}>
+                <article className="group/card relative flex w-full flex-col items-center gap-4 rounded-2xl bg-white px-6 pb-8 pt-14 text-center shadow-[inset_0_0_0_1px_#ececec,0_8px_24px_-16px_rgba(0,0,0,0.18)] transition-[translate,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1.5 hover:shadow-[inset_0_0_0_1.5px_#efb000,0_24px_44px_-22px_rgba(176,125,0,0.4)]">
+                  {/* Icon badge floats on the card edge and sits on the dashed connector */}
+                  <span className="absolute -top-8 left-1/2 flex -translate-x-1/2 items-center justify-center rounded-[20px] bg-[#FFFFFA] p-2">
+                    <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#efb000] text-white shadow-[0_12px_24px_-10px_rgba(239,176,0,0.75)] transition-[rotate,scale] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/card:-rotate-6 group-hover/card:scale-110">
+                      <LineIcon name={item.icon} className="h-7 w-7" />
+                    </span>
+                  </span>
+                  <p className="text-base font-medium leading-[27px] text-[#1f1f1f] md:text-[17px]">{item.text}</p>
+                  <span aria-hidden="true" className="mt-auto h-[3px] w-8 rounded-full bg-[#f1e2b8] transition-[width,background-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/card:w-16 group-hover/card:bg-[#efb000]" />
+                </article>
               </li>
             ))}
-          </ul>
+          </ol>
         </div>
       </section>
 
       {/* A quick glance at all the features */}
-      <section id="cms-features" aria-labelledby="glance-heading" className="scroll-mt-24 bg-[#fcfcfc] px-4 py-14 md:px-12 md:py-20">
+      <section id="cms-features" aria-labelledby="glance-heading" className="scroll-mt-24 bg-[#FFFFFA] px-4 py-14 md:px-12 md:py-20">
         <div className="mx-auto flex max-w-7xl flex-col gap-10">
           <SectionHeader id="glance-heading" title="A quick glance at all the features!" />
           <ul className="grid grid-cols-2 gap-4 md:gap-5 lg:grid-cols-4">
             {glanceFeatures.map((item, index) => (
-              <li
+              <FeatureCard
                 key={item.title}
+                index={index}
+                compact
+                className={revealUp}
                 style={stagger(index % 4, 80)}
-                className={`${revealUp} ${goldCard} ${liftGold} flex flex-col items-center gap-3 px-4 py-6 text-center`}
-              >
-                <IconTile name={item.icon} className="h-14 w-14 rounded-xl" iconClassName="h-7 w-7" />
-                <h3 className="text-[15px] font-semibold leading-snug text-[#1f1f1f] md:text-base">{item.title}</h3>
-              </li>
+                icon={<LineIcon name={item.icon} />}
+                /* Zero-width spaces after "/" let long titles wrap at the slashes on narrow phones. */
+                title={item.title.replace(/\//g, "/​")}
+              />
             ))}
           </ul>
           <p
@@ -562,6 +592,7 @@ export default function CanteenManagementSystemPage() {
       {/* Introduction — pins on desktop: heading stays, page scroll moves the cards */}
       <PinnedScrollSection
         ariaLabelledby="intro-heading"
+        className="bg-[#FFFFFA]"
         listClassName="gap-5"
         intro={
           <SectionHeader
@@ -616,7 +647,7 @@ export default function CanteenManagementSystemPage() {
       </PinnedScrollSection>
 
       {/* Features and functionalities */}
-      <section aria-labelledby="functionalities-heading" className="bg-[#eef4fd] px-4 py-14 md:px-12 md:py-20">
+      <section aria-labelledby="functionalities-heading" className="bg-[#FFFFFA] px-4 py-14 md:px-12 md:py-20">
         <div className="mx-auto flex max-w-7xl flex-col gap-10">
           <SectionHeader
             id="functionalities-heading"
@@ -629,18 +660,22 @@ export default function CanteenManagementSystemPage() {
           />
           <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {functionalities.map((item, index) => (
-              <li key={item.title} style={stagger(index, 100)} className={`${revealUp} ${greyCard} ${liftGrey} flex flex-col items-center gap-3 p-6 text-center`}>
-                <IconTile name={item.icon} />
-                <h3 className="text-lg font-semibold text-[#1f1f1f]">{item.title}</h3>
-                <p className={`text-[15px] leading-[24px] ${mutedText}`}>{item.text}</p>
-              </li>
+              <FeatureCard
+                key={item.title}
+                index={index}
+                className={revealUp}
+                style={stagger(index, 100)}
+                icon={<LineIcon name={item.icon} />}
+                title={item.title}
+                text={item.text}
+              />
             ))}
           </ul>
         </div>
       </section>
 
       {/* Benefits */}
-      <section aria-labelledby="benefits-heading" className="px-4 py-14 md:px-12 md:py-20">
+      <section aria-labelledby="benefits-heading" className="bg-[#FFFFFA] px-4 py-14 md:px-12 md:py-20">
         <div className="mx-auto flex max-w-7xl flex-col gap-10">
           <SectionHeader
             id="benefits-heading"
@@ -654,7 +689,7 @@ export default function CanteenManagementSystemPage() {
           <ul className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {benefits.map((item, index) => (
               <li key={item.title} style={stagger(index)} className={`${revealUp} ${goldCard} ${liftGold} relative flex flex-col items-center gap-4 overflow-hidden p-7 text-center`}>
-                <span aria-hidden="true" className="absolute inset-x-0 top-0 h-1" style={{ background: tone(index * 2 + 1).color }} />
+                <span aria-hidden="true" className="absolute inset-x-0 top-0 h-1" style={{ background: "#EFB000" }} />
                 <IconTile name={item.icon} className="h-14 w-14 rounded-[10px]" iconClassName="h-8 w-8" />
                 <h3 className="text-xl font-semibold text-[#1f1f1f]">{item.title}</h3>
                 <p className={`text-[15px] leading-[24px] ${mutedText}`}>{item.text}</p>
@@ -665,7 +700,7 @@ export default function CanteenManagementSystemPage() {
       </section>
 
       {/* Why choose Emsphere + conclusion */}
-      <section aria-labelledby="why-heading" className="bg-[#fcfcfc] px-4 py-14 md:px-12 md:py-20">
+      <section aria-labelledby="why-heading" className="bg-[#FFFFFA] px-4 py-14 md:px-12 md:py-20">
         <div className="mx-auto flex max-w-7xl flex-col gap-10">
           <SectionHeader
             id="why-heading"
@@ -676,22 +711,12 @@ export default function CanteenManagementSystemPage() {
             }
             className="max-w-4xl"
           />
-          <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {reasons.map((item, index) => (
-              <li key={item.title} style={stagger(index % 4, 90)} className={`${revealUp} ${goldCard} ${liftGold} relative flex flex-col items-center gap-3 p-6 text-center`}>
-                <span className={`${fontInter} absolute right-5 top-5 text-sm font-bold text-black/15`}>{String(index + 1).padStart(2, "0")}</span>
-                <IconTile name={item.icon} />
-                <h3 className="px-6 text-lg font-semibold leading-snug text-[#1f1f1f]">{item.title}</h3>
-                <p className={`text-[15px] leading-[23px] ${mutedText}`}>{item.text}</p>
-              </li>
-            ))}
-          </ul>
+          <WhyChooseFlipCards reasons={reasons} />
 
           <aside
             aria-labelledby="conclusion-heading"
             className={`${revealZoom} relative overflow-hidden rounded-2xl bg-[#fdf6e6] p-6 text-[#1f1f1f] shadow-[inset_0_0_0_1px_#f0deba,0_24px_50px_-28px_rgba(0,0,0,0.25)] md:p-10`}
           >
-            <div aria-hidden="true" className="absolute -right-16 -top-16 h-56 w-56 rounded-full bg-[#f8bb18]/25 blur-2xl" />
             <div className="relative flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
               <h3 id="conclusion-heading" className="text-2xl font-semibold md:text-3xl">
                 Still confused?
@@ -711,7 +736,7 @@ export default function CanteenManagementSystemPage() {
       {/* FAQ */}
       <section
         aria-labelledby="faq-heading"
-        className="bg-[#fdf6e6] bg-[radial-gradient(circle_at_10%_15%,rgba(248,187,24,0.3),transparent_25%),radial-gradient(circle_at_95%_75%,rgba(248,187,24,0.3),transparent_25%)] px-4 py-12 md:px-12 md:py-20"
+        className="bg-[#FFFFFA] px-4 py-12 md:px-12 md:py-20"
       >
         <div className="mx-auto flex max-w-5xl flex-col gap-8">
           <header className={`${revealUp} flex flex-col gap-2 text-center`}>
@@ -723,7 +748,7 @@ export default function CanteenManagementSystemPage() {
             {faqs.map((faq, index) => (
               <li key={faq.question} style={stagger(index % 5, 70)} className={`${revealUp} ${goldCard} ${liftGold} overflow-hidden`}>
                 <details name="cms-faq" open={index === 0} className="hrms-faq group">
-                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 rounded-xl px-4 py-4 outline-none focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[#0077c2] sm:px-5 md:px-7 [&::-webkit-details-marker]:hidden">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 rounded-xl px-4 py-4 outline-none focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[#EFB000] sm:px-5 md:px-7 [&::-webkit-details-marker]:hidden">
                     <h3 className="text-base font-semibold sm:text-lg md:text-xl">{faq.question}</h3>
                     <FaqToggleIcon />
                   </summary>
@@ -736,10 +761,10 @@ export default function CanteenManagementSystemPage() {
       </section>
 
       {/* Our Flagship Products */}
-      <FlagshipProducts />
+      <FlagshipProducts className="bg-[#FFFFFA]" />
 
       {/* Contact CTA — same as the other product pages */}
-      <section aria-label="Contact emSphere" className="bg-white px-6 py-12 min-[769px]:py-[88px]">
+      <section aria-label="Contact emSphere" className="bg-[#FFFFFA] px-6 py-12 min-[769px]:py-[88px]">
         <div className="mx-auto flex max-w-275 flex-col items-center justify-center gap-9 text-black min-[1081px]:flex-row min-[1081px]:gap-20">
           {[
             { title: "Ready to talk?", cta: "Talk to Sales", reveal: revealFromLeft },
@@ -753,7 +778,7 @@ export default function CanteenManagementSystemPage() {
                 </h2>
                 <Link
                   href="/contact-us"
-                  className={`group/btn inline-flex w-full max-w-65 items-center justify-center rounded-lg bg-[#0077c2] px-6 py-[13px] ${fontInter} text-[15px] font-semibold tracking-[0.02em] text-white ${motion} hover:-translate-y-0.5 hover:bg-[#0061af] hover:shadow-[0_8px_18px_-4px_rgba(0,119,194,0.45)] active:translate-y-0 min-[769px]:w-auto min-[769px]:max-w-none min-[769px]:min-w-[145px] min-[769px]:px-[30px]`}
+                  className={`group/btn inline-flex w-full max-w-65 items-center justify-center rounded-lg bg-[#EFB000] px-6 py-[13px] ${fontInter} text-[15px] font-semibold tracking-[0.02em] text-white ${motion} hover:-translate-y-0.5 hover:bg-[#d99e00] hover:shadow-[0_8px_18px_-4px_rgba(239,176,0,0.45)] active:translate-y-0 min-[769px]:w-auto min-[769px]:max-w-none min-[769px]:min-w-[145px] min-[769px]:px-[30px]`}
                 >
                   {col.cta}
                 </Link>

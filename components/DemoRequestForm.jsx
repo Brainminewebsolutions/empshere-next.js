@@ -116,9 +116,9 @@ export default function DemoRequestForm({ product = "Contract Labour Management 
   return (
     <div
       id="request-demo"
-      className="relative scroll-mt-28 overflow-hidden rounded-2xl bg-white p-5 shadow-[inset_0_0_0_0.814px_#dddddd,0_24px_60px_-24px_rgba(0,0,0,0.35)] sm:p-6"
+      className="relative scroll-mt-28 overflow-hidden rounded-2xl bg-white p-5 shadow-[inset_0_0_0_1px_#e5e5e5,0_12px_28px_-12px_rgba(0,0,0,0.1)] sm:p-6"
     >
-      <span aria-hidden="true" className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-[#efb000] via-[#f8bb18] to-[#0077c2]" />
+      <span aria-hidden="true" className="absolute inset-x-0 top-0 h-1.5 bg-[#EFB000]" />
       <div aria-hidden="true" className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-[#fff1c7] blur-2xl" />
 
       {status === "sent" ? (
@@ -240,7 +240,7 @@ export default function DemoRequestForm({ product = "Contract Labour Management 
           <button
             type="submit"
             disabled={status === "sending"}
-            className={`group/btn mt-1 inline-flex w-full items-center justify-center gap-2 rounded-[9px] bg-[#0077c2] px-6 py-3 text-[15px] font-semibold text-white transition-[translate,box-shadow,background-color] duration-300 ${ease} hover:-translate-y-0.5 hover:bg-[#0061af] hover:shadow-[0_8px_18px_-4px_rgba(0,119,194,0.45)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#efb000]/60 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:translate-y-0`}
+            className={`group/btn mt-1 inline-flex w-full items-center justify-center gap-2 rounded-[9px] bg-[#EFB000] px-6 py-3 text-[15px] font-semibold text-white transition-[translate,box-shadow,background-color] duration-300 ${ease} hover:-translate-y-0.5 hover:bg-[#d99e00] hover:shadow-[0_8px_18px_-4px_rgba(239,176,0,0.45)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#efb000]/60 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:translate-y-0`}
           >
             {status === "sending" ? (
               <>

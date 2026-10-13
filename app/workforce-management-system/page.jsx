@@ -5,6 +5,7 @@ import { Instrument_Sans, Inter } from "next/font/google";
 import ScrollReveal from "@/components/ScrollReveal";
 import BackToTop from "@/components/BackToTop";
 import FlagshipProducts from "@/components/FlagshipProducts";
+import FeatureCard from "@/components/FeatureCard";
 import DemoRequestForm from "@/components/DemoRequestForm";
 import CardCarousel from "@/components/CardCarousel";
 import StopwatchCounter from "@/components/StopwatchCounter";
@@ -60,11 +61,11 @@ const fontInter = "font-[family-name:var(--font-inter)]";
    -------------------------------------------------------------------- */
 
 const goldCard =
-  "bg-white rounded-xl shadow-[inset_0_0_0_0.789px_#f8bb18,0px_0px_15.775px_-7.099px_rgba(0,0,0,0.25)]";
+  "bg-white rounded-xl shadow-[inset_0_0_0_0.789px_#EFB000,0px_3px_12px_-4px_rgba(0,0,0,0.07)]";
 const greyCard =
-  "bg-white rounded-2xl shadow-[inset_0_0_0_0.814px_#dddddd,0px_0px_16.279px_-7.326px_rgba(0,0,0,0.25)]";
+  "bg-white rounded-2xl shadow-[inset_0_0_0_0.814px_#e5e5e5,0px_3px_12px_-4px_rgba(0,0,0,0.06)]";
 const softCard =
-  "rounded-[11px] shadow-[inset_0_0_0_0.601px_#dddddd,0px_0px_12.029px_-5.413px_rgba(0,0,0,0.25)]";
+  "rounded-[11px] shadow-[inset_0_0_0_0.601px_#e5e5e5,0px_2px_8px_-2px_rgba(0,0,0,0.05)]";
 const mutedText = "text-[rgba(0,0,0,0.64)]";
 
 const ease = "ease-[cubic-bezier(0.16,1,0.3,1)]";
@@ -74,13 +75,13 @@ const revealFromLeft = "reveal-on-scroll reveal-fade-right";
 const revealFromRight = "reveal-on-scroll reveal-fade-left";
 const stagger = (index, step = 120) => ({ transitionDelay: `${index * step}ms` });
 
-const liftGold = `group/card ${motion} hover:-translate-y-1 hover:shadow-[inset_0_0_0_1.5px_#f8bb18,0px_10px_24px_-6px_rgba(0,0,0,0.18)]`;
-const liftGrey = `group/card ${motion} hover:-translate-y-1.5 hover:shadow-[inset_0_0_0_0.814px_#dddddd,0px_14px_28px_-6px_rgba(0,0,0,0.18)]`;
+const liftGold = `group/card ${motion} hover:-translate-y-1 hover:shadow-[inset_0_0_0_1.5px_#EFB000,0px_8px_20px_-6px_rgba(239,176,0,0.2)]`;
+const liftGrey = `group/card ${motion} hover:-translate-y-1.5 hover:shadow-[inset_0_0_0_0.814px_#dddddd,0px_10px_22px_-6px_rgba(0,0,0,0.1)]`;
 const iconPop = `transition-[scale] duration-300 ${ease} group-hover/card:scale-110`;
 const arrowNudge = `transition-[translate] duration-200 ${ease} group-hover/btn:translate-x-[3px]`;
 
-const primaryButton = `group/btn inline-flex items-center justify-center gap-2 rounded-[9px] bg-[#0077c2] px-6 py-3 ${fontInter} font-semibold text-white ${motion} hover:-translate-y-0.5 hover:bg-[#0061af] hover:shadow-[0_8px_18px_-4px_rgba(0,119,194,0.45)]`;
-const outlineButton = `group/btn inline-flex items-center justify-center gap-2 rounded-[9px] bg-white px-6 py-3 ${fontInter} font-semibold text-[#0077c2] shadow-[inset_0_0_0_1.5px_#0077c2] ${motion} hover:-translate-y-0.5 hover:bg-[#eef6fd]`;
+const primaryButton = `group/btn inline-flex items-center justify-center gap-2 rounded-[9px] bg-[#EFB000] px-6 py-3 ${fontInter} font-semibold text-white ${motion} hover:-translate-y-0.5 hover:bg-[#d99e00] hover:shadow-[0_8px_18px_-4px_rgba(239,176,0,0.45)]`;
+const outlineButton = `group/btn inline-flex items-center justify-center gap-2 rounded-[9px] bg-white px-6 py-3 ${fontInter} font-semibold text-[#EFB000] shadow-[inset_0_0_0_1.5px_#EFB000] ${motion} hover:-translate-y-0.5 hover:bg-[#fffdf5]`;
 
 /* --------------------------------------------------------------------
    Icons
@@ -300,14 +301,14 @@ const jsonLd = {
 
 export default function WorkforceManagementSystemPage() {
   return (
-    <main className={`${instrumentSans.variable} ${inter.variable} hrms-page payroll-page wfm-page w-full overflow-x-clip bg-white font-sans text-[#4c4c4c]`}>
+    <main className={`${instrumentSans.variable} ${inter.variable} hrms-page payroll-page wfm-page w-full overflow-x-clip bg-[#FFFFFA] font-sans text-[#4c4c4c]`}>
       <ScrollReveal root=".wfm-page" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
 
       {/* Hero */}
       <section
         aria-labelledby="wfm-hero-heading"
-        className="relative flex flex-col justify-center bg-[radial-gradient(circle_at_0%_20%,rgba(0,119,194,0.14),transparent_32%),radial-gradient(circle_at_55%_0%,rgba(248,187,24,0.25),transparent_35%),radial-gradient(circle_at_100%_80%,rgba(248,187,24,0.3),transparent_30%),radial-gradient(circle_at_30%_100%,rgba(15,184,128,0.1),transparent_25%)] px-4 py-8 md:px-12 lg:min-h-[calc(100vh-88px)] lg:py-6"
+        className="relative flex flex-col justify-center bg-[#FFFFFA] px-4 py-8 md:px-12 lg:min-h-[calc(100vh-88px)] lg:py-6"
       >
         <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-14">
           <header className={`${revealFromLeft} flex flex-col gap-5 lg:max-w-xl`}>
@@ -348,12 +349,11 @@ export default function WorkforceManagementSystemPage() {
       </section>
 
       {/* Why emWorkForce? */}
-      <section aria-labelledby="why-heading" className="relative px-4 py-14 md:px-12 md:py-20">
+      <section aria-labelledby="why-heading" className="relative bg-[#FFFFFA] px-4 py-14 md:px-12 md:py-20">
         <div className="mx-auto flex max-w-7xl flex-col items-center gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-14">
           {/* Visual Showcase Card — matching HRMS photo cards */}
           <div className={`${revealFromLeft} relative w-full lg:w-[46%] xl:w-[45%]`}>
-            <div aria-hidden="true" className="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-[#f8bb18]/25 via-[#fee6b1]/20 to-transparent blur-2xl -z-10" />
-            <div className={`${softCard} overflow-hidden rounded-2xl bg-white p-3 md:p-3.5 shadow-[inset_0_0_0_0.744px_#dddddd,0px_16px_36px_-12px_rgba(0,0,0,0.18)] ${motion} hover:-translate-y-1 hover:shadow-[inset_0_0_0_0.744px_#dddddd,0px_22px_48px_-12px_rgba(0,0,0,0.22)]`}>
+            <div className={`${softCard} overflow-hidden rounded-2xl bg-white p-3 md:p-3.5 shadow-[inset_0_0_0_0.744px_#e5e5e5,0px_8px_20px_-8px_rgba(0,0,0,0.08)] ${motion} hover:-translate-y-1 hover:shadow-[inset_0_0_0_0.744px_#e5e5e5,0px_12px_28px_-8px_rgba(0,0,0,0.12)]`}>
               <div className="overflow-hidden rounded-xl bg-[#f8fafd]">
                 <Image
                   src={whyImg}
@@ -378,22 +378,17 @@ export default function WorkforceManagementSystemPage() {
 
             <ul className="grid grid-cols-1 gap-3.5 sm:grid-cols-2 md:gap-4">
               {stats.map((stat, index) => (
-                <li
+                <FeatureCard
                   key={stat.label}
+                  index={index}
+                  compact
+                  className={revealUp}
                   style={stagger(index, 80)}
-                  className={`${revealUp} ${goldCard} ${liftGold} group/stat relative flex items-start gap-3.5 rounded-xl bg-white p-4 sm:p-4.5 transition-[translate,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[inset_0_0_0_1.5px_#f8bb18,0px_12px_28px_-6px_rgba(0,0,0,0.18)]`}
-                >
-                  <IconTile name={stat.icon} className="h-11 w-11 rounded-[9px]" iconClassName="h-5 w-5" />
-                  <div className="flex flex-col">
-                    <StopwatchCounter
-                      value={stat.value}
-                      suffix={stat.suffix}
-                      className="text-2xl sm:text-[1.75rem] font-bold leading-tight text-[#1f1f1f]"
-                    />
-                    <h3 className="mt-0.5 text-sm font-semibold text-[#1f1f1f]">{stat.label}</h3>
-                    <p className={`text-xs leading-4 mt-0.5 ${mutedText}`}>{stat.desc}</p>
-                  </div>
-                </li>
+                  icon={<LineIcon name={stat.icon} />}
+                  value={<StopwatchCounter value={stat.value} suffix={stat.suffix} delay={index * 120} />}
+                  title={stat.label}
+                  text={stat.desc}
+                />
               ))}
             </ul>
           </div>
@@ -401,7 +396,7 @@ export default function WorkforceManagementSystemPage() {
       </section>
 
       {/* Modules — infinite slider */}
-      <section id="wfm-modules" aria-labelledby="modules-heading" className="scroll-mt-24 bg-[#fcfcfc] px-4 py-12 md:px-12 md:py-16">
+      <section id="wfm-modules" aria-labelledby="modules-heading" className="scroll-mt-24 bg-[#FFFFFA] px-4 py-12 md:px-12 md:py-16">
         <div className="mx-auto flex max-w-7xl flex-col gap-10">
           <SectionHeader
             id="modules-heading"
@@ -429,10 +424,8 @@ export default function WorkforceManagementSystemPage() {
       {/* Consulting session + demo form */}
       <section
         aria-labelledby="consulting-heading"
-        className="relative overflow-hidden bg-[#fdf6e6] bg-[radial-gradient(circle_at_10%_15%,rgba(248,187,24,0.3),transparent_28%),radial-gradient(circle_at_95%_75%,rgba(248,187,24,0.3),transparent_28%)] px-4 py-10 md:px-12 md:py-14 lg:py-16"
+        className="relative overflow-hidden bg-[#FFFFFA] px-4 py-10 md:px-12 md:py-14 lg:py-16"
       >
-        <div aria-hidden="true" className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-[#f8bb18]/20 blur-3xl" />
-        <div aria-hidden="true" className="pointer-events-none absolute -bottom-32 -left-24 h-80 w-80 rounded-full bg-[#f8bb18]/20 blur-3xl" />
         <div className="relative mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 lg:flex-row lg:items-center lg:gap-10 xl:gap-14">
           <div className={`${revealFromLeft} flex w-full flex-col gap-4 lg:w-[52%] lg:max-w-xl`}>
             <header className="flex flex-col gap-2">
@@ -489,7 +482,6 @@ export default function WorkforceManagementSystemPage() {
           </div>
 
           <div className={`${revealFromRight} relative w-full max-w-md lg:w-[44%] lg:max-w-[450px]`}>
-            <div aria-hidden="true" className="pointer-events-none absolute -inset-4 rounded-3xl bg-gradient-to-tr from-[#f8bb18]/30 via-[#fee6b1]/20 to-transparent blur-2xl -z-10" />
             <DemoRequestForm
               product="Workforce Management System (emWorkForce)"
               title="Request for demo"
@@ -502,7 +494,7 @@ export default function WorkforceManagementSystemPage() {
       {/* FAQ */}
       <section
         aria-labelledby="faq-heading"
-        className="bg-white px-4 py-12 md:px-12 md:py-20"
+        className="bg-[#FFFFFA] px-4 py-12 md:px-12 md:py-20"
       >
         <div className="mx-auto flex max-w-5xl flex-col gap-8">
           <header className={`${revealUp} flex flex-col gap-2 text-center`}>
@@ -514,7 +506,7 @@ export default function WorkforceManagementSystemPage() {
             {faqs.map((faq, index) => (
               <li key={faq.question} style={stagger(index, 80)} className={`${revealUp} ${goldCard} ${liftGold} overflow-hidden`}>
                 <details name="wfm-faq" open={index === 0} className="hrms-faq group">
-                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 rounded-xl px-4 py-4 outline-none focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[#0077c2] sm:px-5 md:px-7 [&::-webkit-details-marker]:hidden">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 rounded-xl px-4 py-4 outline-none focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[#EFB000] sm:px-5 md:px-7 [&::-webkit-details-marker]:hidden">
                     <h3 className="text-base font-semibold sm:text-lg md:text-xl">{faq.question}</h3>
                     <FaqToggleIcon />
                   </summary>
@@ -527,10 +519,10 @@ export default function WorkforceManagementSystemPage() {
       </section>
 
       {/* Our Flagship Products */}
-      <FlagshipProducts />
+      <FlagshipProducts className="bg-[#FFFFFA]" />
 
       {/* Contact CTA — same as the other product pages */}
-      <section aria-label="Contact emSphere" className="bg-white px-6 py-12 min-[769px]:py-[88px]">
+      <section aria-label="Contact emSphere" className="bg-[#FFFFFA] px-6 py-12 min-[769px]:py-[88px]">
         <div className="mx-auto flex max-w-275 flex-col items-center justify-center gap-9 text-black min-[1081px]:flex-row min-[1081px]:gap-20">
           {[
             { title: "Ready to talk?", cta: "Talk to Sales", reveal: revealFromLeft },
@@ -544,7 +536,7 @@ export default function WorkforceManagementSystemPage() {
                 </h2>
                 <Link
                   href="/contact-us"
-                  className={`group/btn inline-flex w-full max-w-65 items-center justify-center rounded-lg bg-[#0077c2] px-6 py-[13px] ${fontInter} text-[15px] font-semibold tracking-[0.02em] text-white ${motion} hover:-translate-y-0.5 hover:bg-[#0061af] hover:shadow-[0_8px_18px_-4px_rgba(0,119,194,0.45)] active:translate-y-0 min-[769px]:w-auto min-[769px]:max-w-none min-[769px]:min-w-[145px] min-[769px]:px-[30px]`}
+                  className={`group/btn inline-flex w-full max-w-65 items-center justify-center rounded-lg bg-[#EFB000] px-6 py-[13px] ${fontInter} text-[15px] font-semibold tracking-[0.02em] text-white ${motion} hover:-translate-y-0.5 hover:bg-[#d99e00] hover:shadow-[0_8px_18px_-4px_rgba(239,176,0,0.45)] active:translate-y-0 min-[769px]:w-auto min-[769px]:max-w-none min-[769px]:min-w-[145px] min-[769px]:px-[30px]`}
                 >
                   {col.cta}
                 </Link>

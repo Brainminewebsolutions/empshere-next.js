@@ -25,6 +25,9 @@ module.exports = {
     '/apple-icon.png/*',
     '/_not-found',
     '/_not-found/*',
+    // Old emPay URL; it only forwards to /empay-management-solution/.
+    '/payroll-management-solution',
+    '/payroll-management-solution/*',
   ],
   transform: async (config, path) => {
     // Exclude system / metadata image paths if matched

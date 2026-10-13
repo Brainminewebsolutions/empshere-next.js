@@ -5,6 +5,7 @@ import { Instrument_Sans, Inter } from "next/font/google";
 import ScrollReveal from "@/components/ScrollReveal";
 import BackToTop from "@/components/BackToTop";
 import FlagshipProducts from "@/components/FlagshipProducts";
+import FeatureCard from "@/components/FeatureCard";
 import DemoRequestForm from "@/components/DemoRequestForm";
 import CardCarousel from "@/components/CardCarousel";
 import VisitorHeroVector from "@/components/VisitorHeroVector";
@@ -63,11 +64,11 @@ const fontInter = "font-[family-name:var(--font-inter)]";
    -------------------------------------------------------------------- */
 
 const goldCard =
-  "bg-white rounded-xl shadow-[inset_0_0_0_0.789px_#f8bb18,0px_0px_15.775px_-7.099px_rgba(0,0,0,0.25)]";
+  "bg-white rounded-xl shadow-[inset_0_0_0_0.789px_#EFB000,0px_3px_12px_-4px_rgba(0,0,0,0.07)]";
 const greyCard =
-  "bg-white rounded-2xl shadow-[inset_0_0_0_0.814px_#dddddd,0px_0px_16.279px_-7.326px_rgba(0,0,0,0.25)]";
+  "bg-white rounded-2xl shadow-[inset_0_0_0_0.814px_#e5e5e5,0px_3px_12px_-4px_rgba(0,0,0,0.06)]";
 const softCard =
-  "rounded-[11px] shadow-[inset_0_0_0_0.601px_#dddddd,0px_0px_12.029px_-5.413px_rgba(0,0,0,0.25)]";
+  "rounded-[11px] shadow-[inset_0_0_0_0.601px_#e5e5e5,0px_2px_8px_-2px_rgba(0,0,0,0.05)]";
 const mutedText = "text-[rgba(0,0,0,0.64)]";
 
 const ease = "ease-[cubic-bezier(0.16,1,0.3,1)]";
@@ -77,13 +78,13 @@ const revealFromLeft = "reveal-on-scroll reveal-fade-right";
 const revealFromRight = "reveal-on-scroll reveal-fade-left";
 const stagger = (index, step = 120) => ({ transitionDelay: `${index * step}ms` });
 
-const liftGold = `group/card ${motion} hover:-translate-y-1 hover:shadow-[inset_0_0_0_1.5px_#f8bb18,0px_10px_24px_-6px_rgba(0,0,0,0.18)]`;
-const liftGrey = `group/card ${motion} hover:-translate-y-1.5 hover:shadow-[inset_0_0_0_0.814px_#dddddd,0px_14px_28px_-6px_rgba(0,0,0,0.18)]`;
+const liftGold = `group/card ${motion} hover:-translate-y-1 hover:shadow-[inset_0_0_0_1.5px_#EFB000,0px_8px_20px_-6px_rgba(239,176,0,0.2)]`;
+const liftGrey = `group/card ${motion} hover:-translate-y-1.5 hover:shadow-[inset_0_0_0_0.814px_#dddddd,0px_10px_22px_-6px_rgba(0,0,0,0.1)]`;
 const iconPop = `transition-[scale] duration-300 ${ease} group-hover/card:scale-110`;
 const arrowNudge = `transition-[translate] duration-200 ${ease} group-hover/btn:translate-x-[3px]`;
 
-const primaryButton = `group/btn inline-flex items-center justify-center gap-2 rounded-[9px] bg-[#0077c2] px-6 py-3 ${fontInter} font-semibold text-white ${motion} hover:-translate-y-0.5 hover:bg-[#0061af] hover:shadow-[0_8px_18px_-4px_rgba(0,119,194,0.45)]`;
-const outlineButton = `group/btn inline-flex items-center justify-center gap-2 rounded-[9px] bg-white px-6 py-3 ${fontInter} font-semibold text-[#f8bb18] shadow-[inset_0_0_0_1.5px_#f8bb18] ${motion} hover:-translate-y-0.5 hover:bg-[#fffdf5]`;
+const primaryButton = `group/btn inline-flex items-center justify-center gap-2 rounded-[9px] bg-[#EFB000] px-6 py-3 ${fontInter} font-semibold text-white ${motion} hover:-translate-y-0.5 hover:bg-[#d99e00] hover:shadow-[0_8px_18px_-4px_rgba(239,176,0,0.45)]`;
+const outlineButton = `group/btn inline-flex items-center justify-center gap-2 rounded-[9px] bg-white px-6 py-3 ${fontInter} font-semibold text-[#EFB000] shadow-[inset_0_0_0_1.5px_#EFB000] ${motion} hover:-translate-y-0.5 hover:bg-[#fffdf5]`;
 
 /* --------------------------------------------------------------------
    Icons
@@ -382,14 +383,14 @@ const jsonLd = {
 
 export default function VisitorManagementSystemPage() {
   return (
-    <main className={`${instrumentSans.variable} ${inter.variable} hrms-page payroll-page vms-page w-full overflow-x-clip bg-white font-sans text-[#4c4c4c]`}>
+    <main className={`${instrumentSans.variable} ${inter.variable} hrms-page payroll-page vms-page w-full overflow-x-clip bg-[#FFFFFA] font-sans text-[#4c4c4c]`}>
       <ScrollReveal root=".vms-page" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
 
       {/* Hero */}
       <section
         aria-labelledby="vms-hero-heading"
-        className="relative flex flex-col justify-center bg-[radial-gradient(circle_at_0%_20%,rgba(0,119,194,0.14),transparent_32%),radial-gradient(circle_at_55%_0%,rgba(248,187,24,0.25),transparent_35%),radial-gradient(circle_at_100%_80%,rgba(248,187,24,0.3),transparent_30%),radial-gradient(circle_at_30%_100%,rgba(15,184,128,0.1),transparent_25%)] px-4 py-8 md:px-12 lg:min-h-[calc(100vh-88px)] lg:py-6"
+        className="relative flex flex-col justify-center bg-[#FFFFFA] px-4 py-8 md:px-12 lg:min-h-[calc(100vh-88px)] lg:py-6"
       >
         <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-8 lg:flex-row lg:items-center lg:justify-between lg:gap-12 xl:gap-14">
           <header className={`${revealFromLeft} flex flex-col gap-4 lg:gap-5 lg:max-w-xl`}>
@@ -431,10 +432,9 @@ export default function VisitorManagementSystemPage() {
       </section>
 
       {/* Why your business needs a VMS */}
-      <section aria-labelledby="needs-heading" className="px-4 py-14 md:px-12 md:py-20">
+      <section aria-labelledby="needs-heading" className="bg-[#FFFFFA] px-4 py-14 md:px-12 md:py-20">
         <div className="mx-auto flex max-w-7xl flex-col items-center gap-12 lg:flex-row-reverse lg:gap-16">
           <div className={`${revealFromRight} relative mx-auto w-full max-w-[26rem] lg:w-[38%]`}>
-            <div aria-hidden="true" className="absolute inset-6 rounded-full bg-[#d8e7fe] blur-3xl" />
             <Image
               src={mobileImg}
               alt="Smartphone running the Emsphere visitor app with visitor counts and analytics charts"
@@ -461,7 +461,7 @@ export default function VisitorManagementSystemPage() {
       </section>
 
       {/* Features — infinite slider */}
-      <section id="vms-features" aria-labelledby="features-heading" className="scroll-mt-24 bg-[#fcfcfc] px-4 py-12 md:px-12 md:py-16">
+      <section id="vms-features" aria-labelledby="features-heading" className="scroll-mt-24 bg-[#FFFFFA] px-4 py-12 md:px-12 md:py-16">
         <div className="mx-auto flex max-w-7xl flex-col gap-10">
           <SectionHeader
             id="features-heading"
@@ -488,7 +488,7 @@ export default function VisitorManagementSystemPage() {
       </section>
 
       {/* Benefits */}
-      <section aria-labelledby="benefits-heading" className="px-4 py-12 md:px-12 md:py-20">
+      <section aria-labelledby="benefits-heading" className="bg-[#FFFFFA] px-4 py-12 md:px-12 md:py-20">
         <div className="mx-auto flex max-w-7xl flex-col gap-10">
           <SectionHeader
             id="benefits-heading"
@@ -499,22 +499,24 @@ export default function VisitorManagementSystemPage() {
             }
             text="Implementing a digital visitor management system offers numerous advantages, including the following."
           />
-          <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
             {benefits.map((item, index) => (
-              <li key={item.title} style={stagger(index % 3, 100)} className={`${revealUp} ${greyCard} ${liftGrey} flex flex-col gap-3 p-6`}>
-                <div className="flex items-center gap-3">
-                  <IconTile name={item.icon} />
-                  <h3 className="text-lg font-semibold leading-snug text-[#1f1f1f]">{item.title}</h3>
-                </div>
-                <p className={`text-[15px] leading-[24px] ${mutedText}`}>{item.text}</p>
-              </li>
+              <FeatureCard
+                key={item.title}
+                index={index}
+                className={revealUp}
+                style={stagger(index % 3, 110)}
+                icon={<LineIcon name={item.icon} />}
+                title={item.title}
+                text={item.text}
+              />
             ))}
           </ul>
         </div>
       </section>
 
       {/* How Emsphere enhances workplace security — checklist */}
-      <section aria-labelledby="enhances-heading" className="bg-[#eef4fd] px-4 py-14 md:px-12 md:py-20">
+      <section aria-labelledby="enhances-heading" className="bg-[#FFFFFA] px-4 py-14 md:px-12 md:py-20">
         <div className="mx-auto flex max-w-7xl flex-col items-center gap-12 lg:flex-row lg:gap-16">
           <div className={`${revealFromLeft} relative mx-auto w-full max-w-lg lg:w-[45%]`}>
             <VisitorSecurityVector />
@@ -535,12 +537,19 @@ export default function VisitorManagementSystemPage() {
                 <li
                   key={point}
                   style={stagger(index, 70)}
-                  className={`${revealUp} group/card flex items-center gap-3 rounded-xl bg-white px-4 py-3.5 text-[15px] font-semibold text-[#1f1f1f] shadow-[inset_0_0_0_1px_#dfe7f3] ${motion} hover:-translate-y-0.5 hover:shadow-[inset_0_0_0_1.5px_#a7ddff,0_10px_22px_-12px_rgba(0,119,194,0.45)]`}
+                  className={`${revealUp} group/card relative flex items-center gap-3.5 overflow-hidden rounded-xl bg-white py-3.5 pl-4 pr-10 text-[15px] font-semibold leading-snug text-[#1f1f1f] shadow-[inset_0_0_0_1px_#ececec,0_4px_14px_-10px_rgba(0,0,0,0.12)] sm:last:odd:col-span-2 ${motion} hover:-translate-y-0.5 hover:shadow-[inset_0_0_0_1.5px_#EFB000,0_14px_26px_-14px_rgba(239,176,0,0.45)]`}
                 >
-                  <span className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#f8bb18] text-white ${iconPop}`}>
+                  {/* Warm wash slides in from the left on hover */}
+                  <span aria-hidden="true" className={`pointer-events-none absolute inset-0 origin-left scale-x-0 bg-gradient-to-r from-[#FDF6E6] to-transparent transition-[scale] duration-500 ${ease} group-hover/card:scale-x-100`} />
+                  <span className={`relative flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#fff5d9] text-[#d99e00] shadow-[inset_0_0_0_1px_rgba(239,176,0,0.3)] transition-[background-color,color,scale] duration-300 ${ease} group-hover/card:scale-110 group-hover/card:bg-[#EFB000] group-hover/card:text-white`}>
                     <CheckIcon className="h-4 w-4" />
                   </span>
-                  {point}
+                  <span className="relative">{point}</span>
+                  <span aria-hidden="true" className={`absolute right-4 top-1/2 -translate-y-1/2 text-[#EFB000] opacity-0 transition-[opacity,translate] duration-300 ${ease} group-hover/card:translate-x-1 group-hover/card:opacity-100`}>
+                    <svg viewBox="0 0 20 20" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M7.5 4.5l5.5 5.5-5.5 5.5" />
+                    </svg>
+                  </span>
                 </li>
               ))}
             </ul>
@@ -551,10 +560,8 @@ export default function VisitorManagementSystemPage() {
       {/* Challenges with traditional visitor management */}
       <section
         aria-labelledby="challenges-heading"
-        className="relative overflow-hidden bg-[#fdf6e6] bg-[radial-gradient(circle_at_10%_15%,rgba(248,187,24,0.25),transparent_35%),radial-gradient(circle_at_90%_80%,rgba(0,119,194,0.1),transparent_35%)] px-4 py-14 text-[#1f1f1f] md:px-12 md:py-20"
+        className="relative overflow-hidden bg-[#FFFFFA] px-4 py-14 text-[#1f1f1f] md:px-12 md:py-20"
       >
-        <div aria-hidden="true" className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-[#f8bb18]/15 blur-3xl" />
-        <div aria-hidden="true" className="pointer-events-none absolute -bottom-32 -left-24 h-80 w-80 rounded-full bg-[#0077c2]/10 blur-3xl" />
         <div className="relative mx-auto flex max-w-7xl flex-col gap-12">
           <header className={`${revealUp} mx-auto flex max-w-3xl flex-col items-center gap-3 text-center`}>
             <p className="text-sm font-bold uppercase tracking-wider text-[#b45309]">Why Your Business Needs a Visitor Management System</p>
@@ -567,44 +574,56 @@ export default function VisitorManagementSystemPage() {
           </header>
           <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {challenges.map((item, index) => (
-              <li
+              <FeatureCard
                 key={item.title}
-                style={stagger(index, 100)}
-                className={`${revealUp} group/card flex flex-col items-center gap-3 rounded-2xl bg-white p-6 text-center shadow-[inset_0_0_0_1px_#f0deba,0px_10px_24px_-10px_rgba(0,0,0,0.08)] ${motion} hover:-translate-y-1 hover:shadow-[inset_0_0_0_1.5px_#f8bb18,0px_14px_28px_-6px_rgba(0,0,0,0.14)]`}
-              >
-                <span className={`flex h-12 w-12 items-center justify-center rounded-[10px] bg-[#EFB000] text-white shadow-sm ${iconPop}`}>
-                  <LineIcon name={item.icon} className="h-6 w-6" />
-                </span>
-                <h3 className="text-lg font-semibold text-[#1f1f1f]">{item.title}</h3>
-                <p className={`text-sm leading-[22px] ${mutedText}`}>{item.text}</p>
-              </li>
+                index={index}
+                className={revealUp}
+                style={stagger(index, 110)}
+                icon={<LineIcon name={item.icon} />}
+                title={item.title}
+                text={item.text}
+              />
             ))}
           </ul>
 
-          <div className="grid grid-cols-1 items-center gap-10 rounded-2xl bg-white p-6 shadow-[inset_0_0_0_1px_#f0deba,0px_12px_32px_-12px_rgba(0,0,0,0.08)] md:p-10 lg:grid-cols-[1.2fr_0.8fr]">
-            <div className={`${revealFromLeft} flex flex-col gap-4`}>
-              <h3 className="text-2xl font-semibold text-[#1f1f1f] md:text-[1.75rem]">
+          <div className={`${revealUp} group/panel relative grid grid-cols-1 items-center gap-10 overflow-hidden rounded-3xl bg-white p-6 shadow-[inset_0_0_0_1px_#f0deba,0px_16px_40px_-18px_rgba(176,125,0,0.25)] md:p-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14`}>
+            {/* Ambient warm glows */}
+            <span aria-hidden="true" className="pointer-events-none absolute -left-24 -top-24 h-64 w-64 rounded-full bg-[radial-gradient(circle,rgba(248,187,24,0.14),transparent_70%)]" />
+            <span aria-hidden="true" className="pointer-events-none absolute -bottom-28 right-[20%] h-72 w-72 rounded-full bg-[radial-gradient(circle,rgba(248,187,24,0.10),transparent_70%)]" />
+            {/* Gold rule down the left edge */}
+            <span aria-hidden="true" className="absolute inset-y-8 left-0 w-1 rounded-r-full bg-gradient-to-b from-[#f8bb18] to-[#d99e00]" />
+
+            <div className={`${revealFromLeft} relative flex flex-col gap-5`}>
+              <p className={`${fontInter} inline-flex w-fit items-center gap-2 rounded-full bg-[#fff5d9] px-3.5 py-1 text-xs font-bold uppercase tracking-[0.14em] text-[#b07d00]`}>
+                <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-[#EFB000]" />
+                Paper to Digital
+              </p>
+              <h3 className="text-2xl font-semibold leading-tight text-[#1f1f1f] md:text-[2rem] md:leading-[1.25]">
                 The Shift to <span className="text-[#f8bb18]">Digital Solutions</span> for Visitor Management
               </h3>
-              <p className={`text-base leading-[26px] ${mutedText}`}>
+              <p className={`text-base leading-[27px] ${mutedText}`}>
                 Upgrading to digital solutions refers to a futuristic move. While streamlining visitor movements is one aspect, what matters the most is
                 enhancing security. Secure premises foster a fearless environment that fuels productivity, and efficiency.
               </p>
-              <p className={`text-base leading-[26px] ${mutedText}`}>
+              <p className={`border-l-2 border-[#f1e2b8] pl-4 text-base leading-[27px] ${mutedText}`}>
                 Although these are indirect impacts, they matter in the long run. Emsphere’s visitor management principle is based on delivering tangible
                 value to enterprises. The system is designed with modern security needs in mind and supports companies in various tactical and strategic
                 ways, helping them strengthen security and improve the overall visitor experience.
               </p>
             </div>
-            <div className={`${revealFromRight} mx-auto w-full max-w-md rounded-2xl bg-[#fafafa] p-4 ring-1 ring-[#e5e7eb]`}>
-              <VisitorDigitalSolutionsVector />
+            <div className={`${revealFromRight} relative mx-auto w-full max-w-md`}>
+              <div className={`relative rounded-2xl bg-gradient-to-br from-[#FDF6E6] via-white to-[#fff5d9] p-5 shadow-[inset_0_0_0_1px_#f0deba,0_18px_40px_-20px_rgba(176,125,0,0.35)] transition-[scale] duration-500 ${ease} group-hover/panel:scale-[1.02]`}>
+                <div className="animate-[payroll-float_7s_ease-in-out_infinite]">
+                  <VisitorDigitalSolutionsVector />
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* How Emsphere enhances workplace security — 3 pillars */}
-      <section aria-labelledby="pillars-heading" className="px-4 py-12 md:px-12 md:py-20">
+      <section aria-labelledby="pillars-heading" className="bg-[#FFFFFA] px-4 py-12 md:px-12 md:py-20">
         <div className="mx-auto flex max-w-7xl flex-col gap-10">
           <SectionHeader
             id="pillars-heading"
@@ -616,12 +635,15 @@ export default function VisitorManagementSystemPage() {
           />
           <ul className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {enhancements.map((item, index) => (
-              <li key={item.title} style={stagger(index)} className={`${revealUp} ${goldCard} ${liftGold} relative flex flex-col items-center gap-4 overflow-hidden p-7 text-center`}>
-                <span aria-hidden="true" className="absolute inset-x-0 top-0 h-1" style={{ background: tone(index * 2).color }} />
-                <IconTile name={item.icon} className="h-14 w-14 rounded-[10px]" iconClassName="h-8 w-8" />
-                <h3 className="text-xl font-semibold leading-snug text-[#1f1f1f]">{item.title}</h3>
-                <p className={`text-[15px] leading-[24px] ${mutedText}`}>{item.text}</p>
-              </li>
+              <FeatureCard
+                key={item.title}
+                index={index}
+                className={revealUp}
+                style={stagger(index)}
+                icon={<LineIcon name={item.icon} />}
+                title={item.title}
+                text={item.text}
+              />
             ))}
           </ul>
         </div>
@@ -630,7 +652,7 @@ export default function VisitorManagementSystemPage() {
       {/* FAQ */}
       <section
         aria-labelledby="faq-heading"
-        className="bg-[#fdf6e6] bg-[radial-gradient(circle_at_10%_15%,rgba(248,187,24,0.3),transparent_25%),radial-gradient(circle_at_95%_75%,rgba(248,187,24,0.3),transparent_25%)] px-4 py-12 md:px-12 md:py-20"
+        className="bg-[#FFFFFA] px-4 py-12 md:px-12 md:py-20"
       >
         <div className="mx-auto flex max-w-5xl flex-col gap-8">
           <header className={`${revealUp} flex flex-col gap-2 text-center`}>
@@ -642,7 +664,7 @@ export default function VisitorManagementSystemPage() {
             {faqs.map((faq, index) => (
               <li key={faq.question} style={stagger(index % 5, 70)} className={`${revealUp} ${goldCard} ${liftGold} overflow-hidden`}>
                 <details name="vms-faq" open={index === 0} className="hrms-faq group">
-                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 rounded-xl px-4 py-4 outline-none focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[#0077c2] sm:px-5 md:px-7 [&::-webkit-details-marker]:hidden">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 rounded-xl px-4 py-4 outline-none focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[#EFB000] sm:px-5 md:px-7 [&::-webkit-details-marker]:hidden">
                     <h3 className="text-base font-semibold sm:text-lg md:text-xl">{faq.question}</h3>
                     <FaqToggleIcon />
                   </summary>
@@ -657,7 +679,7 @@ export default function VisitorManagementSystemPage() {
       {/* Ready to transform — image + copy + demo form */}
       <section
         aria-labelledby="transform-heading"
-        className="relative overflow-hidden bg-white px-4 py-14 text-[#1f1f1f] md:px-12 md:py-20"
+        className="relative overflow-hidden bg-[#FFFFFA] px-4 py-14 text-[#1f1f1f] md:px-12 md:py-20"
       >
         <div className="relative mx-auto flex max-w-7xl flex-col items-center gap-10 lg:flex-row lg:items-stretch lg:justify-between lg:gap-14">
           <div className={`${revealFromLeft} flex w-full flex-col gap-6 lg:flex-1`}>
@@ -697,10 +719,10 @@ export default function VisitorManagementSystemPage() {
       </section>
 
       {/* Our Flagship Products */}
-      <FlagshipProducts />
+      <FlagshipProducts className="bg-[#FFFFFA]" />
 
       {/* Contact CTA — same as the other product pages */}
-      <section aria-label="Contact emSphere" className="bg-white px-6 py-12 min-[769px]:py-[88px]">
+      <section aria-label="Contact emSphere" className="bg-[#FFFFFA] px-6 py-12 min-[769px]:py-[88px]">
         <div className="mx-auto flex max-w-275 flex-col items-center justify-center gap-9 text-black min-[1081px]:flex-row min-[1081px]:gap-20">
           {[
             { title: "Ready to talk?", cta: "Talk to Sales", reveal: revealFromLeft },
@@ -714,7 +736,7 @@ export default function VisitorManagementSystemPage() {
                 </h2>
                 <Link
                   href="/contact-us"
-                  className={`group/btn inline-flex w-full max-w-65 items-center justify-center rounded-lg bg-[#0077c2] px-6 py-[13px] ${fontInter} text-[15px] font-semibold tracking-[0.02em] text-white ${motion} hover:-translate-y-0.5 hover:bg-[#0061af] hover:shadow-[0_8px_18px_-4px_rgba(0,119,194,0.45)] active:translate-y-0 min-[769px]:w-auto min-[769px]:max-w-none min-[769px]:min-w-[145px] min-[769px]:px-[30px]`}
+                  className={`group/btn inline-flex w-full max-w-65 items-center justify-center rounded-lg bg-[#EFB000] px-6 py-[13px] ${fontInter} text-[15px] font-semibold tracking-[0.02em] text-white ${motion} hover:-translate-y-0.5 hover:bg-[#d99e00] hover:shadow-[0_8px_18px_-4px_rgba(239,176,0,0.45)] active:translate-y-0 min-[769px]:w-auto min-[769px]:max-w-none min-[769px]:min-w-[145px] min-[769px]:px-[30px]`}
                 >
                   {col.cta}
                 </Link>

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-/* Thin gold→blue bar pinned to the top of the viewport that fills as the
+/* Thin gold bar pinned to the top of the viewport that fills as the
    reader scrolls through `target` (the article body). */
 
 export default function ReadingProgress({ target }) {

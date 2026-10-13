@@ -274,8 +274,8 @@ const NOT_FOUND_CSS = `
   justify-content: center;
   gap: 8px;
   background: #ffffff;
-  color: var(--blue);
-  border: 1.5px solid #bddcf4;
+  color: var(--gold);
+  border: 1.5px solid var(--gold);
   padding: 12px 24px;
   border-radius: 9px;
   font-family: var(--font-label);
@@ -287,9 +287,9 @@ const NOT_FOUND_CSS = `
 }
 
 .not-found-btn-secondary:hover {
-  background: var(--blue-light);
-  border-color: var(--blue);
-  color: var(--blue-dark);
+  background: #fffdf5;
+  border-color: var(--gold-dark);
+  color: var(--gold-dark);
   transform: translateY(-2px);
 }
 

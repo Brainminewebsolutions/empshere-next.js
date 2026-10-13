@@ -48,7 +48,7 @@ export default function HeroCarousel({ slides }) {
               </p>
               <Link
                 href={slide.ctaHref}
-                className="mt-2 inline-flex w-fit items-center gap-2 rounded-md bg-[#0077c2] px-6 py-3 text-sm font-medium tracking-wide text-white transition-colors hover:bg-[#0061af]"
+                className="mt-2 inline-flex w-fit items-center gap-2 rounded-md bg-[#EFB000] px-6 py-3 text-sm font-medium tracking-wide text-white transition-colors hover:bg-[#d99e00]"
               >
                 {slide.cta}
                 <ArrowIcon className="h-4 w-4" />
@@ -67,7 +67,7 @@ export default function HeroCarousel({ slides }) {
             aria-label={`Show slide ${index + 1}: ${slide.heading}`}
             aria-current={index === activeIndex}
             className={`h-2.5 w-2.5 rounded-full transition-colors ${
-              index === activeIndex ? "bg-[#0077c2]" : "bg-black/15"
+              index === activeIndex ? "bg-[#EFB000]" : "bg-black/15"
             }`}
           />
         ))}

@@ -20,16 +20,19 @@ const ease = "ease-[cubic-bezier(0.16,1,0.3,1)]";
 const revealUp = "reveal-on-scroll reveal-fade-up";
 const stagger = (index, step = 120) => ({ transitionDelay: `${index * step}ms` });
 
-// Warm orange/gold inner glow on hover
+// Warm orange/gold inner glow on hover, with a soft lift and warm tint
 const productCardGlow = [
-  "shadow-[inset_0_0_0_0.868px_#a2a2a2,inset_0_0_0_0_rgba(248,187,24,0),0_0_0_0_rgba(239,176,0,0)]",
-  "hover:shadow-[inset_0_0_0_1px_rgba(239,176,0,0.55),inset_0_0_34px_2px_rgba(248,187,24,0.3),0_16px_32px_-12px_rgba(239,176,0,0.4)]",
-  "hover:-translate-y-1.5",
-  `transition-[translate,box-shadow] duration-500 ${ease}`,
+  "shadow-[inset_0_0_0_0.868px_#a2a2a2,inset_0_0_0_0_rgba(248,187,24,0),0_4px_16px_-4px_rgba(0,0,0,0.08)]",
+  "hover:shadow-[inset_0_0_0_1px_rgba(239,176,0,0.55),inset_0_0_34px_2px_rgba(248,187,24,0.22),0_22px_40px_-16px_rgba(239,176,0,0.45)]",
+  "hover:-translate-y-2 hover:bg-[#FFFDF6]",
+  "will-change-transform",
+  `transition-[translate,box-shadow,background-color] duration-500 ${ease}`,
+  "motion-reduce:transition-none motion-reduce:hover:translate-y-0",
 ].join(" ");
 
-const iconPop = `transition-[scale] duration-300 ${ease} group-hover/card:scale-110`;
-const arrowNudge = `transition-[translate] duration-200 ${ease} group-hover/btn:translate-x-[3px]`;
+const iconPop = `transition-[scale,rotate] duration-500 ${ease} group-hover/card:scale-110 group-hover/card:-rotate-6 motion-reduce:transition-none`;
+const titleShift = `transition-colors duration-300 ${ease} group-hover/card:text-[#C98F00]`;
+const arrowNudge = `transition-[translate] duration-300 ${ease} group-hover/card:translate-x-[3px] group-hover/btn:translate-x-[5px]`;
 
 function ArrowCircleIcon({ className = "h-5 w-5", fill = "#ffffff" }) {
   return (
@@ -58,10 +61,10 @@ export const DEFAULT_PRODUCTS = [
     font: fontInstrument,
   },
   {
-    name: "emPayroll",
-    text: "emPayroll helps organizations to manage the complete payroll activities.",
+    name: "emPay",
+    text: "emPay helps organizations to manage their complete salary activities.",
     icon: Wallet,
-    href: "/payroll-management-solution",
+    href: "/empay-management-solution",
     font: `${fontInter} tracking-[-0.416px]`,
   },
   {
@@ -104,9 +107,9 @@ export default function FlagshipProducts({
   description,
   products,
   exclude,
-  className = "",
+  className = "bg-[#FFFFFA]",
   id = "products-heading",
-  accentColor = "#0b78c2",
+  accentColor = "#EFB000",
 }) {
   const displaySubtitle = description !== undefined ? description : subtitle;
   const excludeList = Array.isArray(exclude) ? exclude : exclude ? [exclude] : [];
@@ -122,38 +125,44 @@ export default function FlagshipProducts({
     >
       <div className="mx-auto flex max-w-5xl flex-col gap-8">
         <header className={`${revealUp} mx-auto flex max-w-xl flex-col gap-3 text-center`}>
-          <h2 id={id} className="text-3xl font-semibold md:text-[2.375rem] md:leading-[49px]">
+          <h2 id={id} className="text-[26px] font-semibold leading-tight sm:text-3xl md:text-[2.375rem] md:leading-[49px]">
             {title}
           </h2>
           {displaySubtitle && (
-            <p className="text-lg font-medium leading-[27px]">
+            <p className="text-base font-medium leading-[25px] sm:text-lg sm:leading-[27px]">
               {displaySubtitle}
             </p>
           )}
         </header>
 
-        <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {/* Phones: compact rows (icon left, copy right). sm and up: centred cards. */}
+        <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
           {productList.map((product, index) => (
             <li
               key={product.name}
               style={stagger(index % 3)}
-              className={`${revealUp} ${productCardGlow} group/card flex flex-col items-center gap-3 rounded-[17px] bg-white px-6 py-5 text-center text-black drop-shadow-[0px_2.603px_4.338px_rgba(0,0,0,0.25)]`}
+              className={`${revealUp} flex`}
             >
-              <PhosphorIconTile icon={product.icon} className={`h-16 w-16 rounded-[9px] ${iconPop}`} iconClassName="h-10 w-10" />
-              <h3 className={`text-[17px] font-bold leading-[23px] ${product.font || fontInstrument}`}>
-                {product.name}
-              </h3>
-              <p className={`${fontInstrument} text-xs leading-[19px]`}>
-                {product.text}
-              </p>
-              <Link
-                href={product.href}
-                className={`group/btn mt-auto inline-flex min-h-11 items-center gap-2 px-2 ${fontInter} text-[13px] font-semibold leading-6 hover:underline`}
-                style={{ color: accentColor }}
-              >
-                {product.ctaText || "Know More"}
-                <ArrowCircleIcon className="size-4.5" fill={accentColor} />
-              </Link>
+              {/* Hover styles live on this inner card so the scroll-reveal transition on the li doesn't override them */}
+              <div className={`${productCardGlow} group/card flex w-full flex-row items-start gap-4 rounded-[17px] bg-white px-5 py-5 text-left text-black sm:flex-col sm:items-center sm:gap-3 sm:px-6 sm:text-center`}>
+                <PhosphorIconTile icon={product.icon} className={`h-14 w-14 shrink-0 rounded-[9px] sm:h-16 sm:w-16 ${iconPop}`} iconClassName="h-8 w-8 sm:h-10 sm:w-10" />
+                <div className="flex min-w-0 flex-1 flex-col items-start gap-1.5 sm:w-full sm:items-center sm:gap-3">
+                  <h3 className={`text-[17px] font-bold leading-[23px] ${titleShift} ${product.font || fontInstrument}`}>
+                    {product.name}
+                  </h3>
+                  <p className={`${fontInstrument} text-[13.5px] leading-[21px] text-black/70 sm:text-xs sm:leading-[19px] sm:text-black`}>
+                    {product.text}
+                  </p>
+                  <Link
+                    href={product.href}
+                    className={`group/btn -ml-2 mt-auto inline-flex min-h-11 items-center gap-2 px-2 sm:ml-0 ${fontInter} text-[13px] font-semibold leading-6 hover:underline`}
+                    style={{ color: accentColor }}
+                  >
+                    {product.ctaText || "Know More"}
+                    <ArrowCircleIcon className="size-4.5" fill={accentColor} />
+                  </Link>
+                </div>
+              </div>
             </li>
           ))}
         </ul>

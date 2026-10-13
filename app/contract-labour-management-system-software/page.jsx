@@ -5,10 +5,12 @@ import { Instrument_Sans, Inter } from "next/font/google";
 import ScrollReveal from "@/components/ScrollReveal";
 import BackToTop from "@/components/BackToTop";
 import FlagshipProducts from "@/components/FlagshipProducts";
+import FeatureCard from "@/components/FeatureCard";
 import DemoRequestForm from "@/components/DemoRequestForm";
 import CardCarousel from "@/components/CardCarousel";
 import PinnedScrollSection from "@/components/PinnedScrollSection";
 import WhyChooseFlipCards from "@/components/WhyChooseFlipCards";
+import TrustedLogos from "@/components/TrustedLogos";
 
 /* --------------------------------------------------------------------
    Images — every image this page uses lives in
@@ -20,18 +22,6 @@ import WhyChooseFlipCards from "@/components/WhyChooseFlipCards";
 import dashboardLiability from "../images/contract-labour-management-system-software/dashboard-contractor-liability-document-status.webp";
 import dashboardContractorOt from "../images/contract-labour-management-system-software/dashboard-contractor-wise-headcount-overtime.webp";
 import dashboardDepartmentOt from "../images/contract-labour-management-system-software/dashboard-department-wise-headcount-overtime.webp";
-
-// Clients
-import logoApolloTyres from "../images/contract-labour-management-system-software/client-logo-apollo-tyres.webp";
-import logoKirloskar from "../images/contract-labour-management-system-software/client-logo-kirloskar.webp";
-import logoVarroc from "../images/contract-labour-management-system-software/client-logo-varroc.webp";
-import logoMahindra from "../images/contract-labour-management-system-software/client-logo-mahindra.webp";
-import logoSandvik from "../images/contract-labour-management-system-software/client-logo-sandvik.webp";
-import logoDow from "../images/contract-labour-management-system-software/client-logo-dow.webp";
-import logoBasf from "../images/contract-labour-management-system-software/client-logo-basf.webp";
-import logoBlueStar from "../images/contract-labour-management-system-software/client-logo-blue-star.webp";
-import logoYazaki from "../images/contract-labour-management-system-software/client-logo-yazaki.webp";
-import logoCastrol from "../images/contract-labour-management-system-software/client-logo-castrol.webp";
 
 // From Labour Analytics to Compliance
 import complianceAutomationImg from "../images/contract-labour-management-system-software/compliance-automation-digital-checklist.webp";
@@ -94,11 +84,11 @@ const fontInter = "font-[family-name:var(--font-inter)]";
    -------------------------------------------------------------------- */
 
 const goldCard =
-  "bg-white rounded-xl shadow-[inset_0_0_0_0.789px_#f8bb18,0px_0px_15.775px_-7.099px_rgba(0,0,0,0.25)]";
+  "bg-white rounded-xl shadow-[inset_0_0_0_0.789px_#EFB000,0px_3px_12px_-4px_rgba(0,0,0,0.07)]";
 const greyCard =
-  "bg-white rounded-2xl shadow-[inset_0_0_0_0.814px_#dddddd,0px_0px_16.279px_-7.326px_rgba(0,0,0,0.25)]";
+  "bg-white rounded-2xl shadow-[inset_0_0_0_0.814px_#e5e5e5,0px_3px_12px_-4px_rgba(0,0,0,0.06)]";
 const softCard =
-  "rounded-[11px] shadow-[inset_0_0_0_0.601px_#dddddd,0px_0px_12.029px_-5.413px_rgba(0,0,0,0.25)]";
+  "rounded-[11px] shadow-[inset_0_0_0_0.601px_#e5e5e5,0px_2px_8px_-2px_rgba(0,0,0,0.05)]";
 const mutedText = "text-[rgba(0,0,0,0.64)]";
 
 const ease = "ease-[cubic-bezier(0.16,1,0.3,1)]";
@@ -109,12 +99,12 @@ const revealFromRight = "reveal-on-scroll reveal-fade-left";
 const revealZoom = "reveal-on-scroll reveal-zoom-in";
 const stagger = (index, step = 120) => ({ transitionDelay: `${index * step}ms` });
 
-const liftGold = `group/card ${motion} hover:-translate-y-1 hover:shadow-[inset_0_0_0_1.5px_#f8bb18,0px_10px_24px_-6px_rgba(0,0,0,0.18)]`;
-const liftGrey = `group/card ${motion} hover:-translate-y-1.5 hover:shadow-[inset_0_0_0_0.814px_#dddddd,0px_14px_28px_-6px_rgba(0,0,0,0.18)]`;
+const liftGold = `group/card ${motion} hover:-translate-y-1 hover:shadow-[inset_0_0_0_1.5px_#EFB000,0px_8px_20px_-6px_rgba(239,176,0,0.2)]`;
+const liftGrey = `group/card ${motion} hover:-translate-y-1.5 hover:shadow-[inset_0_0_0_0.814px_#dddddd,0px_10px_22px_-6px_rgba(0,0,0,0.1)]`;
 const iconPop = `transition-[scale] duration-300 ${ease} group-hover/card:scale-110`;
 const arrowNudge = `transition-[translate] duration-200 ${ease} group-hover/btn:translate-x-[3px]`;
 
-const primaryButton = `group/btn inline-flex items-center justify-center gap-2 rounded-[9px] bg-[#0077c2] px-6 py-3 ${fontInter} font-semibold text-white ${motion} hover:-translate-y-0.5 hover:bg-[#0061af] hover:shadow-[0_8px_18px_-4px_rgba(0,119,194,0.45)]`;
+const primaryButton = `group/btn inline-flex items-center justify-center gap-2 rounded-[9px] bg-[#EFB000] px-6 py-3 ${fontInter} font-semibold text-white ${motion} hover:-translate-y-0.5 hover:bg-[#d99e00] hover:shadow-[0_8px_18px_-4px_rgba(239,176,0,0.45)]`;
 const outlineButton = `group/btn inline-flex items-center justify-center gap-2 rounded-[9px] bg-white px-6 py-3 ${fontInter} font-semibold text-[#efb000] shadow-[inset_0_0_0_1.5px_#efb000] ${motion} hover:-translate-y-0.5 hover:bg-[#fffdf5]`;
 
 /* --------------------------------------------------------------------
@@ -218,19 +208,6 @@ function SectionHeader({ id, eyebrow, title, text, align = "center", className =
    Content — all copy from
    https://www.emsphere.com/contract-labour-management-system-software/
    -------------------------------------------------------------------- */
-
-const clients = [
-  { name: "Apollo Tyres", logo: logoApolloTyres },
-  { name: "Kirloskar", logo: logoKirloskar },
-  { name: "Varroc", logo: logoVarroc },
-  { name: "Mahindra", logo: logoMahindra },
-  { name: "Sandvik", logo: logoSandvik },
-  { name: "Dow", logo: logoDow },
-  { name: "BASF", logo: logoBasf },
-  { name: "Blue Star", logo: logoBlueStar },
-  { name: "Yazaki", logo: logoYazaki },
-  { name: "Castrol", logo: logoCastrol },
-];
 
 const pillars = [
   {
@@ -492,7 +469,7 @@ const breadcrumbJsonLd = {
 
 export default function ContractLabourManagementSystemPage() {
   return (
-    <main className={`${instrumentSans.variable} ${inter.variable} hrms-page payroll-page clms-page w-full overflow-x-clip bg-white font-sans text-[#4c4c4c]`}>
+    <main className={`${instrumentSans.variable} ${inter.variable} hrms-page payroll-page clms-page w-full overflow-x-clip bg-[#FFFFFA] font-sans text-[#4c4c4c]`}>
       <ScrollReveal root=".clms-page" />
       <script
         type="application/ld+json"
@@ -503,7 +480,7 @@ export default function ContractLabourManagementSystemPage() {
       <section
         id="clms-hero"
         aria-labelledby="clms-hero-heading"
-        className="relative bg-[radial-gradient(circle_at_0%_20%,rgba(0,119,194,0.14),transparent_32%),radial-gradient(circle_at_55%_0%,rgba(248,187,24,0.25),transparent_35%),radial-gradient(circle_at_100%_80%,rgba(248,187,24,0.3),transparent_30%),radial-gradient(circle_at_30%_100%,rgba(15,184,128,0.1),transparent_25%)] px-4 pb-10 pt-6 md:px-12 md:pb-14 md:pt-8"
+        className="relative bg-[#FFFFFA] px-4 pb-10 pt-6 md:px-12 md:pb-14 md:pt-8"
       >
         <div className="mx-auto flex max-w-7xl flex-col items-center gap-10 lg:flex-row lg:items-start lg:justify-between lg:gap-14">
           <header className={`${revealFromLeft} flex flex-col gap-5 pt-2 sm:pt-3 lg:max-w-xl lg:pt-10`}>
@@ -521,7 +498,7 @@ export default function ContractLabourManagementSystemPage() {
                   <Link
                     href="/"
                     itemProp="item"
-                    className="transition-colors hover:text-[#0077c2]"
+                    className="transition-colors hover:text-[#EFB000]"
                   >
                     <span itemProp="name">Home</span>
                   </Link>
@@ -565,7 +542,6 @@ export default function ContractLabourManagementSystemPage() {
 
           {/* Request for demo form */}
           <div className={`${revealFromRight} relative w-full max-w-md lg:w-[40%] lg:max-w-[440px]`}>
-            <div aria-hidden="true" className="absolute -inset-6 rounded-full bg-[#fff1c7] blur-3xl" />
             <DemoRequestForm
               product="Contract Labour Management System (CLMS)"
               title="Request for demo"
@@ -574,29 +550,13 @@ export default function ContractLabourManagementSystemPage() {
           </div>
         </div>
 
-        {/* Clients */}
-        <div className="mx-auto mt-16 max-w-7xl">
-          <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-5 md:gap-4">
-            {clients.map((client, index) => (
-              <li
-                key={client.name}
-                style={stagger(index % 5, 70)}
-                className={`${revealUp} group/card flex h-20 items-center justify-center rounded-xl bg-white px-4 shadow-[inset_0_0_0_1px_#ececec,0_6px_20px_-12px_rgba(0,0,0,0.25)] ${motion} hover:-translate-y-1 hover:shadow-[inset_0_0_0_1.5px_#f8bb18,0_14px_28px_-12px_rgba(0,0,0,0.25)]`}
-              >
-                <Image
-                  src={client.logo}
-                  alt={`${client.name} logo`}
-                  className={`max-h-12 w-auto object-contain transition-transform duration-300 ${ease} group-hover/card:scale-105`}
-                  sizes="170px"
-                />
-              </li>
-            ))}
-          </ul>
-        </div>
       </section>
 
+      {/* Clients */}
+      <TrustedLogos />
+
       {/* From Labour Analytics to Compliance */}
-      <section aria-labelledby="pillars-heading" className="px-4 py-12 md:px-12 md:py-16">
+      <section aria-labelledby="pillars-heading" className="bg-[#FFFFFA] px-4 py-12 md:px-12 md:py-16">
         <div className="mx-auto flex max-w-7xl flex-col items-center gap-12 lg:flex-row lg:gap-16">
           <div className={`${revealFromLeft} relative mx-auto w-full max-w-[28rem] lg:w-[42%]`}>
             <div className={`${softCard} overflow-hidden bg-[#0f162a] p-3`}>
@@ -641,7 +601,7 @@ export default function ContractLabourManagementSystemPage() {
       </section>
 
       {/* 12 modules */}
-      <section id="clms-modules" aria-labelledby="modules-heading" className="scroll-mt-24 bg-[#fcfcfc] px-4 py-12 md:px-12 md:py-16">
+      <section id="clms-modules" aria-labelledby="modules-heading" className="scroll-mt-24 bg-[#FFFFFA] px-4 py-12 md:px-12 md:py-16">
         <div className="mx-auto flex max-w-7xl flex-col gap-10">
           <SectionHeader
             id="modules-heading"
@@ -668,9 +628,7 @@ export default function ContractLabourManagementSystemPage() {
       </section>
 
       {/* How emContract helps to manage compliance */}
-      <section aria-labelledby="compliance-heading" className="relative overflow-hidden bg-[#fdf6e6] px-4 py-14 text-[#1f1f1f] md:px-12 md:py-20">
-        <div aria-hidden="true" className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-[#efb000]/25 blur-3xl" />
-        <div aria-hidden="true" className="pointer-events-none absolute -bottom-32 -left-24 h-80 w-80 rounded-full bg-[#efb000]/20 blur-3xl" />
+      <section aria-labelledby="compliance-heading" className="relative overflow-hidden bg-[#FFFFFA] px-4 py-14 text-[#1f1f1f] md:px-12 md:py-20">
         <div className="relative mx-auto flex max-w-7xl flex-col gap-10">
           <SectionHeader
             id="compliance-heading"
@@ -679,26 +637,42 @@ export default function ContractLabourManagementSystemPage() {
                 How em<span className="text-[#efb000]">Contract</span> helps to manage compliance?
               </>
             }
-            text="20 plus state and central laws covered."
           />
-          <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {complianceItems.map((item, index) => (
-              <li
-                key={item.title}
-                style={stagger(index, 100)}
-                className={`${revealUp} group/card flex flex-col items-center text-center gap-4 rounded-2xl bg-white p-6 shadow-[inset_0_0_0_1px_#ececec,0_2px_12px_rgba(0,0,0,0.04)] ${motion} hover:-translate-y-1 hover:shadow-[inset_0_0_0_1.5px_#efb000,0_12px_24px_-8px_rgba(0,0,0,0.1)]`}
-              >
-                <IconTile name={item.icon} className="h-16 w-16 rounded-2xl" iconClassName="h-9 w-9" />
-                <h3 className="text-lg font-semibold text-[#1f1f1f]">{item.title}</h3>
-                <p className="text-sm leading-[22px] text-[#595959]">{item.text}</p>
-              </li>
-            ))}
-          </ul>
+          <div className="grid grid-cols-1 gap-5 lg:grid-cols-[0.85fr_2fr] lg:gap-6">
+            {/* Headline stat */}
+            <div className={`${revealFromLeft} relative isolate flex flex-col justify-between gap-8 overflow-hidden rounded-3xl bg-gradient-to-br from-[#efb000] to-[#d69e00] p-7 text-white shadow-[0_24px_48px_-24px_rgba(176,125,0,0.7)] md:p-9`}>
+              <span aria-hidden="true" className="absolute -bottom-10 -right-10 -z-10 text-white/10">
+                <LineIcon name="law" className="h-56 w-56" />
+              </span>
+              <span aria-hidden="true" className="absolute -left-16 -top-16 -z-10 h-48 w-48 rounded-full bg-white/10 blur-2xl" />
+              <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white/20 ring-1 ring-white/30 backdrop-blur-sm">
+                <LineIcon name="shield" className="h-8 w-8" />
+              </span>
+              <div>
+                <p className={`${fontInter} text-6xl font-extrabold leading-none tracking-tight md:text-7xl`}>20+</p>
+                <p className="mt-3 text-lg font-semibold leading-snug md:text-xl">State and central laws covered.</p>
+              </div>
+            </div>
+
+            <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+              {complianceItems.map((item, index) => (
+                <FeatureCard
+                  key={item.title}
+                  index={index}
+                  className={revealUp}
+                  style={stagger(index, 110)}
+                  icon={<LineIcon name={item.icon} />}
+                  title={item.title}
+                  text={item.text}
+                />
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 
       {/* Turn key solution partners */}
-      <section aria-labelledby="turnkey-heading" className="px-4 py-12 md:px-12 md:py-16">
+      <section aria-labelledby="turnkey-heading" className="bg-[#FFFFFA] px-4 py-12 md:px-12 md:py-16">
         <div className="mx-auto flex max-w-7xl flex-col gap-10">
           <SectionHeader
             id="turnkey-heading"
@@ -731,7 +705,7 @@ export default function ContractLabourManagementSystemPage() {
 
 
       {/* Dashboards */}
-      <section aria-labelledby="dashboards-heading" className="bg-[#eef4fd] px-4 py-12 md:px-12 md:py-16">
+      <section aria-labelledby="dashboards-heading" className="bg-[#FFFFFA] px-4 py-12 md:px-12 md:py-16">
         <div className="mx-auto flex max-w-7xl flex-col gap-10">
           <SectionHeader id="dashboards-heading" title="Take a glance on our dashboards" text="Reports and dashboards loved by management." />
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
@@ -749,6 +723,11 @@ export default function ContractLabourManagementSystemPage() {
                   </span>
                   {dash.title}
                 </figcaption>
+                {/* The report images are wider than a phone; say they scroll. */}
+                <p className={`flex items-center gap-1.5 px-4 pt-2.5 text-xs font-semibold text-[#b07d00] ${index === 0 ? "xl:hidden" : "md:hidden"}`}>
+                  Swipe to see the full report
+                  <span aria-hidden="true">→</span>
+                </p>
                 <div className="overflow-x-auto p-2 sm:p-3">
                   <Image
                     src={dash.image}
@@ -766,7 +745,7 @@ export default function ContractLabourManagementSystemPage() {
       {/* Features of Contract Labour Management System — on desktop the section
           pins under the header: the intro stays still while page scroll moves
           the cards up; after the last card the page scrolls on normally. */}
-      <PinnedScrollSection ariaLabelledby="features-heading" className="bg-[#fcfcfc]" listClassName="gap-5"
+      <PinnedScrollSection ariaLabelledby="features-heading" className="bg-[#FFFFFA]" listClassName="gap-5"
         intro={
           <div className="flex flex-col gap-6">
             <SectionHeader
@@ -794,7 +773,7 @@ export default function ContractLabourManagementSystemPage() {
             {features.map((item, index) => (
               <li
                 key={item.title}
-                className={`${revealUp} ${greyCard} ${liftGrey} relative flex flex-col gap-4 p-5 sm:flex-row sm:items-start sm:p-6 transition-all duration-300 hover:border-[#0077c2]/30`}
+                className={`${revealUp} ${greyCard} ${liftGrey} relative flex flex-col gap-4 p-5 sm:flex-row sm:items-start sm:p-6 transition-all duration-300 hover:border-[#EFB000]/40`}
               >
                 <div className="flex items-center justify-between sm:block">
                   <IconTile
@@ -820,7 +799,7 @@ export default function ContractLabourManagementSystemPage() {
       </PinnedScrollSection>
 
       {/* Why choose Emsphere */}
-      <section aria-labelledby="why-heading" className="bg-[#fcfcfc] px-4 py-12 md:px-12 md:py-16">
+      <section aria-labelledby="why-heading" className="bg-[#FFFFFA] px-4 py-12 md:px-12 md:py-16">
         <div className="mx-auto flex max-w-7xl flex-col gap-10">
           <SectionHeader
             id="why-heading"
@@ -839,7 +818,7 @@ export default function ContractLabourManagementSystemPage() {
       {/* FAQ */}
       <section
         aria-labelledby="faq-heading"
-        className="bg-[#fdf6e6] bg-[radial-gradient(circle_at_10%_15%,rgba(248,187,24,0.3),transparent_25%),radial-gradient(circle_at_95%_75%,rgba(248,187,24,0.3),transparent_25%)] px-4 py-12 md:px-12 md:py-20"
+        className="bg-[#FFFFFA] px-4 py-12 md:px-12 md:py-20"
       >
         <div className="mx-auto flex max-w-5xl flex-col gap-8">
           <header className={`${revealUp} flex flex-col gap-2 text-center`}>
@@ -852,7 +831,7 @@ export default function ContractLabourManagementSystemPage() {
             {faqs.map((faq, index) => (
               <li key={faq.question} style={stagger(index % 5, 70)} className={`${revealUp} ${goldCard} ${liftGold} overflow-hidden`}>
                 <details name="clms-faq" open={index === 0} className="hrms-faq group">
-                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 rounded-xl px-4 py-4 outline-none focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[#0077c2] sm:px-5 md:px-7 [&::-webkit-details-marker]:hidden">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 rounded-xl px-4 py-4 outline-none focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[#EFB000] sm:px-5 md:px-7 [&::-webkit-details-marker]:hidden">
                     <h3 className="text-base font-semibold sm:text-lg md:text-xl">{faq.question}</h3>
                     <FaqToggleIcon />
                   </summary>
@@ -878,11 +857,11 @@ export default function ContractLabourManagementSystemPage() {
       </section>
 
       {/* Our Flagship Products */}
-      <FlagshipProducts />
+      <FlagshipProducts className="bg-[#FFFFFA]" />
 
 
       {/* Contact CTA — same as the home / HRMS / payroll pages */}
-      <section aria-label="Contact emSphere" className="bg-white px-6 py-12 min-[769px]:py-[88px]">
+      <section aria-label="Contact emSphere" className="bg-[#FFFFFA] px-6 py-12 min-[769px]:py-[88px]">
         <div className="mx-auto flex max-w-275 flex-col items-center justify-center gap-9 text-black min-[1081px]:flex-row min-[1081px]:gap-20">
           {[
             { title: "Ready to talk?", cta: "Talk to Sale", reveal: revealFromLeft },
@@ -896,7 +875,7 @@ export default function ContractLabourManagementSystemPage() {
                 </h2>
                 <Link
                   href="/contact-us"
-                  className={`group/btn inline-flex w-full max-w-65 items-center justify-center rounded-lg bg-[#0077c2] px-6 py-[13px] ${fontInter} text-[15px] font-semibold tracking-[0.02em] text-white ${motion} hover:-translate-y-0.5 hover:bg-[#0061af] hover:shadow-[0_8px_18px_-4px_rgba(0,119,194,0.45)] active:translate-y-0 min-[769px]:w-auto min-[769px]:max-w-none min-[769px]:min-w-[145px] min-[769px]:px-[30px]`}
+                  className={`group/btn inline-flex w-full max-w-65 items-center justify-center rounded-lg bg-[#EFB000] px-6 py-[13px] ${fontInter} text-[15px] font-semibold tracking-[0.02em] text-white ${motion} hover:-translate-y-0.5 hover:bg-[#d99e00] hover:shadow-[0_8px_18px_-4px_rgba(239,176,0,0.45)] active:translate-y-0 min-[769px]:w-auto min-[769px]:max-w-none min-[769px]:min-w-[145px] min-[769px]:px-[30px]`}
                 >
                   {col.cta}
                 </Link>

@@ -349,7 +349,7 @@ export default function WorkforceHeroVector() {
 
         {/* Floating Badge 1 (Top-Left): Multi-Shift Auto Rostering */}
         <div
-          className="payroll-float absolute -left-5 top-[3%] sm:-left-9 sm:top-[3%] flex items-center gap-2.5 sm:gap-3 rounded-2xl border border-white/90 bg-white/95 px-3 py-2 sm:px-4 sm:py-2.5 shadow-[0_14px_32px_-10px_rgba(0,0,0,0.14),0_0_0_1px_rgba(0,0,0,0.04)] backdrop-blur-md transition-all duration-300 hover:scale-105"
+          className="payroll-float absolute -left-1 top-[40%] sm:-left-9 sm:top-[3%] flex items-center gap-2.5 sm:gap-3 rounded-2xl border border-white/90 bg-white/95 px-3 py-2 sm:px-4 sm:py-2.5 shadow-[0_14px_32px_-10px_rgba(0,0,0,0.14),0_0_0_1px_rgba(0,0,0,0.04)] backdrop-blur-md transition-all duration-300 hover:scale-105"
         >
           <span className="flex h-8 w-8 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-[9px] bg-[#0077c2] text-white shadow-sm">
             <ClockRosterIcon className="h-4.5 w-4.5 sm:h-5 sm:w-5" />

@@ -38,17 +38,17 @@ const sectionPad = "px-4 py-12 md:px-12 md:py-16";
 const container = "mx-auto w-full max-w-7xl 2xl:max-w-[1360px]";
 const card = [
   "group/card relative flex overflow-hidden rounded-2xl bg-white p-6 md:p-7",
-  "shadow-[inset_0_0_0_1px_#e6e6e6,0_10px_28px_-18px_rgba(0,0,0,0.3)]",
-  "hover:-translate-y-1 hover:shadow-[inset_0_0_0_1px_rgba(239,176,0,0.55),0_18px_36px_-18px_rgba(239,176,0,0.45)]",
+  "shadow-[inset_0_0_0_1px_#e6e6e6,0_4px_16px_-6px_rgba(0,0,0,0.08)]",
+  "hover:-translate-y-1 hover:shadow-[inset_0_0_0_1px_rgba(239,176,0,0.55),0_8px_20px_-8px_rgba(239,176,0,0.25)]",
   `transition-[translate,box-shadow] duration-500 ${ease}`,
 ].join(" ");
 const pill = [
   "flex items-center gap-4 rounded-xl bg-white px-4 py-3",
-  "shadow-[inset_0_0_0_1px_rgba(239,176,0,0.6),0_6px_16px_-10px_rgba(0,0,0,0.25)]",
-  `transition-[translate,box-shadow] duration-300 ${ease} hover:translate-x-1 hover:shadow-[inset_0_0_0_1px_#EFB000,0_10px_20px_-10px_rgba(239,176,0,0.45)]`,
+  "shadow-[inset_0_0_0_1px_rgba(239,176,0,0.4),0_2px_8px_-4px_rgba(0,0,0,0.06)]",
+  `transition-[translate,box-shadow] duration-300 ${ease} hover:translate-x-1 hover:shadow-[inset_0_0_0_1px_#EFB000,0_6px_16px_-6px_rgba(239,176,0,0.2)]`,
 ].join(" ");
 const mediaFrame =
-  "overflow-hidden rounded-[20px] bg-[#e9e8e8] shadow-[0_24px_48px_-24px_rgba(0,0,0,0.4)] ring-1 ring-black/5";
+  "overflow-hidden rounded-[20px] bg-[#e9e8e8] shadow-[0_12px_28px_-16px_rgba(0,0,0,0.12)] ring-1 ring-black/5";
 const accentButton = "bg-[#EFB000] hover:bg-[#d99e00] hover:shadow-[0_8px_18px_-4px_rgba(239,176,0,0.5)]";
 // Wide dashboard screenshots are shown whole on a white mat instead of being cropped.
 const fitContain = "object-contain bg-white p-3 md:p-5";
@@ -145,8 +145,8 @@ export default function ClmsModulePage({
     ],
   };
 
-  // Sections alternate grey / white below the hero so each block reads on its own.
-  const [firstBg, secondBg] = ["bg-[#f8f8f8]", "bg-white"];
+  // Sections set to #FFFFFA
+  const [firstBg, secondBg] = ["bg-[#FFFFFA]", "bg-[#FFFFFA]"];
   const benefitsBg = featuresFirst ? secondBg : firstBg;
   const featuresBg = featuresFirst ? firstBg : secondBg;
 
@@ -192,35 +192,38 @@ export default function ClmsModulePage({
   const featuresSection = (
     <section aria-labelledby="features-heading" className={`${featuresBg} ${sectionPad}`}>
       <div className={`${container} flex flex-col gap-12 md:gap-16`}>
-        <SectionHeader id="features-heading" eyebrow="FEATURES" title={features.heading} />
-
-        {features.showcases.map((item, index) => {
-          const imageFirst = index % 2 === 1;
-          return (
-            <article key={item.title} className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-16">
-              <div className={`${imageFirst ? `${revealFromRight} lg:order-2` : revealFromLeft} flex flex-col gap-4`}>
-                <h3 className={`${fontInstrument} text-2xl font-bold leading-[1.25] text-black md:text-[28px] md:leading-[36px]`}>{item.title}</h3>
-                <p className={`${bodyText} text-base leading-7 md:text-lg`}>{item.text}</p>
-                <ul className="mt-2 flex flex-col gap-3">
-                  {item.points.map((point) => (
-                    <li key={point.text} className={pill}>
-                      <IconTile icon={point.icon} className="h-11 w-11 rounded-lg" iconClassName="h-6 w-6" />
-                      <span className={`${fontInstrument} text-base font-medium leading-6 text-black md:text-[17px]`}>{point.text}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className={`${imageFirst ? `${revealFromLeft} lg:order-1` : revealFromRight} ${mediaFrame} w-full`}>
-                <Image
-                  src={item.image}
-                  alt={item.alt}
-                  sizes="(min-width: 1280px) 600px, (min-width: 1024px) 50vw, 100vw"
-                  className={`aspect-[575/449] h-auto w-full ${item.fit === "contain" ? fitContain : "object-cover"}`}
-                />
-              </div>
-            </article>
-          );
-        })}
+        <div className="flex flex-col gap-8 md:gap-10">
+          <SectionHeader id="features-heading" eyebrow="FEATURES" title={features.heading} />
+          <div className="flex flex-col gap-12 md:gap-16">
+            {features.showcases.map((item, index) => {
+              const imageFirst = index % 2 === 1;
+              return (
+                <article key={item.title} className={`grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16 lg:items-center`}>
+                  <div className={`${imageFirst ? `${revealFromRight} lg:order-2` : revealFromLeft} flex flex-col gap-4`}>
+                    <h3 className={`${fontInstrument} text-2xl font-bold leading-[1.25] text-black md:text-[28px] md:leading-[36px]`}>{item.title}</h3>
+                    <p className={`${bodyText} text-base leading-7 md:text-lg`}>{item.text}</p>
+                    <ul className="mt-2 flex flex-col gap-3">
+                      {item.points.map((point) => (
+                        <li key={point.text} className={pill}>
+                          <IconTile icon={point.icon} className="h-11 w-11 rounded-lg" iconClassName="h-6 w-6" />
+                          <span className={`${fontInstrument} text-base font-medium leading-6 text-black md:text-[17px]`}>{point.text}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className={`${imageFirst ? `${revealFromLeft} lg:order-1` : revealFromRight} ${mediaFrame} w-full`}>
+                    <Image
+                      src={item.image}
+                      alt={item.alt}
+                      sizes="(min-width: 1280px) 600px, (min-width: 1024px) 50vw, 100vw"
+                      className={`aspect-[575/449] h-auto w-full ${item.fit === "contain" ? fitContain : "object-cover"}`}
+                    />
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </div>
 
         {cards.length > 0 && (
           <ul className={`grid grid-cols-1 gap-5 md:gap-6 ${cardGrid}`}>
@@ -241,7 +244,7 @@ export default function ClmsModulePage({
   );
 
   return (
-    <main className={`${instrumentSans.variable} ${inter.variable} hrms-page clms-module-page w-full overflow-x-clip bg-white font-sans text-black`}>
+    <main className={`${instrumentSans.variable} ${inter.variable} hrms-page clms-module-page w-full overflow-x-clip bg-[#FFFFFA] font-sans text-black`}>
       <ScrollReveal root=".clms-module-page" />
       <script
         type="application/ld+json"
@@ -252,7 +255,7 @@ export default function ClmsModulePage({
       <section
         id="module-hero"
         aria-labelledby="module-hero-heading"
-        className="bg-white bg-[radial-gradient(circle_at_0%_15%,rgba(239,176,0,0.12),transparent_35%),radial-gradient(circle_at_100%_85%,rgba(239,176,0,0.16),transparent_38%)] flex flex-col justify-center px-4 pb-14 pt-8 md:px-12 md:pb-20 md:pt-14 lg:min-h-[calc(100vh-89px)] lg:py-12"
+        className="bg-[#FFFFFA] flex flex-col justify-center px-4 pb-14 pt-8 md:px-12 md:pb-20 md:pt-14 lg:min-h-[calc(100vh-89px)] lg:py-12"
       >
         <div className={`${container} grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16`}>
           <header className={`${revealFromLeft} flex flex-col items-start gap-5`}>
@@ -304,7 +307,7 @@ export default function ClmsModulePage({
 
             {/* Status cards — stacked below the image on mobile, floating over its corners from lg */}
             <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:mt-0 lg:block">
-              <div className="rounded-xl bg-white px-5 py-4 shadow-[0_14px_32px_-14px_rgba(0,0,0,0.35)] ring-1 ring-black/5 lg:absolute lg:-right-6 lg:-top-8 lg:w-[220px]">
+              <div className="rounded-xl bg-white px-5 py-4 shadow-[0_8px_20px_-10px_rgba(0,0,0,0.1)] ring-1 ring-black/5 lg:absolute lg:-right-6 lg:-top-8 lg:w-[220px]">
                 <p className={`${fontInstrument} flex items-center gap-2 text-xs font-bold uppercase leading-4 tracking-[0.6px]`}>
                   <SmallIcon icon={StatusIcon} />
                   {hero.statusCard.label}
@@ -318,7 +321,7 @@ export default function ClmsModulePage({
                 </ul>
               </div>
 
-              <div className="rounded-xl bg-white px-5 py-4 shadow-[0_14px_32px_-14px_rgba(0,0,0,0.35)] ring-1 ring-black/5 lg:absolute lg:-bottom-8 lg:-left-6 lg:w-[236px]">
+              <div className="rounded-xl bg-white px-5 py-4 shadow-[0_8px_20px_-10px_rgba(0,0,0,0.1)] ring-1 ring-black/5 lg:absolute lg:-bottom-8 lg:-left-6 lg:w-[236px]">
                 <p className={`${fontInstrument} flex items-center gap-2 text-xs font-bold uppercase leading-4 tracking-[0.6px]`}>
                   <SmallIcon icon={HighlightIcon} />
                   {hero.highlightCard.label}
@@ -350,7 +353,7 @@ export default function ClmsModulePage({
       )}
 
       {/* Workflow */}
-      <section aria-labelledby="workflow-heading" className={`bg-[#f8f8f8] ${sectionPad}`}>
+      <section aria-labelledby="workflow-heading" className={`bg-[#FFFFFA] ${sectionPad}`}>
         <div className={`${container} flex flex-col gap-10 md:gap-12`}>
           <SectionHeader id="workflow-heading" title={workflow.heading} center />
 
@@ -379,10 +382,10 @@ export default function ClmsModulePage({
       </section>
 
       {/* Our Flagship Products */}
-      <FlagshipProducts accentColor={ACCENT} />
+      <FlagshipProducts accentColor={ACCENT} className="bg-[#FFFFFA]" />
 
       {/* Contact CTA — same as the CLMS / HRMS / payroll pages */}
-      <section aria-label="Contact emSphere" className="bg-[#f8f8f8] px-6 py-12 min-[769px]:py-16">
+      <section aria-label="Contact emSphere" className="bg-[#FFFFFA] px-6 py-12 min-[769px]:py-16">
         <div className="mx-auto flex max-w-275 flex-col items-center justify-center gap-9 text-black min-[1081px]:flex-row min-[1081px]:gap-20">
           {[
             { title: "Ready to talk?", cta: "Talk to Sale", reveal: revealFromLeft },

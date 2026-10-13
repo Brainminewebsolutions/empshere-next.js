@@ -164,11 +164,11 @@ function TableOfContents({ toc }) {
 
 function SidebarCta() {
   return (
-    <div className="relative overflow-hidden rounded-2xl bg-[#efb000] p-6">
-      <div aria-hidden="true" className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-white/25" />
-      <p className="blog-label relative text-[12px] font-bold uppercase tracking-[0.1em] text-black/70">Free demo</p>
+    <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#fff1c9] to-[#fffaf0] p-6 shadow-[inset_0_0_0_1.5px_#f6dfa0,0_18px_36px_-22px_rgba(176,125,0,0.45)]">
+      <div aria-hidden="true" className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-[#efb000]/15" />
+      <p className="blog-label relative text-[12px] font-bold uppercase tracking-[0.1em] text-[#b07d00]">Free demo</p>
       <p className="relative mt-2 text-[22px] font-bold leading-tight text-black">See Emsphere in action</p>
-      <p className="blog-label relative mt-2 text-[14px] font-medium leading-relaxed text-black/75">
+      <p className="blog-label relative mt-2 text-[14px] font-medium leading-relaxed text-black/65">
         HRMS, CLMS, payroll, visitor &amp; canteen management — on one connected platform.
       </p>
       <Link href="/contact-us/" className="blog-btn blog-btn-blue relative mt-5 w-full">
@@ -194,21 +194,18 @@ export default async function BlogPostPage({ params }) {
   );
 
   return (
-    <main className="animated-page blog-page flex-1 bg-white">
+    <main className="animated-page blog-page flex-1 bg-[#FFFFFA]">
       <ScrollReveal root=".animated-page" />
       <ReadingProgress target="#article-body" />
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(buildJsonLd(post))} />
 
       {/* Header */}
-      <section className="relative isolate overflow-hidden bg-gradient-to-b from-[#eef8ff] via-[#f5fbff] to-white">
-        <div aria-hidden="true" className="blog-float absolute -right-24 -top-28 -z-10 h-80 w-80 rounded-full bg-[#a7ddff]/40 blur-3xl" />
-        <div aria-hidden="true" className="blog-float absolute -left-24 top-40 -z-10 h-64 w-64 rounded-full bg-[#efb000]/15 blur-3xl [animation-delay:-3.5s]" />
-
+      <section className="relative isolate overflow-hidden bg-[#FFFFFA]">
         <div className="mx-auto max-w-[900px] px-5 pb-10 pt-10 text-center sm:px-6 sm:pb-12 sm:pt-14 lg:pt-16">
           <nav aria-label="Breadcrumb" className="reveal-on-scroll reveal-fade-down blog-label text-[13px] font-medium text-black/55">
             <ol className="flex flex-wrap items-center justify-center gap-1.5">
               <li>
-                <Link href="/" className="inline-flex items-center gap-1.5 transition-colors hover:text-[#0077c2]">
+                <Link href="/" className="inline-flex items-center gap-1.5 transition-colors hover:text-[#b07d00]">
                   <HomeIcon className="h-4 w-4" />
                   Home
                 </Link>
@@ -217,7 +214,7 @@ export default async function BlogPostPage({ params }) {
                 <ChevronIcon className="h-3.5 w-3.5 text-black/35" />
               </li>
               <li>
-                <Link href="/blog/" className="transition-colors hover:text-[#0077c2]">
+                <Link href="/blog/" className="transition-colors hover:text-[#b07d00]">
                   Blog
                 </Link>
               </li>
@@ -232,7 +229,7 @@ export default async function BlogPostPage({ params }) {
 
           {post.primaryCategory && (
             <p className="reveal-on-scroll reveal-fade-up mt-6">
-              <span className="blog-label inline-block rounded-full bg-[#0077c2] px-4 py-1.5 text-[12px] font-bold uppercase tracking-[0.08em] text-white shadow-[0_8px_18px_-8px_rgba(0,119,194,0.7)]">
+              <span className="blog-label inline-block rounded-full bg-[#efb000] px-4 py-1.5 text-[12px] font-bold uppercase tracking-[0.08em] text-white shadow-[0_8px_18px_-8px_rgba(239,176,0,0.7)]">
                 {post.primaryCategory.name}
               </span>
             </p>
@@ -252,7 +249,7 @@ export default async function BlogPostPage({ params }) {
             <span className="inline-flex items-center gap-2.5">
               <span
                 aria-hidden="true"
-                className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-[#0077c2] to-[#0061af] text-[14px] font-bold text-white"
+                className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-[#f8bb18] to-[#d69e00] text-[14px] font-bold text-white"
               >
                 {author.name.charAt(0)}
               </span>
@@ -261,7 +258,7 @@ export default async function BlogPostPage({ params }) {
               </span>
             </span>
             <span className="inline-flex items-center gap-1.5">
-              <CalendarIcon className="h-4 w-4 text-[#0077c2]" />
+              <CalendarIcon className="h-4 w-4 text-[#efb000]" />
               <time dateTime={post.date}>{formatDate(post.date)}</time>
             </span>
             {wasUpdated && (
@@ -270,7 +267,7 @@ export default async function BlogPostPage({ params }) {
               </span>
             )}
             <span className="inline-flex items-center gap-1.5">
-              <ClockIcon className="h-4 w-4 text-[#0077c2]" />
+              <ClockIcon className="h-4 w-4 text-[#efb000]" />
               {post.readingMinutes} min read
             </span>
           </div>
@@ -280,7 +277,7 @@ export default async function BlogPostPage({ params }) {
           <div className="mx-auto max-w-[900px] px-5 sm:px-6">
             {/* Natural aspect ratio — never cropped. The frame hugs the image,
                 and tall images are capped in height instead of cut. */}
-            <figure className="reveal-on-scroll reveal-zoom-in mx-auto w-fit max-w-full overflow-hidden rounded-2xl shadow-[0_24px_60px_-20px_rgba(0,0,0,0.35)] ring-[3px] ring-[#a7ddff]">
+            <figure className="reveal-on-scroll reveal-zoom-in mx-auto w-fit max-w-full overflow-hidden rounded-2xl shadow-[0_24px_60px_-20px_rgba(0,0,0,0.35)] ring-[3px] ring-[#f6dfa0]">
               <PostImage
                 post={post}
                 eager
@@ -293,12 +290,12 @@ export default async function BlogPostPage({ params }) {
       </section>
 
       {/* Body */}
-      <section className="pb-16 pt-10 sm:pb-20 sm:pt-14">
+      <section className="bg-[#FFFFFA] pb-16 pt-10 sm:pb-20 sm:pt-14">
         <div className="mx-auto grid max-w-[1180px] gap-10 px-5 sm:px-6 lg:grid-cols-[minmax(0,1fr)_300px] lg:gap-14">
           <div className="min-w-0">
             {hasToc && (
-              <details className="blog-toc-mobile reveal-on-scroll reveal-fade-up mb-8 rounded-xl bg-[#eef8ff] px-5 py-4 shadow-[inset_0_0_0_2px_#a7ddff] lg:hidden">
-                <summary className="flex cursor-pointer list-none items-center justify-between text-[16px] font-bold text-[#0061af]">
+              <details className="blog-toc-mobile reveal-on-scroll reveal-fade-up mb-8 rounded-xl bg-[#fff8e6] px-5 py-4 shadow-[inset_0_0_0_2px_#f6dfa0] lg:hidden">
+                <summary className="flex cursor-pointer list-none items-center justify-between text-[16px] font-bold text-[#1f1f1f]">
                   In this article
                   <ChevronIcon direction="down" className="blog-toc-chevron h-5 w-5 transition-transform duration-300" />
                 </summary>
@@ -319,7 +316,7 @@ export default async function BlogPostPage({ params }) {
                   {tagList.map((tag) => (
                     <span
                       key={tag.slug}
-                      className="blog-label rounded-full bg-[#eef8ff] px-3.5 py-1.5 text-[13px] font-semibold text-[#0061af] shadow-[inset_0_0_0_1.5px_#a7ddff]"
+                      className="blog-label rounded-full bg-[#fff8e6] px-3.5 py-1.5 text-[13px] font-semibold text-[#9a7400] shadow-[inset_0_0_0_1.5px_#f6dfa0]"
                     >
                       {tag.name}
                     </span>
@@ -337,13 +334,13 @@ export default async function BlogPostPage({ params }) {
                   {older ? (
                     <Link
                       href={getPostHref(older)}
-                      className="group rounded-xl bg-[#f7f7f7] p-5 transition-all duration-300 hover:-translate-y-1 hover:bg-[#eef8ff] hover:shadow-[inset_0_0_0_2px_#a7ddff]"
+                      className="group rounded-xl bg-[#f7f7f7] p-5 transition-all duration-300 hover:-translate-y-1 hover:bg-[#fff8e6] hover:shadow-[inset_0_0_0_2px_#f6dfa0]"
                     >
-                      <span className="blog-label inline-flex items-center gap-1 text-[12px] font-bold uppercase tracking-[0.08em] text-[#0077c2]">
+                      <span className="blog-label inline-flex items-center gap-1 text-[12px] font-bold uppercase tracking-[0.08em] text-[#b07d00]">
                         <ChevronIcon direction="left" className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
                         Previous article
                       </span>
-                      <span className="mt-2 line-clamp-2 block text-[16px] font-bold leading-snug text-[#1a1a1a] group-hover:text-[#0061af]">
+                      <span className="mt-2 line-clamp-2 block text-[16px] font-bold leading-snug text-[#1a1a1a] group-hover:text-[#b07d00]">
                         {older.title}
                       </span>
                     </Link>
@@ -353,13 +350,13 @@ export default async function BlogPostPage({ params }) {
                   {newer && (
                     <Link
                       href={getPostHref(newer)}
-                      className="group rounded-xl bg-[#f7f7f7] p-5 text-right transition-all duration-300 hover:-translate-y-1 hover:bg-[#eef8ff] hover:shadow-[inset_0_0_0_2px_#a7ddff]"
+                      className="group rounded-xl bg-[#f7f7f7] p-5 text-right transition-all duration-300 hover:-translate-y-1 hover:bg-[#fff8e6] hover:shadow-[inset_0_0_0_2px_#f6dfa0]"
                     >
-                      <span className="blog-label inline-flex items-center gap-1 text-[12px] font-bold uppercase tracking-[0.08em] text-[#0077c2]">
+                      <span className="blog-label inline-flex items-center gap-1 text-[12px] font-bold uppercase tracking-[0.08em] text-[#b07d00]">
                         Next article
                         <ChevronIcon direction="right" className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                       </span>
-                      <span className="mt-2 line-clamp-2 block text-[16px] font-bold leading-snug text-[#1a1a1a] group-hover:text-[#0061af]">
+                      <span className="mt-2 line-clamp-2 block text-[16px] font-bold leading-snug text-[#1a1a1a] group-hover:text-[#b07d00]">
                         {newer.title}
                       </span>
                     </Link>
@@ -371,20 +368,20 @@ export default async function BlogPostPage({ params }) {
 
           {/* Sidebar (desktop) */}
           <aside className="hidden lg:block">
-            <div className="sticky top-[112px] space-y-6">
+            <div className="sticky top-[112px] flex max-h-[calc(100vh-136px)] flex-col gap-6">
               {hasToc && (
-                <div className="reveal-on-scroll reveal-fade-left rounded-2xl bg-white p-6 shadow-[0_0_24px_-9px_rgba(0,0,0,0.25)] ring-1 ring-black/5">
-                  <p className="text-[16px] font-bold text-[#1a1a1a]">In this article</p>
-                  <nav aria-label="Table of contents" className="max-h-[42vh] overflow-y-auto pr-1">
+                <div className="reveal-on-scroll reveal-fade-left flex min-h-[140px] flex-col rounded-2xl bg-white p-6 shadow-[0_0_24px_-9px_rgba(0,0,0,0.25)] ring-1 ring-black/5">
+                  <p className="shrink-0 text-[16px] font-bold text-[#1a1a1a]">In this article</p>
+                  <nav aria-label="Table of contents" className="min-h-0 flex-1 overflow-y-auto pr-1">
                     <TableOfContents toc={post.toc} />
                   </nav>
                 </div>
               )}
-              <div className="reveal-on-scroll reveal-fade-left" style={{ transitionDelay: "100ms" }}>
+              <div className="reveal-on-scroll reveal-fade-left shrink-0" style={{ transitionDelay: "100ms" }}>
                 <p className="blog-label mb-3 text-[13px] font-bold uppercase tracking-[0.08em] text-black/50">Share this article</p>
                 <ShareButtons url={url} title={post.title} />
               </div>
-              <div className="reveal-on-scroll reveal-fade-left" style={{ transitionDelay: "180ms" }}>
+              <div className="reveal-on-scroll reveal-fade-left shrink-0" style={{ transitionDelay: "180ms" }}>
                 <SidebarCta />
               </div>
             </div>

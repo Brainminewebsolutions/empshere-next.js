@@ -33,6 +33,7 @@ export default function StopwatchCounter({
   suffix = "",
   className = "",
   delay = 0,
+  ...props
 }) {
   const containerRef = useRef(null);
   const [isArmed, setIsArmed] = useState(false);
@@ -117,6 +118,7 @@ export default function StopwatchCounter({
       className={`inline-flex items-baseline cursor-pointer select-none font-sans font-bold tabular-nums tracking-tight ${className}`}
       title="Click to replay stopwatch animation"
       aria-label={fullValue}
+      {...props}
     >
       <span className="sr-only">{fullValue}</span>
       <span aria-hidden="true" className="inline-flex items-baseline">
@@ -128,7 +130,8 @@ export default function StopwatchCounter({
                 className="inline-block px-[0.03em]"
                 style={{ verticalAlign: "baseline" }}
               >
-                {item.value}
+                {/* A lone space would collapse inside an inline-block. */}
+                {item.value === " " ? " " : item.value}
               </span>
             );
           }

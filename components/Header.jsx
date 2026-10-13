@@ -438,15 +438,15 @@ export default function Header() {
 
                             {/* RIGHT COLUMN: Products with Identical Vertical Gaps */}
                             <div className="flex flex-col space-y-6 sm:space-y-7">
-                              {/* 1. emPayroll Management Software */}
+                              {/* 1. emPay Management Software */}
                               <Link
-                                href="/payroll-management-solution"
+                                href="/empay-management-solution"
                                 onMouseEnter={handleMenuEnter}
                                 onClick={() => setIsProductOpen(false)}
                                 className="group block focus-visible:outline-none"
                               >
                                 <div className="text-[16px] font-semibold text-slate-900 transition-colors group-hover:text-[#EFB000]">
-                                  emPayroll Management Software
+                                  emPay Management Software
                                 </div>
                                 <div className="mt-1 text-[13.5px] text-slate-500 leading-normal">
                                   Manage Employee Information, Salary and Compliance
@@ -734,10 +734,10 @@ export default function Header() {
                               type="button"
                               onClick={() => setIsMobileClmsOpen((prev) => !prev)}
                               aria-label="Toggle Contract Labour sub-menu"
-                              className="p-1 text-slate-400 hover:text-[#EFB000] focus-visible:outline-none"
+                              className="-my-1.5 -mr-2 p-2.5 text-slate-400 hover:text-[#EFB000] focus-visible:outline-none"
                             >
                               <ChevronDownIcon
-                                className={`h-3.5 w-3.5 transition-transform duration-300 ${
+                                className={`h-4 w-4 transition-transform duration-300 ${
                                   isMobileClmsOpen ? "rotate-180 text-[#EFB000]" : "text-slate-400"
                                 }`}
                               />
@@ -751,13 +751,13 @@ export default function Header() {
                                 : "grid-rows-[0fr] opacity-0 mt-0 mb-0 pointer-events-none"
                             }`}
                           >
-                            <div className="overflow-hidden pl-3 border-l border-slate-200 space-y-1.5 text-[13px] text-slate-700">
+                            <div className="overflow-hidden pl-3 border-l border-slate-200 space-y-0.5 text-[13px] text-slate-700">
                               {[...CLMS_SUB_ITEMS.col1, ...CLMS_SUB_ITEMS.col2].map((item) => (
                                 <Link
                                   key={item.title}
                                   href={item.href}
                                   onClick={closeAllMenus}
-                                  className="block py-1 hover:text-[#EFB000]"
+                                  className="block break-words py-2 hover:text-[#EFB000]"
                                 >
                                   {item.title}
                                 </Link>
@@ -766,13 +766,13 @@ export default function Header() {
                           </div>
                         </div>
 
-                        {/* 3. emPayroll */}
+                        {/* 3. emPay */}
                         <Link
-                          href="/payroll-management-solution"
+                          href="/empay-management-solution"
                           onClick={closeAllMenus}
                           className="block py-1.5 font-medium text-slate-800 hover:text-[#EFB000]"
                         >
-                          emPayroll Management Software
+                          emPay Management Software
                         </Link>
 
                         {/* 4. emWorkforce */}

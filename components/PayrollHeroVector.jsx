@@ -22,7 +22,7 @@ export default function PayrollHeroVector() {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           className="h-auto w-full transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-1.5 group-hover:scale-[1.012]"
-          aria-label="Clean professional vector illustration of emPayroll software with salary calendar roster, modern computation calculator, curled payslip statement, and gold payout coins"
+          aria-label="Clean professional vector illustration of emPay software with salary calendar roster, modern computation calculator, curled payslip statement, and gold payout coins"
         >
           <defs>
             {/* Gradients */}
@@ -446,7 +446,7 @@ export default function PayrollHeroVector() {
           </g>
         </svg>
 
-        {/* Floating Badge 1 (Top-Left): 100% accurate payroll */}
+        {/* Floating Badge 1 (Top-Left): 100% accurate emPay */}
         <div
           className="payroll-float absolute -left-2 top-[12%] sm:-left-4 sm:top-[12%] flex items-center gap-2 sm:gap-2.5 rounded-xl border border-white/80 bg-white/95 px-3 py-2 sm:px-3.5 sm:py-2.5 shadow-[0_12px_28px_-10px_rgba(0,0,0,0.18),0_0_0_1px_rgba(0,0,0,0.04)] backdrop-blur-md transition-all duration-300 hover:scale-105"
         >
@@ -454,7 +454,7 @@ export default function PayrollHeroVector() {
             <CheckIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
           </span>
           <span className="text-xs sm:text-[13.5px] font-semibold text-[#1f1f1f] whitespace-nowrap">
-            100% accurate payroll
+            100% accurate emPay
           </span>
         </div>
 

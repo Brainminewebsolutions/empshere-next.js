@@ -1,9 +1,11 @@
 "use client";
 
 import { useEffect, useRef, useState, Fragment } from "react";
+import TestimonialsSlider from "@/components/TestimonialsSlider";
 import BackToTop from "@/components/BackToTop";
 import StopwatchCounter from "@/components/StopwatchCounter";
-import { Brain, ChartLineUp, ChatsCircle, CloudCheck, Code, Cpu, CurrencyInr, ForkKnife, GearSix, Handshake, HardHat, IdentificationBadge, MagicWand, Medal, Money, PlugsConnected, SealCheck, Sparkle, ThumbsUp, UserCheck, UsersThree } from "@phosphor-icons/react/ssr";
+import FlagshipProducts from "@/components/FlagshipProducts";
+import { Brain, ChartLineUp, ChatsCircle, CloudCheck, Code, Cpu, CurrencyInr, GearSix, Handshake, MagicWand, Medal, PlugsConnected, SealCheck, Sparkle, ThumbsUp } from "@phosphor-icons/react/ssr";
 
 /* --------------------------------------------------------------------
    Images — every image the home page uses lives in app/images/homeimages
@@ -42,9 +44,6 @@ import workforceEngineers from "./images/homeimages/emsphere-site-engineers-revi
 // Shop floor / Corporate team
 import shopFloorTeam from "./images/homeimages/shop-floor-workforce-management-team.png";
 import corporateTeam from "./images/homeimages/corporate-hr-team-collaboration.jpg";
-
-// emHRMS product showcase
-import emhrmsDashboard from "./images/homeimages/emhrms-dashboard-screenshot.png";
 
 // Change from legacy system
 
@@ -91,49 +90,41 @@ const HERO_SLIDES = [
 
 const HERO_STATS = [
   { value: "500", suffix: "+", label: "Happy Client" },
-  { value: "8", suffix: "+", label: "Products" },
-  { value: "2,000,000", suffix: "", label: "Satisfied Users" },
+  { value: "15", suffix: "+", label: "Years of Experience" },
+  { value: "10,00,000", suffix: "+", label: "Users" },
   { value: "10", suffix: "+", label: "Industries" },
-  { value: "855", suffix: "+", label: "Project Completed" },
 ];
 
-const TRUSTED_ROW_1 = [
-  { src: logoMahindra, alt: "Mahindra" },
-  { src: logoCapgemini, alt: "Capgemini" },
-  { src: logoMercedesBenz, alt: "Mercedes-Benz" },
-  { src: logoHaier, alt: "Haier" },
-  { src: logoCastrol, alt: "Castrol" },
-  { src: logoApolloTyres, alt: "Apollo Tyres" },
-  { src: logoLtDefence, alt: "L&T Defence" },
-  { src: logoZf, alt: "ZF" },
-  { src: logoGarware, alt: "Garware Polyester Limited" },
+const TRUSTED_LOGOS = [
+  { src: logoLtDefence, alt: "L&T Defence", className: "trustedLogo--ltDefence" },
+  { src: logoAndhraPaper, alt: "Andhra Paper Limited", className: "trustedLogo--andhraPaper" },
+  { src: logoZf, alt: "ZF", className: "trustedLogo--zf" },
+  { src: logoVarroc, alt: "Varroc Excellence", className: "trustedLogo--varroc" },
+  { src: logoGarware, alt: "Garware Polyester Limited", className: "trustedLogo--garware" },
+  { src: logoTataAutocomp, alt: "Tata Autocomp", className: "trustedLogo--tataAutocomp" },
+  { src: logoMahindra, alt: "Mahindra", className: "trustedLogo--mahindra" },
+  { src: logoCapgemini, alt: "Capgemini", className: "trustedLogo--capgemini" },
+  { src: logoMercedesBenz, alt: "Mercedes-Benz", className: "trustedLogo--mercedes" },
+  { src: logoDow, alt: "Dow", className: "trustedLogo--dow" },
+  { src: logoVishay, alt: "Vishay", className: "trustedLogo--vishay" },
+  { src: logoNayara, alt: "Nayara Energy", className: "trustedLogo--nayara" },
+  { src: logoHaier, alt: "Haier", className: "trustedLogo--haier" },
+  { src: logoKirloskar, alt: "Kirloskar", className: "trustedLogo--kirloskar" },
+  { src: logoCastrol, alt: "Castrol", className: "trustedLogo--castrol" },
+  { src: logoKansaiNerolac, alt: "Kansai Nerolac Paints Limited", className: "trustedLogo--kansaiNerolac" },
+  { src: logoApolloTyres, alt: "Apollo Tyres", className: "trustedLogo--apollo" },
 ];
 
-const TRUSTED_ROW_2 = [
-  { src: logoVarroc, alt: "Varroc Excellence" },
-  { src: logoTataAutocomp, alt: "Tata Autocomp" },
-  { src: logoVishay, alt: "Vishay" },
-  { src: logoNayara, alt: "Nayara Energy" },
-  { src: logoKirloskar, alt: "Kirloskar" },
-  { src: logoKansaiNerolac, alt: "Kansai Nerolac Paints Limited" },
-  { src: logoAndhraPaper, alt: "Andhra Paper Limited" },
-  { src: logoDow, alt: "Dow" },
+// Seamless repeating array with even count (34 items) for infinite loop marquee tracks with alternating vertical stagger
+const TRUSTED_CAROUSEL_ITEMS = [
+  ...TRUSTED_LOGOS,
+  ...TRUSTED_LOGOS,
 ];
 
-const TRUSTED_LOGOS = [...TRUSTED_ROW_1, ...TRUSTED_ROW_2];
-
-// Seamless repeating arrays for infinite loop marquee tracks
-const TRUSTED_ROW_1_ITEMS = [
-  ...TRUSTED_ROW_1,
-  ...TRUSTED_ROW_1,
-  ...TRUSTED_ROW_1,
-];
-
-const TRUSTED_ROW_2_ITEMS = [
-  ...TRUSTED_ROW_2,
-  ...TRUSTED_ROW_2,
-  ...TRUSTED_ROW_2,
-];
+const TRUSTED_ROW_1 = TRUSTED_LOGOS;
+const TRUSTED_ROW_2 = TRUSTED_LOGOS;
+const TRUSTED_ROW_1_ITEMS = TRUSTED_CAROUSEL_ITEMS;
+const TRUSTED_ROW_2_ITEMS = TRUSTED_CAROUSEL_ITEMS;
 
 const WORKFORCE_FEATURES = [
   { icon: Code, label: "In-house developed\nproducts" },
@@ -161,59 +152,8 @@ const DIVISIONS = [
   },
 ];
 
-const SHOWCASE_PRODUCTS = [
-  {
-    id: "emHRMS",
-    name: "emHRMS",
-    desc: "emHRMS can manage a life cycle of an employee and\nhelps to automate all the HR Process in the company.\nIt can reduce the day to day work effort by 40%.",
-    ctaLink: "#know-more",
-  },
-  {
-    id: "emCLMS",
-    name: "emCLMS",
-    desc: "emContract Labour management software is an end to end system covering all aspects of labour management.",
-    ctaLink: "#know-more",
-  },
-  {
-    id: "emPayroll",
-    name: "emPayroll",
-    desc: "emPayroll helps organizations to manage the complete payroll activities.",
-    ctaLink: "#know-more",
-  },
-  {
-    id: "emWorkForce",
-    name: "emWorkForce",
-    desc: "Manage your employee life cycle from onboarding \nto exit, publish letters and more.",
-    ctaLink: "#know-more",
-  },
-  {
-    id: "emVisit",
-    name: "emVisit",
-    desc: "emVisit is a fully automated and comprehensive cloud based visitor management system software.",
-    ctaLink: "#know-more",
-  },
-  {
-    id: "emMeal",
-    name: "emMeal",
-    desc: "emMeal help you orchestrate a quick and efficient operation to cover a large section of employees in a\nsystematic and hassle-free manner",
-    ctaLink: "#know-more",
-  },
-];
-
-// Section icons from Phosphor (https://phosphoricons.com), white on the #EFB000 tile.
-const SHOWCASE_ICONS = {
-  emHRMS: UsersThree,
-  emCLMS: HardHat,
-  emPayroll: Money,
-  emWorkForce: UserCheck,
-  emVisit: IdentificationBadge,
-  emMeal: ForkKnife,
-};
-
-const SHOWCASE_TABS = SHOWCASE_PRODUCTS.map((p) => p.name);
-
 const REASONS = [
-  { icon: MagicWand, label: "Intutive With AI" },
+  { icon: MagicWand, label: "Intuitive With AI" },
   { icon: PlugsConnected, label: "ERP Integration" },
   { icon: SealCheck, label: "ISO/IEC 27001:2022" },
   { icon: Cpu, label: "Hardware Partnership" },
@@ -348,34 +288,6 @@ function ArrowRightIcon(props) {
         d="M14.86 6.315c.09-.087.14-.204.14-.327c0-.122-.05-.239-.14-.326L9.115.124a.5.5 0 0 0-.69.724L13.02 5.53H.5a.5.5 0 0 0 0 1h12.52l-4.595 4.68a.5.5 0 0 0 .69.723z"
         fill="currentColor"
       />
-    </svg>
-  );
-}
-
-function ChevronIcon({ direction = "left", ...props }) {
-  return (
-    <svg
-      viewBox="0 0 6 11"
-      fill="none"
-      aria-hidden="true"
-      style={{ transform: direction === "right" ? "scaleX(-1)" : undefined }}
-      {...props}
-    >
-      <path
-        d="M5.5 10.3 1 5.5 5.5.7"
-        stroke="currentColor"
-        strokeWidth="1.4"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function StarIcon(props) {
-  return (
-    <svg viewBox="0 0 20 20" aria-hidden="true" {...props}>
-      <path d="M10 1.5l2.472 5.008 5.528.803-4 3.899.944 5.508L10 14.25l-4.944 2.468.944-5.508-4-3.899 5.528-.803L10 1.5z" />
     </svg>
   );
 }
@@ -543,13 +455,13 @@ const PAGE_CSS = `
 }
 
 .home-page .blueButton {
-  background: var(--blue);
+  background: var(--gold);
 }
 
 .home-page .blueButton:hover {
-  background: var(--blue-dark);
+  background: var(--gold-dark);
   transform: translateY(-2px);
-  box-shadow: 0 8px 18px -4px rgba(0, 119, 194, 0.45);
+  box-shadow: 0 8px 18px -4px rgba(239, 176, 0, 0.45);
 }
 
 .home-page .blueButton:active {
@@ -579,7 +491,7 @@ const PAGE_CSS = `
   font-family: var(--font-label);
   font-size: 15px;
   font-weight: 600;
-  color: var(--blue);
+  color: #b07d00;
   text-decoration: none;
   transition: color 0.2s ease;
 }
@@ -591,7 +503,7 @@ const PAGE_CSS = `
 }
 
 .home-page .learnMore:hover {
-  color: var(--blue-dark);
+  color: #8a6400;
 }
 
 .home-page .learnMore:hover svg {
@@ -602,18 +514,26 @@ const PAGE_CSS = `
    Hero
    ========================================================================== */
 
+/* The hero fills the first screen below the sticky header (88px + 1px
+   border, 84px under 768px, 80px under 640px), clamped so it never gets
+   too squat or too tall. --hero-bar-space reserves room at the bottom for
+   the stats bar so the slide copy is centred in what's left above it. */
 .home-page .hero {
+  --hero-header: 89px;
+  --hero-gutter: 24px;
+  --hero-bar-space: 172px;
   position: relative;
-  height: 631px;
+  height: calc(100vh - var(--hero-header));
+  height: calc(100svh - var(--hero-header));
+  min-height: 600px;
+  max-height: 1000px;
+  overflow: hidden;
   background: #ffffff;
 }
 
 .home-page .heroSlides {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 631px;
+  inset: 0;
   overflow: hidden;
 }
 
@@ -636,7 +556,24 @@ const PAGE_CSS = `
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  /* The subject sits on the right of every slide; keep it in frame when
+     the hero is narrower than the 1440x631 artwork. */
+  object-position: 70% center;
+}
+
+/* Readability wash behind the copy, so text stays legible however much of
+   the artwork's own white fade gets cropped away. */
+.home-page .heroSlide::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0.7) 30%,
+    rgba(255, 255, 255, 0) 56%
+  );
 }
 
 .home-page .heroSlideContent {
@@ -645,7 +582,7 @@ const PAGE_CSS = `
   max-width: 1240px;
   height: 100%;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 var(--hero-gutter) var(--hero-bar-space);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -675,21 +612,21 @@ const PAGE_CSS = `
 }
 
 .home-page .heroTitle {
-  font-size: 40px;
+  font-size: clamp(32px, 2.8vw, 48px);
   font-weight: 600;
   line-height: 1.22;
   color: #000000;
-  margin: 0 0 22px;
-  max-width: 520px;
+  margin: 0 0 clamp(14px, 1.5vw, 22px);
+  max-width: 580px;
 }
 
 .home-page .heroText {
-  font-size: 22px;
+  font-size: clamp(17px, 1.5vw, 22px);
   font-weight: 600;
-  line-height: 1.3;
+  line-height: 1.35;
   color: var(--text-64);
-  margin: 0 0 34px;
-  max-width: 480px;
+  margin: 0 0 clamp(24px, 2.4vw, 34px);
+  max-width: 520px;
   white-space: pre-line;
 }
 
@@ -697,17 +634,32 @@ const PAGE_CSS = `
   align-self: flex-start;
 }
 
+/* Bottom bar: slide dots on the left, stats card on the right, both
+   aligned to the same 1240px column as the slide copy. */
 .home-page .heroStatsWrap {
   position: absolute;
-  left: 38%;
-  top: 504px;
-  width: 58%;
-  max-width: 820px;
+  left: 0;
+  right: 0;
+  bottom: clamp(24px, 4.5vh, 48px);
   z-index: 2;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 var(--hero-gutter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  pointer-events: none;
+}
+
+.home-page .heroStatsWrap > * {
+  pointer-events: auto;
 }
 
 .home-page .heroStats {
   position: relative;
+  flex: 0 1 820px;
+  min-width: 0;
   background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
@@ -720,7 +672,6 @@ const PAGE_CSS = `
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
   padding: 24px 28px;
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease;
   will-change: transform;
@@ -800,12 +751,9 @@ const PAGE_CSS = `
 }
 
 .home-page .heroDots {
-  position: absolute;
-  left: 19.24%;
-  top: 580px;
   display: flex;
   gap: 7px;
-  z-index: 2;
+  flex-shrink: 0;
 }
 
 .home-page .heroDot {
@@ -830,6 +778,205 @@ const PAGE_CSS = `
   transform: scale(1.2);
 }
 
+/* Small laptops / landscape tablets */
+@media (max-width: 1080px) {
+  .home-page .hero {
+    --hero-gutter: 20px;
+    --hero-bar-space: 160px;
+  }
+
+  .home-page .heroSlide::after {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.92) 0%,
+      rgba(255, 255, 255, 0.78) 36%,
+      rgba(255, 255, 255, 0) 66%
+    );
+  }
+
+  .home-page .heroStatsWrap {
+    gap: 24px;
+  }
+
+  .home-page .heroStats {
+    padding: 20px 18px;
+  }
+
+  .home-page .heroStatValue {
+    font-size: 23px;
+  }
+
+  .home-page .heroStatLabel {
+    font-size: 12.5px;
+  }
+}
+
+/* Portrait tablets and phones: centred copy over a full-width wash, stats
+   card spanning the width with the dots underneath. */
+@media (max-width: 900px), (max-width: 1080px) and (orientation: portrait) {
+  .home-page .hero {
+    --hero-bar-space: 150px;
+    min-height: 560px;
+    max-height: 1100px;
+  }
+
+  .home-page .heroSlideBg {
+    object-position: 72% center;
+  }
+
+  .home-page .heroSlide::after {
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.9) 0%,
+      rgba(255, 255, 255, 0.82) 50%,
+      rgba(255, 255, 255, 0.5) 100%
+    );
+  }
+
+  .home-page .heroSlideContent {
+    max-width: 640px;
+    padding: 24px var(--hero-gutter) var(--hero-bar-space);
+    align-items: center;
+    text-align: center;
+  }
+
+  .home-page .heroTitle {
+    font-size: clamp(26px, 5vw, 38px);
+    font-weight: 700;
+    margin: 0 auto 14px;
+    max-width: 520px;
+  }
+
+  .home-page .heroText {
+    font-size: clamp(15px, 2.4vw, 19px);
+    font-weight: 500;
+    line-height: 1.5;
+    margin: 0 auto 24px;
+    max-width: 480px;
+    white-space: normal;
+  }
+
+  .home-page .heroCta {
+    align-self: center;
+  }
+
+  .home-page .heroStatsWrap {
+    flex-direction: column;
+    gap: 14px;
+    bottom: 18px;
+  }
+
+  .home-page .heroStats {
+    flex: none;
+    width: 100%;
+    padding: 18px 12px;
+    border-radius: 12px;
+  }
+
+  .home-page .heroStatValue {
+    font-size: 22px;
+    margin-bottom: 2px;
+  }
+
+  .home-page .heroStatLabel {
+    white-space: normal;
+  }
+
+  .home-page .heroDots {
+    order: 2;
+    gap: 9px;
+  }
+
+  .home-page .heroDot {
+    width: 11px;
+    height: 11px;
+  }
+
+  .home-page .heroDotActive {
+    transform: scale(1.25);
+  }
+}
+
+@media (max-width: 767px) {
+  .home-page .hero {
+    --hero-header: 85px;
+    --hero-gutter: 16px;
+  }
+}
+
+/* Phones: stats wrap to a 2 x 2 grid. */
+@media (max-width: 600px) {
+  .home-page .hero {
+    --hero-bar-space: 200px;
+  }
+
+  .home-page .heroStats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px 12px;
+    padding: 18px 14px;
+  }
+
+  .home-page .heroStatDivider {
+    display: none;
+  }
+}
+
+@media (max-width: 639px) {
+  .home-page .hero {
+    --hero-header: 81px;
+  }
+}
+
+@media (max-width: 380px) {
+  .home-page .hero {
+    --hero-gutter: 12px;
+    --hero-bar-space: 190px;
+    min-height: 520px;
+  }
+
+  .home-page .heroTitle {
+    font-size: 24px;
+  }
+
+  .home-page .heroText {
+    font-size: 14.5px;
+    margin-bottom: 20px;
+  }
+
+  .home-page .heroStats {
+    gap: 12px 10px;
+    padding: 16px 12px;
+  }
+
+  .home-page .heroStatValue {
+    font-size: 20px;
+  }
+
+  .home-page .heroStatLabel {
+    font-size: 12px;
+  }
+}
+
+/* Landscape phones: the screen is shorter than the copy + stats, so give
+   the hero a compact fixed floor instead of a full-screen height. */
+@media (max-height: 500px) and (orientation: landscape) {
+  .home-page .hero {
+    --hero-bar-space: 130px;
+    min-height: 460px;
+  }
+
+  .home-page .heroTitle {
+    font-size: 26px;
+    margin-bottom: 10px;
+  }
+
+  .home-page .heroText {
+    font-size: 15px;
+    margin-bottom: 18px;
+  }
+}
+
 /* ==========================================================================
    Trusted by leading organizations
    ========================================================================== */
@@ -837,7 +984,7 @@ const PAGE_CSS = `
 .home-page .trusted {
   background: #FFFFFA;
   box-shadow: inset 0 0 0 1px rgba(172, 172, 172, 0.1);
-  padding: 80px 0 88px;
+  padding: 50px 0 56px;
   overflow: hidden;
 }
 
@@ -846,16 +993,16 @@ const PAGE_CSS = `
   font-size: 24px;
   font-weight: 600;
   color: var(--heading-gray);
-  margin: 0 0 46px;
+  margin: 0 0 28px;
 }
 
 .home-page .trustedMarqueeWrapper {
   position: relative;
   width: 100%;
   overflow: hidden;
-  padding: 8px 0;
-  mask-image: linear-gradient(to right, transparent 0%, black 7%, black 93%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 7%, black 93%, transparent 100%);
+  padding: 10px 0;
+  mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
 }
 
 .home-page .trustedMarqueeRow {
@@ -863,11 +1010,7 @@ const PAGE_CSS = `
   overflow: hidden;
   user-select: none;
   width: 100%;
-  margin-bottom: 28px;
-}
-
-.home-page .trustedMarqueeRow:last-child {
-  margin-bottom: 0;
+  padding: 6px 0;
 }
 
 .home-page .trustedMarqueeTrack {
@@ -881,7 +1024,7 @@ const PAGE_CSS = `
 }
 
 .home-page .trustedMarqueeTrackLeft {
-  animation: trustedMarqueeScrollLeft 43s linear infinite;
+  animation: trustedMarqueeScrollLeft 48s linear infinite;
 }
 
 .home-page .trustedMarqueeRow:hover .trustedMarqueeTrack {
@@ -890,24 +1033,38 @@ const PAGE_CSS = `
 
 .home-page .trustedMarqueeGroup {
   display: flex;
-  align-items: center;
-  gap: 52px;
-  padding-right: 52px;
+  align-items: stretch;
+  height: 124px;
   flex-shrink: 0;
+  gap: 24px;
+  padding-right: 24px;
 }
 
 .home-page .trustedLogoWrap {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 152px;
-  height: 60px;
+  width: 120px;
+  height: 52px;
+  margin-right: 0;
   flex-shrink: 0;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), z-index 0.3s ease;
+}
+
+.home-page .trustedLogoWrap--bottom,
+.home-page .trustedLogoWrap:nth-child(odd) {
+  align-self: flex-end;
+}
+
+.home-page .trustedLogoWrap--top,
+.home-page .trustedLogoWrap:nth-child(even) {
+  align-self: flex-start;
 }
 
 .home-page .trustedLogo {
-  max-height: 48px;
-  max-width: 132px;
+  max-width: 100%;
+  max-height: 100%;
   width: auto;
   height: auto;
   object-fit: contain;
@@ -916,6 +1073,29 @@ const PAGE_CSS = `
   will-change: transform;
   -webkit-user-drag: none;
   user-drag: none;
+}
+
+/* Individual optical weight balancing */
+.home-page .trustedLogo--haier { max-height: 30px; max-width: 110px; }
+.home-page .trustedLogo--apollo { max-height: 32px; max-width: 115px; }
+.home-page .trustedLogo--capgemini { max-height: 30px; max-width: 120px; }
+.home-page .trustedLogo--castrol { max-height: 32px; max-width: 115px; }
+.home-page .trustedLogo--ltDefence { max-height: 32px; max-width: 125px; }
+.home-page .trustedLogo--dow { max-height: 36px; max-width: 115px; }
+.home-page .trustedLogo--kansaiNerolac { max-height: 36px; max-width: 115px; }
+.home-page .trustedLogo--garware { max-height: 38px; max-width: 110px; }
+.home-page .trustedLogo--mahindra { max-height: 38px; max-width: 112px; }
+.home-page .trustedLogo--kirloskar { max-height: 38px; max-width: 105px; }
+.home-page .trustedLogo--andhraPaper { max-height: 40px; max-width: 100px; }
+.home-page .trustedLogo--mercedes { max-height: 42px; max-width: 110px; }
+.home-page .trustedLogo--tataAutocomp { max-height: 46px; max-width: 96px; }
+.home-page .trustedLogo--nayara { max-height: 48px; max-width: 78px; }
+.home-page .trustedLogo--vishay { max-height: 46px; max-width: 72px; }
+.home-page .trustedLogo--zf { max-height: 46px; max-width: 54px; }
+.home-page .trustedLogo--varroc { max-height: 48px; max-width: 58px; }
+
+.home-page .trustedLogoWrap:hover {
+  z-index: 10;
 }
 
 .home-page .trustedLogoWrap:hover .trustedLogo {
@@ -959,59 +1139,87 @@ const PAGE_CSS = `
 
 .home-page .workforceMedia {
   position: relative;
+  isolation: isolate;
+}
+
+/* Gold dot grid peeking out behind the main photo */
+.home-page .workforceDots {
+  position: absolute;
+  top: -26px;
+  left: -26px;
+  width: 150px;
+  height: 150px;
+  z-index: -1;
+  background-image: radial-gradient(rgba(239, 176, 0, 0.45) 1.6px, transparent 1.6px);
+  background-size: 16px 16px;
+  border-radius: 12px;
+  animation: workforceDotsDrift 9s ease-in-out infinite;
+}
+
+.home-page .workforceMediaMainWrap {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0px 10px 30px -12px rgba(0, 0, 0, 0.22);
 }
 
 .home-page .workforceMediaMain {
+  display: block;
   width: 100%;
   height: 277px;
   object-fit: cover;
-  border-radius: 10px;
-  box-shadow: 0px 0px 35px -9px rgba(0, 0, 0, 0.25);
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform;
+  transition: scale 0.9s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.home-page .workforceMediaMain:hover {
-  transform: scale(1.02);
+.home-page .workforceMediaMainWrap:hover .workforceMediaMain {
+  scale: 1.05;
 }
 
-.home-page .workforceMediaOverlay {
+.home-page .workforceMediaOverlayWrap {
   position: absolute;
   left: 222px;
   top: 250px;
   width: 320px;
   height: 305px;
+  z-index: 2;
+}
+
+.home-page .workforceMediaOverlay {
+  display: block;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  border-radius: 9px;
+  border-radius: 12px;
   border: 5px solid #ffffff;
   box-sizing: border-box;
-  box-shadow: 0px 8px 35px -9px rgba(0, 0, 0, 0.35);
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
-  will-change: transform;
+  box-shadow: 0px 18px 40px -14px rgba(0, 0, 0, 0.28);
+  animation: workforceOverlayFloat 7s ease-in-out infinite;
+  transition: scale 0.6s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .home-page .workforceMediaOverlay:hover {
-  transform: translateY(-6px) scale(1.03);
-  box-shadow: 0px 16px 42px -6px rgba(0, 0, 0, 0.42);
+  scale: 1.03;
+  box-shadow: 0px 26px 50px -16px rgba(0, 0, 0, 0.32);
 }
 
-@keyframes badgePulseFloat {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-6px);
-  }
-}
-
-.home-page .workforceBadge {
+.home-page .workforceBadgeWrap {
   position: absolute;
   left: 0;
   top: 315px;
   width: 160px;
   height: 223px;
-  background: rgba(255, 220, 128, 0.5);
-  border-radius: 7px;
+  z-index: 3;
+}
+
+.home-page .workforceBadge {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(160deg, rgba(255, 226, 150, 0.75) 0%, rgba(255, 245, 217, 0.9) 100%);
+  box-shadow: inset 0 0 0 1px rgba(239, 176, 0, 0.25), 0 14px 30px -14px rgba(176, 125, 0, 0.45);
+  backdrop-filter: blur(6px);
+  border-radius: 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1019,27 +1227,39 @@ const PAGE_CSS = `
   text-align: center;
   gap: 6px;
   padding: 12px;
-  animation: badgePulseFloat 4s ease-in-out infinite;
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-  will-change: transform;
+  animation: badgePulseFloat 5s ease-in-out infinite;
+  transition: box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1), scale 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Periodic light sweep across the badge */
+.home-page .workforceBadge::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -80%;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+  transform: skewX(-18deg);
+  animation: workforceBadgeShine 5s cubic-bezier(0.22, 1, 0.36, 1) 1.5s infinite;
 }
 
 .home-page .workforceBadge:hover {
-  animation-play-state: paused;
-  transform: translateY(-8px) scale(1.03);
-  box-shadow: 0 12px 28px -6px rgba(239, 176, 0, 0.45);
+  scale: 1.04;
+  box-shadow: inset 0 0 0 1px rgba(239, 176, 0, 0.5), 0 22px 40px -16px rgba(176, 125, 0, 0.6);
 }
 
 .home-page .workforceBadgeIcon {
   width: 40px;
   height: 40px;
-  border-radius: 9px;
+  border-radius: 10px;
   background: var(--gold);
   color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 24px;
+  box-shadow: 0 8px 16px -6px rgba(239, 176, 0, 0.7);
 }
 
 .home-page .workforceBadgeNumber {
@@ -1054,6 +1274,26 @@ const PAGE_CSS = `
   font-weight: 600;
   color: var(--text);
   line-height: 1.3;
+}
+
+@keyframes badgePulseFloat {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -8px; }
+}
+
+@keyframes workforceOverlayFloat {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 6px; }
+}
+
+@keyframes workforceDotsDrift {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 8px 8px; }
+}
+
+@keyframes workforceBadgeShine {
+  0% { left: -80%; }
+  40%, 100% { left: 140%; }
 }
 
 .home-page .workforceContent {
@@ -1082,46 +1322,81 @@ const PAGE_CSS = `
   display: grid;
   grid-template-columns: repeat(2, 264px);
   gap: 16px;
-  margin-bottom: 32px;
+  margin: 0 0 32px;
+  padding: 0;
+  list-style: none;
+}
+
+.home-page .workforceFeatureItem {
+  display: flex;
 }
 
 .home-page .workforceFeatureCard {
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+  overflow: hidden;
+  width: 100%;
   display: flex;
   align-items: center;
   gap: 14px;
   background: #ffffff;
-  box-shadow: inset 0 0 0 1px #acacac, 0px 0px 24px -9px rgba(0, 0, 0, 0.25);
-  border-radius: 8px;
+  box-shadow: inset 0 0 0 1px #ececec, 0px 4px 14px -8px rgba(0, 0, 0, 0.12);
+  border-radius: 12px;
   padding: 12px 16px;
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform;
+  transition: transform 0.5s var(--ease-out), box-shadow 0.5s var(--ease-out), background-color 0.5s var(--ease-out);
+}
+
+/* Light sweep on hover */
+.home-page .workforceFeatureCard::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -70%;
+  width: 45%;
+  height: 100%;
+  pointer-events: none;
+  background: linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+  transform: skewX(-18deg);
+  transition: left 0.9s var(--ease-out);
 }
 
 .home-page .workforceFeatureCard:hover {
-  transform: translateY(-3px);
-  box-shadow: inset 0 0 0 1.5px var(--gold), 0px 10px 24px -6px rgba(0, 0, 0, 0.18);
+  transform: translateY(-4px);
+  background-color: #fffbf0;
+  box-shadow: inset 0 0 0 1.5px var(--gold), 0px 18px 32px -16px rgba(176, 125, 0, 0.45);
+}
+
+.home-page .workforceFeatureCard:hover::after {
+  left: 130%;
 }
 
 .home-page .workforceFeatureIconWrap {
   flex-shrink: 0;
   width: 47px;
   height: 47px;
-  border-radius: 10px;
+  border-radius: 12px;
   background: var(--gold);
   color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.25s ease;
+  box-shadow: 0 8px 16px -8px rgba(239, 176, 0, 0.75);
+  transition: transform 0.6s var(--ease-out), box-shadow 0.5s var(--ease-out);
 }
 
 .home-page .workforceFeatureCard:hover .workforceFeatureIconWrap {
-  transform: scale(1.1);
+  transform: rotate(-8deg) scale(1.1);
+  box-shadow: 0 12px 22px -8px rgba(239, 176, 0, 0.85);
 }
 
 .home-page .workforceFeatureIcon {
   width: 24px;
   height: 24px;
+  transition: transform 0.6s var(--ease-out);
+}
+
+.home-page .workforceFeatureCard:hover .workforceFeatureIcon {
+  transform: rotate(8deg);
 }
 
 .home-page .workforceFeatureLabel {
@@ -1129,6 +1404,11 @@ const PAGE_CSS = `
   font-weight: 600;
   line-height: 1.4;
   color: var(--text);
+  transition: transform 0.5s var(--ease-out);
+}
+
+.home-page .workforceFeatureCard:hover .workforceFeatureLabel {
+  transform: translateX(3px);
 }
 
 /* ==========================================================================
@@ -1189,7 +1469,7 @@ const PAGE_CSS = `
   height: 100%;
   box-sizing: border-box;
   border-radius: 10px;
-  box-shadow: inset 0 0 0 1px #acacac, 0px 0px 24px -9px rgba(0, 0, 0, 0.25);
+  box-shadow: inset 0 0 0 1px #e2e8f0, 0px 4px 16px -6px rgba(0, 0, 0, 0.08);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   transform-style: preserve-3d;
@@ -1203,7 +1483,7 @@ const PAGE_CSS = `
 .home-page .divisionCard:focus-visible .divisionCardBack,
 .home-page .divisionCard.divisionCardActive .divisionCardFront,
 .home-page .divisionCard.divisionCardActive .divisionCardBack {
-  box-shadow: inset 0 0 0 1.5px rgba(239, 176, 0, 0.7), 0px 18px 38px -8px rgba(0, 0, 0, 0.22);
+  box-shadow: inset 0 0 0 1.5px rgba(239, 176, 0, 0.7), 0px 12px 28px -6px rgba(0, 0, 0, 0.14);
 }
 
 .home-page .divisionCardFront {
@@ -1223,7 +1503,7 @@ const PAGE_CSS = `
   height: 204px;
   object-fit: cover;
   border-radius: 11px;
-  box-shadow: 0px 0px 24px -9px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 4px 16px -6px rgba(0, 0, 0, 0.08);
   margin-bottom: 20px;
   display: block;
 }
@@ -1286,192 +1566,6 @@ const PAGE_CSS = `
 }
 
 /* ==========================================================================
-   emHRMS product showcase
-   ========================================================================== */
-
-.home-page .showcase {
-  background: #FFFFFA;
-  padding: 88px 0;
-  width: 100%;
-}
-
-.home-page .showcaseGrid {
-  display: grid;
-  grid-template-columns: 380px 1fr;
-  gap: 56px;
-  align-items: start;
-}
-
-.home-page .showcaseLeft {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-}
-
-.home-page .showcaseTitle {
-  font-size: 34px;
-  font-weight: 600;
-  line-height: 1.25;
-  color: var(--text);
-  margin: 0 0 54px;
-  white-space: pre-line;
-}
-
-@keyframes homePageFadeInProduct {
-  from {
-    opacity: 0;
-    transform: translateY(4px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.home-page .showcaseInfo {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 16px;
-  animation: homePageFadeInProduct 0.25s ease-out;
-}
-
-.home-page .showcaseIcon {
-  width: 65px;
-  height: 65px;
-  border-radius: 7px;
-  background: var(--gold);
-  color: #ffffff;
-  font-size: 38px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.home-page .showcaseProductName {
-  font-size: 34px;
-  font-weight: 600;
-  color: var(--text);
-  margin: 0;
-}
-
-.home-page .showcaseDesc {
-  font-size: 17px;
-  line-height: 1.65;
-  color: var(--text-64);
-  margin: 0;
-  white-space: pre-line;
-  min-height: 84px;
-}
-
-.home-page .showcaseRight {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  min-width: 0;
-}
-
-.home-page .showcaseArrowsRow {
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-  margin-bottom: 14px;
-}
-
-.home-page .showcaseArrow {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  border: 1px solid #c7c7c7;
-  background: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.home-page .showcaseArrow:hover {
-  background: #f7f7f7;
-  border-color: #999999;
-  transform: scale(1.04);
-}
-
-.home-page .showcaseArrow:active {
-  transform: scale(0.96);
-}
-
-.home-page .showcaseArrow svg {
-  width: 7px;
-  height: 12px;
-}
-
-.home-page .showcaseTabs {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 10px;
-  width: 100%;
-  margin-bottom: 24px;
-}
-
-.home-page .showcaseTab {
-  border: none;
-  cursor: pointer;
-  border-radius: 7px;
-  padding: 10px 4px;
-  font-family: var(--font-heading);
-  font-size: 15px;
-  font-weight: 600;
-  background: #ffffff;
-  box-shadow: inset 0 0 0 1px #dcdcdc;
-  color: var(--text);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  white-space: nowrap;
-}
-
-.home-page .showcaseTab:hover {
-  background: #f7f7f7;
-  transform: translateY(-2px);
-}
-
-.home-page .showcaseTabActive {
-  background: #02183f;
-  color: #ffffff;
-  box-shadow: 0 4px 14px rgba(2, 24, 63, 0.3);
-  transform: translateY(-2px);
-}
-
-.home-page .showcaseTabActive:hover {
-  background: #02183f;
-}
-
-.home-page .showcaseScreenshotWrap {
-  background: #ffffff;
-  box-shadow: inset 0 0 0 1px #bfbfbf, 0px 0px 24px -9px rgba(0, 0, 0, 0.25);
-  border-radius: 11px;
-  padding: 8px;
-  width: 100%;
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform;
-}
-
-.home-page .showcaseScreenshotWrap:hover {
-  transform: translateY(-4px);
-  box-shadow: inset 0 0 0 1px #0077c2, 0px 18px 40px -9px rgba(0, 0, 0, 0.22);
-}
-
-.home-page .showcaseScreenshot {
-  width: 100%;
-  height: auto;
-  border-radius: 6px;
-  display: block;
-}
-
-/* ==========================================================================
    Change from legacy system — reasons grid
    ========================================================================== */
 
@@ -1483,69 +1577,165 @@ const PAGE_CSS = `
 .home-page .reasonsGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  max-width: 1060px;
+  gap: 22px;
+  max-width: 1080px;
   margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+
+/* The reveal animation lives on the <li> so its delay never slows the
+   card's own hover transitions. */
+.home-page .reasonItem {
+  display: flex;
 }
 
 .home-page .reasonCard {
-  background: #ffffff;
-  box-shadow: inset 0 0 0 1px #dddddd, 0px 0px 16px -7px rgba(0, 0, 0, 0.25);
-  border-radius: 6px;
-  padding: 24px 16px 20px;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 16px;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform;
+  gap: 18px;
+  padding: 34px 18px 28px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: inset 0 0 0 1px #ececec, 0 4px 14px -8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.5s var(--ease-out), box-shadow 0.5s var(--ease-out);
+}
+
+/* Soft gold wash that rises from the bottom on hover */
+.home-page .reasonCard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(255, 245, 217, 0) 35%, rgba(255, 245, 217, 0.9) 100%);
+  opacity: 0;
+  transition: opacity 0.5s var(--ease-out);
+}
+
+/* Diagonal light sweep */
+.home-page .reasonCard::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(105deg, transparent 0%, rgba(255, 255, 255, 0.75) 50%, transparent 100%);
+  transform: skewX(-18deg);
+  transition: left 0.9s var(--ease-out);
 }
 
 .home-page .reasonCard:hover {
-  transform: translateY(-6px);
-  box-shadow: inset 0 0 0 1px var(--gold), 0px 14px 28px -6px rgba(0, 0, 0, 0.18);
+  transform: translateY(-8px);
+  box-shadow: inset 0 0 0 1px rgba(239, 176, 0, 0.55), 0 22px 40px -18px rgba(176, 125, 0, 0.35);
+}
+
+.home-page .reasonCard:hover::before {
+  opacity: 1;
+}
+
+.home-page .reasonCard:hover::after {
+  left: 130%;
+}
+
+.home-page .reasonNum {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #d9d9d9;
+  transition: color 0.5s var(--ease-out);
+}
+
+.home-page .reasonCard:hover .reasonNum {
+  color: var(--gold);
 }
 
 .home-page .reasonIcon {
-  width: 56px;
-  height: 56px;
-  border-radius: 12px;
-  background: var(--gold);
-  color: #ffffff;
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+  background: #fff5d9;
+  color: var(--gold);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 30px;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform;
+  transition: background-color 0.5s var(--ease-out), color 0.5s var(--ease-out),
+    transform 0.6s var(--ease-out), box-shadow 0.5s var(--ease-out);
+}
+
+/* Pulsing ring around the icon on hover */
+.home-page .reasonIcon::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 20px;
+  border: 1.5px solid rgba(239, 176, 0, 0.45);
+  opacity: 0;
+  transform: scale(0.85);
+  transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
+}
+
+.home-page .reasonIcon svg {
+  transition: transform 0.6s var(--ease-out);
 }
 
 .home-page .reasonCard:hover .reasonIcon {
-  transform: scale(1.12);
+  background: var(--gold);
+  color: #ffffff;
+  transform: translateY(-2px) rotate(-6deg);
+  box-shadow: 0 12px 22px -8px rgba(239, 176, 0, 0.65);
+}
+
+.home-page .reasonCard:hover .reasonIcon::after {
+  opacity: 1;
+  transform: scale(1);
+  animation: reasonRingPulse 1.8s var(--ease-out) 0.4s infinite;
+}
+
+.home-page .reasonCard:hover .reasonIcon svg {
+  transform: rotate(6deg) scale(1.08);
 }
 
 .home-page .reasonLabel {
   font-size: 16px;
   font-weight: 600;
-  color: var(--text);
-  line-height: 1.3;
+  color: #1f1f1f;
+  line-height: 1.35;
   white-space: pre-line;
 }
 
+/* Underline that grows from the centre */
 .home-page .reasonBar {
-  width: 100%;
-  height: 4px;
-  border-radius: 2px;
-  background: var(--amber-icon);
+  width: 28px;
+  height: 3px;
+  border-radius: 3px;
   margin-top: auto;
-  transition: height 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+  background: #f1e2b8;
+  transition: width 0.55s var(--ease-out), background-color 0.55s var(--ease-out);
 }
 
 .home-page .reasonCard:hover .reasonBar {
-  height: 5px;
-  background: var(--gold-dark);
-  box-shadow: 0 0 8px rgba(239, 176, 0, 0.6);
+  width: 64px;
+  background: var(--gold);
+}
+
+@keyframes reasonRingPulse {
+  0% { opacity: 1; transform: scale(1); }
+  70%, 100% { opacity: 0; transform: scale(1.25); }
 }
 
 /* ==========================================================================
@@ -1612,23 +1802,38 @@ const PAGE_CSS = `
 .home-page .testimonialsTrack {
   --testimonial-gap: 24px;
   --testimonial-item: calc(
-    (100% - var(--testimonial-visible) * var(--testimonial-gap)) /
-      (var(--testimonial-visible) + 1)
+    (100% - (var(--testimonial-visible) - 1) * var(--testimonial-gap)) / var(--testimonial-visible)
   );
   display: flex;
   gap: var(--testimonial-gap);
-  width: calc((var(--testimonial-visible) + 1) / var(--testimonial-visible) * 100%);
-  transform: translateX(0);
-  transition: transform 0.55s cubic-bezier(0.65, 0, 0.35, 1);
+  width: 100%;
+  transform: translate3d(calc(var(--slide, 0) * -1 * (var(--testimonial-item) + var(--testimonial-gap))), 0, 0);
+  transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform;
+  backface-visibility: hidden;
 }
 
-.home-page .testimonialsTrackShifted {
-  transform: translateX(calc(-1 * (var(--testimonial-item) + var(--testimonial-gap))));
+/* While snapping back from the clones nothing may animate, or the
+   highlighted card would visibly fade. */
+.home-page .testimonialsTrackInstant,
+.home-page .testimonialsTrackInstant .testimonialCard,
+.home-page .testimonialsTrackInstant .testimonialCard * {
+  transition: none !important;
 }
 
-.home-page .testimonialsTrackInstant {
-  transition: none;
+/* Highlight hand-off between cards fades instead of snapping. */
+.home-page .testimonialCard .testimonialCompany,
+.home-page .testimonialCard .testimonialQuote,
+.home-page .testimonialCard .testimonialName,
+.home-page .testimonialCard .testimonialRole,
+.home-page .testimonialCard .testimonialReadMore {
+  transition: color 0.6s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-page .testimonialsTrack {
+    transition: none;
+  }
 }
 
 .home-page .testimonialCard {
@@ -1640,8 +1845,7 @@ const PAGE_CSS = `
   display: flex;
   flex-direction: column;
   height: 100%;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.6s ease, background-color 0.6s ease, border-color 0.6s ease, outline-color 0.6s ease;
 }
 
 .home-page .testimonialCard:hover {
@@ -1651,7 +1855,9 @@ const PAGE_CSS = `
 
 .home-page .testimonialFeatured {
   background: #ffffff;
-  box-shadow: inset 0 0 0 3px #a7ddff, 0px 0px 24px -9px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 10px 26px -10px rgba(239, 176, 0, 0.3);
+  outline: 2px solid #efb000;
+  outline-offset: -2px;
 }
 
 .home-page .testimonialBody {
@@ -1703,7 +1909,7 @@ const PAGE_CSS = `
   padding: 0;
   font-size: 16px;
   font-weight: 700;
-  color: rgba(11, 120, 194, 0.35);
+  color: rgba(176, 125, 0, 0.55);
   align-self: flex-start;
   margin-top: auto;
   transition: color 0.2s ease, transform 0.2s ease;
@@ -1714,11 +1920,11 @@ const PAGE_CSS = `
 }
 
 .home-page .testimonialFeatured .testimonialReadMore {
-  color: var(--blue-alt);
+  color: #b07d00;
 }
 
 .home-page .testimonialFooter {
-  background: #e4f4ff;
+  background: #FFFFFA;
   padding: 16px 24px;
   display: flex;
   align-items: center;
@@ -1727,8 +1933,9 @@ const PAGE_CSS = `
   min-height: 96px;
   max-height: 96px;
   box-sizing: border-box;
-  margin-top: auto;
-  border-top: 1px solid #d9edf8;
+  margin-top: 0;
+  border-bottom: 1px solid #f3e6c4;
+  order: -1;
 }
 
 .home-page .testimonialLogoWrap {
@@ -1833,7 +2040,7 @@ const PAGE_CSS = `
 }
 
 .home-page .testimonialsDotActive {
-  background: var(--blue);
+  background: #EFB000;
   transform: scale(1.25);
 }
 
@@ -1936,7 +2143,7 @@ const PAGE_CSS = `
 
 .home-page .blogCard {
   background: #ffffff;
-  box-shadow: inset 0 0 0 1px #e2e8f0, 0px 4px 16px -4px rgba(0, 0, 0, 0.08);
+  box-shadow: inset 0 0 0 1px #efe6d0, 0px 4px 16px -4px rgba(0, 0, 0, 0.08);
   border-radius: 10px;
   overflow: hidden;
   display: flex;
@@ -1947,7 +2154,7 @@ const PAGE_CSS = `
 
 .home-page .blogCard:hover {
   transform: translateY(-6px);
-  box-shadow: inset 0 0 0 1px var(--gold), 0px 18px 36px -8px rgba(0, 0, 0, 0.16);
+  box-shadow: inset 0 0 0 1px var(--gold), 0px 18px 36px -8px rgba(176, 125, 0, 0.28);
 }
 
 .home-page .blogImageLink {
@@ -1998,7 +2205,7 @@ const PAGE_CSS = `
 }
 
 .home-page .blogCard:hover .blogTitleLink {
-  color: var(--blue-dark);
+  color: #b07d00;
 }
 
 .home-page .blogExcerpt {
@@ -2015,7 +2222,7 @@ const PAGE_CSS = `
 }
 
 .home-page .blogCard:hover .learnMore {
-  color: var(--blue-dark);
+  color: #8a6400;
 }
 
 .home-page .blogCard:hover .learnMore svg {
@@ -2059,6 +2266,7 @@ const PAGE_CSS = `
   letter-spacing: -0.01em;
 }
 
+.home-page .ctaCol .goldButton,
 .home-page .ctaCol .blueButton {
   min-width: 145px;
   justify-content: center;
@@ -2087,53 +2295,7 @@ const PAGE_CSS = `
     padding: 0 20px;
   }
 
-  .home-page .hero {
-    height: auto;
-    position: relative;
-    overflow: visible;
-  }
-
-  .home-page .heroSlides {
-    position: relative;
-    height: 560px;
-    width: 100%;
-    overflow: hidden;
-  }
-
-  .home-page .heroDots {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 22px;
-    top: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    z-index: 10;
-  }
-
-  .home-page .heroStatsWrap {
-    position: static;
-    width: 100%;
-    max-width: none;
-    padding: 0 20px;
-    margin-top: 28px;
-  }
-
-  .home-page .heroStats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    padding: 24px 20px;
-    gap: 20px;
-  }
-
-  .home-page .heroStatDivider {
-    display: none;
-  }
-
-  .home-page .workforceGrid,
-  .home-page .showcaseGrid {
+  .home-page .workforceGrid {
     grid-template-columns: 1fr;
   }
 
@@ -2178,7 +2340,6 @@ const PAGE_CSS = `
   .home-page .trusted,
   .home-page .workforce,
   .home-page .divisions,
-  .home-page .showcase,
   .home-page .reasons,
   .home-page .testimonials,
   .home-page .blogs,
@@ -2201,199 +2362,44 @@ const PAGE_CSS = `
     line-height: 1.5;
   }
 
-  /* Hero Mobile */
-  .home-page .hero {
-    height: auto;
-    position: relative;
-    overflow: visible;
-    background: #ffffff;
-  }
-
-  .home-page .heroSlides {
-    position: relative;
-    width: 100%;
-    height: calc(100vh - 80px);
-    height: calc(100svh - 80px);
-    height: calc(100dvh - 80px);
-    min-height: 520px;
-    max-height: 820px;
-    overflow: hidden;
-  }
-
-  .home-page .heroSlide {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-  }
-
-  .home-page .heroSlideBg {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center center;
-  }
-
-  .home-page .heroSlideContent {
-    position: relative;
-    z-index: 2;
-    padding: 20px 20px 310px;
-    width: 100%;
-    max-width: 560px;
-    margin: 0 auto;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background: radial-gradient(
-      ellipse at center,
-      rgba(255, 255, 255, 0.95) 0%,
-      rgba(255, 255, 255, 0.88) 58%,
-      rgba(255, 255, 255, 0.65) 100%
-    );
-  }
-
-  .home-page .heroTitle {
-    font-size: 30px;
-    font-weight: 700;
-    line-height: 1.22;
-    color: #000000;
-    text-align: center;
-    margin: 0 auto 16px;
-    max-width: 440px;
-  }
-
-  .home-page .heroText {
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 1.5;
-    color: var(--text-64);
-    text-align: center;
-    margin: 0 auto 26px;
-    max-width: 420px;
-    white-space: normal;
-  }
-
-  .home-page .heroCta {
-    align-self: center;
-    margin: 0 auto;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 13px 28px;
-    font-size: 14.5px;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    border-radius: 6px;
-  }
-
-  .home-page .heroDots {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 10px;
-    top: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 9px;
-    z-index: 10;
-  }
-
-  .home-page .heroDot {
-    width: 11px;
-    height: 11px;
-  }
-
-  .home-page .heroDotActive {
-    transform: scale(1.25);
-  }
-
-  .home-page .heroStatsWrap {
-    position: absolute;
-    top: auto;
-    left: 0;
-    right: 0;
-    bottom: 40px;
-    width: 100%;
-    max-width: 100%;
-    padding: 0 16px;
-    margin: 0;
-    z-index: 3;
-  }
-
-  .home-page .heroStats {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    padding: 20px 16px;
-    gap: 16px 12px;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px -8px rgba(0, 48, 100, 0.1), inset 0 0 0 1px rgba(0, 119, 194, 0.12);
-  }
-
-  .home-page .heroStatDivider {
-    display: none;
-  }
-
-  .home-page .heroStat {
-    min-width: 0;
-    text-align: center;
-  }
-
-  .home-page .heroStat.heroStatLast,
-  .home-page .heroStat:nth-child(5) {
-    grid-column: span 2;
-  }
-
-  .home-page .heroStatValue {
-    font-size: 22px;
-    margin-bottom: 2px;
-  }
-
-  .home-page .heroStatLabel {
-    font-size: 12.5px;
-    white-space: normal;
-  }
-
   /* Trusted */
   .home-page .trusted {
-    padding: 56px 0 60px;
+    padding: 38px 0 42px;
   }
 
   .home-page .trustedTitle {
     font-size: 20px;
-    margin-bottom: 28px;
-  }
-
-  .home-page .trustedMarqueeRow {
     margin-bottom: 20px;
   }
 
+  .home-page .trustedMarqueeRow {
+    margin-bottom: 0;
+    padding: 4px 0;
+  }
+
   .home-page .trustedMarqueeGroup {
-    gap: 36px;
-    padding-right: 36px;
+    height: 104px;
+    gap: 18px;
+    padding-right: 18px;
   }
 
   .home-page .trustedLogoWrap {
-    width: 120px;
-    height: 48px;
+    width: 104px;
+    height: 44px;
+    margin-right: 0;
   }
 
   .home-page .trustedLogo {
-    max-height: 38px;
-    max-width: 104px;
+    max-height: 100%;
+    max-width: 100%;
   }
 
   .home-page .trustedMarqueeTrackRight {
-    animation-duration: 38s;
+    animation-duration: 40s;
   }
 
   .home-page .trustedMarqueeTrackLeft {
-    animation-duration: 34s;
+    animation-duration: 40s;
   }
 
   /* Workforce */
@@ -2448,38 +2454,49 @@ const PAGE_CSS = `
     margin: 0 auto 30px;
   }
 
-  .home-page .workforceMediaMain {
+  .home-page .workforceMediaMainWrap {
     width: 82%;
-    height: 190px;
-    object-fit: cover;
     border-radius: 10px;
   }
 
-  .home-page .workforceMediaOverlay {
-    position: absolute;
+  .home-page .workforceMediaMain {
+    height: 190px;
+  }
+
+  .home-page .workforceDots {
+    top: -14px;
+    left: -14px;
+    width: 100px;
+    height: 100px;
+  }
+
+  .home-page .workforceMediaOverlayWrap {
     right: 0;
     bottom: 0;
     top: auto;
     left: auto;
     width: 62%;
     height: 175px;
-    object-fit: cover;
-    border-radius: 8px;
-    border: 4px solid #ffffff;
-    box-shadow: 0 10px 28px -6px rgba(0, 0, 0, 0.25);
   }
 
-  .home-page .workforceBadge {
-    position: absolute;
+  .home-page .workforceMediaOverlay {
+    border-radius: 8px;
+    border-width: 4px;
+  }
+
+  .home-page .workforceBadgeWrap {
     left: 0;
     bottom: 8px;
     top: auto;
     width: 112px;
     height: auto;
+  }
+
+  .home-page .workforceBadge {
+    height: auto;
     padding: 12px 8px;
     border-radius: 8px;
     gap: 4px;
-    z-index: 3;
   }
 
   .home-page .workforceBadgeIcon {
@@ -2542,66 +2559,6 @@ const PAGE_CSS = `
     line-height: 1.55;
   }
 
-  /* Showcase */
-  .home-page .showcaseTitle {
-    font-size: 24px;
-    margin-bottom: 16px;
-    white-space: normal;
-    text-align: center;
-  }
-
-  .home-page .showcaseInfo {
-    align-items: center;
-    text-align: center;
-    width: 100%;
-  }
-
-  .home-page .showcaseProductName {
-    font-size: 24px;
-  }
-
-  .home-page .showcaseDesc {
-    font-size: 14.5px;
-    line-height: 1.55;
-    min-height: auto;
-  }
-
-  .home-page .showcaseArrowsRow {
-    margin-bottom: 10px;
-    gap: 8px;
-  }
-
-  .home-page .showcaseArrow {
-    width: 40px;
-    height: 40px;
-  }
-
-  .home-page .showcaseTabs {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    gap: 8px;
-    padding-bottom: 8px;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-
-  .home-page .showcaseTabs::-webkit-scrollbar {
-    display: none;
-  }
-
-  .home-page .showcaseTab {
-    padding: 8px 14px;
-    font-size: 13.5px;
-    flex-shrink: 0;
-    white-space: nowrap;
-  }
-
-  .home-page .showcaseScreenshotWrap {
-    padding: 6px;
-    border-radius: 8px;
-  }
-
   /* Reasons */
   .home-page .reasonsGrid {
     grid-template-columns: repeat(2, 1fr);
@@ -2610,25 +2567,32 @@ const PAGE_CSS = `
   }
 
   .home-page .reasonCard {
-    padding: 16px 12px 14px;
+    padding: 26px 12px 18px;
     gap: 12px;
+    border-radius: 14px;
+  }
+
+  .home-page .reasonNum {
+    top: 9px;
+    right: 12px;
+    font-size: 11px;
   }
 
   .home-page .reasonIcon {
-    width: 42px;
-    height: 42px;
+    width: 46px;
+    height: 46px;
     font-size: 23px;
-    border-radius: 10px;
+    border-radius: 12px;
+  }
+
+  .home-page .reasonIcon::after {
+    border-radius: 16px;
   }
 
   .home-page .reasonLabel {
     font-size: 13.5px;
     line-height: 1.28;
     white-space: normal;
-  }
-
-  .home-page .reasonBar {
-    height: 3px;
   }
 
   /* Testimonials — desktop sliding track is swapped for a real
@@ -2703,6 +2667,19 @@ const PAGE_CSS = `
     opacity: 0.12;
   }
 
+  /* Small dots, finger-sized tap area (invisible). */
+  .home-page .testimonialsDot,
+  .home-page .heroDot {
+    position: relative;
+  }
+
+  .home-page .testimonialsDot::after,
+  .home-page .heroDot::after {
+    content: "";
+    position: absolute;
+    inset: -9px;
+  }
+
   /* Blogs */
   .home-page .blogsRow {
     grid-template-columns: 1fr;
@@ -2756,6 +2733,7 @@ const PAGE_CSS = `
     white-space: normal;
   }
 
+  .home-page .ctaCol .goldButton,
   .home-page .ctaCol .blueButton {
     width: 100%;
     max-width: 260px;
@@ -2765,72 +2743,42 @@ const PAGE_CSS = `
 }
 
 @media (max-width: 480px) {
-  .home-page .heroSlides {
-    height: calc(100vh - 80px);
-    height: calc(100svh - 80px);
-    height: calc(100dvh - 80px);
-    min-height: 480px;
+  .home-page .trusted {
+    padding: 30px 0 34px;
   }
 
-  .home-page .heroSlideContent {
-    padding: 20px 16px 310px;
+  .home-page .trustedTitle {
+    font-size: 18px;
+    margin-bottom: 16px;
   }
 
-  .home-page .heroTitle {
-    font-size: 26px;
-    line-height: 1.22;
-    margin: 0 auto 14px;
-    max-width: 320px;
-  }
-
-  .home-page .heroText {
-    font-size: 14.5px;
-    line-height: 1.48;
-    margin: 0 auto 24px;
-    max-width: 300px;
-  }
-
-  .home-page .heroCta {
-    padding: 12px 24px;
-    font-size: 14px;
-  }
-
-  .home-page .heroDots {
-    bottom: 18px;
-  }
-
-  .home-page .heroStatsWrap {
-    margin: 20px auto 0;
-    padding: 0 12px;
-  }
-
-  .home-page .heroStats {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px 10px;
-    padding: 16px 12px;
-  }
-
-  .home-page .heroStatValue {
-    font-size: 20px;
-  }
-
-  .home-page .heroStatLabel {
-    font-size: 12px;
+  .home-page .trustedMarqueeRow {
+    padding: 3px 0;
   }
 
   .home-page .trustedMarqueeGroup {
-    gap: 26px;
-    padding-right: 26px;
+    height: 86px;
+    gap: 14px;
+    padding-right: 14px;
   }
 
   .home-page .trustedLogoWrap {
-    width: 100px;
-    height: 40px;
+    width: 86px;
+    height: 36px;
+    margin-right: 0;
   }
 
   .home-page .trustedLogo {
-    max-height: 32px;
-    max-width: 88px;
+    max-height: 100%;
+    max-width: 100%;
+  }
+
+  .home-page .trustedMarqueeTrackRight {
+    animation-duration: 32s;
+  }
+
+  .home-page .trustedMarqueeTrackLeft {
+    animation-duration: 32s;
   }
 
   .home-page .reasonsGrid {
@@ -2843,7 +2791,7 @@ const PAGE_CSS = `
   }
 
   .home-page .reasonCard {
-    padding: 14px 8px 12px;
+    padding: 24px 8px 14px;
   }
 
   .home-page .workforceMedia {
@@ -2854,7 +2802,7 @@ const PAGE_CSS = `
     height: 170px;
   }
 
-  .home-page .workforceMediaOverlay {
+  .home-page .workforceMediaOverlayWrap {
     height: 155px;
   }
 }
@@ -2881,169 +2829,11 @@ const PAGE_CSS = `
 export default function LandingPage() {
   const [heroIndex, setHeroIndex] = useState(0);
 
-  const [activeTab, setActiveTab] = useState(SHOWCASE_TABS[0]);
   const [activeDivision, setActiveDivision] = useState(null);
   const divisionCardRefs = useRef([]);
-  const [testimonialStart, setTestimonialStart] = useState(0);
-  const [expandedTestimonials, setExpandedTestimonials] = useState({});
-  const [trackShifted, setTrackShifted] = useState(false);
-  const [trackInstant, setTrackInstant] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-  const testimonialBusyRef = useRef(false);
-  const mobileTrackRef = useRef(null);
-  const mobileInteractingRef = useRef(false);
-  const mobileResumeTimeoutRef = useRef(null);
-  const mobileScrollDebounceRef = useRef(null);
 
   const blogsList = latestBlogs && latestBlogs.length > 0 ? latestBlogs : FALLBACK_BLOGS;
   const visibleBlogs = blogsList.slice(0, 3);
-
-  useEffect(() => {
-    const mq = window.matchMedia("(max-width: 768px)");
-    const update = () => setIsMobile(mq.matches);
-    update();
-    mq.addEventListener("change", update);
-    return () => mq.removeEventListener("change", update);
-  }, []);
-
-  // The track always renders 4 consecutive cards (3 visible + 1 waiting just
-  // off-screen to the right) so advancing can slide the whole row left.
-  const trackTestimonials = [0, 1, 2, 3].map((offset) => {
-    const index = (testimonialStart + offset) % TESTIMONIALS.length;
-    return { ...TESTIMONIALS[index], index };
-  });
-
-  const toggleTestimonial = (index) => {
-    setExpandedTestimonials((prev) => ({ ...prev, [index]: !prev[index] }));
-  };
-
-  const slideOnce = (onDone) => {
-    setTrackInstant(false);
-    setTrackShifted(true);
-    setTimeout(() => {
-      setTrackInstant(true);
-      setTestimonialStart((current) => (current + 1) % TESTIMONIALS.length);
-      setTrackShifted(false);
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => setTrackInstant(false));
-      });
-      onDone && onDone();
-    }, 520);
-  };
-
-  const advanceTestimonials = (steps) => {
-    if (steps <= 0 || testimonialBusyRef.current) return;
-    testimonialBusyRef.current = true;
-    let remaining = steps;
-    const step = () => {
-      remaining -= 1;
-      slideOnce(() => {
-        if (remaining > 0) {
-          setTimeout(step, 40);
-        } else {
-          testimonialBusyRef.current = false;
-        }
-      });
-    };
-    step();
-  };
-
-  const goToTestimonial = (targetIndex) => {
-    if (isMobile) {
-      scrollMobileTestimonialTo(targetIndex);
-      return;
-    }
-    const steps =
-      (targetIndex - testimonialStart + TESTIMONIALS.length) % TESTIMONIALS.length;
-    advanceTestimonials(steps);
-  };
-
-  // Desktop-only sliding-track auto-advance — untouched, just paused while
-  // the mobile swipeable slider (below) is the one on screen.
-  useEffect(() => {
-    if (isMobile) return;
-    const timer = setInterval(() => {
-      advanceTestimonials(1);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, [isMobile]);
-
-  /* ----------------------------------------------------------------
-     Mobile testimonials — a real, finger-swipeable horizontal slider
-     (native overflow-x scroll + scroll-snap), completely separate from
-     the desktop sliding-track above. Auto-advances every 2.4s and loops
-     forever, but backs off the moment the visitor touches/drags it.
-     ---------------------------------------------------------------- */
-  const scrollMobileTestimonialTo = (index) => {
-    const track = mobileTrackRef.current;
-    const card = track && track.children[index];
-    if (!track || !card) return;
-    // Scroll only the horizontal track itself — never scrollIntoView, which
-    // would also scroll the whole PAGE vertically to reveal an off-screen
-    // card (e.g. jumping straight to this section right after page load).
-    const targetLeft = card.offsetLeft - (track.clientWidth - card.clientWidth) / 2;
-    track.scrollTo({ left: targetLeft, behavior: "smooth" });
-  };
-
-  const pauseMobileAutoplay = () => {
-    mobileInteractingRef.current = true;
-    if (mobileResumeTimeoutRef.current) clearTimeout(mobileResumeTimeoutRef.current);
-    mobileResumeTimeoutRef.current = setTimeout(() => {
-      mobileInteractingRef.current = false;
-    }, 2400);
-  };
-
-  const handleMobileTrackScroll = () => {
-    mobileInteractingRef.current = true;
-    if (mobileScrollDebounceRef.current) clearTimeout(mobileScrollDebounceRef.current);
-    mobileScrollDebounceRef.current = setTimeout(() => {
-      const track = mobileTrackRef.current;
-      if (!track) return;
-      const trackRect = track.getBoundingClientRect();
-      const center = trackRect.left + trackRect.width / 2;
-      let closestIndex = 0;
-      let closestDistance = Infinity;
-      [...track.children].forEach((child, index) => {
-        const rect = child.getBoundingClientRect();
-        const distance = Math.abs(rect.left + rect.width / 2 - center);
-        if (distance < closestDistance) {
-          closestDistance = distance;
-          closestIndex = index;
-        }
-      });
-      setTestimonialStart(closestIndex);
-      pauseMobileAutoplay();
-    }, 120);
-  };
-
-  useEffect(() => {
-    if (!isMobile) return;
-    const timer = setInterval(() => {
-      if (mobileInteractingRef.current) return;
-      setTestimonialStart((current) => {
-        const next = (current + 1) % TESTIMONIALS.length;
-        scrollMobileTestimonialTo(next);
-        return next;
-      });
-    }, 2400);
-    return () => clearInterval(timer);
-  }, [isMobile]);
-
-  const activeProduct =
-    SHOWCASE_PRODUCTS.find((p) => p.name === activeTab) || SHOWCASE_PRODUCTS[0];
-  const ShowcaseIcon = SHOWCASE_ICONS[activeProduct.id];
-
-  const handlePrevProduct = () => {
-    const currentIndex = SHOWCASE_TABS.indexOf(activeTab);
-    const prevIndex = (currentIndex - 1 + SHOWCASE_TABS.length) % SHOWCASE_TABS.length;
-    setActiveTab(SHOWCASE_TABS[prevIndex]);
-  };
-
-  const handleNextProduct = () => {
-    const currentIndex = SHOWCASE_TABS.indexOf(activeTab);
-    const nextIndex = (currentIndex + 1) % SHOWCASE_TABS.length;
-    setActiveTab(SHOWCASE_TABS[nextIndex]);
-  };
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -3172,7 +2962,9 @@ export default function LandingPage() {
               </div>
             </div>
           ))}
+        </div>
 
+        <div className="heroStatsWrap">
           <div className="heroDots">
             {HERO_SLIDES.map((slide, index) => (
               <button
@@ -3184,16 +2976,12 @@ export default function LandingPage() {
               />
             ))}
           </div>
-        </div>
 
-        <div className="heroStatsWrap">
           <div className="heroStats">
             {HERO_STATS.map((stat, index) => (
               <Fragment key={stat.label}>
                 {index > 0 && <span className="heroStatDivider" aria-hidden="true" />}
-                <div
-                  className={`heroStat ${index === HERO_STATS.length - 1 ? "heroStatLast" : ""}`}
-                >
+                <div className="heroStat">
                   <span className="heroStatValue">
                     <StopwatchCounter
                       value={stat.value}
@@ -3219,74 +3007,49 @@ export default function LandingPage() {
         </div>
 
         <div className="trustedMarqueeWrapper reveal-on-scroll reveal-fade-up">
-          {/* Row 1: Left to Right */}
-          <div className="trustedMarqueeRow" aria-label="Trusted client logos row 1">
+          <div className="trustedMarqueeRow" aria-label="Trusted client logos">
             <div className="trustedMarqueeTrack trustedMarqueeTrackRight">
               <div className="trustedMarqueeGroup">
-                {TRUSTED_ROW_1_ITEMS.map((logo, index) => (
-                  <div key={`r1-a-${index}`} className="trustedLogoWrap">
-                    <img
-                      className="trustedLogo"
-                      src={logo.src.src}
-                      alt={logo.alt}
-                      width={logo.src.width}
-                      height={logo.src.height}
-                      loading="lazy"
-                      draggable={false}
-                    />
-                  </div>
-                ))}
+                {TRUSTED_CAROUSEL_ITEMS.map((logo, index) => {
+                  const isTop = index % 2 === 1;
+                  return (
+                    <div
+                      key={`trusted-a-${index}`}
+                      className={`trustedLogoWrap ${isTop ? "trustedLogoWrap--top" : "trustedLogoWrap--bottom"}`}
+                    >
+                      <img
+                        className={`trustedLogo ${logo.className || ""}`}
+                        src={logo.src.src}
+                        alt={logo.alt}
+                        width={logo.src.width}
+                        height={logo.src.height}
+                        loading="lazy"
+                        draggable={false}
+                      />
+                    </div>
+                  );
+                })}
               </div>
               <div className="trustedMarqueeGroup" aria-hidden="true">
-                {TRUSTED_ROW_1_ITEMS.map((logo, index) => (
-                  <div key={`r1-b-${index}`} className="trustedLogoWrap">
-                    <img
-                      className="trustedLogo"
-                      src={logo.src.src}
-                      alt={logo.alt}
-                      width={logo.src.width}
-                      height={logo.src.height}
-                      loading="lazy"
-                      draggable={false}
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Row 2: Right to Left */}
-          <div className="trustedMarqueeRow" aria-label="Trusted client logos row 2">
-            <div className="trustedMarqueeTrack trustedMarqueeTrackLeft">
-              <div className="trustedMarqueeGroup">
-                {TRUSTED_ROW_2_ITEMS.map((logo, index) => (
-                  <div key={`r2-a-${index}`} className="trustedLogoWrap">
-                    <img
-                      className="trustedLogo"
-                      src={logo.src.src}
-                      alt={logo.alt}
-                      width={logo.src.width}
-                      height={logo.src.height}
-                      loading="lazy"
-                      draggable={false}
-                    />
-                  </div>
-                ))}
-              </div>
-              <div className="trustedMarqueeGroup" aria-hidden="true">
-                {TRUSTED_ROW_2_ITEMS.map((logo, index) => (
-                  <div key={`r2-b-${index}`} className="trustedLogoWrap">
-                    <img
-                      className="trustedLogo"
-                      src={logo.src.src}
-                      alt={logo.alt}
-                      width={logo.src.width}
-                      height={logo.src.height}
-                      loading="lazy"
-                      draggable={false}
-                    />
-                  </div>
-                ))}
+                {TRUSTED_CAROUSEL_ITEMS.map((logo, index) => {
+                  const isTop = index % 2 === 1;
+                  return (
+                    <div
+                      key={`trusted-b-${index}`}
+                      className={`trustedLogoWrap ${isTop ? "trustedLogoWrap--top" : "trustedLogoWrap--bottom"}`}
+                    >
+                      <img
+                        className={`trustedLogo ${logo.className || ""}`}
+                        src={logo.src.src}
+                        alt={logo.alt}
+                        width={logo.src.width}
+                        height={logo.src.height}
+                        loading="lazy"
+                        draggable={false}
+                      />
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -3297,61 +3060,80 @@ export default function LandingPage() {
       <section className="workforce">
         <div className="container">
           <div className="workforceGrid">
-            <div className="workforceMedia reveal-on-scroll reveal-fade-right">
-              <img
-                className="workforceMediaMain"
-                src={workforceBuilding.src}
-                alt="Emsphere Technologies corporate office building"
-                width={workforceBuilding.width}
-                height={workforceBuilding.height}
-                loading="lazy"
-              />
-              <img
-                className="workforceMediaOverlay"
-                src={workforceEngineers.src}
-                alt="Site engineers reviewing workforce management plans"
-                width={workforceEngineers.width}
-                height={workforceEngineers.height}
-                loading="lazy"
-              />
-              <div className="workforceBadge">
-                <span className="workforceBadgeIcon" aria-hidden="true">
-                  <Medal weight="fill" />
-                </span>
-                <span className="workforceBadgeNumber">15+</span>
-                <span className="workforceBadgeLabel">Years of Experience</span>
+            {/* Each layer reveals on its own (wrapper) so the entrance never
+                fights the hover / float transforms on the inner element. */}
+            <div className="workforceMedia">
+              <span className="workforceDots reveal-on-scroll reveal-zoom-in" aria-hidden="true" />
+              <div className="workforceMediaMainWrap reveal-on-scroll reveal-fade-right">
+                <img
+                  className="workforceMediaMain"
+                  src={workforceBuilding.src}
+                  alt="Emsphere Technologies corporate office building"
+                  width={workforceBuilding.width}
+                  height={workforceBuilding.height}
+                  loading="lazy"
+                />
+              </div>
+              <div
+                className="workforceMediaOverlayWrap reveal-on-scroll reveal-fade-up"
+                style={{ transitionDelay: "180ms" }}
+              >
+                <img
+                  className="workforceMediaOverlay"
+                  src={workforceEngineers.src}
+                  alt="Site engineers reviewing workforce management plans"
+                  width={workforceEngineers.width}
+                  height={workforceEngineers.height}
+                  loading="lazy"
+                />
+              </div>
+              <div
+                className="workforceBadgeWrap reveal-on-scroll reveal-zoom-in"
+                style={{ transitionDelay: "360ms" }}
+              >
+                <div className="workforceBadge">
+                  <span className="workforceBadgeIcon" aria-hidden="true">
+                    <Medal weight="fill" />
+                  </span>
+                  <span className="workforceBadgeNumber">15+</span>
+                  <span className="workforceBadgeLabel">Years of Experience</span>
+                </div>
               </div>
             </div>
 
-            <div className="workforceContent reveal-on-scroll reveal-fade-left">
-              <h2 className="workforceTitle">
+            <div className="workforceContent">
+              <h2 className="workforceTitle reveal-on-scroll reveal-fade-up">
                 {"Enhance Workforce and Labor\nManagement with Our Solutions"}
               </h2>
-              <p className="workforceText">
+              <p className="workforceText reveal-on-scroll reveal-fade-up" style={{ transitionDelay: "90ms" }}>
                 {
                   "Digitalize your HR Processes and Workflow for all environments \nwith our modern HR suites using the latest technology."
                 }
               </p>
 
-              <div className="workforceFeatures">
+              <ul className="workforceFeatures">
                 {WORKFORCE_FEATURES.map((feature, index) => (
-                  <div
-                    className="workforceFeatureCard reveal-on-scroll reveal-fade-up"
-                    style={{ transitionDelay: `${index * 80}ms` }}
+                  <li
+                    className="workforceFeatureItem reveal-on-scroll reveal-fade-up"
+                    style={{ transitionDelay: `${160 + index * 70}ms` }}
                     key={feature.label}
                   >
-                    <span className="workforceFeatureIconWrap">
-                      <feature.icon className="workforceFeatureIcon" weight="fill" aria-hidden="true" />
-                    </span>
-                    <span className="workforceFeatureLabel">{feature.label}</span>
-                  </div>
+                    <div className="workforceFeatureCard">
+                      <span className="workforceFeatureIconWrap">
+                        <feature.icon className="workforceFeatureIcon" weight="fill" aria-hidden="true" />
+                      </span>
+                      <span className="workforceFeatureLabel">{feature.label}</span>
+                    </div>
+                  </li>
                 ))}
-              </div>
+              </ul>
 
-              <a className="goldButton" href="#learn-more">
-                LEARN MORE
-                <ArrowRightIcon className="buttonIcon" />
-              </a>
+              <div className="reveal-on-scroll reveal-fade-up" style={{ transitionDelay: "520ms" }}>
+                <a className="goldButton" href="#learn-more">
+                  LEARN MORE
+                  <ArrowRightIcon className="buttonIcon" />
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -3409,75 +3191,8 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* emHRMS product showcase */}
-      <section className="showcase">
-        <div className="container">
-          <div className="showcaseGrid">
-            {/* Left Column: Heading + Active Product Info */}
-            <div className="showcaseLeft reveal-on-scroll reveal-fade-right">
-              <h2 className="showcaseTitle">{"Serving the HR and \nIndustrial Relations"}</h2>
-
-              <div className="showcaseInfo" key={activeProduct.id}>
-                <span className="showcaseIcon" aria-hidden="true">
-                  <ShowcaseIcon weight="fill" />
-                </span>
-                <h3 className="showcaseProductName">{activeProduct.name}</h3>
-                <p className="showcaseDesc">{activeProduct.desc}</p>
-                <a className="goldButton" href={activeProduct.ctaLink}>
-                  KNOW MORE
-                  <ArrowRightIcon className="buttonIcon" />
-                </a>
-              </div>
-            </div>
-
-            {/* Right Column: Arrows + Product Tabs + Dashboard Screenshot */}
-            <div className="showcaseRight reveal-on-scroll reveal-fade-left">
-              <div className="showcaseArrowsRow">
-                <button
-                  type="button"
-                  className="showcaseArrow"
-                  aria-label="Previous product"
-                  onClick={handlePrevProduct}
-                >
-                  <ChevronIcon direction="left" />
-                </button>
-                <button
-                  type="button"
-                  className="showcaseArrow"
-                  aria-label="Next product"
-                  onClick={handleNextProduct}
-                >
-                  <ChevronIcon direction="right" />
-                </button>
-              </div>
-
-              <div className="showcaseTabs">
-                {SHOWCASE_TABS.map((tab) => (
-                  <button
-                    key={tab}
-                    type="button"
-                    className={`showcaseTab ${tab === activeTab ? "showcaseTabActive" : ""}`}
-                    onClick={() => setActiveTab(tab)}
-                  >
-                    {tab}
-                  </button>
-                ))}
-              </div>
-
-              <div className="showcaseScreenshotWrap">
-                <img
-                  className="showcaseScreenshot"
-                  src={emhrmsDashboard.src}
-                  alt="emHRMS dashboard showing employee lifecycle and HR process automation"
-                  width={emhrmsDashboard.width}
-                  height={emhrmsDashboard.height}
-                  loading="lazy"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Our Flagship Products */}
+      <FlagshipProducts id="home-products-heading" />
 
       {/* Change from legacy system */}
       <section className="reasons">
@@ -3486,21 +3201,26 @@ export default function LandingPage() {
             <h2 className="sectionTitle">Change From legacy system</h2>
             <p className="sectionSubtitle">Reasons why enterprises change to emSphere.</p>
           </div>
-          <div className="reasonsGrid">
+          <ul className="reasonsGrid">
             {REASONS.map((reason, index) => (
-              <div
-                className="reasonCard reveal-on-scroll reveal-fade-up"
-                style={{ transitionDelay: `${(index % 4) * 80}ms` }}
+              <li
+                className="reasonItem reveal-on-scroll reveal-fade-up"
+                style={{ transitionDelay: `${index * 70}ms` }}
                 key={reason.label}
               >
-                <span className="reasonIcon" aria-hidden="true">
-                  <reason.icon weight="fill" />
-                </span>
-                <span className="reasonLabel">{reason.label}</span>
-                <span className="reasonBar" />
-              </div>
+                <div className="reasonCard">
+                  <span className="reasonNum" aria-hidden="true">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span className="reasonIcon" aria-hidden="true">
+                    <reason.icon weight="fill" />
+                  </span>
+                  <span className="reasonLabel">{reason.label}</span>
+                  <span className="reasonBar" aria-hidden="true" />
+                </div>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 
@@ -3520,140 +3240,7 @@ export default function LandingPage() {
             </p>
           </div>
 
-          <div
-            className="testimonialsViewport reveal-on-scroll reveal-fade-up"
-            style={{ transitionDelay: "120ms" }}
-          >
-            <div
-              className={`testimonialsTrack ${trackShifted ? "testimonialsTrackShifted" : ""} ${
-                trackInstant ? "testimonialsTrackInstant" : ""
-              }`}
-            >
-              {trackTestimonials.map((testimonial, position) => {
-                const isExpanded = !!expandedTestimonials[testimonial.index];
-                return (
-                  <article
-                    key={`${testimonial.index}-${position}`}
-                    className={`testimonialCard ${position === 1 ? "testimonialFeatured" : ""}`}
-                  >
-                    <div className="testimonialBody">
-                      <h3 className="testimonialCompany">{testimonial.company}</h3>
-                      <p
-                        className={`testimonialQuote ${
-                          isExpanded ? "testimonialQuoteExpanded" : ""
-                        }`}
-                      >
-                        {testimonial.quote}
-                      </p>
-                      <button
-                        type="button"
-                        className="testimonialReadMore"
-                        onClick={() => toggleTestimonial(testimonial.index)}
-                      >
-                        {isExpanded ? "Read Less" : "Read More..."}
-                      </button>
-                    </div>
-                    <div className="testimonialFooter">
-                      <div className="testimonialLogoWrap">
-                        <img
-                          className="testimonialLogo"
-                          src={testimonial.logo.src}
-                          alt={`${testimonial.company} logo`}
-                          width={testimonial.logo.width}
-                          height={testimonial.logo.height}
-                          loading="lazy"
-                        />
-                      </div>
-                      <div className="testimonialWho">
-                        <span className="testimonialName">{testimonial.name}</span>
-                        <span className="testimonialRole">{testimonial.role}</span>
-                        <div className="testimonialStars">
-                          {Array.from({ length: testimonial.rating || 5 }).map((_, index) => (
-                            <StarIcon key={index} />
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </article>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Mobile-only: a real swipeable slider (native scroll + snap),
-              separate from the desktop sliding track above. */}
-          <div
-            className="testimonialsMobileTrack"
-            ref={mobileTrackRef}
-            onScroll={handleMobileTrackScroll}
-            onTouchStart={pauseMobileAutoplay}
-            onMouseDown={pauseMobileAutoplay}
-          >
-            {TESTIMONIALS.map((testimonial, index) => {
-              const isExpanded = !!expandedTestimonials[index];
-              return (
-                <article
-                  key={testimonial.company}
-                  className={`testimonialCard testimonialMobileCard ${
-                    index === testimonialStart ? "testimonialFeatured" : ""
-                  }`}
-                >
-                  <div className="testimonialBody">
-                    <h3 className="testimonialCompany">{testimonial.company}</h3>
-                    <p
-                      className={`testimonialQuote ${
-                        isExpanded ? "testimonialQuoteExpanded" : ""
-                      }`}
-                    >
-                      {testimonial.quote}
-                    </p>
-                    <button
-                      type="button"
-                      className="testimonialReadMore"
-                      onClick={() => toggleTestimonial(index)}
-                    >
-                      {isExpanded ? "Read Less" : "Read More..."}
-                    </button>
-                  </div>
-                  <div className="testimonialFooter">
-                    <div className="testimonialLogoWrap">
-                      <img
-                        className="testimonialLogo"
-                        src={testimonial.logo.src}
-                        alt={`${testimonial.company} logo`}
-                        width={testimonial.logo.width}
-                        height={testimonial.logo.height}
-                        loading="lazy"
-                      />
-                    </div>
-                    <div className="testimonialWho">
-                      <span className="testimonialName">{testimonial.name}</span>
-                      <span className="testimonialRole">{testimonial.role}</span>
-                      <div className="testimonialStars">
-                        {Array.from({ length: testimonial.rating || 5 }).map((_, starIndex) => (
-                          <StarIcon key={starIndex} />
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </article>
-              );
-            })}
-          </div>
-
-          <div className="testimonialsDots">
-            {TESTIMONIALS.map((testimonial, index) => (
-              <button
-                key={testimonial.company}
-                type="button"
-                aria-label={`Show testimonial from ${testimonial.company}`}
-                className={`testimonialsDot ${
-                  index === testimonialStart ? "testimonialsDotActive" : ""
-                }`}
-                onClick={() => goToTestimonial(index)}
-              />
-            ))}
-          </div>
+          <TestimonialsSlider testimonials={TESTIMONIALS} />
         </div>
       </section>
 
@@ -3724,14 +3311,14 @@ export default function LandingPage() {
           <div className="ctaRow">
             <div className="ctaCol reveal-on-scroll reveal-fade-right">
               <h2 className="ctaTitle">Ready to talk?</h2>
-              <a className="blueButton" href="#talk-to-sale">
+              <a className="goldButton" href="#talk-to-sale">
                 Talk to Sale
               </a>
             </div>
             <span className="ctaDivider" />
             <div className="ctaCol reveal-on-scroll reveal-fade-left">
               <h2 className="ctaTitle">Want to know more?</h2>
-              <a className="blueButton" href="#book-demo">
+              <a className="goldButton" href="#book-demo">
                 Book Demo
               </a>
             </div>

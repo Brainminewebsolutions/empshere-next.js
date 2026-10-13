@@ -1,11 +1,18 @@
 "use client";
 
 import { useState } from "react";
+import { Inter } from "next/font/google";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
+const fontInter = "font-[family-name:var(--font-inter)]";
 
 const PRODUCTS = [
   "emHRMS (Human Resource Management System)",
   "Contract Labour Management System (CLMS)",
-  "emPayroll Management Software",
+  "emPay Management Software",
   "emWorkforce (Attendance & Leave System)",
   "emVisit (Visitor Management System)",
   "emMeal (Canteen Management System)",
@@ -21,9 +28,8 @@ const COMPANY_SIZES = [
   "5,000+ employees",
 ];
 
-const fontGeist = "font-[family-name:var(--font-geist-sans)]";
-const inputClass = `w-full rounded-lg border border-slate-200 px-3.5 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:border-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue/20 transition-all ${fontGeist}`;
-const selectClass = `w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-900 focus:border-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue/20 transition-all ${fontGeist}`;
+const inputClass = `w-full rounded-[9px] border border-[#dddddd] bg-white px-3.5 py-2.5 text-sm text-[#1f1f1f] placeholder:text-black/35 hover:border-[#bcd8ee] focus:border-[#0077c2] focus:outline-none focus:ring-4 focus:ring-[#0077c2]/12 transition-all ${fontInter}`;
+const selectClass = `w-full rounded-[9px] border border-[#dddddd] bg-white px-3.5 py-2.5 text-sm text-[#1f1f1f] focus:border-[#0077c2] focus:outline-none focus:ring-4 focus:ring-[#0077c2]/12 transition-all ${fontInter}`;
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -57,14 +63,15 @@ export default function ContactForm() {
 
   if (submitted) {
     return (
-      <div className={`rounded-2xl border border-emerald-200 bg-emerald-50/80 p-8 sm:p-10 text-center shadow-sm ${fontGeist}`}>
-        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-emerald-100 text-emerald-600 mb-4">
+      <div className={`relative overflow-hidden rounded-2xl border border-[#EFB000]/30 bg-white p-8 sm:p-10 text-center shadow-[inset_0_0_0_1px_#e5e5e5,0_12px_28px_-12px_rgba(0,0,0,0.1)] ${fontInter}`}>
+        <span aria-hidden="true" className="absolute inset-x-0 top-0 h-1.5 bg-[#EFB000]" />
+        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#d1f4e3] text-[#0b8f63] mb-4 shadow-sm">
           <svg className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M5 13l4 4L19 7" />
           </svg>
         </div>
-        <h3 className="text-xl font-bold text-slate-900">Thank You for Reaching Out!</h3>
-        <p className="mt-2 text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
+        <h3 className="text-2xl font-bold text-[#1f1f1f]">Thank You for Reaching Out!</h3>
+        <p className="mt-2 text-sm text-black/60 max-w-md mx-auto leading-relaxed">
           We have received your inquiry. One of our enterprise consultants will contact you within 24 business hours to discuss your requirements.
         </p>
         <button
@@ -81,7 +88,7 @@ export default function ContactForm() {
             });
             setSubmitted(false);
           }}
-          className={`mt-6 inline-flex items-center justify-center rounded-lg bg-white border border-slate-300 px-6 py-2.5 text-sm font-semibold text-slate-800 shadow-sm transition-all hover:bg-slate-50 cursor-pointer ${fontGeist}`}
+          className={`mt-6 inline-flex items-center justify-center rounded-[9px] bg-[#EFB000] px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-[#d99e00] hover:shadow-[0_8px_18px_-4px_rgba(239,176,0,0.45)] cursor-pointer ${fontInter}`}
         >
           Send Another Message
         </button>
@@ -90,11 +97,17 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className={`rounded-2xl border border-black/5 bg-white p-6 sm:p-8 md:p-10 shadow-[0_15px_40px_-10px_rgba(0,0,0,0.07)] ${fontGeist}`}>
+    <form
+      onSubmit={handleSubmit}
+      className={`relative overflow-hidden rounded-2xl bg-white p-6 sm:p-8 md:p-10 shadow-[inset_0_0_0_1px_#e5e5e5,0_12px_28px_-12px_rgba(0,0,0,0.1)] ${inter.variable} ${fontInter}`}
+    >
+      <span aria-hidden="true" className="absolute inset-x-0 top-0 h-1.5 bg-[#EFB000]" />
       <div className="space-y-6">
         <div>
-          <h2 className="text-2xl font-bold text-slate-900 tracking-tight">Request a Demo or Callback</h2>
-          <p className="mt-1 text-sm text-slate-500 leading-normal">
+          <h2 className="text-2xl font-bold text-[#1f1f1f] tracking-tight sm:text-[1.65rem]">
+            Request a Demo or Callback
+          </h2>
+          <p className="mt-1 text-sm text-black/60 leading-normal">
             Fill in your details below and our team will get in touch shortly.
           </p>
         </div>
@@ -102,8 +115,8 @@ export default function ContactForm() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           {/* Full Name */}
           <div>
-            <label htmlFor="fullName" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5">
-              Full Name <span className="text-red-500">*</span>
+            <label htmlFor="fullName" className="block text-[13px] font-semibold text-[#1f1f1f] mb-1.5">
+              Full Name <span className="text-[#ef4444]">*</span>
             </label>
             <input
               type="text"
@@ -119,8 +132,8 @@ export default function ContactForm() {
 
           {/* Work Email */}
           <div>
-            <label htmlFor="email" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5">
-              Work Email <span className="text-red-500">*</span>
+            <label htmlFor="email" className="block text-[13px] font-semibold text-[#1f1f1f] mb-1.5">
+              Work Email <span className="text-[#ef4444]">*</span>
             </label>
             <input
               type="email"
@@ -136,8 +149,8 @@ export default function ContactForm() {
 
           {/* Phone Number */}
           <div>
-            <label htmlFor="phone" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5">
-              Mobile / Phone <span className="text-red-500">*</span>
+            <label htmlFor="phone" className="block text-[13px] font-semibold text-[#1f1f1f] mb-1.5">
+              Mobile / Phone <span className="text-[#ef4444]">*</span>
             </label>
             <input
               type="tel"
@@ -153,8 +166,8 @@ export default function ContactForm() {
 
           {/* Company Name */}
           <div>
-            <label htmlFor="company" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5">
-              Company Name <span className="text-red-500">*</span>
+            <label htmlFor="company" className="block text-[13px] font-semibold text-[#1f1f1f] mb-1.5">
+              Company Name <span className="text-[#ef4444]">*</span>
             </label>
             <input
               type="text"
@@ -172,8 +185,8 @@ export default function ContactForm() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           {/* Product of Interest */}
           <div>
-            <label htmlFor="product" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5">
-              Product / Solution <span className="text-red-500">*</span>
+            <label htmlFor="product" className="block text-[13px] font-semibold text-[#1f1f1f] mb-1.5">
+              Product / Solution <span className="text-[#ef4444]">*</span>
             </label>
             <select
               id="product"
@@ -193,7 +206,7 @@ export default function ContactForm() {
 
           {/* Company Size */}
           <div>
-            <label htmlFor="companySize" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5">
+            <label htmlFor="companySize" className="block text-[13px] font-semibold text-[#1f1f1f] mb-1.5">
               Workforce / Employee Size
             </label>
             <select
@@ -215,7 +228,7 @@ export default function ContactForm() {
 
         {/* Requirements / Message */}
         <div>
-          <label htmlFor="message" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5">
+          <label htmlFor="message" className="block text-[13px] font-semibold text-[#1f1f1f] mb-1.5">
             Your Requirements / Questions
           </label>
           <textarea
@@ -225,7 +238,7 @@ export default function ContactForm() {
             value={formData.message}
             onChange={handleChange}
             placeholder="Tell us about your organization's requirements, current challenges, or preferred demo timings..."
-            className={`w-full rounded-lg border border-slate-200 px-3.5 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:border-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue/20 transition-all resize-y ${fontGeist}`}
+            className={`w-full rounded-[9px] border border-[#dddddd] px-3.5 py-2.5 text-sm text-[#1f1f1f] placeholder:text-black/35 hover:border-[#bcd8ee] focus:border-[#0077c2] focus:outline-none focus:ring-4 focus:ring-[#0077c2]/12 transition-all resize-y ${fontInter}`}
           />
         </div>
 
@@ -234,11 +247,11 @@ export default function ContactForm() {
           <button
             type="submit"
             disabled={loading}
-            className={`inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-lg bg-brand-gold px-8 py-3.5 text-base font-semibold text-slate-950 transition-all duration-200 hover:bg-brand-gold-dark hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold disabled:opacity-70 disabled:cursor-not-allowed cursor-pointer ${fontGeist}`}
+            className={`group/btn inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-[9px] bg-[#EFB000] px-8 py-3.5 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#d99e00] hover:shadow-[0_8px_18px_-4px_rgba(239,176,0,0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EFB000] disabled:opacity-70 disabled:cursor-not-allowed cursor-pointer ${fontInter}`}
           >
             {loading ? (
               <>
-                <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-slate-950" fill="none" viewBox="0 0 24 24">
+                <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
                 </svg>
@@ -247,13 +260,13 @@ export default function ContactForm() {
             ) : (
               <>
                 Submit Inquiry
-                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="h-4 w-4 transition-transform duration-200 group-hover/btn:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
               </>
             )}
           </button>
-          <p className="mt-3 text-xs text-slate-400">
+          <p className="mt-3 text-xs text-black/50">
             We value your privacy. Your information is kept strictly confidential and never shared with third parties.
           </p>
         </div>

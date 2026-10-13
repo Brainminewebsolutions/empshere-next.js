@@ -5,6 +5,7 @@ import { Instrument_Sans, Inter } from "next/font/google";
 import ScrollReveal from "@/components/ScrollReveal";
 import BackToTop from "@/components/BackToTop";
 import FlagshipProducts from "@/components/FlagshipProducts";
+import FeatureCard from "@/components/FeatureCard";
 import DemoRequestForm from "@/components/DemoRequestForm";
 import StopwatchCounter from "@/components/StopwatchCounter";
 import HeadcountHeroVector from "@/components/HeadcountHeroVector";
@@ -62,9 +63,9 @@ const fontInter = "font-[family-name:var(--font-inter)]";
    -------------------------------------------------------------------- */
 
 const goldCard =
-  "bg-white rounded-xl shadow-[inset_0_0_0_0.789px_#f8bb18,0px_0px_15.775px_-7.099px_rgba(0,0,0,0.25)]";
+  "bg-white rounded-xl shadow-[inset_0_0_0_0.789px_#EFB000,0px_3px_12px_-4px_rgba(0,0,0,0.07)]";
 const softCard =
-  "rounded-[11px] shadow-[inset_0_0_0_0.601px_#dddddd,0px_0px_12.029px_-5.413px_rgba(0,0,0,0.25)]";
+  "rounded-[11px] shadow-[inset_0_0_0_0.601px_#e5e5e5,0px_2px_8px_-2px_rgba(0,0,0,0.05)]";
 const mutedText = "text-[rgba(0,0,0,0.64)]";
 
 const ease = "ease-[cubic-bezier(0.16,1,0.3,1)]";
@@ -75,12 +76,12 @@ const revealFromRight = "reveal-on-scroll reveal-fade-left";
 const revealZoom = "reveal-on-scroll reveal-zoom-in";
 const stagger = (index, step = 120) => ({ transitionDelay: `${index * step}ms` });
 
-const liftGold = `group/card ${motion} hover:-translate-y-1 hover:shadow-[inset_0_0_0_1.5px_#f8bb18,0px_10px_24px_-6px_rgba(0,0,0,0.18)]`;
+const liftGold = `group/card ${motion} hover:-translate-y-1 hover:shadow-[inset_0_0_0_1.5px_#EFB000,0px_8px_20px_-6px_rgba(239,176,0,0.2)]`;
 const iconPop = `transition-[scale] duration-300 ${ease} group-hover/card:scale-110`;
 const arrowNudge = `transition-[translate] duration-200 ${ease} group-hover/btn:translate-x-[3px]`;
 
-const primaryButton = `group/btn inline-flex items-center justify-center gap-2 rounded-[9px] bg-[#0077c2] px-6 py-3 ${fontInter} font-semibold text-white ${motion} hover:-translate-y-0.5 hover:bg-[#0061af] hover:shadow-[0_8px_18px_-4px_rgba(0,119,194,0.45)]`;
-const outlineButton = `group/btn inline-flex items-center justify-center gap-2 rounded-[9px] bg-white px-6 py-3 ${fontInter} font-semibold text-[#0077c2] shadow-[inset_0_0_0_1.5px_#0077c2] ${motion} hover:-translate-y-0.5 hover:bg-[#eef6fd]`;
+const primaryButton = `group/btn inline-flex items-center justify-center gap-2 rounded-[9px] bg-[#EFB000] px-6 py-3 ${fontInter} font-semibold text-white ${motion} hover:-translate-y-0.5 hover:bg-[#d99e00] hover:shadow-[0_8px_18px_-4px_rgba(239,176,0,0.45)]`;
+const outlineButton = `group/btn inline-flex items-center justify-center gap-2 rounded-[9px] bg-white px-6 py-3 ${fontInter} font-semibold text-[#EFB000] shadow-[inset_0_0_0_1.5px_#EFB000] ${motion} hover:-translate-y-0.5 hover:bg-[#fffdf5]`;
 
 /* --------------------------------------------------------------------
    Icons
@@ -232,14 +233,14 @@ const jsonLd = {
 
 export default function HeadcountManagementSoftwarePage() {
   return (
-    <main className={`${instrumentSans.variable} ${inter.variable} hrms-page payroll-page hc-page w-full overflow-x-clip bg-white font-sans text-[#4c4c4c]`}>
+    <main className={`${instrumentSans.variable} ${inter.variable} hrms-page payroll-page hc-page w-full overflow-x-clip bg-[#FFFFFA] font-sans text-[#4c4c4c]`}>
       <ScrollReveal root=".hc-page" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
 
       {/* Hero */}
       <section
         aria-labelledby="hc-hero-heading"
-        className="relative flex flex-col justify-center bg-[radial-gradient(circle_at_0%_20%,rgba(0,119,194,0.14),transparent_32%),radial-gradient(circle_at_55%_0%,rgba(248,187,24,0.25),transparent_35%),radial-gradient(circle_at_100%_80%,rgba(248,187,24,0.3),transparent_30%),radial-gradient(circle_at_30%_100%,rgba(15,184,128,0.1),transparent_25%)] px-4 py-8 md:px-12 lg:min-h-[calc(100vh-88px)] lg:py-6"
+        className="relative flex flex-col justify-center bg-[#FFFFFA] px-4 py-8 md:px-12 lg:min-h-[calc(100vh-88px)] lg:py-6"
       >
         <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-14">
           <header className={`${revealFromLeft} flex flex-col gap-5 lg:max-w-xl`}>
@@ -281,7 +282,7 @@ export default function HeadcountManagementSoftwarePage() {
       </section>
 
       {/* emCount Benefits */}
-      <section aria-labelledby="benefits-heading" className="px-4 py-14 md:px-12 md:py-20">
+      <section aria-labelledby="benefits-heading" className="bg-[#FFFFFA] px-4 py-14 md:px-12 md:py-20">
         <div className="mx-auto flex max-w-7xl flex-col gap-10">
           <SectionHeader
             id="benefits-heading"
@@ -293,18 +294,22 @@ export default function HeadcountManagementSoftwarePage() {
           />
           <ul className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {benefits.map((item, index) => (
-              <li key={item.title} style={stagger(index)} className={`${revealUp} ${goldCard} ${liftGold} flex flex-col items-center gap-4 px-6 pb-8 pt-8 text-center`}>
-                <IconTile name={item.icon} className="h-20 w-20 rounded-2xl" iconClassName="h-10 w-10" />
-                <h3 className="text-xl font-semibold text-[#1f1f1f]">{item.title}</h3>
-                <p className={`text-[15px] leading-[24px] ${mutedText}`}>{item.text}</p>
-              </li>
+              <FeatureCard
+                key={item.title}
+                index={index}
+                className={revealUp}
+                style={stagger(index)}
+                icon={<LineIcon name={item.icon} />}
+                title={item.title}
+                text={item.text}
+              />
             ))}
           </ul>
         </div>
       </section>
 
       {/* 15,00,000 workers banner */}
-      <section aria-labelledby="workers-heading" className="px-4 md:px-12">
+      <section aria-labelledby="workers-heading" className="bg-[#FFFFFA] px-4 md:px-12">
         <div
           className={`${revealZoom} relative mx-auto flex max-w-7xl flex-col items-center gap-2 overflow-hidden rounded-2xl bg-[#efb000] px-6 py-10 text-center shadow-[0_24px_50px_-24px_rgba(239,176,0,0.8)] md:py-14`}
         >
@@ -317,7 +322,7 @@ export default function HeadcountManagementSoftwarePage() {
       </section>
 
       {/* Why emCount? — CSS-only tabs (hidden radios + .hrms-showcase rules in globals.css) */}
-      <section id="hc-features" aria-labelledby="features-heading" className="scroll-mt-24 px-4 py-14 md:px-12 md:py-20">
+      <section id="hc-features" aria-labelledby="features-heading" className="scroll-mt-24 bg-[#FFFFFA] px-4 py-14 md:px-12 md:py-20">
         <div className="mx-auto flex max-w-7xl flex-col gap-8">
           <SectionHeader
             id="features-heading"
@@ -348,7 +353,7 @@ export default function HeadcountManagementSoftwarePage() {
 
             {featureTabs.map((tab, i) => (
               <div key={tab.id} data-tab-item={i} className="hrms-tab-swap">
-                <div className="flex flex-col gap-6 rounded-2xl bg-[#eef4fd] p-4 shadow-[inset_0_0_0_0.744px_#dddddd,0px_0px_14.874px_-6.693px_rgba(0,0,0,0.25)] md:p-8 lg:flex-row lg:items-center lg:gap-10">
+                <div className="flex flex-col gap-6 rounded-2xl bg-[#FDF6E6] p-4 shadow-[inset_0_0_0_0.744px_#dddddd,0px_0px_14.874px_-6.693px_rgba(0,0,0,0.25)] md:p-8 lg:flex-row lg:items-center lg:gap-10">
                   <div className="overflow-hidden rounded-[14px] bg-white lg:w-[52%]">
                     <Image src={tab.image} alt={tab.imageAlt} className="h-auto w-full" sizes="(min-width: 1024px) 40vw, 100vw" />
                   </div>
@@ -374,10 +379,8 @@ export default function HeadcountManagementSoftwarePage() {
       {/* Why should you care? — ILO numbers + demo form */}
       <section
         aria-labelledby="care-heading"
-        className="relative overflow-hidden bg-[#fdf6e6] bg-[radial-gradient(circle_at_10%_15%,rgba(248,187,24,0.3),transparent_28%),radial-gradient(circle_at_95%_75%,rgba(248,187,24,0.3),transparent_28%)] px-4 py-14 md:px-12 md:py-20"
+        className="relative overflow-hidden bg-[#FFFFFA] px-4 py-14 md:px-12 md:py-20"
       >
-        <div aria-hidden="true" className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-[#f8bb18]/20 blur-3xl" />
-        <div aria-hidden="true" className="pointer-events-none absolute -bottom-32 -left-24 h-80 w-80 rounded-full bg-[#f8bb18]/15 blur-3xl" />
         <div className="relative mx-auto flex max-w-7xl flex-col items-center gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-14">
           <div className={`${revealFromLeft} flex w-full flex-col gap-8 lg:max-w-xl`}>
             <SectionHeader
@@ -408,7 +411,6 @@ export default function HeadcountManagementSoftwarePage() {
             </ul>
           </div>
           <div className={`${revealFromRight} relative w-full max-w-md lg:w-[42%] lg:max-w-[450px]`}>
-            <div aria-hidden="true" className="pointer-events-none absolute -inset-4 rounded-3xl bg-gradient-to-tr from-[#f8bb18]/30 via-[#fee6b1]/20 to-transparent blur-2xl -z-10" />
             <DemoRequestForm
               product="Headcount Management Software (emCount)"
               title="Start Now"
@@ -419,10 +421,10 @@ export default function HeadcountManagementSoftwarePage() {
       </section>
 
       {/* Our Flagship Products */}
-      <FlagshipProducts />
+      <FlagshipProducts className="bg-[#FFFFFA]" />
 
       {/* Contact CTA — same as the other product pages */}
-      <section aria-label="Contact emSphere" className="bg-white px-6 py-12 min-[769px]:py-[88px]">
+      <section aria-label="Contact emSphere" className="bg-[#FFFFFA] px-6 py-12 min-[769px]:py-[88px]">
         <div className="mx-auto flex max-w-275 flex-col items-center justify-center gap-9 text-black min-[1081px]:flex-row min-[1081px]:gap-20">
           {[
             { title: "Ready to talk?", cta: "Talk to Sales", reveal: revealFromLeft },
@@ -436,7 +438,7 @@ export default function HeadcountManagementSoftwarePage() {
                 </h2>
                 <Link
                   href="/contact-us"
-                  className={`group/btn inline-flex w-full max-w-65 items-center justify-center rounded-lg bg-[#0077c2] px-6 py-[13px] ${fontInter} text-[15px] font-semibold tracking-[0.02em] text-white ${motion} hover:-translate-y-0.5 hover:bg-[#0061af] hover:shadow-[0_8px_18px_-4px_rgba(0,119,194,0.45)] active:translate-y-0 min-[769px]:w-auto min-[769px]:max-w-none min-[769px]:min-w-[145px] min-[769px]:px-[30px]`}
+                  className={`group/btn inline-flex w-full max-w-65 items-center justify-center rounded-lg bg-[#EFB000] px-6 py-[13px] ${fontInter} text-[15px] font-semibold tracking-[0.02em] text-white ${motion} hover:-translate-y-0.5 hover:bg-[#d99e00] hover:shadow-[0_8px_18px_-4px_rgba(239,176,0,0.45)] active:translate-y-0 min-[769px]:w-auto min-[769px]:max-w-none min-[769px]:min-w-[145px] min-[769px]:px-[30px]`}
                 >
                   {col.cta}
                 </Link>

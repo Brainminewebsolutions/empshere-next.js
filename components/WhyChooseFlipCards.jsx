@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowsOut, Cloud, CursorClick, Headset, ShieldCheck, SlidersHorizontal, Trophy } from "@phosphor-icons/react/ssr";
+import { ArrowsClockwise, ArrowsOut, Cloud, CursorClick, GearSix, Headset, PlugsConnected, ShieldCheck, SlidersHorizontal, Stack, Trophy } from "@phosphor-icons/react/ssr";
 
 // Section icons from Phosphor (https://phosphoricons.com), white on the #EFB000 tile.
 const ICONS = {
@@ -12,6 +12,9 @@ const ICONS = {
   headset: Headset,
   shield: ShieldCheck,
   trophy: Trophy,
+  layers: Stack,
+  integration: PlugsConnected,
+  automation: GearSix,
 };
 
 export default function WhyChooseFlipCards({ reasons }) {
@@ -30,7 +33,7 @@ export default function WhyChooseFlipCards({ reasons }) {
         return (
           <li
             key={item.title}
-            className="reveal-on-scroll reveal-fade-up perspective-1000 group w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)] h-[310px] sm:h-[320px] cursor-pointer"
+            className="reveal-on-scroll reveal-fade-up perspective-1000 group w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)] h-[270px] sm:h-[320px] cursor-pointer"
             style={{ transitionDelay: `${(index % 4) * 80}ms` }}
             onClick={() => handleToggle(index)}
             onMouseLeave={() => setFlippedIndex(null)}
@@ -57,6 +60,11 @@ export default function WhyChooseFlipCards({ reasons }) {
                 <h3 className="mt-5 text-lg font-bold text-[#1f1f1f] leading-snug">
                   {item.title}
                 </h3>
+                {/* Phones can't hover, so tell them the card flips. */}
+                <span className="mt-3 inline-flex items-center gap-1.5 text-[12.5px] font-semibold text-[#b07d00] sm:hidden">
+                  Tap to see details
+                  <ArrowsClockwise aria-hidden="true" className="h-3.5 w-3.5" />
+                </span>
               </div>
 
               {/* Back Face: Title and remaining information */}

@@ -5,6 +5,7 @@ import { Instrument_Sans, Inter } from "next/font/google";
 import ScrollReveal from "@/components/ScrollReveal";
 import BackToTop from "@/components/BackToTop";
 import FlagshipProducts from "@/components/FlagshipProducts";
+import FeatureCard from "@/components/FeatureCard";
 import { ArrowsClockwise, BellRinging, CalendarCheck, ChartLineUp, ChartPieSlice, ClipboardText, Clock, Desktop, DeviceMobile, EnvelopeSimple, Eye, FileText, GearSix, HandCoins, HandTap, Headset, IdentificationCard, Lightbulb, ListMagnifyingGlass, MapPin, Medal, Notepad, SealCheck, ShieldCheck, SlidersHorizontal, Stack, Stamp, UserCheck, UsersFour, UsersThree } from "@phosphor-icons/react/ssr";
 
 /* --------------------------------------------------------------------
@@ -95,11 +96,11 @@ const fontInter = "font-[family-name:var(--font-inter)]";
    -------------------------------------------------------------------- */
 
 const goldCard =
-  "bg-white rounded-xl shadow-[inset_0_0_0_0.789px_#f8bb18,0px_0px_15.775px_-7.099px_rgba(0,0,0,0.25)]";
+  "bg-white rounded-xl shadow-[inset_0_0_0_0.789px_#EFB000,0px_3px_12px_-4px_rgba(0,0,0,0.07)]";
 const greyCard =
-  "bg-white rounded-2xl shadow-[inset_0_0_0_0.814px_#dddddd,0px_0px_16.279px_-7.326px_rgba(0,0,0,0.25)]";
+  "bg-white rounded-2xl shadow-[inset_0_0_0_0.814px_#e5e5e5,0px_3px_12px_-4px_rgba(0,0,0,0.06)]";
 const softCard =
-  "rounded-[11px] shadow-[inset_0_0_0_0.601px_#dddddd,0px_0px_12.029px_-5.413px_rgba(0,0,0,0.25)]";
+  "rounded-[11px] shadow-[inset_0_0_0_0.601px_#e5e5e5,0px_2px_8px_-2px_rgba(0,0,0,0.05)]";
 const mutedText = "text-[rgba(0,0,0,0.64)]";
 
 /* --------------------------------------------------------------------
@@ -118,18 +119,19 @@ const revealZoom = "reveal-on-scroll reveal-zoom-in";
 const stagger = (index, step = 120) => ({ transitionDelay: `${index * step}ms` });
 
 // Card lift on hover, one per surface so each keeps its own outline colour.
-const liftGold = `group/card ${motion} hover:-translate-y-1 hover:shadow-[inset_0_0_0_1.5px_#f8bb18,0px_10px_24px_-6px_rgba(0,0,0,0.18)]`;
-const liftGrey = `group/card ${motion} hover:-translate-y-1.5 hover:shadow-[inset_0_0_0_0.814px_#dddddd,0px_14px_28px_-6px_rgba(0,0,0,0.18)]`;
+const liftGold = `group/card ${motion} hover:-translate-y-1 hover:shadow-[inset_0_0_0_1.5px_#EFB000,0px_8px_20px_-6px_rgba(239,176,0,0.2)]`;
+const liftGrey = `group/card ${motion} hover:-translate-y-1.5 hover:shadow-[inset_0_0_0_0.814px_#dddddd,0px_10px_22px_-6px_rgba(0,0,0,0.1)]`;
 // Panels hold their own hover cards, so they use a separate group name —
 // hovering a panel zooms its image without popping every icon inside it.
-const liftPanel = `group/panel ${motion} hover:-translate-y-1 hover:shadow-[inset_0_0_0_0.601px_#dddddd,0px_14px_28px_-8px_rgba(0,0,0,0.18)]`;
+const liftPanel = `group/panel ${motion} hover:-translate-y-1 hover:shadow-[inset_0_0_0_0.601px_#dddddd,0px_10px_22px_-6px_rgba(0,0,0,0.1)]`;
 const iconPop =`transition-[scale] duration-300 ${ease} group-hover/card:scale-110`;
 const imageZoom = `transition-[scale] duration-500 ${ease} group-hover/card:scale-[1.04]`;
 const panelImageZoom = `transition-[scale] duration-500 ${ease} group-hover/panel:scale-[1.04]`;
 const arrowNudge = `transition-[translate] duration-200 ${ease} group-hover/btn:translate-x-[3px]`;
 
-const primaryButton = `group/btn inline-flex items-center justify-center gap-2 rounded-[9px] bg-[#0077c2] px-6 py-3 ${fontInter} font-semibold text-white ${motion} hover:-translate-y-0.5 hover:bg-[#0061af] hover:shadow-[0_8px_18px_-4px_rgba(0,119,194,0.45)]`;
-const learnMoreButton = `group/btn flex items-center justify-center gap-2 rounded-[5px] bg-[#3b82f6] min-h-11 py-3 text-xs font-medium tracking-wide text-white shadow-[inset_0_0_0_1px_#b3b3b3] ${motion} hover:-translate-y-0.5 hover:bg-[#2563eb] hover:shadow-[inset_0_0_0_1px_#b3b3b3,0_8px_18px_-4px_rgba(59,130,246,0.45)]`;
+const primaryButton = `group/btn inline-flex items-center justify-center gap-2 rounded-[9px] bg-[#EFB000] px-6 py-3 ${fontInter} font-semibold text-white ${motion} hover:-translate-y-0.5 hover:bg-[#d99e00] hover:shadow-[0_8px_18px_-4px_rgba(239,176,0,0.45)]`;
+const learnMoreButton = `group/btn flex items-center justify-center gap-2 rounded-[5px] bg-[#EFB000] min-h-11 py-3 text-xs font-medium tracking-wide text-white shadow-[inset_0_0_0_1px_#b3b3b3] ${motion} hover:-translate-y-0.5 hover:bg-[#d99e00] hover:shadow-[inset_0_0_0_1px_#b3b3b3,0_8px_18px_-4px_rgba(239,176,0,0.45)]`;
+const demoButton = `group/btn flex items-center justify-center gap-2 rounded-[5px] bg-[#EFB000] min-h-12 py-3.5 text-base font-semibold tracking-wide text-white shadow-[inset_0_0_0_1px_#b3b3b3] ${motion} hover:-translate-y-0.5 hover:bg-[#d99e00] hover:shadow-[inset_0_0_0_1px_#b3b3b3,0_8px_18px_-4px_rgba(239,176,0,0.45)]`;
 
 /* --------------------------------------------------------------------
    Icons
@@ -241,7 +243,7 @@ function ShowcaseHeader({ eyebrow, title, titleBreak }) {
 function ShowcasePanel({ bg, intro, cards, image, imageAlt }) {
   return (
     <div
-      className="flex flex-col gap-6 rounded-2xl p-4 shadow-[inset_0_0_0_0.744px_#dddddd,0px_0px_14.874px_-6.693px_rgba(0,0,0,0.25)] md:p-8 lg:flex-row lg:items-center lg:p-10"
+      className="flex flex-col gap-6 rounded-2xl p-4 shadow-[inset_0_0_0_0.744px_#dddddd,0px_6px_18px_-6px_rgba(0,0,0,0.08)] md:p-8 lg:flex-row lg:items-center lg:p-10"
       style={{ background: bg }}
     >
       <div className="flex flex-col gap-4 lg:w-1/2">
@@ -340,25 +342,25 @@ const attendanceCards = [
 
 const showcaseTabs = [
   {
-    id: "empayroll",
-    label: "emPayRoll",
-    eyebrow: "emPayRoll",
+    id: "empay",
+    label: "emPay",
+    eyebrow: "emPay",
     title: "Easy to use Payroll Software",
     titleBreak: "for enterprise HR teams",
     bg: "#fdf6e6",
     intro:
       "A highly accountable HR team needs a Hassle Free, accurate Payroll system to ensure accurate salary calculation adhering to all statutory compliance.",
     image: payrollImg,
-    imageAlt: "Laptop on a desk showing the emPayRoll dashboard with total payroll, recent payroll runs and a 100% compliance status",
+    imageAlt: "Laptop on a desk showing the emPay dashboard with total payroll, recent payroll runs and a 100% compliance status",
     cards: [
       {
         title: "Pay on time",
-        text: "Salary Calculation, computation, monthly reconciliation, arrears, claims , reimbursements, and loans all at one place with auto payslip generation. Save time and be accurate with emPayroll.",
+        text: "Salary Calculation, computation, monthly reconciliation, arrears, claims , reimbursements, and loans all at one place with auto payslip generation. Save time and be accurate with emPay.",
         icon: HandCoins,
       },
       {
         title: "Compliances",
-        text: "From PF, ESIc to PT and TDS all covered in one module. Be on the right side of compliance with emPayroll.",
+        text: "From PF, ESIc to PT and TDS all covered in one module. Be on the right side of compliance with emPay.",
         icon: ShieldCheck,
       },
     ],
@@ -369,7 +371,7 @@ const showcaseTabs = [
     eyebrow: "emMobile ESS App",
     title: "Help employees self-serve",
     titleBreak: "anywhere anytime",
-    bg: "#eef6fd",
+    bg: "#FDF6E6",
     intro: "A quick access mobile app for today’s millennials to access and update information on the go.",
     image: mobileAppImg,
     imageAlt: "Employee holding a smartphone showing the emMobile ESS app home screen with attendance, leave, payslip, personal info and documents tiles",
@@ -556,13 +558,13 @@ const faqs = [
 
 export default function HumanResourceManagementSystemPage() {
   return (
-    <main className={`${instrumentSans.variable} ${inter.variable} hrms-page w-full overflow-x-hidden bg-white font-sans text-[#4c4c4c]`}>
+    <main className={`${instrumentSans.variable} ${inter.variable} hrms-page w-full overflow-x-hidden bg-[#FFFFFA] font-sans text-[#4c4c4c]`}>
       <ScrollReveal root=".hrms-page" />
 
       {/* Hero */}
       <section
         aria-labelledby="hrms-hero-heading"
-        className="bg-[radial-gradient(circle_at_0%_60%,rgba(248,187,24,0.3),transparent_30%),radial-gradient(circle_at_50%_0%,rgba(248,187,24,0.25),transparent_35%),radial-gradient(circle_at_40%_75%,rgba(239,68,68,0.12),transparent_20%),radial-gradient(circle_at_65%_65%,rgba(15,184,128,0.12),transparent_20%),radial-gradient(circle_at_100%_75%,rgba(248,187,24,0.3),transparent_25%)] px-4 py-10 md:px-12 md:py-16"
+        className="bg-[#FFFFFA] px-4 py-10 md:px-12 md:py-16"
       >
         <div className="mx-auto flex max-w-7xl flex-col gap-10">
           <div className="flex flex-col items-center gap-8 lg:flex-row lg:justify-between lg:gap-12">
@@ -593,22 +595,23 @@ export default function HumanResourceManagementSystemPage() {
 
           <ul className="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-5">
             {heroFeatures.map((feature, index) => (
-              <li
+              <FeatureCard
                 key={feature.title}
+                index={index}
+                className={revealUp}
                 style={stagger(index)}
-                className={`${revealUp} group/card flex flex-col items-center gap-3 rounded-lg bg-white/10 px-5 py-5 text-center sm:px-4 lg:px-6 shadow-[inset_0_0_0_1px_#acacac] backdrop-blur-[10px] ${motion} hover:-translate-y-1 hover:shadow-[inset_0_0_0_1px_#acacac,0px_16px_36px_-9px_rgba(0,0,0,0.22)]`}
-              >
-                <IconTile icon={feature.icon} className="h-[4.375rem] w-[4.375rem] rounded-2xl" iconClassName="h-10 w-10" />
-                <h2 className="text-lg font-semibold sm:text-base lg:text-lg">{feature.title}</h2>
-                <p className={`text-base font-medium sm:text-sm lg:text-base leading-[25px] ${mutedText}`}>{feature.text}</p>
-              </li>
+                icon={<feature.icon weight="fill" />}
+                titleAs="h2"
+                title={feature.title}
+                text={feature.text}
+              />
             ))}
           </ul>
         </div>
       </section>
 
       {/* emRecruit / emWelcome / employee Information Management */}
-      <section aria-label="Recruitment, onboarding and employee information" className="px-4 py-10 md:px-12">
+      <section aria-label="Recruitment, onboarding and employee information" className="bg-[#FFFFFA] px-4 py-10 md:px-12">
         <div className="mx-auto flex max-w-7xl flex-col gap-6 md:gap-11">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-14">
             <article className={`${revealFromLeft} ${softCard} ${liftPanel} flex flex-col gap-5 bg-[rgba(249,241,230,0.5)] p-4 md:p-6`}>
@@ -638,14 +641,14 @@ export default function HumanResourceManagementSystemPage() {
                 />
                 <MiniFeature
                   icon={UsersThree}
-                  bg="#e5fff4"
+                  bg="#FFF5D9"
                   title="Vendor Selection"
                   text="Simplifies hiring the best agencies and starts a smooth vendor relation."
                 />
               </div>
             </article>
 
-            <article className={`${revealFromRight} ${softCard} ${liftPanel} flex flex-col gap-5 bg-[rgba(235,243,255,0.5)] p-4 md:p-6`}>
+            <article className={`${revealFromRight} ${softCard} ${liftPanel} flex flex-col gap-5 bg-[#F9F1E680] p-4 md:p-6`}>
               <div className={`${softCard} overflow-hidden bg-white`}>
                 <Image
                   src={welcomeImg}
@@ -672,7 +675,7 @@ export default function HumanResourceManagementSystemPage() {
                 />
                 <MiniFeature
                   icon={ClipboardText}
-                  bg="#e5fff4"
+                  bg="#FFF5D9"
                   title="Easy Access"
                   text="Easy access to all information and next steps for the new member."
                 />
@@ -680,7 +683,7 @@ export default function HumanResourceManagementSystemPage() {
             </article>
           </div>
 
-          <article className={`${revealUp} ${softCard} ${liftPanel} flex flex-col gap-6 bg-[rgba(255,226,228,0.3)] p-4 md:p-6 lg:flex-row lg:items-center`}>
+          <article className={`${revealUp} ${softCard} ${liftPanel} flex flex-col gap-6 bg-[#F9F1E680] p-4 md:p-6 lg:flex-row lg:items-center`}>
             <div className={`${softCard} overflow-hidden bg-white lg:w-[45%] lg:shrink-0`}>
               <Image
                 src={employeeInfoImg}
@@ -708,7 +711,7 @@ export default function HumanResourceManagementSystemPage() {
                 />
                 <MiniFeature
                   icon={UsersFour}
-                  bg="#e5fff4"
+                  bg="#FFF5D9"
                   title="Retain the best"
                   text="Promotion and rating history to know your best pool of employees."
                 />
@@ -719,7 +722,7 @@ export default function HumanResourceManagementSystemPage() {
       </section>
 
       {/* emWorkforce Attendance and Leave Management */}
-      <section aria-labelledby="attendance-heading" className="bg-[#fcfcfc] px-4 py-10 md:px-12 md:py-16">
+      <section aria-labelledby="attendance-heading" className="bg-[#FFFFFA] px-4 py-10 md:px-12 md:py-16">
         <div className="mx-auto flex max-w-7xl flex-col gap-8">
           <header className={`${revealUp} mx-auto flex max-w-3xl flex-col gap-3 text-center`}>
             <h2 id="attendance-heading" className="text-2xl font-bold md:text-3xl">
@@ -749,20 +752,20 @@ export default function HumanResourceManagementSystemPage() {
                     {attendanceChips.map((chip) => (
                       <li
                         key={chip.label}
-                        className={`group/card flex min-h-16 items-center gap-2.5 rounded-[5px] bg-white px-2.5 py-3 text-xs font-medium leading-[17.5px] text-black shadow-[inset_0_0_0_0.84px_#959595,0px_0px_16.803px_-7.561px_rgba(0,0,0,0.25)] md:text-sm ${motion} hover:-translate-y-0.5 hover:shadow-[inset_0_0_0_0.84px_#959595,0px_8px_18px_-6px_rgba(0,0,0,0.3)]`}
+                        className={`group/card flex min-h-16 items-center gap-2.5 rounded-[5px] bg-white px-2.5 py-3 text-xs font-medium leading-[17.5px] text-black shadow-[inset_0_0_0_0.84px_#dcdcdc,0px_2px_8px_-2px_rgba(0,0,0,0.06)] md:text-sm ${motion} hover:-translate-y-0.5 hover:shadow-[inset_0_0_0_0.84px_#EFB000,0px_6px_14px_-4px_rgba(0,0,0,0.1)]`}
                       >
                         <IconTile icon={chip.icon} className="h-9 w-9 rounded-md" iconClassName="h-5 w-5" />
                         <span>{chip.label}</span>
                       </li>
                     ))}
                   </ul>
-                  <p className="flex items-center justify-center gap-2 rounded-[10px] bg-[#0f162a] px-3 py-4 text-sm font-medium text-white shadow-[inset_0_0_0_0.814px_#dddddd,0px_0px_16.279px_-7.326px_rgba(0,0,0,0.25)]">
+                  <p className="flex items-center justify-center gap-2 rounded-[10px] bg-[#0f162a] px-3 py-4 text-sm font-medium text-white shadow-[0px_3px_12px_-4px_rgba(0,0,0,0.12)]">
                     <IconTile icon={MapPin} className="h-7 w-7 rounded-md" iconClassName="h-4 w-4" />
                     Location based Holidays
                   </p>
                 </div>
 
-                <div className="flex flex-col gap-3 rounded-[10px] bg-[#eef3f8] p-3.5 shadow-[inset_0_0_0_0.814px_#dddddd,0px_0px_16.279px_-7.326px_rgba(0,0,0,0.25)] sm:flex-row sm:items-center sm:gap-4">
+                <div className="flex flex-col gap-3 rounded-[10px] bg-[#FDF6E6] p-3.5 shadow-[inset_0_0_0_0.814px_#dcdcdc,0px_3px_12px_-4px_rgba(0,0,0,0.08)] sm:flex-row sm:items-center sm:gap-4">
                   <span aria-hidden="true" className="flex shrink-0 -space-x-1.5">
                     <span className="h-8 w-8 rounded-full bg-[#101f37]" />
                     <span className="h-8 w-8 rounded-full bg-[#1e7efe]" />
@@ -815,8 +818,8 @@ export default function HumanResourceManagementSystemPage() {
         </div>
       </section>
 
-      {/* emPayRoll / emMobile ESS App / emPerformance — tabbed */}
-      <section aria-label="emPayRoll, emMobile ESS App and emPerformance" className="px-4 py-10 md:px-12 md:py-16">
+      {/* emPay / emMobile ESS App / emPerformance — tabbed */}
+      <section aria-label="emPay, emMobile ESS App and emPerformance" className="bg-[#FFFFFA] px-4 py-10 md:px-12 md:py-16">
         <div className="mx-auto flex max-w-7xl flex-col gap-6">
           {/* Pure-CSS tabs (no client JS): each tab label wraps a hidden radio,
               and globals.css shows the header/panel whose data-tab-item matches
@@ -840,7 +843,7 @@ export default function HumanResourceManagementSystemPage() {
                 {showcaseTabs.map((tab, i) => (
                   <label
                     key={tab.id}
-                    className="-mb-px flex min-h-12 cursor-pointer items-center justify-center rounded-t-md border-b-2 border-transparent px-1 text-center text-sm leading-tight text-black underline-offset-4 transition-colors duration-200 hover:text-[#854d0e] has-[:checked]:border-[#854d0e] has-[:checked]:font-medium has-[:checked]:text-[#854d0e] has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-[#0077c2] sm:mb-0 sm:min-h-11 sm:border-b-0 sm:px-2 sm:text-lg sm:has-[:checked]:font-normal sm:has-[:checked]:underline md:text-xl"
+                    className="-mb-px flex min-h-12 cursor-pointer items-center justify-center rounded-t-md border-b-2 border-transparent px-1 text-center text-sm leading-tight text-black underline-offset-4 transition-colors duration-200 hover:text-[#854d0e] has-[:checked]:border-[#854d0e] has-[:checked]:font-medium has-[:checked]:text-[#854d0e] has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-[#EFB000] sm:mb-0 sm:min-h-11 sm:border-b-0 sm:px-2 sm:text-lg sm:has-[:checked]:font-normal sm:has-[:checked]:underline md:text-xl"
                   >
                     <input
                       type="radio"
@@ -863,7 +866,7 @@ export default function HumanResourceManagementSystemPage() {
             ))}
           </div>
 
-          <Link href="/contact-us" className={`${revealUp} ${learnMoreButton} w-full px-10 text-sm sm:mx-auto sm:w-auto`}>
+          <Link href="/contact-us" className={`${revealUp} ${demoButton} w-full px-12 sm:mx-auto sm:w-auto`}>
             Book a Demo
             <ArrowOutlineIcon />
           </Link>
@@ -871,7 +874,7 @@ export default function HumanResourceManagementSystemPage() {
       </section>
 
       {/* emSkills */}
-      <section aria-labelledby="emskills-heading" className="bg-[#eef4fd] px-4 py-10 md:px-12 md:py-16">
+      <section aria-labelledby="emskills-heading" className="bg-[#FFFFFA] px-4 py-10 md:px-12 md:py-16">
         <div className="mx-auto flex max-w-7xl flex-col gap-8">
           <header className={`${revealUp} mx-auto flex max-w-xl flex-col gap-3 text-center`}>
             <h2 id="emskills-heading" className="text-3xl font-semibold md:text-[2.375rem] md:leading-[49px]">
@@ -881,20 +884,31 @@ export default function HumanResourceManagementSystemPage() {
               Build personalized learning experience based on employee interaction
             </p>
           </header>
-          <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {skillStats.map((stat, index) => (
-              <li key={stat.value} style={stagger(index, 80)} className={`${revealUp} ${goldCard} ${liftGold} flex flex-col items-center gap-3 px-7 py-6 text-center`}>
-                <p className="text-3xl font-semibold md:text-[2.375rem] md:leading-[49px]">{stat.value}</p>
-                <p className="text-base leading-[22px]">{stat.text}</p>
-              </li>
-            ))}
-          </ul>
+          <div className={`${revealUp} relative isolate overflow-hidden rounded-3xl bg-[#fdf6e6] p-3 shadow-[inset_0_0_0_1px_#f0deba] sm:p-4 md:p-5`}>
+            <span aria-hidden="true" className="absolute -right-24 -top-24 -z-10 h-64 w-64 rounded-full bg-[#efb000]/15 blur-3xl" />
+            <span aria-hidden="true" className="absolute -bottom-24 -left-24 -z-10 h-64 w-64 rounded-full bg-[#efb000]/10 blur-3xl" />
+            <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:gap-4 lg:grid-cols-4">
+              {skillStats.map((stat, index) => (
+                <li key={stat.value} style={stagger(index, 110)} className={`${revealUp} flex`}>
+                  <article className="group/card relative flex w-full flex-col gap-4 overflow-hidden rounded-2xl bg-white p-6 shadow-[0_6px_20px_-14px_rgba(0,0,0,0.2)] transition-[translate,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1.5 hover:shadow-[inset_0_0_0_1.5px_#efb000,0_24px_44px_-24px_rgba(176,125,0,0.45)] md:p-7">
+                    {/* Top rule that fills on hover */}
+                    <span aria-hidden="true" className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-[#efb000] transition-[scale] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/card:scale-x-100" />
+                    <p className={`${fontInter} origin-left bg-gradient-to-br from-[#f8bb18] to-[#c98f00] bg-clip-text text-5xl font-extrabold leading-none tracking-tight text-transparent transition-[scale] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/card:scale-105 md:text-[3.25rem]`}>
+                      {stat.value}
+                    </p>
+                    <span aria-hidden="true" className="h-[3px] w-10 rounded-full bg-[#f1e2b8] transition-[width,background-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/card:w-16 group-hover/card:bg-[#efb000]" />
+                    <p className={`text-[15px] leading-[24px] ${mutedText}`}>{stat.text}</p>
+                  </article>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 
       {/* emExit / emExpense / emHelpDesk / emWorkforce Analytics */}
       {moduleSections.map((section) => (
-        <section key={section.id} aria-labelledby={`${section.id}-heading`} className="px-4 py-10 md:px-12">
+        <section key={section.id} aria-labelledby={`${section.id}-heading`} className="bg-[#FFFFFA] px-4 py-10 md:px-12">
           <div className={`mx-auto flex max-w-7xl flex-col gap-8 lg:items-center lg:gap-12 ${section.imageFirst ? "lg:flex-row-reverse" : "lg:flex-row"}`}>
             <div className={`${section.imageFirst ? revealFromRight : revealFromLeft} flex flex-col gap-5 lg:w-1/2`}>
               <header>
@@ -909,7 +923,7 @@ export default function HumanResourceManagementSystemPage() {
                   <article
                     key={card.title}
                     style={stagger(index + 1)}
-                    className={`${revealUp} group/card flex flex-col items-center gap-2 rounded-xl bg-white p-5 text-center shadow-[inset_0_0_0_0.67px_#f8bb18,0px_0px_13.393px_-6.027px_rgba(0,0,0,0.25)] ${motion} hover:-translate-y-1 hover:shadow-[inset_0_0_0_1.5px_#f8bb18,0px_10px_24px_-6px_rgba(0,0,0,0.18)]`}
+                    className={`${revealUp} group/card flex flex-col items-center gap-2 rounded-xl bg-white p-5 text-center shadow-[inset_0_0_0_0.67px_#EFB000,0px_3px_12px_-4px_rgba(0,0,0,0.07)] ${motion} hover:-translate-y-1 hover:shadow-[inset_0_0_0_1.5px_#EFB000,0px_8px_20px_-6px_rgba(239,176,0,0.2)]`}
                   >
                     <IconTile icon={card.icon} className="h-12 w-12 rounded-[10px]" iconClassName="h-8 w-8" />
                     <h3 className="text-lg font-semibold">{card.title}</h3>
@@ -931,7 +945,7 @@ export default function HumanResourceManagementSystemPage() {
       {/* FAQ */}
       <section
         aria-labelledby="faq-heading"
-        className="bg-[#fdf6e6] bg-[radial-gradient(circle_at_10%_15%,rgba(248,187,24,0.3),transparent_25%),radial-gradient(circle_at_95%_75%,rgba(248,187,24,0.3),transparent_25%)] px-4 py-10 md:px-12 md:py-24"
+        className="bg-[#FFFFFA] px-4 py-10 md:px-12 md:py-24"
       >
         <div className="mx-auto flex max-w-5xl flex-col gap-8">
           <header className={`${revealUp} flex flex-col gap-2 text-center`}>
@@ -947,7 +961,7 @@ export default function HumanResourceManagementSystemPage() {
             {faqs.map((faq, index) => (
               <li key={faq.question} style={stagger(index, 80)} className={`${revealUp} ${goldCard} ${liftGold} overflow-hidden`}>
                 <details name="hrms-faq" open={index === 0} className="hrms-faq group">
-                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-4 py-4 sm:px-5 md:px-7 rounded-xl outline-none focus-visible:outline-2 focus-visible:outline-solid focus-visible:-outline-offset-2 focus-visible:outline-[#0077c2] [&::-webkit-details-marker]:hidden">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-4 py-4 sm:px-5 md:px-7 rounded-xl outline-none focus-visible:outline-2 focus-visible:outline-solid focus-visible:-outline-offset-2 focus-visible:outline-[#EFB000] [&::-webkit-details-marker]:hidden">
                     <h3 className="text-base font-semibold sm:text-lg md:text-xl">{faq.question}</h3>
                     <FaqToggleIcon />
                   </summary>
@@ -960,13 +974,13 @@ export default function HumanResourceManagementSystemPage() {
       </section>
 
       {/* Our Flagship Products */}
-      <FlagshipProducts />
+      <FlagshipProducts className="bg-[#FFFFFA]" />
 
       {/* Contact CTA */}
       {/* Mirrors the home page CTA (.cta / .ctaRow / .ctaCol / .ctaDivider in
           app/page.jsx): two equal columns centred either side of a short
           divider, stacking below 1081px, with 24px titles below 769px. */}
-      <section aria-label="Contact emSphere" className="bg-white px-6 py-12 min-[769px]:py-[88px]">
+      <section aria-label="Contact emSphere" className="bg-[#FFFFFA] px-6 py-12 min-[769px]:py-[88px]">
         <div className="mx-auto flex max-w-275 flex-col items-center justify-center gap-9 text-black min-[1081px]:flex-row min-[1081px]:gap-20">
           {[
             { title: "Ready to talk?", cta: "Talk to Sale", reveal: revealFromLeft },
@@ -984,7 +998,7 @@ export default function HumanResourceManagementSystemPage() {
                 </h2>
                 <Link
                   href="/contact-us"
-                  className={`group/btn inline-flex w-full max-w-65 items-center justify-center rounded-lg bg-[#0077c2] px-6 py-[13px] ${fontInter} text-[15px] font-semibold tracking-[0.02em] text-white ${motion} hover:-translate-y-0.5 hover:bg-[#0061af] hover:shadow-[0_8px_18px_-4px_rgba(0,119,194,0.45)] active:translate-y-0 min-[769px]:w-auto min-[769px]:max-w-none min-[769px]:min-w-[145px] min-[769px]:px-[30px]`}
+                  className={`group/btn inline-flex w-full max-w-65 items-center justify-center rounded-lg bg-[#EFB000] px-6 py-[13px] ${fontInter} text-[15px] font-semibold tracking-[0.02em] text-white ${motion} hover:-translate-y-0.5 hover:bg-[#d99e00] hover:shadow-[0_8px_18px_-4px_rgba(239,176,0,0.45)] active:translate-y-0 min-[769px]:w-auto min-[769px]:max-w-none min-[769px]:min-w-[145px] min-[769px]:px-[30px]`}
                 >
                   {col.cta}
                 </Link>

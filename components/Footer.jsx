@@ -2,32 +2,33 @@ import Image from "next/image";
 import Link from "next/link";
 
 const PRODUCT_LINKS = [
-  { label: "emHRMS", href: "/products/emhrms" },
-  { label: "emCLMS", href: "/products/emclms" },
-  { label: "emPayroll", href: "/products/empayroll" },
-  { label: "emWorkForce", href: "/products/emworkforce" },
-  { label: "emVisit", href: "/products/emvisit" },
-  { label: "emMeal", href: "/products/emmeal" },
+  { label: "emHRMS", href: "/human-resource-management-system" },
+  { label: "emCLMS", href: "/contract-labour-management-system-software" },
+  { label: "emPay", href: "/empay-management-solution" },
+  { label: "emWorkForce", href: "/workforce-management-system" },
+  { label: "emVisit", href: "/visitor-management-system" },
+  { label: "emMeal", href: "/canteen-management-system" },
 ];
 
 const COMPANY_LINKS = [
   { label: "Home", href: "/" },
-  { label: "About Us", href: "/about" },
+  { label: "About Us", href: "/About-us" },
   { label: "Clients", href: "/clients" },
   { label: "Testimonials", href: "/testimonials" },
-  { label: "Blogs", href: "/blog" },
+  { label: "Blogs", href: "/blogs" },
   { label: "Contact Us", href: "/contact-us" },
+  { label: "Careers", href: "/careers" },
 ];
 
 const SOLUTION_LINKS = [
-  { label: "Onboarding & Gatepass", href: "/solutions/onboarding-gatepass" },
-  { label: "Contract Labour Management", href: "/solutions/contract-labour-management" },
-  { label: "Workforce Management", href: "/solutions/workforce-management" },
-  { label: "Visitor Management", href: "/solutions/visitor-management" },
-  { label: "Canteen Management", href: "/solutions/canteen-management" },
+  { label: "Onboarding & Gatepass", href: "/clms-onboarding-gatepass-management" },
+  { label: "Contract Labour Management", href: "/contract-labour-management-system-software" },
+  { label: "Workforce Management", href: "/workforce-management-system" },
+  { label: "Visitor Management", href: "/visitor-management-system" },
+  { label: "Canteen Management", href: "/canteen-management-system" },
 ];
 
-function FooterColumn({ title, links, className = "" }) {
+function FooterColumn({ title, links, extra, className = "" }) {
   return (
     <div className={className}>
       <h3 className="text-sm font-bold uppercase tracking-[0.7px] text-black">
@@ -35,7 +36,7 @@ function FooterColumn({ title, links, className = "" }) {
       </h3>
       <ul className="mt-4 flex flex-col gap-2.5">
         {links.map((link) => (
-          <li key={link.href}>
+          <li key={link.label}>
             <Link
               href={link.href}
               className="nav-underline inline-block text-sm text-black/80 transition-colors hover:text-[#EFB000]"
@@ -45,6 +46,7 @@ function FooterColumn({ title, links, className = "" }) {
           </li>
         ))}
       </ul>
+      {extra}
     </div>
   );
 }
@@ -88,7 +90,7 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="w-full border-t border-[#EFB000] bg-[#FFFFF0]" style={{ backgroundColor: "#FFFFF0" }}>
+    <footer className="w-full border-t border-[#EFB000]/25 bg-[#FFFFF0]">
       <div className="mx-auto max-w-[1440px] px-5 py-12 sm:px-8 sm:py-14 lg:px-10 lg:py-16">
         <div className="grid grid-cols-2 gap-x-6 gap-y-10 text-center sm:grid-cols-2 sm:gap-10 sm:text-left lg:grid-cols-4 lg:gap-8">
           <div className="col-span-2 flex flex-col items-center gap-5 sm:col-span-1 sm:items-start">
@@ -119,7 +121,7 @@ export default function Footer() {
                   <LinkedInIcon className="h-7 w-7 sm:h-8 sm:w-8" />
                 </a>
                 <a
-                  href="https://www.facebook.com/emspheretechnologies/"
+                  href="https://facebook.com/emspheretechnologies/"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Emsphere Technologies on Facebook"
@@ -153,7 +155,22 @@ export default function Footer() {
 
           <FooterColumn title="Products" links={PRODUCT_LINKS} className="col-span-1" />
           <FooterColumn title="Company" links={COMPANY_LINKS} className="col-span-1" />
-          <FooterColumn title="Solutions" links={SOLUTION_LINKS} className="col-span-2 sm:col-span-1" />
+          <FooterColumn
+            title="Solutions"
+            links={SOLUTION_LINKS}
+            className="col-span-2 sm:col-span-1"
+            extra={
+              <div className="mt-4 pt-3 border-t border-black/10">
+                <p className="text-xs font-semibold text-black/70">For careers, contact:</p>
+                <a
+                  href="mailto:hr@emsphere.com"
+                  className="nav-underline mt-0.5 inline-block text-sm font-medium text-black/90 transition-colors hover:text-[#EFB000]"
+                >
+                  hr@emsphere.com
+                </a>
+              </div>
+            }
+          />
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-black/15 pt-6 text-xs text-black/80 sm:flex-row">
