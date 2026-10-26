@@ -6,7 +6,6 @@ import BlogCard, { PostImage } from "@/components/blog/BlogCard";
 import BlogCta from "@/components/blog/BlogCta";
 import { ArrowRightIcon, CalendarIcon, ChevronIcon, ClockIcon, HomeIcon } from "@/components/blog/BlogIcons";
 import ReadingProgress from "@/components/blog/ReadingProgress";
-import ShareButtons from "@/components/blog/ShareButtons";
 import {
   SITE_NAME,
   SITE_URL,
@@ -19,6 +18,7 @@ import {
   getRelatedPosts,
   jsonLdScript,
 } from "@/lib/blog";
+import { DEFAULT_OG_IMAGE, TWITTER_SITE } from "@/lib/seo";
 
 // Static export: one HTML file per WordPress post, nothing rendered on demand.
 export const dynamicParams = false;
@@ -53,7 +53,7 @@ export async function generateMetadata({ params }) {
   const url = getPostUrl(post);
   const title = seo.title || post.title;
   const description = seo.description || post.excerpt;
-  const imageUrl = seo.ogImage || post.featuredImage?.src;
+  const imageUrl = seo.ogImage || post.featuredImage?.src || DEFAULT_OG_IMAGE.url;
   const isFeatured = imageUrl && imageUrl === post.featuredImage?.src;
   const author = getAuthor(post);
   const keywords = getKeywords(post);
@@ -83,23 +83,34 @@ export async function generateMetadata({ params }) {
       section: post.primaryCategory?.name,
       tags: keywords,
       authors: [author.name],
-      images: imageUrl
-        ? [
-            {
-              url: imageUrl,
-              alt: seo.ogImageAlt || post.featuredImage?.alt || post.title,
-              ...(isFeatured ? { width: post.featuredImage.width, height: post.featuredImage.height } : {}),
-            },
-          ]
-        : undefined,
+      images: [
+        {
+          url: imageUrl,
+          alt: seo.ogImageAlt || post.featuredImage?.alt || post.title,
+          ...(isFeatured ? { width: post.featuredImage.width, height: post.featuredImage.height } : {}),
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
+      site: TWITTER_SITE,
       title: seo.twitterTitle || seo.ogTitle || title,
       description: seo.twitterDescription || seo.ogDescription || description,
-      images: imageUrl ? [imageUrl] : undefined,
+      images: [imageUrl],
     },
   };
+}
+
+// WordPress body images sometimes ship with alt=""; fall back to the post title.
+function fillEmptyAlts(html, title) {
+  const alt = title.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
+  return html.replace(/<img\b[^>]*>/g, (tag) =>
+    /\balt\s*=\s*"\s*"/.test(tag)
+      ? tag.replace(/\balt\s*=\s*"\s*"/, `alt="${alt}"`)
+      : /\balt\s*=/.test(tag)
+        ? tag
+        : tag.replace(/^<img\b/, `<img alt="${alt}"`),
+  );
 }
 
 function buildJsonLd(post) {
@@ -171,7 +182,7 @@ function SidebarCta() {
       <p className="blog-label relative mt-2 text-[14px] font-medium leading-relaxed text-black/65">
         HRMS, CLMS, payroll, visitor &amp; canteen management — on one connected platform.
       </p>
-      <Link href="/contact-us/" className="blog-btn blog-btn-blue relative mt-5 w-full">
+      <Link href="/contact-us/" data-request-demo className="blog-btn blog-btn-blue relative mt-5 w-full">
         BOOK A DEMO
         <ArrowRightIcon />
       </Link>
@@ -306,7 +317,7 @@ export default async function BlogPostPage({ params }) {
             <article
               id="article-body"
               className="blog-prose mx-auto max-w-[760px]"
-              dangerouslySetInnerHTML={{ __html: post.contentHtml }}
+              dangerouslySetInnerHTML={{ __html: fillEmptyAlts(post.contentHtml, post.title) }}
             />
 
             <div className="mx-auto mt-12 max-w-[760px] space-y-8 border-t border-black/10 pt-8">
@@ -323,11 +334,6 @@ export default async function BlogPostPage({ params }) {
                   ))}
                 </div>
               )}
-
-              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between lg:hidden">
-                <span className="blog-label text-[13px] font-bold uppercase tracking-[0.08em] text-black/50">Share this article</span>
-                <ShareButtons url={url} title={post.title} />
-              </div>
 
               {(newer || older) && (
                 <nav aria-label="More articles" className="grid gap-4 sm:grid-cols-2">
@@ -378,10 +384,6 @@ export default async function BlogPostPage({ params }) {
                 </div>
               )}
               <div className="reveal-on-scroll reveal-fade-left shrink-0" style={{ transitionDelay: "100ms" }}>
-                <p className="blog-label mb-3 text-[13px] font-bold uppercase tracking-[0.08em] text-black/50">Share this article</p>
-                <ShareButtons url={url} title={post.title} />
-              </div>
-              <div className="reveal-on-scroll reveal-fade-left shrink-0" style={{ transitionDelay: "180ms" }}>
                 <SidebarCta />
               </div>
             </div>

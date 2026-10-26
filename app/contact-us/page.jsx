@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Instrument_Sans, Inter } from "next/font/google";
 import BackToTop from "@/components/BackToTop";
-import ContactForm from "@/components/ContactForm";
+import LeadForm from "@/components/LeadForm";
 import ScrollReveal from "@/components/ScrollReveal";
 import FlagshipProducts from "@/components/FlagshipProducts";
 import StopwatchCounter from "@/components/StopwatchCounter";
@@ -19,20 +19,34 @@ import {
   ShieldCheck,
   UsersThree,
 } from "@phosphor-icons/react/ssr";
+import { DEFAULT_OG_IMAGE, TWITTER_SITE } from "@/lib/seo";
+
+const PAGE_URL = "https://www.emsphere.com/contact-us/";
+const PAGE_TITLE = "Contact Us - Emsphere";
+const PAGE_DESCRIPTION =
+  "Contact us now to discover how Emsphere can transform your HR & Workforce management! Pune | Delhi | Bangalore.";
 
 export const metadata = {
-  title: "Contact Us | Emsphere Technologies - HRMS & Workforce Management",
-  description:
-    "Get in touch with Emsphere Technologies. Schedule a product demo, request pricing, or speak with our workforce management consultants in Pune, Delhi, or Bangalore.",
-  alternates: {
-    canonical: "https://www.emsphere.com/contact-us/",
-  },
+  title: { absolute: PAGE_TITLE },
+  description: PAGE_DESCRIPTION,
+  keywords: null,
+  alternates: { canonical: PAGE_URL },
+  robots: { index: true, follow: true },
   openGraph: {
-    title: "Contact Us | Emsphere Technologies - HRMS & Workforce Management",
-    description:
-      "Get in touch with Emsphere Technologies. Schedule a product demo, request pricing, or speak with our workforce management consultants in Pune, Delhi, or Bangalore.",
-    url: "https://www.emsphere.com/contact-us/",
+    title: PAGE_TITLE,
+    description: PAGE_DESCRIPTION,
+    url: PAGE_URL,
+    siteName: "Emsphere Technologies",
+    locale: "en_US",
+    images: [DEFAULT_OG_IMAGE],
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: TWITTER_SITE,
+    title: PAGE_TITLE,
+    description: PAGE_DESCRIPTION,
+    images: [DEFAULT_OG_IMAGE],
   },
 };
 
@@ -292,7 +306,7 @@ export default function ContactUsPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
             {/* Left: Contact Form */}
             <div className={`${revealFromLeft} lg:col-span-7`}>
-              <ContactForm />
+              <LeadForm title="Contact Us" subtitle="Fill in your details and our team will get in touch shortly." />
             </div>
 
             {/* Right: Direct Information & Offices */}
@@ -487,7 +501,8 @@ export default function ContactUsPage() {
                   {col.title}
                 </h2>
                 <a
-                  href="#contact-hero-heading"
+                  href="/contact-us/"
+                  data-request-demo=""
                   className={`group/btn inline-flex w-full max-w-65 items-center justify-center rounded-lg bg-[#EFB000] px-6 py-[13px] ${fontInter} text-[15px] font-semibold tracking-[0.02em] text-white ${motion} hover:-translate-y-0.5 hover:bg-[#d99e00] hover:shadow-[0_8px_18px_-4px_rgba(239,176,0,0.45)] active:translate-y-0 min-[769px]:w-auto min-[769px]:max-w-none min-[769px]:min-w-[145px] min-[769px]:px-[30px]`}
                 >
                   {col.cta}

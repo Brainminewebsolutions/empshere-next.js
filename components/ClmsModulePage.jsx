@@ -5,6 +5,7 @@ import { Instrument_Sans, Inter } from "next/font/google";
 import ScrollReveal from "@/components/ScrollReveal";
 import BackToTop from "@/components/BackToTop";
 import FlagshipProducts from "@/components/FlagshipProducts";
+import { DEFAULT_OG_IMAGE, TWITTER_SITE } from "@/lib/seo";
 
 /* --------------------------------------------------------------------
    Shared layout for the CLMS module pages (/clms-*). Each page passes its
@@ -287,7 +288,8 @@ export default function ClmsModulePage({
             <p className={`${bodyText} max-w-xl text-lg font-medium leading-[30px] 2xl:max-w-2xl 2xl:text-xl 2xl:leading-[34px]`}>{intro}</p>
 
             <Link
-              href="/contact-us"
+              href="/contact-us/"
+              data-request-demo
               className={`${fontInstrument} mt-1 inline-flex w-fit items-center justify-center rounded-lg px-8 py-2.5 text-lg font-semibold leading-8 text-white ${motion} ${accentButton} hover:-translate-y-0.5 md:text-xl`}
             >
               Call For Demo
@@ -399,6 +401,7 @@ export default function ClmsModulePage({
                 </h2>
                 <Link
                   href="/contact-us"
+                  data-request-demo=""
                   className={`group/btn inline-flex w-full max-w-65 items-center justify-center rounded-lg px-6 py-[13px] ${fontInter} text-[15px] font-semibold tracking-[0.02em] text-white ${motion} ${accentButton} hover:-translate-y-0.5 active:translate-y-0 min-[769px]:w-auto min-[769px]:max-w-none min-[769px]:min-w-[145px] min-[769px]:px-[30px]`}
                 >
                   {col.cta}
@@ -430,6 +433,6 @@ export function buildModuleMetadata({ title, description, url, image }) {
       images: [image],
       type: "website",
     },
-    twitter: { card: "summary_large_image", title, description, images: [image] },
+    twitter: { card: "summary_large_image", site: TWITTER_SITE, title, description, images: [image] },
   };
 }

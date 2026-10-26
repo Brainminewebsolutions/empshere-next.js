@@ -22,6 +22,7 @@ import { PostImage } from "./BlogCard";
 import { CalendarIcon, ChevronIcon, HomeIcon } from "./BlogIcons";
 import FeaturedPost from "./FeaturedPost";
 import Pagination from "./Pagination";
+import { DEFAULT_OG_IMAGE, TWITTER_SITE } from "@/lib/seo";
 
 const DEFAULT_TITLE = "Blogs - HR & Workforce - Emsphere";
 const DEFAULT_DESCRIPTION =
@@ -35,7 +36,7 @@ export function getListingMetadata(page) {
   const description = seo?.description || DEFAULT_DESCRIPTION;
   const title = page > 1 ? `${baseTitle} - Page ${page} of ${getTotalPages()}` : baseTitle;
   const url = `${SITE_URL}${getPageHref(page)}`;
-  const image = seo?.ogImage || getAllPosts()[0]?.featuredImage?.src;
+  const image = seo?.ogImage || getAllPosts()[0]?.featuredImage?.src || DEFAULT_OG_IMAGE.url;
 
   return {
     title: { absolute: title },
@@ -49,13 +50,14 @@ export function getListingMetadata(page) {
       locale: "en_US",
       title: seo?.ogTitle || title,
       description: seo?.ogDescription || description,
-      images: image ? [{ url: image, alt: seo?.ogImageAlt || "Emsphere blog" }] : undefined,
+      images: [{ url: image, alt: seo?.ogImageAlt || "Emsphere blog" }],
     },
     twitter: {
       card: "summary_large_image",
+      site: TWITTER_SITE,
       title: seo?.twitterTitle || title,
       description: seo?.twitterDescription || description,
-      images: image ? [image] : undefined,
+      images: [image],
     },
   };
 }

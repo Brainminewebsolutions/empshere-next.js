@@ -12,9 +12,9 @@ const PRODUCT_LINKS = [
 
 const COMPANY_LINKS = [
   { label: "Home", href: "/" },
-  { label: "About Us", href: "/About-us" },
-  { label: "Clients", href: "/clients" },
-  { label: "Testimonials", href: "/testimonials" },
+  { label: "About Us", href: "/about-us" },
+  { label: "Clients", href: "/our-clients" },
+  { label: "Testimonials", href: "/testimonial" },
   { label: "Blogs", href: "/blogs" },
   { label: "Contact Us", href: "/contact-us" },
   { label: "Careers", href: "/careers" },
@@ -101,10 +101,10 @@ export default function Footer() {
                 aria-label="Emsphere Technologies home"
               >
                 <Image
-                  src="/universal-images/header/emsphere-technologies-logo.webp"
+                  src="/universal-images/header/emsphere-logo-400.webp"
                   alt="Emsphere Technologies - Seamless Connect logo"
-                  width={550}
-                  height={143}
+                  width={400}
+                  height={104}
                   className="h-9 w-auto sm:h-10 md:h-11 lg:h-12"
                 />
               </Link>

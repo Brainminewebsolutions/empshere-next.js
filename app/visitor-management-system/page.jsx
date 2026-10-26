@@ -6,7 +6,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 import BackToTop from "@/components/BackToTop";
 import FlagshipProducts from "@/components/FlagshipProducts";
 import FeatureCard from "@/components/FeatureCard";
-import DemoRequestForm from "@/components/DemoRequestForm";
+import LeadForm from "@/components/LeadForm";
 import CardCarousel from "@/components/CardCarousel";
 import VisitorHeroVector from "@/components/VisitorHeroVector";
 import VisitorSecurityVector from "@/components/VisitorSecurityVector";
@@ -22,6 +22,8 @@ import mobileImg from "../images/visitor-management-system/visitor-analytics-mob
 import securityImg from "../images/visitor-management-system/workplace-security-visitor-scheduling-illustration.webp";
 import transformImg from "../images/visitor-management-system/visitor-qr-pass-scan-reception-kiosk.webp";
 import { AddressBook, ArrowsOut, Bell, ChartLineDown, ChatsCircle, ClipboardText, Database, DoorOpen, Hourglass, IdentificationBadge, IdentificationCard, Lightning, Lock, Note, PersonSimpleRun, PiggyBank, PlugsConnected, QrCode, ShieldCheck, SignIn, Signature, Smiley, Warning } from "@phosphor-icons/react/ssr";
+import { faqPageNode, jsonLdScript, productPageJsonLd } from "@/lib/schema";
+import { DEFAULT_OG_IMAGE, TWITTER_SITE } from "@/lib/seo";
 
 
 // Title and description are the page's Rank Math values on the current site.
@@ -48,6 +50,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
+    site: TWITTER_SITE,
     title: PAGE_TITLE,
     description: PAGE_DESCRIPTION,
     images: [OG_IMAGE],
@@ -347,35 +350,16 @@ const faqs = [
 ];
 
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "SoftwareApplication",
-      name: "emVisit — Visitor Management System",
-      applicationCategory: "BusinessApplication",
-      operatingSystem: "Web, Android, iOS",
-      description: PAGE_DESCRIPTION,
-      url: PAGE_URL,
-      publisher: { "@type": "Organization", name: "Emsphere Technologies", url: "https://www.emsphere.com/" },
-    },
-    {
-      "@type": "FAQPage",
-      mainEntity: faqs.map((faq) => ({
-        "@type": "Question",
-        name: faq.question,
-        acceptedAnswer: { "@type": "Answer", text: faq.answer },
-      })),
-    },
-    {
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.emsphere.com/" },
-        { "@type": "ListItem", position: 2, name: "Visitor Management System", item: PAGE_URL },
-      ],
-    },
-  ],
-};
+const jsonLd = productPageJsonLd({
+  url: PAGE_URL,
+  name: "emVisit Visitor Management System",
+  description:
+    "emVisit is a visitor management system that helps organizations manage visitor registration, check-in, access control, visitor tracking, emergency evacuation and secure visitor data.",
+  subCategory: "Visitor Management Software",
+  pageName: "Visitor Management System",
+  breadcrumbName: "Visitor Management System",
+  extraNodes: [faqPageNode(PAGE_URL, faqs)],
+});
 
 /* --------------------------------------------------------------------
    Page
@@ -385,7 +369,7 @@ export default function VisitorManagementSystemPage() {
   return (
     <main className={`${instrumentSans.variable} ${inter.variable} hrms-page payroll-page vms-page w-full overflow-x-clip bg-[#FFFFFA] font-sans text-[#4c4c4c]`}>
       <ScrollReveal root=".vms-page" />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(jsonLd)} />
 
       {/* Hero */}
       <section
@@ -415,7 +399,7 @@ export default function VisitorManagementSystemPage() {
               exit points, integrate hardware installed with our software to make a full proof visitor management system and get detailed analytics.
             </p>
             <div className="flex flex-col gap-3 sm:flex-row">
-              <a href="#request-demo" className={`${primaryButton} text-[15px]`}>
+              <a href="/contact-us/" data-request-demo className={`${primaryButton} text-[15px]`}>
                 Request for demo
                 <ArrowCircleIcon />
               </a>
@@ -709,8 +693,8 @@ export default function VisitorManagementSystemPage() {
             </figure>
           </div>
           <div className={`${revealFromRight} w-full max-w-md lg:w-[40%] lg:max-w-[440px]`}>
-            <DemoRequestForm
-              product="Visitor Management System (emVisit)"
+            <LeadForm compact
+              product="emVisit visitor management system"
               title="Contact Now"
               subtitle="Request a demo of emVisit — our team will reach out to schedule it."
             />
@@ -736,6 +720,7 @@ export default function VisitorManagementSystemPage() {
                 </h2>
                 <Link
                   href="/contact-us"
+                  data-request-demo=""
                   className={`group/btn inline-flex w-full max-w-65 items-center justify-center rounded-lg bg-[#EFB000] px-6 py-[13px] ${fontInter} text-[15px] font-semibold tracking-[0.02em] text-white ${motion} hover:-translate-y-0.5 hover:bg-[#d99e00] hover:shadow-[0_8px_18px_-4px_rgba(239,176,0,0.45)] active:translate-y-0 min-[769px]:w-auto min-[769px]:max-w-none min-[769px]:min-w-[145px] min-[769px]:px-[30px]`}
                 >
                   {col.cta}

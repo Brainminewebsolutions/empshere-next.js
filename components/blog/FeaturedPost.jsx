@@ -18,7 +18,7 @@ export default function FeaturedPost({ post }) {
               src={post.featuredImage.src}
               srcSet={post.featuredImage.srcSet}
               sizes="(min-width: 1024px) 660px, 100vw"
-              alt=""
+              alt={post.featuredImage.alt || post.title}
               aria-hidden="true"
               className="absolute inset-0 scale-110 object-cover opacity-70 blur-2xl"
             />

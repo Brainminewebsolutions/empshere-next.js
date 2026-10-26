@@ -47,6 +47,20 @@ AddDefaultCharset UTF-8
   # d) Serve the Next.js blog from /blogs; the address bar keeps /blog/….
   RewriteRule ^blog(/.*)?$ /blogs$1 [L]
 
+  # Next.js page-data files. The browser asks for
+  # /contact-us/__next.contact-us.__PAGE__.txt but the static export writes
+  # /contact-us/__next.contact-us/__PAGE__.txt (dots → folders). Without
+  # this, every link prefetch logs a 404 in the console.
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{DOCUMENT_ROOT}/$1__next.$2/$3/$4/$5.txt -f
+  RewriteRule ^(.*/)?__next\.([^./]+)\.([^./]+)\.([^./]+)\.([^./]+)\.txt$ $1__next.$2/$3/$4/$5.txt [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{DOCUMENT_ROOT}/$1__next.$2/$3/$4.txt -f
+  RewriteRule ^(.*/)?__next\.([^./]+)\.([^./]+)\.([^./]+)\.txt$ $1__next.$2/$3/$4.txt [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{DOCUMENT_ROOT}/$1__next.$2/$3.txt -f
+  RewriteRule ^(.*/)?__next\.([^./]+)\.([^./]+)\.txt$ $1__next.$2/$3.txt [L]
+
   # 1. Serve existing files directly (CSS, JS, images, etc.)
   RewriteCond %{REQUEST_FILENAME} -f
   RewriteRule ^ - [L]
@@ -63,10 +77,10 @@ AddDefaultCharset UTF-8
   RewriteCond %{REQUEST_FILENAME}.html -f
   RewriteRule ^(.*)$ $1.html [L]
 
-  # 5. Otherwise, serve our custom 404 page
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule ^ /404.html [L]
+  # 5. Anything else is a real 404: Apache answers with status 404 and the
+  #    custom page from "ErrorDocument 404 /404.html" above. (Rewriting to
+  #    /404.html here would send that page with status 200, a soft 404 that
+  #    search engines and AI agents read as a real page, e.g. /llms.txt.)
 </IfModule>
 
 # 5. GZIP & Deflate Compression (Speed & Core Web Vitals)
@@ -128,10 +142,11 @@ AddDefaultCharset UTF-8
   Header set Referrer-Policy "strict-origin-when-cross-origin"
 
   # Cache-Control: HTML documents always revalidate
-  <FilesMatch "\.(html|htm)$">
-    Header set Cache-Control "no-cache, no-store, must-revalidate"
-    Header set Pragma "no-cache"
-    Header set Expires "0"
+  # "no-cache" still revalidates on every visit (updates show at once) but,
+  # unlike "no-store", lets the browser keep the page in its back/forward
+  # cache so Back is instant.
+  <FilesMatch "\.(html|htm|txt)$">
+    Header set Cache-Control "no-cache"
   </FilesMatch>
 
   # Cache-Control: Static hashed Next.js assets are immutable

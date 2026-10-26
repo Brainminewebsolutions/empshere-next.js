@@ -67,18 +67,18 @@ const ABOUT_SUB_ITEMS = {
   story: {
     title: "Our story",
     desc: "Our learning, vision and 360 suite",
-    href: "/About-us",
+    href: "/about-us",
   },
   rightCol: [
     {
       title: "Clients",
       desc: "Brands who believed in us",
-      href: "/clients",
+      href: "/our-clients",
     },
     {
       title: "Testimonials",
       desc: "Brands who are elated with us",
-      href: "/testimonials",
+      href: "/testimonial",
     },
   ],
 };
@@ -86,7 +86,7 @@ const ABOUT_SUB_ITEMS = {
 const NAV_LINKS = [
   { label: "Home", href: "/" },
   { label: "Product", href: "/product", isMegaMenu: true },
-  { label: "About Us", href: "/About-us", isAboutDropdown: true },
+  { label: "About Us", href: "/about-us", isAboutDropdown: true },
   { label: "Blogs", href: "/blog" },
   { label: "Contact Us", href: "/contact-us" },
 ];
@@ -243,11 +243,12 @@ export default function Header() {
             aria-label="Emsphere Technologies home"
           >
             <Image
-              src="/universal-images/header/emsphere-technologies-logo.webp"
+              src="/universal-images/header/emsphere-logo-400.webp"
               alt="Emsphere Technologies - Seamless Connect logo"
-              width={550}
-              height={143}
-              priority
+              width={400}
+              height={104}
+              loading="eager"
+              fetchPriority="high"
               className="h-9 w-auto sm:h-10 md:h-11 lg:h-12"
             />
           </Link>
@@ -594,7 +595,7 @@ export default function Header() {
           <div className="hidden lg:block">
             <Link
               href="/contact-us"
-              className="inline-flex items-center justify-center rounded-[6px] bg-brand-gold px-7 py-3 text-[16px] font-semibold text-white transition-all duration-200 hover:bg-brand-gold-dark hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold/60 focus-visible:ring-offset-2"
+              className="inline-flex items-center justify-center rounded-[6px] bg-brand-gold px-7 py-3 text-[16px] font-semibold text-[#1f1f1f] transition-all duration-200 hover:bg-brand-gold-dark hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold/60 focus-visible:ring-offset-2"
             >
               Get Started
             </Link>
@@ -640,10 +641,11 @@ export default function Header() {
       />
 
       {/* Off-canvas mobile drawer */}
-      <aside
+      <div
         id="mobile-nav"
         role="dialog"
         aria-modal="true"
+        inert={!isMenuOpen}
         aria-label="Mobile navigation"
         className={`fixed inset-y-0 right-0 z-[55] flex h-dvh w-[85%] max-w-[380px] flex-col bg-white shadow-2xl transition-transform duration-[420ms] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform lg:hidden ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
@@ -651,10 +653,10 @@ export default function Header() {
       >
         <div className="flex h-20 shrink-0 items-center justify-between border-b border-black/5 px-5 sm:h-[84px]">
           <Image
-            src="/universal-images/header/emsphere-technologies-logo.webp"
+            src="/universal-images/header/emsphere-logo-400.webp"
             alt="Emsphere Technologies - Seamless Connect logo"
-            width={550}
-            height={143}
+            width={400}
+            height={104}
             className="h-8 w-auto sm:h-9"
           />
           <button
@@ -918,12 +920,12 @@ export default function Header() {
           <Link
             href="/contact-us"
             onClick={closeAllMenus}
-            className="flex w-full items-center justify-center rounded-[5px] bg-brand-gold px-6 py-3 text-[15px] font-medium text-white transition-colors hover:bg-brand-gold-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold/60 focus-visible:ring-offset-2"
+            className="flex w-full items-center justify-center rounded-[5px] bg-brand-gold px-6 py-3 text-[15px] font-medium text-[#1f1f1f] transition-colors hover:bg-brand-gold-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold/60 focus-visible:ring-offset-2"
           >
             Get Started
           </Link>
         </div>
-      </aside>
+      </div>
     </Fragment>
   );
 }

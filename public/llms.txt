@@ -1,0 +1,39 @@
+# Emsphere Technologies
+
+> Emsphere Technologies Pvt. Ltd. (Pune, India) builds emSphere, an HR and workforce management suite for manufacturing, pharma, FMCG, chemical, IT and BPO companies: HRMS, contract labour management (CLMS), workforce and attendance management, payroll, visitor management, emergency headcount and canteen management.
+
+Contact: sales@emsphere.com, +91 77989 81117. Offices in Pune, Delhi and Bengaluru. To request a demo, use the form on the contact page.
+
+## Products
+
+- [emHRMS – Human Resource Management System](https://www.emsphere.com/human-resource-management-system/): configurable HRMS covering the employee lifecycle, leave, attendance and HR workflows.
+- [emContract – Contract Labour Management System (CLMS)](https://www.emsphere.com/contract-labour-management-system-software/): attendance, compliance, wages and documentation for contract workers.
+- [emWorkforce – Workforce Management System](https://www.emsphere.com/workforce-management-system/): time, attendance, shifts and workforce productivity.
+- [emPay – Payroll Management Software](https://www.emsphere.com/empay-management-solution/): salary processing and statutory payroll for Indian companies.
+- [emVisit – Visitor Management System](https://www.emsphere.com/visitor-management-system/): visitor check-in, approvals and site security.
+- [emCount – Emergency Headcount System](https://www.emsphere.com/headcount-management-software/): real-time count of people inside company premises.
+- [emMeal – Canteen Management System](https://www.emsphere.com/canteen-management-system/): digital canteen operations for workplaces and campuses.
+
+## CLMS modules
+
+- [Contractor Portal](https://www.emsphere.com/clms-contractor-portal/): contractor onboarding, compliance and communication.
+- [Onboarding & Gatepass](https://www.emsphere.com/clms-onboarding-gatepass-management/): digital onboarding with workflows, validations and face biometric integration.
+- [Contractor & Contract Employee Masters](https://www.emsphere.com/clms-contractor-contract-employee-masters/): central records for contractors and their employees.
+- [Attendance, Shift & Overtime](https://www.emsphere.com/clms-attendance-shift-overtime-management/): attendance, shift rosters and overtime for contract labour.
+- [Wages & Contractor Billing](https://www.emsphere.com/clms-wages-contractor-billing/): contract labour wages and contractor bill verification.
+- [Compliances & Statutory Reports](https://www.emsphere.com/clms-compliances-statutory-reports/): automated statutory registers and compliance reports.
+- [Manpower Planning & Analytics](https://www.emsphere.com/clms-manpower-planning/): manpower requirement planning and analytics.
+- [Real-Time Dashboards](https://www.emsphere.com/clms-realtime-dashboards/): live dashboards across plants and contractors.
+
+## Company
+
+- [About Emsphere](https://www.emsphere.com/about-us/): company background and leadership.
+- [Our Clients](https://www.emsphere.com/our-clients/): customers by industry.
+- [Testimonials](https://www.emsphere.com/testimonial/): what clients say.
+- [Careers](https://www.emsphere.com/careers/): open roles in Pune, Delhi and Bengaluru.
+- [Contact Us](https://www.emsphere.com/contact-us/): sales enquiries and demo requests.
+
+## Optional
+
+- [Blog](https://www.emsphere.com/blog/): articles on HR, payroll, labour law compliance and workforce management.
+- [Sitemap](https://www.emsphere.com/sitemap.xml): every public page.

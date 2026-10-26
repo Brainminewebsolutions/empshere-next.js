@@ -17,7 +17,8 @@ module.exports = {
   generateRobotsTxt: true,
   generateIndexSitemap: false,
   trailingSlash: true,
-  outDir: 'out',
+  // Static export → out/ (copied back to public/ by scripts/sync-sitemap.js).
+  outDir: process.env.BUILD_TARGET === 'node' ? 'public' : 'out',
   exclude: [
     '/icon.png',
     '/apple-icon.png',
@@ -28,6 +29,9 @@ module.exports = {
     // Old emPay URL; it only forwards to /empay-management-solution/.
     '/payroll-management-solution',
     '/payroll-management-solution/*',
+    // Post-submission page for the lead forms; noindex.
+    '/thank-you',
+    '/thank-you/*',
   ],
   transform: async (config, path) => {
     // Exclude system / metadata image paths if matched
@@ -73,7 +77,7 @@ module.exports = {
     } else if (path === '/contact-us/' || path === '/contact-us') {
       priority = 0.8;
       changefreq = 'monthly';
-    } else if (path === '/clients/' || path === '/clients' || path === '/testimonials/' || path === '/testimonials' || path === '/About-us/' || path === '/About-us') {
+    } else if (path === '/our-clients/' || path === '/our-clients' || path === '/testimonial/' || path === '/testimonial' || path === '/about-us/' || path === '/about-us') {
       priority = 0.8;
       changefreq = 'monthly';
     }

@@ -20,6 +20,7 @@ import {
   Trophy,
   UsersThree,
 } from "@phosphor-icons/react/ssr";
+import { DEFAULT_OG_IMAGE, TWITTER_SITE } from "@/lib/seo";
 
 export const metadata = {
   title: "Careers | Emsphere Technologies - Join Our HR Tech Team",
@@ -33,7 +34,18 @@ export const metadata = {
     description:
       "Build the future of HR technology with Emsphere. Explore open roles across Pune, Delhi and Bengaluru.",
     url: "https://www.emsphere.com/careers/",
+    siteName: "Emsphere Technologies",
+    locale: "en_US",
+    images: [DEFAULT_OG_IMAGE],
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: TWITTER_SITE,
+    title: "Careers | Emsphere Technologies - Join Our HR Tech Team",
+    description:
+      "Build the future of HR technology with Emsphere. Explore open roles across Pune, Delhi and Bengaluru.",
+    images: [DEFAULT_OG_IMAGE],
   },
 };
 

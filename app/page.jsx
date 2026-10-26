@@ -2,6 +2,9 @@
 
 import { useEffect, useRef, useState, Fragment } from "react";
 import TestimonialsSlider from "@/components/TestimonialsSlider";
+import TrustedLogos from "@/components/TrustedLogos";
+import { homePageJsonLd, jsonLdScript } from "@/lib/schema";
+import { TESTIMONIALS } from "@/lib/testimonials";
 import BackToTop from "@/components/BackToTop";
 import StopwatchCounter from "@/components/StopwatchCounter";
 import FlagshipProducts from "@/components/FlagshipProducts";
@@ -14,54 +17,32 @@ import { Brain, ChartLineUp, ChatsCircle, CloudCheck, Code, Cpu, CurrencyInr, Ge
    -------------------------------------------------------------------- */
 
 // Hero
-import heroSlide1 from "./images/homeimages/hero-hr-tech-reimagined-ai-hologram.png";
-import heroSlide2 from "./images/homeimages/hero-connected-hr-team-collaboration.png";
-import heroSlide3 from "./images/homeimages/hero-adaptive-integrated-industrial-workers.png";
-
-// Trusted by leading organizations
-import logoMahindra from "./images/homeimages/logo-mahindra.png";
-import logoCapgemini from "./images/homeimages/logo-capgemini.png";
-import logoMercedesBenz from "./images/homeimages/logo-mercedes-benz.png";
-import logoHaier from "./images/homeimages/logo-haier.png";
-import logoCastrol from "./images/homeimages/logo-castrol.png";
-import logoApolloTyres from "./images/homeimages/logo-apollo-tyres.png";
-import logoLtDefence from "./images/homeimages/logo-lt-defence.png";
-import logoZf from "./images/homeimages/logo-zf.png";
-import logoGarware from "./images/homeimages/logo-garware-polyester.png";
-import logoVarroc from "./images/homeimages/logo-varroc-excellence.png";
-import logoTataAutocomp from "./images/homeimages/logo-tata-autocomp.png";
-import logoVishay from "./images/homeimages/logo-vishay.png";
-import logoNayara from "./images/homeimages/logo-nayara-energy.png";
-import logoKirloskar from "./images/homeimages/logo-kirloskar.png";
-import logoKansaiNerolac from "./images/homeimages/logo-kansai-nerolac.png";
-import logoAndhraPaper from "./images/homeimages/logo-andhra-paper-limited.png";
-import logoDow from "./images/homeimages/logo-dow.png";
+import heroSlide1 from "./images/homeimages/hero-hr-tech-reimagined-ai-hologram.webp";
+import heroSlide2 from "./images/homeimages/hero-connected-hr-team-collaboration.webp";
+import heroSlide3 from "./images/homeimages/hero-adaptive-integrated-industrial-workers.webp";
 
 // Enhance Workforce and Labor Management
-import workforceBuilding from "./images/homeimages/emsphere-corporate-office-building.png";
-import workforceEngineers from "./images/homeimages/emsphere-site-engineers-reviewing-plans.png";
+import workforceBuilding from "./images/homeimages/emsphere-corporate-office-building.webp";
+import workforceEngineers from "./images/homeimages/emsphere-site-engineers-reviewing-plans.webp";
 
 // Shop floor / Corporate team
-import shopFloorTeam from "./images/homeimages/shop-floor-workforce-management-team.png";
-import corporateTeam from "./images/homeimages/corporate-hr-team-collaboration.jpg";
+import shopFloorTeam from "./images/homeimages/shop-floor-workforce-management-team.webp";
+import corporateTeam from "./images/homeimages/corporate-hr-team-collaboration.webp";
 
 // Change from legacy system
 
-// Testimonials
-import logoVarrocTestimonial from "./images/homeimages/logo-varroc-excellence-testimonial.png";
-import logoVishayTestimonial from "./images/homeimages/logo-vishay-testimonial.png";
-import logoYashaswiTestimonial from "./images/homeimages/logo-yashaswi-testimonial.png";
-import logoYazakiTestimonial from "./images/homeimages/logo-yazaki-testimonial.png";
-import logoNerolacTestimonial from "./images/homeimages/logo-nerolac-testimonial.png";
-import logoReliableAutoTestimonial from "./images/homeimages/logo-reliable-auto-testimonial.png";
-import logoKoresTestimonial from "./images/homeimages/logo-kores-testimonial.png";
-import logoMahindraMahindraTestimonial from "./images/homeimages/logo-mahindra-mahindra-testimonial.png";
-
 // Latest Blogs
-import blogContractLabour from "./images/homeimages/blog-contract-labour-management-guide.png";
-import blogPayroll from "./images/homeimages/blog-payroll-management-automation.png";
-import blogVisitorManagement from "./images/homeimages/blog-visitor-management-system-security.png";
+import blogContractLabour from "./images/homeimages/blog-contract-labour-management-guide.webp";
+import blogPayroll from "./images/homeimages/blog-payroll-management-automation.webp";
+import blogVisitorManagement from "./images/homeimages/blog-visitor-management-system-security.webp";
 import latestBlogs from "@/data/latest-blogs.json";
+import { Instrument_Sans, Inter } from "next/font/google";
+
+// Self-hosted by next/font (no request to Google Fonts at runtime).
+const instrumentSans = Instrument_Sans({ subsets: ["latin"], variable: "--font-instrument-sans" });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const fontVariables = `${instrumentSans.variable} ${inter.variable}`;
+
 
 /* --------------------------------------------------------------------
    Content data — edit copy, numbers, and labels here.
@@ -94,37 +75,6 @@ const HERO_STATS = [
   { value: "10,00,000", suffix: "+", label: "Users" },
   { value: "10", suffix: "+", label: "Industries" },
 ];
-
-const TRUSTED_LOGOS = [
-  { src: logoLtDefence, alt: "L&T Defence", className: "trustedLogo--ltDefence" },
-  { src: logoAndhraPaper, alt: "Andhra Paper Limited", className: "trustedLogo--andhraPaper" },
-  { src: logoZf, alt: "ZF", className: "trustedLogo--zf" },
-  { src: logoVarroc, alt: "Varroc Excellence", className: "trustedLogo--varroc" },
-  { src: logoGarware, alt: "Garware Polyester Limited", className: "trustedLogo--garware" },
-  { src: logoTataAutocomp, alt: "Tata Autocomp", className: "trustedLogo--tataAutocomp" },
-  { src: logoMahindra, alt: "Mahindra", className: "trustedLogo--mahindra" },
-  { src: logoCapgemini, alt: "Capgemini", className: "trustedLogo--capgemini" },
-  { src: logoMercedesBenz, alt: "Mercedes-Benz", className: "trustedLogo--mercedes" },
-  { src: logoDow, alt: "Dow", className: "trustedLogo--dow" },
-  { src: logoVishay, alt: "Vishay", className: "trustedLogo--vishay" },
-  { src: logoNayara, alt: "Nayara Energy", className: "trustedLogo--nayara" },
-  { src: logoHaier, alt: "Haier", className: "trustedLogo--haier" },
-  { src: logoKirloskar, alt: "Kirloskar", className: "trustedLogo--kirloskar" },
-  { src: logoCastrol, alt: "Castrol", className: "trustedLogo--castrol" },
-  { src: logoKansaiNerolac, alt: "Kansai Nerolac Paints Limited", className: "trustedLogo--kansaiNerolac" },
-  { src: logoApolloTyres, alt: "Apollo Tyres", className: "trustedLogo--apollo" },
-];
-
-// Seamless repeating array with even count (34 items) for infinite loop marquee tracks with alternating vertical stagger
-const TRUSTED_CAROUSEL_ITEMS = [
-  ...TRUSTED_LOGOS,
-  ...TRUSTED_LOGOS,
-];
-
-const TRUSTED_ROW_1 = TRUSTED_LOGOS;
-const TRUSTED_ROW_2 = TRUSTED_LOGOS;
-const TRUSTED_ROW_1_ITEMS = TRUSTED_CAROUSEL_ITEMS;
-const TRUSTED_ROW_2_ITEMS = TRUSTED_CAROUSEL_ITEMS;
 
 const WORKFORCE_FEATURES = [
   { icon: Code, label: "In-house developed\nproducts" },
@@ -161,81 +111,6 @@ const REASONS = [
   { icon: ChatsCircle, label: "Consultative \nImplementation" },
   { icon: CurrencyInr, label: "Competitive Costing" },
   { icon: ThumbsUp, label: "Developed On \nUser Feedback" },
-];
-
-const TESTIMONIALS = [
-  {
-    company: "Yazaki",
-    quote:
-      "“The best part was that emSphere provided end to end solution from Face biometric devices to the contract labour management software which helped us to have a single point of ownership for the entire process across 12000+ employees at 7 Plant locations”",
-    name: "Mahesh Jadhav",
-    role: "Sr HR Manager",
-    logo: logoYazakiTestimonial,
-    rating: 5,
-  },
-  {
-    company: "Yashaswi",
-    quote:
-      "“emSphere team has helped us streamline the entire Attendance & Payroll operations for all our 65K+employees across 500+ clients from diverse industry segments using their powerful adaptive configurations & streamlining the payroll across multiple pay cycles as per customer practices in a single centralized system”",
-    name: "Vishwesh Kulkarni",
-    role: "Chairman",
-    logo: logoYashaswiTestimonial,
-    rating: 5,
-  },
-  {
-    company: "Varroc Excellence",
-    quote:
-      "“emSphere emContract Labour management system empowered us to digitize end to end system from 120+ Biometric attendance, Manpower planning to Contractor billing & labour Analytics associated with it for dynamic contract labour workforce at our 28+ locations 20,000+ contract employees”",
-    name: "Shrikrishna Khalse",
-    role: "Lead Employee Relations",
-    logo: logoVarrocTestimonial,
-    rating: 5,
-  },
-  {
-    company: "Vishay",
-    quote:
-      "“We are using CLMS system for recording and monitoring of the statutory compliances for all service provider. It serves us the great help, not only for compliance monitoring but also in statutory audit, wherein we get the requisite information quickly on single button click. It reduced our manual work, automated the entire process and improved accuracy”",
-    name: "Pramod Hore",
-    role: "Manager HR-IR & Admin",
-    logo: logoVishayTestimonial,
-    rating: 5,
-  },
-  {
-    company: "Nerolac",
-    quote:
-      "“Kansai Nerolac Paints has been satisfied with Emsphere Technologies Pvt. Ltd's software services. Their staff demonstrated a thorough understanding of our demands from the start, delivering a tailored solution that exactly met our specifications. The entire process, from initial consultation to deployment, was handled seamlessly and professionally. The quality of their work far beyond our expectations. The program is reliable, user-friendly, and has considerably increased our operational efficiency. We liked their proactive communication and willingness to go above and ensure everything was running smoothly. Their experience and commitment to excellence were visible throughout the project, and we are satisfied with the outcomes. Highly recommended!”",
-    name: "Mr Vivek Bhatwadekar",
-    role: "General Manager, Head - Employee Relations",
-    logo: logoNerolacTestimonial,
-    rating: 5,
-  },
-  {
-    company: "Reliable Autotech",
-    quote:
-      "“Managing 1,200+ contract workers across Pune, Nashik & Dewas and PAN-India was complex. emSphere gave us a single, end-to-end system — from face-based turnstile access to attendance, contractor billing, and compliance. The biggest advantage is automatic compliance blocking at the device level, which removes manual checks and risk. The solution has made our shop-floor operations simpler, controlled, and audit-ready. We really appreciate the Solution and services provided by emSphere team and wishing them all the best.”",
-    name: "Mr Sagar Bhavsar",
-    role: "Head - Corporate IT / SAP & IT Security",
-    logo: logoReliableAutoTestimonial,
-    rating: 5,
-  },
-  {
-    company: "Kores",
-    quote:
-      "“At Kores, we manage complex attendance and calculation rules across 1,200+ contract workers in 3+ foundry locations. emSphere understood our needs clearly and delivered the entire logic correctly in the first attempt. They also handle the full process end-to-end — from face device attendance capture to reporting — which gives us better control and support. Their CLMS now provides the commercial and cost insights we need to manage high attrition and the challenges of the foundry environment. emSphere has become a reliable partner who makes our tough processes much easier.”",
-    name: "Mr Manish Kedia",
-    role: "Vice President Commercial",
-    logo: logoKoresTestimonial,
-    rating: 5,
-  },
-  {
-    company: "Mahindra & Mahindra",
-    quote:
-      "“Managing 40,000+ contract labourers across multiple locations requires absolute accuracy and strong legal compliance governance. emSphere supports us with a true end-to-end CLMS, starting from face-device–based attendance capture to real-time compliance blocking integrated with Face access systems. All contract labour onboarding across categories is fully digital, bringing consistency, tracking authorized entries and speed at enterprise scale. The platform delivers accurate attendance, OT calculations, compliance monitoring with CLRA statutory reports and contractor billing, and our billing process is strictly driven by the bills generated in emSphere. The system has brought standardization, control, and audit confidence across our contract labour operations. CLMS platform increased the digital footprint and improved visibility of CL operations across units. This resulted in more agile, cost-effective, and efficient workforce solutions, ultimately enhancing overall organizational performance. We intend to scale up this to entire organisation covering 30000+ manpower across divisions and legal entities”",
-    name: "Mr Nilesh Tarange",
-    role: "GM - Process Assurance | Auto Farm Sector",
-    logo: logoMahindraMahindraTestimonial,
-    rating: 5,
-  },
 ];
 
 const FALLBACK_BLOGS = [
@@ -292,7 +167,6 @@ function ArrowRightIcon(props) {
   );
 }
 
-
 /* --------------------------------------------------------------------
    Page CSS — plain hand-written CSS (no Tailwind), kept in this same
    file as a single template string and rendered via <style> below.
@@ -303,8 +177,6 @@ function ArrowRightIcon(props) {
    -------------------------------------------------------------------- */
 
 const PAGE_CSS = `
-@import url("https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap");
-
 @keyframes pageEntranceFade {
   0% {
     opacity: 0;
@@ -334,8 +206,8 @@ const PAGE_CSS = `
   --bg-gray-2: #f0f0f0;
   --bg-gray-3: rgba(245, 245, 245, 0.5);
   --border-gray: #dcdcdc;
-  --font-heading: "Instrument Sans", system-ui, sans-serif;
-  --font-label: "Inter", system-ui, sans-serif;
+  --font-heading: var(--font-instrument-sans), "Instrument Sans", system-ui, sans-serif;
+  --font-label: var(--font-inter), "Inter", system-ui, sans-serif;
 
   font-family: var(--font-heading);
   color: var(--text);
@@ -752,7 +624,7 @@ const PAGE_CSS = `
 
 .home-page .heroDots {
   display: flex;
-  gap: 7px;
+  gap: 11px; /* 14px dots: centres 25px apart (WCAG 2.5.8) */
   flex-shrink: 0;
 }
 
@@ -884,7 +756,7 @@ const PAGE_CSS = `
 
   .home-page .heroDots {
     order: 2;
-    gap: 9px;
+    gap: 14px; /* 11px dots: centres 25px apart */
   }
 
   .home-page .heroDot {
@@ -974,150 +846,6 @@ const PAGE_CSS = `
   .home-page .heroText {
     font-size: 15px;
     margin-bottom: 18px;
-  }
-}
-
-/* ==========================================================================
-   Trusted by leading organizations
-   ========================================================================== */
-
-.home-page .trusted {
-  background: #FFFFFA;
-  box-shadow: inset 0 0 0 1px rgba(172, 172, 172, 0.1);
-  padding: 50px 0 56px;
-  overflow: hidden;
-}
-
-.home-page .trustedTitle {
-  text-align: center;
-  font-size: 24px;
-  font-weight: 600;
-  color: var(--heading-gray);
-  margin: 0 0 28px;
-}
-
-.home-page .trustedMarqueeWrapper {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  padding: 10px 0;
-  mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
-}
-
-.home-page .trustedMarqueeRow {
-  display: flex;
-  overflow: hidden;
-  user-select: none;
-  width: 100%;
-  padding: 6px 0;
-}
-
-.home-page .trustedMarqueeTrack {
-  display: flex;
-  width: max-content;
-  will-change: transform;
-}
-
-.home-page .trustedMarqueeTrackRight {
-  animation: trustedMarqueeScrollRight 48s linear infinite;
-}
-
-.home-page .trustedMarqueeTrackLeft {
-  animation: trustedMarqueeScrollLeft 48s linear infinite;
-}
-
-.home-page .trustedMarqueeRow:hover .trustedMarqueeTrack {
-  animation-play-state: paused;
-}
-
-.home-page .trustedMarqueeGroup {
-  display: flex;
-  align-items: stretch;
-  height: 124px;
-  flex-shrink: 0;
-  gap: 24px;
-  padding-right: 24px;
-}
-
-.home-page .trustedLogoWrap {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 120px;
-  height: 52px;
-  margin-right: 0;
-  flex-shrink: 0;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), z-index 0.3s ease;
-}
-
-.home-page .trustedLogoWrap--bottom,
-.home-page .trustedLogoWrap:nth-child(odd) {
-  align-self: flex-end;
-}
-
-.home-page .trustedLogoWrap--top,
-.home-page .trustedLogoWrap:nth-child(even) {
-  align-self: flex-start;
-}
-
-.home-page .trustedLogo {
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  filter: grayscale(0%);
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
-  will-change: transform;
-  -webkit-user-drag: none;
-  user-drag: none;
-}
-
-/* Individual optical weight balancing */
-.home-page .trustedLogo--haier { max-height: 30px; max-width: 110px; }
-.home-page .trustedLogo--apollo { max-height: 32px; max-width: 115px; }
-.home-page .trustedLogo--capgemini { max-height: 30px; max-width: 120px; }
-.home-page .trustedLogo--castrol { max-height: 32px; max-width: 115px; }
-.home-page .trustedLogo--ltDefence { max-height: 32px; max-width: 125px; }
-.home-page .trustedLogo--dow { max-height: 36px; max-width: 115px; }
-.home-page .trustedLogo--kansaiNerolac { max-height: 36px; max-width: 115px; }
-.home-page .trustedLogo--garware { max-height: 38px; max-width: 110px; }
-.home-page .trustedLogo--mahindra { max-height: 38px; max-width: 112px; }
-.home-page .trustedLogo--kirloskar { max-height: 38px; max-width: 105px; }
-.home-page .trustedLogo--andhraPaper { max-height: 40px; max-width: 100px; }
-.home-page .trustedLogo--mercedes { max-height: 42px; max-width: 110px; }
-.home-page .trustedLogo--tataAutocomp { max-height: 46px; max-width: 96px; }
-.home-page .trustedLogo--nayara { max-height: 48px; max-width: 78px; }
-.home-page .trustedLogo--vishay { max-height: 46px; max-width: 72px; }
-.home-page .trustedLogo--zf { max-height: 46px; max-width: 54px; }
-.home-page .trustedLogo--varroc { max-height: 48px; max-width: 58px; }
-
-.home-page .trustedLogoWrap:hover {
-  z-index: 10;
-}
-
-.home-page .trustedLogoWrap:hover .trustedLogo {
-  transform: scale(1.1);
-  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.12));
-}
-
-@keyframes trustedMarqueeScrollRight {
-  0% {
-    transform: translate3d(-50%, 0, 0);
-  }
-  100% {
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-@keyframes trustedMarqueeScrollLeft {
-  0% {
-    transform: translate3d(0, 0, 0);
-  }
-  100% {
-    transform: translate3d(-50%, 0, 0);
   }
 }
 
@@ -1909,7 +1637,7 @@ const PAGE_CSS = `
   padding: 0;
   font-size: 16px;
   font-weight: 700;
-  color: rgba(176, 125, 0, 0.55);
+  color: #8a6100;
   align-self: flex-start;
   margin-top: auto;
   transition: color 0.2s ease, transform 0.2s ease;
@@ -1920,7 +1648,7 @@ const PAGE_CSS = `
 }
 
 .home-page .testimonialFeatured .testimonialReadMore {
-  color: #b07d00;
+  color: #8a6100;
 }
 
 .home-page .testimonialFooter {
@@ -1939,8 +1667,9 @@ const PAGE_CSS = `
 }
 
 .home-page .testimonialLogoWrap {
-  width: 66px;
-  height: 52px;
+  --logo-scale: 1;
+  width: 84px;
+  height: 56px;
   background: #ffffff;
   border-radius: 8px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
@@ -1958,10 +1687,9 @@ const PAGE_CSS = `
 }
 
 .home-page .testimonialLogo {
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
+  width: calc(var(--w) * var(--logo-scale));
+  height: calc(var(--h) * var(--logo-scale));
+  max-width: none;
   object-fit: contain;
   display: block;
 }
@@ -2021,7 +1749,7 @@ const PAGE_CSS = `
 .home-page .testimonialsDots {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 15px; /* 10px dots: centres 25px apart (WCAG 2.5.8) */
 }
 
 .home-page .testimonialsDot {
@@ -2309,7 +2037,6 @@ const PAGE_CSS = `
     margin: 0 auto 50px;
   }
 
-
   .home-page .divisionsGrid,
   .home-page .blogsGrid,
   .home-page .reasonsGrid {
@@ -2337,7 +2064,6 @@ const PAGE_CSS = `
   }
 
   .home-page .section,
-  .home-page .trusted,
   .home-page .workforce,
   .home-page .divisions,
   .home-page .reasons,
@@ -2360,46 +2086,6 @@ const PAGE_CSS = `
   .home-page .sectionSubtitle {
     font-size: 14.5px;
     line-height: 1.5;
-  }
-
-  /* Trusted */
-  .home-page .trusted {
-    padding: 38px 0 42px;
-  }
-
-  .home-page .trustedTitle {
-    font-size: 20px;
-    margin-bottom: 20px;
-  }
-
-  .home-page .trustedMarqueeRow {
-    margin-bottom: 0;
-    padding: 4px 0;
-  }
-
-  .home-page .trustedMarqueeGroup {
-    height: 104px;
-    gap: 18px;
-    padding-right: 18px;
-  }
-
-  .home-page .trustedLogoWrap {
-    width: 104px;
-    height: 44px;
-    margin-right: 0;
-  }
-
-  .home-page .trustedLogo {
-    max-height: 100%;
-    max-width: 100%;
-  }
-
-  .home-page .trustedMarqueeTrackRight {
-    animation-duration: 40s;
-  }
-
-  .home-page .trustedMarqueeTrackLeft {
-    animation-duration: 40s;
   }
 
   /* Workforce */
@@ -2649,8 +2335,9 @@ const PAGE_CSS = `
   }
 
   .home-page .testimonialLogoWrap {
-    width: 52px;
-    height: 40px;
+    --logo-scale: 0.8;
+    width: 70px;
+    height: 48px;
     padding: 4px;
   }
 
@@ -2743,43 +2430,6 @@ const PAGE_CSS = `
 }
 
 @media (max-width: 480px) {
-  .home-page .trusted {
-    padding: 30px 0 34px;
-  }
-
-  .home-page .trustedTitle {
-    font-size: 18px;
-    margin-bottom: 16px;
-  }
-
-  .home-page .trustedMarqueeRow {
-    padding: 3px 0;
-  }
-
-  .home-page .trustedMarqueeGroup {
-    height: 86px;
-    gap: 14px;
-    padding-right: 14px;
-  }
-
-  .home-page .trustedLogoWrap {
-    width: 86px;
-    height: 36px;
-    margin-right: 0;
-  }
-
-  .home-page .trustedLogo {
-    max-height: 100%;
-    max-width: 100%;
-  }
-
-  .home-page .trustedMarqueeTrackRight {
-    animation-duration: 32s;
-  }
-
-  .home-page .trustedMarqueeTrackLeft {
-    animation-duration: 32s;
-  }
 
   .home-page .reasonsGrid {
     grid-template-columns: repeat(2, 1fr);
@@ -2842,8 +2492,6 @@ export default function LandingPage() {
     return () => clearInterval(timer);
   }, []);
 
-
-
   useEffect(() => {
     if (typeof window === "undefined") return;
 
@@ -2884,60 +2532,15 @@ export default function LandingPage() {
   }, [activeDivision]);
 
   return (
-    <div className="home-page">
-      <title>Workforce and Labor Management System - Emsphere</title>
-      <meta
-        name="description"
-        content="Digitalize your HR Processes and Workflow for all environments with our modern HR suites using the latest technology, powered by Emsphere Pune."
-      />
-      <meta
-        name="keywords"
-        content="Workforce and Labor Management System, Labor Management System, Contract Labour Management System, CLMS Software, HRMS Software Pune, Payroll Management System, Emsphere Pune, Emsphere Technologies, Visitor Management System, Employee Lifecycle Management, HR Automation Suites, Industrial Relations Software"
-      />
-      <link rel="canonical" href="https://www.emsphere.com/" />
-      <meta property="og:title" content="Workforce and Labor Management System - Emsphere" />
-      <meta
-        property="og:description"
-        content="Digitalize your HR Processes and Workflow for all environments with our modern HR suites using the latest technology, powered by Emsphere Pune."
-      />
-      <meta property="og:url" content="https://www.emsphere.com/" />
-      <meta property="og:site_name" content="Emsphere Technologies" />
-      <meta property="og:type" content="website" />
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content="Workforce and Labor Management System - Emsphere" />
-      <meta
-        name="twitter:description"
-        content="Digitalize your HR Processes and Workflow for all environments with our modern HR suites using the latest technology, powered by Emsphere Pune."
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "SoftwareApplication",
-            name: "Workforce and Labor Management System - Emsphere",
-            applicationCategory: "BusinessApplication",
-            operatingSystem: "Cloud, Web",
-            url: "https://www.emsphere.com/",
-            description:
-              "Digitalize your HR Processes and Workflow for all environments with our modern HR suites using the latest technology, powered by Emsphere Pune.",
-            provider: {
-              "@type": "Organization",
-              name: "Emsphere Technologies",
-              url: "https://www.emsphere.com/",
-              address: {
-                "@type": "PostalAddress",
-                addressLocality: "Pune",
-                addressCountry: "India",
-              },
-            },
-          }),
-        }}
-      />
+    <div className={`home-page ${fontVariables}`}>
+      {/* Title, description and canonical come from app/layout.js metadata. */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(homePageJsonLd)} />
       <style>{PAGE_CSS}</style>
 
       {/* Hero */}
       <section className="hero">
+        {/* The only H1 on the page; slide titles below are rotating taglines. */}
+        <h1 className="sr-only">Workforce and Labor Management System - Emsphere Technologies</h1>
         <div className="heroSlides">
           {HERO_SLIDES.map((slide, index) => (
             <div
@@ -2951,11 +2554,12 @@ export default function LandingPage() {
                 width={slide.image.width}
                 height={slide.image.height}
                 loading={index === 0 ? "eager" : "lazy"}
+                fetchPriority={index === 0 ? "high" : undefined}
               />
               <div className="heroSlideContent">
-                <h1 className="heroTitle">{slide.title}</h1>
+                <p className="heroTitle">{slide.title}</p>
                 <p className="heroText">{slide.text}</p>
-                <a className="goldButton heroCta" href="#request-demo">
+                <a className="goldButton heroCta" href="/contact-us/" data-request-demo>
                   {slide.cta.toUpperCase()}
                   <ArrowRightIcon className="buttonIcon" />
                 </a>
@@ -2999,62 +2603,7 @@ export default function LandingPage() {
       </section>
 
       {/* Trusted by leading organizations */}
-      <section className="trusted" id="clients">
-        <div className="container">
-          <h2 className="trustedTitle reveal-on-scroll reveal-fade-up">
-            Trusted By Leading Organizations
-          </h2>
-        </div>
-
-        <div className="trustedMarqueeWrapper reveal-on-scroll reveal-fade-up">
-          <div className="trustedMarqueeRow" aria-label="Trusted client logos">
-            <div className="trustedMarqueeTrack trustedMarqueeTrackRight">
-              <div className="trustedMarqueeGroup">
-                {TRUSTED_CAROUSEL_ITEMS.map((logo, index) => {
-                  const isTop = index % 2 === 1;
-                  return (
-                    <div
-                      key={`trusted-a-${index}`}
-                      className={`trustedLogoWrap ${isTop ? "trustedLogoWrap--top" : "trustedLogoWrap--bottom"}`}
-                    >
-                      <img
-                        className={`trustedLogo ${logo.className || ""}`}
-                        src={logo.src.src}
-                        alt={logo.alt}
-                        width={logo.src.width}
-                        height={logo.src.height}
-                        loading="lazy"
-                        draggable={false}
-                      />
-                    </div>
-                  );
-                })}
-              </div>
-              <div className="trustedMarqueeGroup" aria-hidden="true">
-                {TRUSTED_CAROUSEL_ITEMS.map((logo, index) => {
-                  const isTop = index % 2 === 1;
-                  return (
-                    <div
-                      key={`trusted-b-${index}`}
-                      className={`trustedLogoWrap ${isTop ? "trustedLogoWrap--top" : "trustedLogoWrap--bottom"}`}
-                    >
-                      <img
-                        className={`trustedLogo ${logo.className || ""}`}
-                        src={logo.src.src}
-                        alt={logo.alt}
-                        width={logo.src.width}
-                        height={logo.src.height}
-                        loading="lazy"
-                        draggable={false}
-                      />
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <TrustedLogos id="clients" />
 
       {/* Enhance Workforce and Labor Management */}
       <section className="workforce">
@@ -3129,8 +2678,8 @@ export default function LandingPage() {
               </ul>
 
               <div className="reveal-on-scroll reveal-fade-up" style={{ transitionDelay: "520ms" }}>
-                <a className="goldButton" href="#learn-more">
-                  LEARN MORE
+                <a className="goldButton" href="/about-us/">
+                  LEARN MORE<span className="sr-only"> about Emsphere</span>
                   <ArrowRightIcon className="buttonIcon" />
                 </a>
               </div>
@@ -3180,7 +2729,7 @@ export default function LandingPage() {
                   </div>
 
                   <div className="divisionCardBack" aria-hidden="true">
-                    <h3 className="divisionHoverTitle">{division.title}</h3>
+                    <p className="divisionHoverTitle">{division.title}</p>
                     <span className="divisionHoverDivider" />
                     <p className="divisionHoverText">{division.hoverText}</p>
                   </div>
@@ -3293,7 +2842,7 @@ export default function LandingPage() {
                       </h3>
                       <p className="blogExcerpt">{post.excerpt}</p>
                       <a href={postHref} className="learnMore">
-                        Learn More
+                        Learn More<span className="sr-only">: {post.title}</span>
                         <ArrowRightIcon />
                       </a>
                     </div>
@@ -3311,14 +2860,14 @@ export default function LandingPage() {
           <div className="ctaRow">
             <div className="ctaCol reveal-on-scroll reveal-fade-right">
               <h2 className="ctaTitle">Ready to talk?</h2>
-              <a className="goldButton" href="#talk-to-sale">
+              <a className="goldButton" href="/contact-us/" data-request-demo>
                 Talk to Sale
               </a>
             </div>
             <span className="ctaDivider" />
             <div className="ctaCol reveal-on-scroll reveal-fade-left">
               <h2 className="ctaTitle">Want to know more?</h2>
-              <a className="goldButton" href="#book-demo">
+              <a className="goldButton" href="/contact-us/" data-request-demo>
                 Book Demo
               </a>
             </div>

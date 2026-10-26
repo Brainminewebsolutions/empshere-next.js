@@ -6,7 +6,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 import BackToTop from "@/components/BackToTop";
 import FlagshipProducts from "@/components/FlagshipProducts";
 import FeatureCard from "@/components/FeatureCard";
-import DemoRequestForm from "@/components/DemoRequestForm";
+import LeadForm from "@/components/LeadForm";
 import PinnedScrollSection from "@/components/PinnedScrollSection";
 import WhyChooseFlipCards from "@/components/WhyChooseFlipCards";
 
@@ -18,6 +18,8 @@ import WhyChooseFlipCards from "@/components/WhyChooseFlipCards";
 import heroImg from "../images/canteen-management-system/hero-emmeal-meal-planner-mobile-app.webp";
 import appScreenImg from "../images/canteen-management-system/emmeal-find-meals-app-screen.webp";
 import { ArrowsOut, CallBell, Clock, ClockCountdown, CookingPot, CursorClick, Desktop, EnvelopeSimple, FileText, Fingerprint, ForkKnife, GearSix, Headset, Lightning, Package, PiggyBank, PlugsConnected, Receipt, SlidersHorizontal, Smiley, Stack, Storefront, Ticket, Trophy, Warning } from "@phosphor-icons/react/ssr";
+import { faqPageNode, jsonLdScript, productPageJsonLd } from "@/lib/schema";
+import { DEFAULT_OG_IMAGE, TWITTER_SITE } from "@/lib/seo";
 
 // Title and description are the page's Rank Math values on the current site.
 const PAGE_URL = "https://www.emsphere.com/canteen-management-system/";
@@ -43,6 +45,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
+    site: TWITTER_SITE,
     title: PAGE_TITLE,
     description: PAGE_DESCRIPTION,
     images: [OG_IMAGE],
@@ -352,35 +355,16 @@ const faqs = [
 ];
 
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "SoftwareApplication",
-      name: "emMeal — Canteen Management System",
-      applicationCategory: "BusinessApplication",
-      operatingSystem: "Web, Android, iOS",
-      description: PAGE_DESCRIPTION,
-      url: PAGE_URL,
-      publisher: { "@type": "Organization", name: "Emsphere Technologies", url: "https://www.emsphere.com/" },
-    },
-    {
-      "@type": "FAQPage",
-      mainEntity: faqs.map((faq) => ({
-        "@type": "Question",
-        name: faq.question,
-        acceptedAnswer: { "@type": "Answer", text: faq.answer },
-      })),
-    },
-    {
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.emsphere.com/" },
-        { "@type": "ListItem", position: 2, name: "Canteen Management System", item: PAGE_URL },
-      ],
-    },
-  ],
-};
+const jsonLd = productPageJsonLd({
+  url: PAGE_URL,
+  name: "emMeal Canteen Management System",
+  description:
+    "emMeal is a canteen management system that helps organizations manage meals, menus, meal slots, billing, coupons, vendor billing, employee contributions and canteen reports.",
+  subCategory: "Canteen Management Software",
+  pageName: "Canteen Management System",
+  breadcrumbName: "Canteen Management System",
+  extraNodes: [faqPageNode(PAGE_URL, faqs)],
+});
 
 /* --------------------------------------------------------------------
    Page
@@ -390,7 +374,7 @@ export default function CanteenManagementSystemPage() {
   return (
     <main className={`${instrumentSans.variable} ${inter.variable} hrms-page payroll-page cms-page w-full overflow-x-clip bg-[#FFFFFA] font-sans text-[#4c4c4c]`}>
       <ScrollReveal root=".cms-page" />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(jsonLd)} />
 
       {/* Hero */}
       <section
@@ -423,7 +407,7 @@ export default function CanteenManagementSystemPage() {
             </p>
             <p className="text-base font-semibold text-[#1f1f1f]">To talk more about well organised lunch breaks</p>
             <div className="flex flex-col gap-3 sm:flex-row">
-              <a href="#request-demo" className={`${primaryButton} text-[15px]`}>
+              <a href="/contact-us/" data-request-demo className={`${primaryButton} text-[15px]`}>
                 Book a demo
                 <ArrowCircleIcon />
               </a>
@@ -525,7 +509,7 @@ export default function CanteenManagementSystemPage() {
             </div>
           </div>
           <div className={`${revealFromRight} w-full max-w-md lg:w-[40%] lg:max-w-[440px]`}>
-            <DemoRequestForm product="Canteen Management System (emMeal)" title="Book a call" subtitle="Request a demo of emMeal — our team will reach out to schedule it." />
+            <LeadForm compact product="emMeal Canteen Management System" title="Book a call" subtitle="Request a demo of emMeal — our team will reach out to schedule it." />
           </div>
         </div>
       </section>
@@ -722,7 +706,7 @@ export default function CanteenManagementSystemPage() {
                 Still confused?
               </h3>
               <a
-                href="#request-demo"
+                href="/contact-us/" data-request-demo
                 className={`group/btn inline-flex shrink-0 items-center justify-center gap-2 self-start rounded-[9px] bg-[#efb000] px-6 py-3 ${fontInter} text-[15px] font-semibold text-black ${motion} hover:-translate-y-0.5 hover:bg-[#d69e00] hover:shadow-[0_8px_18px_-4px_rgba(239,176,0,0.55)] lg:self-center`}
               >
                 Talk to an Expert
@@ -778,6 +762,7 @@ export default function CanteenManagementSystemPage() {
                 </h2>
                 <Link
                   href="/contact-us"
+                  data-request-demo=""
                   className={`group/btn inline-flex w-full max-w-65 items-center justify-center rounded-lg bg-[#EFB000] px-6 py-[13px] ${fontInter} text-[15px] font-semibold tracking-[0.02em] text-white ${motion} hover:-translate-y-0.5 hover:bg-[#d99e00] hover:shadow-[0_8px_18px_-4px_rgba(239,176,0,0.45)] active:translate-y-0 min-[769px]:w-auto min-[769px]:max-w-none min-[769px]:min-w-[145px] min-[769px]:px-[30px]`}
                 >
                   {col.cta}

@@ -36,6 +36,8 @@ import exitImg from "../images/human-resource-management-system/emexit-employee-
 import expenseImg from "../images/human-resource-management-system/emexpense-claims-dashboard-laptop.webp";
 import helpdeskImg from "../images/human-resource-management-system/emhelpdesk-support-agents-headsets.webp";
 import analyticsImg from "../images/human-resource-management-system/emworkforce-analytics-charts-illustration.webp";
+import { jsonLdScript, productPageJsonLd } from "@/lib/schema";
+import { DEFAULT_OG_IMAGE, TWITTER_SITE } from "@/lib/seo";
 
 
 // TODO: confirm production domain (layout.js also flags this) before deploying.
@@ -79,6 +81,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
+    site: TWITTER_SITE,
     title: PAGE_TITLE,
     description: PAGE_DESCRIPTION,
     images: [OG_IMAGE],
@@ -316,7 +319,7 @@ const attendanceCards = [
       "Create different type of shifts, Default, Flexi, Cross/Night Shift, Break Shift",
       "Allocate shift both manually and automatically on rotation basis.",
     ],
-    href: "/products/emworkforce",
+    href: "/workforce-management-system",
   },
   {
     title: "Overtime Management",
@@ -326,7 +329,7 @@ const attendanceCards = [
       "OT Policy on holidays and week offs.",
       "OT Limit warning triggers and approvals.",
     ],
-    href: "/products/emworkforce",
+    href: "/workforce-management-system",
   },
   {
     title: "Leave Management",
@@ -336,7 +339,7 @@ const attendanceCards = [
       "Configure leave rules",
       "Track leave and comp off transaction details for each employee.",
     ],
-    href: "/products/emworkforce",
+    href: "/workforce-management-system",
   },
 ];
 
@@ -552,6 +555,16 @@ const faqs = [
 ];
 
 
+const jsonLd = productPageJsonLd({
+  url: PAGE_URL,
+  name: "emSphere HRMS",
+  description:
+    "emSphere HRMS is a configurable human resource management system that helps organizations manage the complete employee lifecycle, including recruitment, attendance, leave, performance, payroll and workforce processes.",
+  subCategory: "Human Resource Management Software",
+  pageName: "Human Resource Management System, SAP HRMS Software",
+  breadcrumbName: "Human Resource Management System",
+});
+
 /* --------------------------------------------------------------------
    Page
    -------------------------------------------------------------------- */
@@ -560,6 +573,7 @@ export default function HumanResourceManagementSystemPage() {
   return (
     <main className={`${instrumentSans.variable} ${inter.variable} hrms-page w-full overflow-x-hidden bg-[#FFFFFA] font-sans text-[#4c4c4c]`}>
       <ScrollReveal root=".hrms-page" />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(jsonLd)} />
 
       {/* Hero */}
       <section
@@ -576,7 +590,7 @@ export default function HumanResourceManagementSystemPage() {
               <p className={`text-base leading-[25.5px] ${mutedText}`}>
                 Select an HR System that helps you stay on top of your daily activities, saves you time to focus on people and create engaging experiences.
               </p>
-              <Link href="/contact-us" className={`${primaryButton} self-start text-[15px]`}>
+              <Link href="/contact-us/" data-request-demo className={`${primaryButton} self-start text-[15px]`}>
                 Book a Demo
                 <ArrowCircleIcon />
               </Link>
@@ -775,7 +789,7 @@ export default function HumanResourceManagementSystemPage() {
                     <p className="font-medium">Customizable to Fit Your Business</p>
                     <p>Build a workforce management system that works for you</p>
                   </div>
-                  <Link href="/products/emworkforce" className={`${learnMoreButton} shrink-0 px-10 py-2.5`}>
+                  <Link href="/workforce-management-system" className={`${learnMoreButton} shrink-0 px-10 py-2.5`}>
                     LEARN MORE
                     <ArrowOutlineIcon />
                   </Link>
@@ -793,7 +807,7 @@ export default function HumanResourceManagementSystemPage() {
                   <li>Attendance Capture via Mobile App and GPS.</li>
                 </ul>
               </div>
-              <LearnMoreLink href="/products/emworkforce" />
+              <LearnMoreLink href="/workforce-management-system" />
             </article>
           </div>
 
@@ -866,7 +880,7 @@ export default function HumanResourceManagementSystemPage() {
             ))}
           </div>
 
-          <Link href="/contact-us" className={`${revealUp} ${demoButton} w-full px-12 sm:mx-auto sm:w-auto`}>
+          <Link href="/contact-us/" data-request-demo className={`${revealUp} ${demoButton} w-full px-12 sm:mx-auto sm:w-auto`}>
             Book a Demo
             <ArrowOutlineIcon />
           </Link>
@@ -998,6 +1012,7 @@ export default function HumanResourceManagementSystemPage() {
                 </h2>
                 <Link
                   href="/contact-us"
+                  data-request-demo=""
                   className={`group/btn inline-flex w-full max-w-65 items-center justify-center rounded-lg bg-[#EFB000] px-6 py-[13px] ${fontInter} text-[15px] font-semibold tracking-[0.02em] text-white ${motion} hover:-translate-y-0.5 hover:bg-[#d99e00] hover:shadow-[0_8px_18px_-4px_rgba(239,176,0,0.45)] active:translate-y-0 min-[769px]:w-auto min-[769px]:max-w-none min-[769px]:min-w-[145px] min-[769px]:px-[30px]`}
                 >
                   {col.cta}

@@ -3,6 +3,8 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
+import DemoModal from "@/components/DemoModal";
+import { DEFAULT_OG_IMAGE, TWITTER_SITE } from "@/lib/seo";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -49,13 +51,16 @@ export const metadata = {
     url: "https://www.emsphere.com/",
     siteName: "Emsphere Technologies",
     locale: "en_US",
+    images: [DEFAULT_OG_IMAGE],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
+    site: TWITTER_SITE,
     title: "Workforce and Labor Management System - Emsphere",
     description:
       "Digitalize your HR Processes and Workflow for all environments with our modern HR suites using the latest technology, powered by Emsphere Pune.",
+    images: [DEFAULT_OG_IMAGE],
   },
 };
 
@@ -70,6 +75,7 @@ export default function RootLayout({ children }) {
         <Header />
         {children}
         <Footer />
+        <DemoModal />
       </body>
     </html>
   );

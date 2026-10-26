@@ -6,7 +6,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 import BackToTop from "@/components/BackToTop";
 import FlagshipProducts from "@/components/FlagshipProducts";
 import FeatureCard from "@/components/FeatureCard";
-import DemoRequestForm from "@/components/DemoRequestForm";
+import LeadForm from "@/components/LeadForm";
 import CardCarousel from "@/components/CardCarousel";
 import StopwatchCounter from "@/components/StopwatchCounter";
 import WorkforceHeroVector from "@/components/WorkforceHeroVector";
@@ -20,6 +20,8 @@ import heroImg from "../images/workforce-management-system/hero-workforce-global
 import whyImg from "../images/workforce-management-system/why-emworkforce-centralized-management-dashboard.webp";
 import consultingImg from "../images/workforce-management-system/consulting-session-sme-workforce-analytics.webp";
 import { CalendarCheck, CheckCircle, Clock, DeviceMobile, FileText, FlowArrow, Lock, MapTrifold, Money, Pulse, ShieldCheck, Star, UserCheck, Users, UsersThree } from "@phosphor-icons/react/ssr";
+import { faqPageNode, jsonLdScript, productPageJsonLd } from "@/lib/schema";
+import { DEFAULT_OG_IMAGE, TWITTER_SITE } from "@/lib/seo";
 
 // Title and description are the page's Rank Math values on the current site.
 const PAGE_URL = "https://www.emsphere.com/workforce-management-system/";
@@ -45,6 +47,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
+    site: TWITTER_SITE,
     title: PAGE_TITLE,
     description: PAGE_DESCRIPTION,
     images: [OG_IMAGE],
@@ -265,35 +268,16 @@ const faqs = [
 ];
 
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "SoftwareApplication",
-      name: "emWorkForce — Workforce Management System",
-      applicationCategory: "BusinessApplication",
-      operatingSystem: "Web, Android, iOS",
-      description: PAGE_DESCRIPTION,
-      url: PAGE_URL,
-      publisher: { "@type": "Organization", name: "Emsphere Technologies", url: "https://www.emsphere.com/" },
-    },
-    {
-      "@type": "FAQPage",
-      mainEntity: faqs.map((faq) => ({
-        "@type": "Question",
-        name: faq.question,
-        acceptedAnswer: { "@type": "Answer", text: faq.answer },
-      })),
-    },
-    {
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.emsphere.com/" },
-        { "@type": "ListItem", position: 2, name: "Workforce Management System", item: PAGE_URL },
-      ],
-    },
-  ],
-};
+const jsonLd = productPageJsonLd({
+  url: PAGE_URL,
+  name: "emWorkForce",
+  description:
+    "emWorkForce is a workforce management system that helps enterprises manage employees, attendance, payroll, leave, employee self-service, workflows, compliance and workforce reporting.",
+  subCategory: "Workforce Management Software",
+  pageName: "Workforce Management System India",
+  breadcrumbName: "Workforce Management System",
+  extraNodes: [faqPageNode(PAGE_URL, faqs)],
+});
 
 /* --------------------------------------------------------------------
    Page
@@ -303,7 +287,7 @@ export default function WorkforceManagementSystemPage() {
   return (
     <main className={`${instrumentSans.variable} ${inter.variable} hrms-page payroll-page wfm-page w-full overflow-x-clip bg-[#FFFFFA] font-sans text-[#4c4c4c]`}>
       <ScrollReveal root=".wfm-page" />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(jsonLd)} />
 
       {/* Hero */}
       <section
@@ -332,7 +316,7 @@ export default function WorkforceManagementSystemPage() {
               Available in On-Premises and Cloud trims with multi-tier security to support workforce spread in multi locations.
             </p>
             <div className="flex flex-col gap-3 sm:flex-row">
-              <a href="#request-demo" className={`${primaryButton} text-[15px]`}>
+              <a href="/contact-us/" data-request-demo className={`${primaryButton} text-[15px]`}>
                 Book a Demo
                 <ArrowCircleIcon />
               </a>
@@ -482,8 +466,8 @@ export default function WorkforceManagementSystemPage() {
           </div>
 
           <div className={`${revealFromRight} relative w-full max-w-md lg:w-[44%] lg:max-w-[450px]`}>
-            <DemoRequestForm
-              product="Workforce Management System (emWorkForce)"
+            <LeadForm compact
+              product="emWorkforce management system"
               title="Request for demo"
               subtitle="Tell us a little about your team — our SME will reach out to schedule your session."
             />
@@ -536,6 +520,7 @@ export default function WorkforceManagementSystemPage() {
                 </h2>
                 <Link
                   href="/contact-us"
+                  data-request-demo=""
                   className={`group/btn inline-flex w-full max-w-65 items-center justify-center rounded-lg bg-[#EFB000] px-6 py-[13px] ${fontInter} text-[15px] font-semibold tracking-[0.02em] text-white ${motion} hover:-translate-y-0.5 hover:bg-[#d99e00] hover:shadow-[0_8px_18px_-4px_rgba(239,176,0,0.45)] active:translate-y-0 min-[769px]:w-auto min-[769px]:max-w-none min-[769px]:min-w-[145px] min-[769px]:px-[30px]`}
                 >
                   {col.cta}

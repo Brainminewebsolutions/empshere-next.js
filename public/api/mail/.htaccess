@@ -1,0 +1,4 @@
+# Include-only folder for ../lead.php: nothing here is meant to be opened directly.
+<FilesMatch "\.php$">
+  Require all denied
+</FilesMatch>

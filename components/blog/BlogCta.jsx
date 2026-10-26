@@ -25,7 +25,7 @@ export default function BlogCta() {
                 style={{ transitionDelay: `${150 + index * 120}ms` }}
               >
                 <h2 className="text-[28px] font-bold tracking-[-0.015em] text-[#1f1f1f] sm:text-[32px] lg:text-[38px]">{col.title}</h2>
-                <Link href="/contact-us/" className="blog-btn blog-btn-gold min-w-[160px] px-[30px]">
+                <Link href="/contact-us/" data-request-demo="" className="blog-btn blog-btn-gold min-w-[160px] px-[30px]">
                   {col.cta}
                   <ArrowRightIcon />
                 </Link>

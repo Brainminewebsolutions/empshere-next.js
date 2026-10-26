@@ -1,6 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import { Instrument_Sans, Inter } from "next/font/google";
+
+// Self-hosted by next/font (no request to Google Fonts at runtime).
+const instrumentSans = Instrument_Sans({ subsets: ["latin"], variable: "--font-instrument-sans" });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const fontVariables = `${instrumentSans.variable} ${inter.variable}`;
+
 
 function HomeIcon({ className = "" }) {
   return (
@@ -37,8 +44,6 @@ function ArrowRightIcon({ className = "" }) {
 }
 
 const NOT_FOUND_CSS = `
-@import url("https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap");
-
 @keyframes notFoundEntrance {
   0% {
     opacity: 0;
@@ -90,8 +95,8 @@ const NOT_FOUND_CSS = `
   --text-primary: #1f2937;
   --text-secondary: #4b5563;
   --text-muted: #6b7280;
-  --font-heading: "Instrument Sans", system-ui, sans-serif;
-  --font-label: "Inter", system-ui, sans-serif;
+  --font-heading: var(--font-instrument-sans), "Instrument Sans", system-ui, sans-serif;
+  --font-label: var(--font-inter), "Inter", system-ui, sans-serif;
 
   font-family: var(--font-heading);
   position: relative;
@@ -347,7 +352,7 @@ const NOT_FOUND_CSS = `
 
 export default function NotFound() {
   return (
-    <main className="emsphere-not-found">
+    <main className={`emsphere-not-found ${fontVariables}`}>
       <title>404 - Page Not Found | Emsphere Technologies</title>
       <meta name="robots" content="noindex, follow" />
       <style>{NOT_FOUND_CSS}</style>

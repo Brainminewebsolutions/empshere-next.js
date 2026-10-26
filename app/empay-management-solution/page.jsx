@@ -35,6 +35,8 @@ import salaryComputationImg from "../images/payroll-management-solution/salary-c
 import reconciliationImg from "../images/payroll-management-solution/salary-monthly-reconciliation-reports.webp";
 import payslipImg from "../images/payroll-management-solution/payslip-generation-dashboard.webp";
 import { ArrowsClockwise, Bank, Briefcase, Certificate, ChartBar, ClockCounterClockwise, Files, FirstAidKit, Gift, HandCoins, Key, ListMagnifyingGlass, Percent, PiggyBank, Receipt, Scales, SlidersHorizontal, Target, TreeStructure, UsersThree, Wallet, ChartLineUp } from "@phosphor-icons/react/ssr";
+import { jsonLdScript, productPageJsonLd } from "@/lib/schema";
+import { DEFAULT_OG_IMAGE, TWITTER_SITE } from "@/lib/seo";
 
 
 // Title and description are the page's Rank Math values on the current site.
@@ -61,6 +63,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
+    site: TWITTER_SITE,
     title: PAGE_TITLE,
     description: PAGE_DESCRIPTION,
     images: [OG_IMAGE],
@@ -307,47 +310,16 @@ const reportTeams = [
 ];
 
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "SoftwareApplication",
-      name: "emPay Management System",
-      applicationCategory: "BusinessApplication",
-      operatingSystem: "Web, Android, iOS",
-      description: PAGE_DESCRIPTION,
-      url: PAGE_URL,
-      publisher: { "@type": "Organization", name: "Emsphere Technologies", url: "https://www.emsphere.com/" },
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": `${PAGE_URL}#breadcrumb`,
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.emsphere.com/" },
-        { "@type": "ListItem", position: 2, name: "emPay Management System", item: PAGE_URL },
-      ],
-    },
-  ],
-};
 
-const breadcrumbJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    {
-      "@type": "ListItem",
-      position: 1,
-      name: "Home",
-      item: "https://www.emsphere.com/",
-    },
-    {
-      "@type": "ListItem",
-      position: 2,
-      name: "emPay Management System",
-      item: PAGE_URL,
-    },
-  ],
-};
+const jsonLd = productPageJsonLd({
+  url: PAGE_URL,
+  name: "emPayroll",
+  description:
+    "emPayroll is a payroll management system that helps organizations automate salary calculation, payroll processing, statutory compliance, tax deductions, payslip generation and payroll reporting.",
+  subCategory: "Payroll Management Software",
+  pageName: "Payroll Management System",
+  breadcrumbName: "Payroll Management System",
+});
 
 /* --------------------------------------------------------------------
    Page
@@ -357,8 +329,7 @@ export default function EmPayPage() {
   return (
     <main className={`${instrumentSans.variable} ${inter.variable} hrms-page payroll-page w-full overflow-x-hidden bg-[#FFFFFA] font-sans text-[#4c4c4c]`}>
       <ScrollReveal root=".payroll-page" />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd).replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(jsonLd)} />
 
       {/* Hero */}
       <section
@@ -410,7 +381,7 @@ export default function EmPayPage() {
               management. Use emPay for timely, hassle-free, and accurate salary processing.
             </p>
             <div className="flex flex-col gap-3 sm:flex-row">
-              <Link href="/contact-us" className={`${primaryButton} text-[15px]`}>
+              <Link href="/contact-us/" data-request-demo className={`${primaryButton} text-[15px]`}>
                 Book a Demo
                 <ArrowCircleIcon />
               </Link>
@@ -474,7 +445,7 @@ export default function EmPayPage() {
                   <IconTile name={item.icon} />
                   <h3 className="text-xl font-semibold text-[#1f1f1f]">{item.title}</h3>
                   <p className={`text-[15px] leading-[23px] ${mutedText}`}>{item.text}</p>
-                  <Link href="/contact-us" className={`group/btn mt-auto inline-flex items-center justify-center gap-2 pt-1 ${fontInter} text-sm font-semibold text-[#f8bb18]`}>
+                  <Link href="/contact-us/" data-request-demo className={`group/btn mt-auto inline-flex items-center justify-center gap-2 pt-1 ${fontInter} text-sm font-semibold text-[#f8bb18]`}>
                     Learn More
                     <ArrowCircleIcon className="h-4 w-4" fill="#f8bb18" />
                   </Link>
@@ -527,7 +498,7 @@ export default function EmPayPage() {
                 Just a few clicks and voilà you have everything from basic information, to qualification, previous job history, documents submitted,
                 personal & family details right in front of you.
               </p>
-              <Link href="/contact-us" className={`${primaryButton} self-center text-sm lg:self-start`}>
+              <Link href="/contact-us/" data-request-demo className={`${primaryButton} self-center text-sm lg:self-start`}>
                 Get Started
                 <ArrowCircleIcon className="h-4 w-4" />
               </Link>
@@ -594,7 +565,7 @@ export default function EmPayPage() {
               </div>
               <div className="mt-auto pt-2">
                 <Link
-                  href="/contact-us"
+                  href="/human-resource-management-system"
                   className="group/btn inline-flex w-full items-center justify-center gap-2 rounded-lg bg-[#EFB000] px-6 py-3 text-xs font-semibold uppercase tracking-wider text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#d99e00] hover:shadow-[0_8px_18px_-4px_rgba(239,176,0,0.45)] sm:w-auto sm:self-start"
                 >
                   <span>KNOW MORE</span>
@@ -627,7 +598,7 @@ export default function EmPayPage() {
               </div>
               <div className="mt-auto pt-2">
                 <Link
-                  href="/contact-us"
+                  href="/human-resource-management-system"
                   className="group/btn inline-flex w-full items-center justify-center gap-2 rounded-lg bg-[#EFB000] px-6 py-3 text-xs font-semibold uppercase tracking-wider text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#d99e00] hover:shadow-[0_8px_18px_-4px_rgba(239,176,0,0.45)] sm:w-auto sm:self-start"
                 >
                   <span>KNOW MORE</span>
@@ -703,7 +674,7 @@ export default function EmPayPage() {
                       <p className={`text-[15px] leading-relaxed ${mutedText} sm:text-base`}>
                         {tab.text}
                       </p>
-                      <Link href="/contact-us" className={`${primaryButton} self-start text-sm`}>
+                      <Link href="/contact-us/" data-request-demo className={`${primaryButton} self-start text-sm`}>
                         Know More
                         <ArrowCircleIcon className="h-4 w-4" />
                       </Link>
@@ -823,7 +794,7 @@ export default function EmPayPage() {
               align="left"
               className="items-center text-center lg:items-start lg:text-left"
             />
-            <Link href="/contact-us" className={`${revealUp} ${primaryButton} shrink-0 text-[15px] lg:mb-12`}>
+            <Link href="/contact-us/" data-request-demo className={`${revealUp} ${primaryButton} shrink-0 text-[15px] lg:mb-12`}>
               Request a demo
               <ArrowCircleIcon />
             </Link>
@@ -864,6 +835,7 @@ export default function EmPayPage() {
                 </h2>
                 <Link
                   href="/contact-us"
+                  data-request-demo=""
                   className={`group/btn inline-flex w-full max-w-65 items-center justify-center rounded-lg bg-[#EFB000] px-6 py-[13px] ${fontInter} text-[15px] font-semibold tracking-[0.02em] text-white ${motion} hover:-translate-y-0.5 hover:bg-[#d99e00] hover:shadow-[0_8px_18px_-4px_rgba(239,176,0,0.45)] active:translate-y-0 min-[769px]:w-auto min-[769px]:max-w-none min-[769px]:min-w-[145px] min-[769px]:px-[30px]`}
                 >
                   {col.cta}

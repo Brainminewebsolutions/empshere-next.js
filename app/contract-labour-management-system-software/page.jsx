@@ -6,7 +6,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 import BackToTop from "@/components/BackToTop";
 import FlagshipProducts from "@/components/FlagshipProducts";
 import FeatureCard from "@/components/FeatureCard";
-import DemoRequestForm from "@/components/DemoRequestForm";
+import LeadForm from "@/components/LeadForm";
 import CardCarousel from "@/components/CardCarousel";
 import PinnedScrollSection from "@/components/PinnedScrollSection";
 import WhyChooseFlipCards from "@/components/WhyChooseFlipCards";
@@ -42,6 +42,8 @@ import partnerHanvon from "../images/contract-labour-management-system-software/
 import partnerVirdi from "../images/contract-labour-management-system-software/partner-logo-virdi.webp";
 import partnerNitgen from "../images/contract-labour-management-system-software/partner-logo-nitgen.webp";
 import { ArrowsOut, CalendarCheck, ChartBar, ChartLineUp, ChartPieSlice, Clock, Cloud, CursorClick, EnvelopeSimple, FileText, FirstAidKit, GearSix, HardDrives, HardHat, Headset, IdentificationCard, ListChecks, ListMagnifyingGlass, Money, PlugsConnected, Scales, ShieldCheck, SlidersHorizontal, Sparkle, Stamp, Star, TrendUp, Trophy, UserCheck, UserGear, UsersThree } from "@phosphor-icons/react/ssr";
+import { jsonLdScript, productPageJsonLd } from "@/lib/schema";
+import { DEFAULT_OG_IMAGE, TWITTER_SITE } from "@/lib/seo";
 
 
 // Title and description are the page's Rank Math values on the current site.
@@ -68,6 +70,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
+    site: TWITTER_SITE,
     title: PAGE_TITLE,
     description: PAGE_DESCRIPTION,
     images: [OG_IMAGE],
@@ -444,24 +447,15 @@ const faqs = [
 ];
 
 
-const breadcrumbJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    {
-      "@type": "ListItem",
-      position: 1,
-      name: "Home",
-      item: "https://www.emsphere.com/",
-    },
-    {
-      "@type": "ListItem",
-      position: 2,
-      name: "Contract Labour Management System",
-      item: PAGE_URL,
-    },
-  ],
-};
+const jsonLd = productPageJsonLd({
+  url: PAGE_URL,
+  name: "emContract Labour Management System",
+  description:
+    "emContract is a contract labour management system that helps enterprises manage contractors, contract employees, manpower planning, attendance, compliance, wages, billing and labour analytics.",
+  subCategory: "Contract Labour Management Software",
+  pageName: "Contract Labour Management System",
+  breadcrumbName: "Contract Labour Management System",
+});
 
 /* --------------------------------------------------------------------
    Page
@@ -471,10 +465,7 @@ export default function ContractLabourManagementSystemPage() {
   return (
     <main className={`${instrumentSans.variable} ${inter.variable} hrms-page payroll-page clms-page w-full overflow-x-clip bg-[#FFFFFA] font-sans text-[#4c4c4c]`}>
       <ScrollReveal root=".clms-page" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd).replace(/</g, "\\u003c") }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(jsonLd)} />
 
       {/* Hero */}
       <section
@@ -530,7 +521,7 @@ export default function ContractLabourManagementSystemPage() {
               Our flagship product is known to simplify, automate, keep large scale labour teams compliant as per statutory guidelines.
             </p>
             <div className="flex flex-col gap-3.5 sm:flex-row sm:gap-5">
-              <a href="#request-demo" className={`${primaryButton} text-[15px]`}>
+              <a href="/contact-us/" data-request-demo className={`${primaryButton} text-[15px]`}>
                 Book a Demo
                 <ArrowCircleIcon />
               </a>
@@ -542,8 +533,8 @@ export default function ContractLabourManagementSystemPage() {
 
           {/* Request for demo form */}
           <div className={`${revealFromRight} relative w-full max-w-md lg:w-[40%] lg:max-w-[440px]`}>
-            <DemoRequestForm
-              product="Contract Labour Management System (CLMS)"
+            <LeadForm compact
+              product="emContract labour management system"
               title="Request for demo"
               subtitle="See emContract in action our team will reach out to schedule your walkthrough."
             />
@@ -759,7 +750,7 @@ export default function ContractLabourManagementSystemPage() {
               align="left"
             />
             <div className={`${revealUp} flex flex-wrap items-center gap-4 pt-1`}>
-              <a href="#request-demo" className={`${primaryButton} text-sm`}>
+              <a href="/contact-us/" data-request-demo className={`${primaryButton} text-sm`}>
                 Book a Demo
                 <ArrowCircleIcon className="h-4 w-4" />
               </a>
@@ -875,6 +866,7 @@ export default function ContractLabourManagementSystemPage() {
                 </h2>
                 <Link
                   href="/contact-us"
+                  data-request-demo=""
                   className={`group/btn inline-flex w-full max-w-65 items-center justify-center rounded-lg bg-[#EFB000] px-6 py-[13px] ${fontInter} text-[15px] font-semibold tracking-[0.02em] text-white ${motion} hover:-translate-y-0.5 hover:bg-[#d99e00] hover:shadow-[0_8px_18px_-4px_rgba(239,176,0,0.45)] active:translate-y-0 min-[769px]:w-auto min-[769px]:max-w-none min-[769px]:min-w-[145px] min-[769px]:px-[30px]`}
                 >
                   {col.cta}

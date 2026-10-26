@@ -6,7 +6,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 import BackToTop from "@/components/BackToTop";
 import FlagshipProducts from "@/components/FlagshipProducts";
 import FeatureCard from "@/components/FeatureCard";
-import DemoRequestForm from "@/components/DemoRequestForm";
+import LeadForm from "@/components/LeadForm";
 import StopwatchCounter from "@/components/StopwatchCounter";
 import HeadcountHeroVector from "@/components/HeadcountHeroVector";
 
@@ -21,6 +21,7 @@ import dashboardImg from "../images/headcount-management-software/feature-realti
 import automationImg from "../images/headcount-management-software/feature-automated-evacuation-list.webp";
 import alertsImg from "../images/headcount-management-software/feature-red-zone-sms-email-alerts.webp";
 import { Lifebuoy, ShieldCheck, UsersFour } from "@phosphor-icons/react/ssr";
+import { DEFAULT_OG_IMAGE, TWITTER_SITE } from "@/lib/seo";
 
 
 // Title and description are the page's Rank Math values on the current site.
@@ -47,6 +48,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
+    site: TWITTER_SITE,
     title: PAGE_TITLE,
     description: PAGE_DESCRIPTION,
     images: [OG_IMAGE],
@@ -265,7 +267,7 @@ export default function HeadcountManagementSoftwarePage() {
               emergencies.
             </p>
             <div className="flex flex-col gap-3 sm:flex-row">
-              <a href="#request-demo" className={`${primaryButton} text-[15px]`}>
+              <a href="/contact-us/" data-request-demo className={`${primaryButton} text-[15px]`}>
                 Call For Demo
                 <ArrowCircleIcon />
               </a>
@@ -364,7 +366,7 @@ export default function HeadcountManagementSoftwarePage() {
                         {paragraph}
                       </p>
                     ))}
-                    <a href="#request-demo" className={`${primaryButton} self-start text-sm`}>
+                    <a href="/contact-us/" data-request-demo className={`${primaryButton} self-start text-sm`}>
                       Know More
                       <ArrowCircleIcon className="h-4 w-4" />
                     </a>
@@ -411,8 +413,8 @@ export default function HeadcountManagementSoftwarePage() {
             </ul>
           </div>
           <div className={`${revealFromRight} relative w-full max-w-md lg:w-[42%] lg:max-w-[450px]`}>
-            <DemoRequestForm
-              product="Headcount Management Software (emCount)"
+            <LeadForm compact
+              product="emCount emergency headcount system"
               title="Start Now"
               subtitle="Request a demo of emCount — our team will reach out to schedule it."
             />
@@ -438,6 +440,7 @@ export default function HeadcountManagementSoftwarePage() {
                 </h2>
                 <Link
                   href="/contact-us"
+                  data-request-demo=""
                   className={`group/btn inline-flex w-full max-w-65 items-center justify-center rounded-lg bg-[#EFB000] px-6 py-[13px] ${fontInter} text-[15px] font-semibold tracking-[0.02em] text-white ${motion} hover:-translate-y-0.5 hover:bg-[#d99e00] hover:shadow-[0_8px_18px_-4px_rgba(239,176,0,0.45)] active:translate-y-0 min-[769px]:w-auto min-[769px]:max-w-none min-[769px]:min-w-[145px] min-[769px]:px-[30px]`}
                 >
                   {col.cta}

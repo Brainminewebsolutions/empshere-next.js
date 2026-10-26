@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { fitLogo } from "@/lib/clients";
 
 /* "What Our Clients Say" slider shared by the home and About Us pages.
    Styling comes from each page's scoped CSS (.home-page / .about-page), so the
@@ -24,6 +25,12 @@ const HOLD = 1500; // pause on each card once it has settled
 const DESKTOP_DELAY = HOLD + 850; // + .testimonialsTrack transform transition
 const MOBILE_DELAY = HOLD + 500; // + smooth scroll-snap
 const MOBILE_RESUME = 4000;
+
+// Optical size inside the logo tile; pages scale it per breakpoint via --logo-scale.
+function logoStyle(logo) {
+  const { width, height } = fitLogo(logo, { maxWidth: 72, maxHeight: 42 });
+  return { "--w": `${width}px`, "--h": `${height}px` };
+}
 
 function StarIcon(props) {
   return (
@@ -53,9 +60,10 @@ function TestimonialCard({ testimonial, featured, expanded, onToggle, className 
           <img
             className="testimonialLogo"
             src={testimonial.logo.src}
-            alt={hidden ? "" : `${testimonial.company} logo`}
+            alt={`${testimonial.company} logo`}
             width={testimonial.logo.width}
             height={testimonial.logo.height}
+            style={logoStyle(testimonial.logo)}
             decoding="async"
           />
         </div>

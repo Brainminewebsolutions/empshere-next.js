@@ -33,7 +33,7 @@ export default function HeroCarousel({ slides }) {
           >
             <Image
               src={slide.bg}
-              alt=""
+              alt={slide.heading}
               fill
               priority={index === 0}
               sizes="100vw"

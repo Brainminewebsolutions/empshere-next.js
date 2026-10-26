@@ -49,3 +49,6 @@ next-env.d.ts
 # Claude Code local worktrees/settings
 /.claude/worktrees/
 /.claude/settings.local.json
+
+# Lead form secrets for Hostinger (upload next to public_html, never commit)
+/deploy/emsphere-form-config.php
