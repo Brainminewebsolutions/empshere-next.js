@@ -88,6 +88,7 @@ const NAV_LINKS = [
   { label: "Product", href: "/product", isMegaMenu: true },
   { label: "About Us", href: "/about-us", isAboutDropdown: true },
   { label: "Blogs", href: "/blog" },
+  { label: "Careers", href: "/careers" },
   { label: "Contact Us", href: "/contact-us" },
 ];
 
@@ -249,13 +250,13 @@ export default function Header() {
               height={104}
               loading="eager"
               fetchPriority="high"
-              className="h-9 w-auto sm:h-10 md:h-11 lg:h-12"
+              className="h-9 w-auto sm:h-10 md:h-11 xl:h-12"
             />
           </Link>
 
           {/* Desktop Primary Navigation with Equal Gaps */}
           <nav aria-label="Primary" className="hidden lg:block">
-            <ul className="flex items-center gap-8 xl:gap-9">
+            <ul className="flex items-center gap-5 xl:gap-9">
               {NAV_LINKS.map((link) => {
                 if (link.isMegaMenu) {
                   return (
@@ -270,7 +271,7 @@ export default function Header() {
                         type="button"
                         onClick={() => setIsProductOpen((prev) => !prev)}
                         aria-expanded={isProductOpen}
-                        className={`nav-underline inline-flex items-center gap-1.5 h-10 px-1 text-[16px] xl:text-[16.5px] font-semibold transition-colors focus-visible:outline-none ${
+                        className={`nav-underline inline-flex items-center gap-1.5 h-10 px-1 whitespace-nowrap text-[15px] xl:text-[16.5px] font-semibold transition-colors focus-visible:outline-none ${
                           isProductOpen ? "text-[#EFB000]" : "text-black hover:text-[#EFB000]"
                         }`}
                       >
@@ -504,7 +505,7 @@ export default function Header() {
                         type="button"
                         onClick={() => setIsAboutOpen((prev) => !prev)}
                         aria-expanded={isAboutOpen}
-                        className={`nav-underline inline-flex items-center gap-1.5 h-10 px-1 text-[16px] xl:text-[16.5px] font-semibold transition-colors focus-visible:outline-none ${
+                        className={`nav-underline inline-flex items-center gap-1.5 h-10 px-1 whitespace-nowrap text-[15px] xl:text-[16.5px] font-semibold transition-colors focus-visible:outline-none ${
                           isAboutOpen ? "text-[#EFB000]" : "text-black hover:text-[#EFB000]"
                         }`}
                       >
@@ -581,7 +582,7 @@ export default function Header() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="nav-underline inline-flex items-center h-10 px-1 text-[16px] xl:text-[16.5px] font-semibold text-black transition-colors hover:text-[#EFB000] focus-visible:outline-none"
+                      className="nav-underline inline-flex items-center h-10 px-1 whitespace-nowrap text-[15px] xl:text-[16.5px] font-semibold text-black transition-colors hover:text-[#EFB000] focus-visible:outline-none"
                     >
                       {link.label}
                     </Link>
@@ -595,7 +596,7 @@ export default function Header() {
           <div className="hidden lg:block">
             <Link
               href="/contact-us"
-              className="inline-flex items-center justify-center rounded-[6px] bg-brand-gold px-7 py-3 text-[16px] font-semibold text-[#1f1f1f] transition-all duration-200 hover:bg-brand-gold-dark hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold/60 focus-visible:ring-offset-2"
+              className="inline-flex items-center justify-center whitespace-nowrap rounded-[6px] bg-brand-gold px-5 py-3 text-[15px] xl:px-7 xl:text-[16px] font-semibold text-[#1f1f1f] transition-all duration-200 hover:bg-brand-gold-dark hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold/60 focus-visible:ring-offset-2"
             >
               Get Started
             </Link>
