@@ -13,7 +13,7 @@ const SECONDS_PER_LOGO = 1.5; // constant scroll speed however many logos there 
 
 const CSS = `
 .trusted-logos {
-  --logo-scale: 1;
+  --logo-scale: 1.3;
   background: #FFFFFA;
   box-shadow: inset 0 0 0 1px rgba(172, 172, 172, 0.1);
   padding: 50px 0 56px;
@@ -88,12 +88,12 @@ const CSS = `
   100% { transform: translate3d(0, 0, 0); }
 }
 @media (max-width: 768px) {
-  .trusted-logos { --logo-scale: 0.86; padding: 38px 0 42px; }
+  .trusted-logos { --logo-scale: 1.1; padding: 38px 0 42px; }
   .trusted-logos .trustedTitle { font-size: 20px; margin-bottom: 20px; }
   .trusted-logos .trustedMarqueeRow { padding: 4px 0; }
 }
 @media (max-width: 480px) {
-  .trusted-logos { --logo-scale: 0.72; padding: 30px 0 34px; }
+  .trusted-logos { --logo-scale: 0.9; padding: 30px 0 34px; }
   .trusted-logos .trustedTitle { font-size: 18px; margin-bottom: 16px; }
   .trusted-logos .trustedMarqueeRow { padding: 3px 0; }
 }

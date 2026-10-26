@@ -22,6 +22,7 @@ import automationImg from "../images/headcount-management-software/feature-autom
 import alertsImg from "../images/headcount-management-software/feature-red-zone-sms-email-alerts.webp";
 import { Lifebuoy, ShieldCheck, UsersFour } from "@phosphor-icons/react/ssr";
 import { DEFAULT_OG_IMAGE, TWITTER_SITE } from "@/lib/seo";
+import { jsonLdScript, productPageJsonLd } from "@/lib/schema";
 
 
 // Title and description are the page's Rank Math values on the current site.
@@ -207,27 +208,15 @@ const iloStats = [
 ];
 
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "SoftwareApplication",
-      name: "emCount — Headcount Management Software",
-      applicationCategory: "BusinessApplication",
-      operatingSystem: "Web",
-      description: PAGE_DESCRIPTION,
-      url: PAGE_URL,
-      publisher: { "@type": "Organization", name: "Emsphere Technologies", url: "https://www.emsphere.com/" },
-    },
-    {
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.emsphere.com/" },
-        { "@type": "ListItem", position: 2, name: "Headcount Management Software", item: PAGE_URL },
-      ],
-    },
-  ],
-};
+const jsonLd = productPageJsonLd({
+  url: PAGE_URL,
+  name: "emCount Headcount Management Software",
+  description:
+    "emCount is a headcount management software that gives real-time floor-wise and zone-wise count of people inside company premises, generates automated printed lists of people inside during emergencies such as fire, and sends SMS and email alerts when someone enters a restricted or sensitive zone.",
+  subCategory: "Headcount Management Software",
+  pageName: "Headcount Management Software",
+  breadcrumbName: "Headcount Management Software",
+});
 
 /* --------------------------------------------------------------------
    Page
@@ -237,7 +226,7 @@ export default function HeadcountManagementSoftwarePage() {
   return (
     <main className={`${instrumentSans.variable} ${inter.variable} hrms-page payroll-page hc-page w-full overflow-x-clip bg-[#FFFFFA] font-sans text-[#4c4c4c]`}>
       <ScrollReveal root=".hc-page" />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(jsonLd)} />
 
       {/* Hero */}
       <section

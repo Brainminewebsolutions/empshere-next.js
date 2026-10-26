@@ -18,6 +18,7 @@ const COMPANY_LINKS = [
   { label: "Blogs", href: "/blogs" },
   { label: "Contact Us", href: "/contact-us" },
   { label: "Careers", href: "/careers" },
+  { label: "Privacy Policy", href: "/privacy-policy" },
 ];
 
 const SOLUTION_LINKS = [
@@ -173,16 +174,8 @@ export default function Footer() {
           />
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-black/15 pt-6 text-xs text-black/80 sm:flex-row">
+        <div className="mt-12 border-t border-black/15 pt-6 text-center text-xs text-black/80">
           <p>&copy; {year} Emsphere - All Rights Reserved</p>
-          <div className="flex items-center gap-6">
-            <Link href="/privacy-policy" className="nav-underline inline-block text-black/80 transition-colors hover:text-[#EFB000]">
-              Privacy Policy
-            </Link>
-            <Link href="/terms-of-use" className="nav-underline inline-block text-black/80 transition-colors hover:text-[#EFB000]">
-              Terms of Use
-            </Link>
-          </div>
         </div>
       </div>
     </footer>
