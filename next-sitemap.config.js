@@ -18,7 +18,7 @@ module.exports = {
   generateIndexSitemap: false,
   trailingSlash: true,
   // Static export → out/ (copied back to public/ by scripts/sync-sitemap.js).
-  outDir: process.env.BUILD_TARGET === 'node' ? 'public' : 'out',
+  outDir: process.env.BUILD_TARGET === 'static' ? 'out' : 'public',
   exclude: [
     '/icon.png',
     '/apple-icon.png',
