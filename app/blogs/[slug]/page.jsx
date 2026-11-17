@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import BackToTop from "@/components/BackToTop";
 import ScrollReveal from "@/components/ScrollReveal";
 import BlogCard, { PostImage } from "@/components/blog/BlogCard";
@@ -11,27 +11,33 @@ import {
   SITE_URL,
   formatDate,
   getAdjacentPosts,
-  getAllPosts,
-  getPostBySlug,
   getPostHref,
   getPostUrl,
   getRelatedPosts,
-  jsonLdScript,
-} from "@/lib/blog";
+} from "@/lib/blog-shared";
+import { getAllPosts, getPostBySlug } from "@/lib/blog";
+import { getRedirectTarget } from "@/lib/posts";
+import { buildAllSchemas, serializeJsonLd } from "@/lib/post-schema";
 import { DEFAULT_OG_IMAGE, TWITTER_SITE } from "@/lib/seo";
 
-// Static export: one HTML file per WordPress post, nothing rendered on demand.
-export const dynamicParams = false;
+// Posts come from the database (edited in /admin). The post itself is cached
+// and refreshed whenever it is saved, so the page is rendered on request.
+export const dynamic = "force-dynamic";
 
-export function generateStaticParams() {
-  const posts = getAllPosts();
-  // A static export needs at least one param; an unknown slug renders 404.
-  if (posts.length === 0) return [{ slug: "coming-soon" }];
-  return posts.map((post) => ({ slug: post.slug }));
+// A renamed post keeps working: its old slug redirects to the new one.
+async function loadPost(slug) {
+  const post = await getPostBySlug(slug);
+  if (post) return post;
+  const target = await getRedirectTarget(slug);
+  if (target) permanentRedirect(target);
+  return null;
+}
+
+function absoluteUrl(url) {
+  return url && url.startsWith("/") ? `${SITE_URL}${url}` : url;
 }
 
 const GENERIC_AUTHORS = new Set(["admin", "administrator", "emsphere", ""]);
-const LOGO_URL = `${SITE_URL}/universal-images/header/emsphere-technologies-logo.webp`;
 
 function getAuthor(post) {
   const isGeneric = GENERIC_AUTHORS.has(post.author.trim().toLowerCase());
@@ -43,18 +49,19 @@ function getKeywords(post) {
   return [...post.categories, ...post.tags].map((t) => t.name).filter((name) => name !== "Uncategorized");
 }
 
-// Title, description, robots and social tags all come from Rank Math (see
-// scripts/fetch-blog-posts.mjs); WordPress fields are only the fallback.
+// Title, description, robots and social tags come from the SEO panel of the
+// post in /admin; the post's own title and excerpt are only the fallback.
 export async function generateMetadata({ params }) {
-  const post = getPostBySlug((await params).slug);
+  const post = await loadPost((await params).slug);
   if (!post) return {};
 
   const seo = post.seo || {};
-  const url = getPostUrl(post);
+  const url = seo.canonical || getPostUrl(post);
   const title = seo.title || post.title;
   const description = seo.description || post.excerpt;
-  const imageUrl = seo.ogImage || post.featuredImage?.src || DEFAULT_OG_IMAGE.url;
-  const isFeatured = imageUrl && imageUrl === post.featuredImage?.src;
+  const featuredSrc = absoluteUrl(post.featuredImage?.src);
+  const imageUrl = seo.ogImage || featuredSrc || DEFAULT_OG_IMAGE.url;
+  const isFeatured = imageUrl && imageUrl === featuredSrc;
   const author = getAuthor(post);
   const keywords = getKeywords(post);
   const index = seo.index !== false;
@@ -113,52 +120,10 @@ function fillEmptyAlts(html, title) {
   );
 }
 
-function buildJsonLd(post) {
-  const url = getPostUrl(post);
-  const author = getAuthor(post);
-  const organization = {
-    "@type": "Organization",
-    "@id": `${SITE_URL}/#organization`,
-    name: SITE_NAME,
-    url: `${SITE_URL}/`,
-    logo: { "@type": "ImageObject", url: LOGO_URL, width: 550, height: 143 },
-  };
-
-  return {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "BlogPosting",
-        "@id": `${url}#article`,
-        headline: post.title.length > 110 ? `${post.title.slice(0, 107)}…` : post.title,
-        name: post.seo?.title || post.title,
-        description: post.seo?.description || post.excerpt,
-        url,
-        mainEntityOfPage: { "@type": "WebPage", "@id": url },
-        image: post.featuredImage
-          ? { "@type": "ImageObject", url: post.featuredImage.src, width: post.featuredImage.width, height: post.featuredImage.height }
-          : undefined,
-        datePublished: post.date,
-        dateModified: post.modified,
-        author: author.isOrganization
-          ? { "@id": `${SITE_URL}/#organization` }
-          : { "@type": "Person", name: author.name },
-        publisher: organization,
-        articleSection: post.primaryCategory?.name,
-        keywords: getKeywords(post).join(", ") || undefined,
-        wordCount: post.wordCount,
-        inLanguage: "en-US",
-      },
-      {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
-          { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE_URL}/blog/` },
-          { "@type": "ListItem", position: 3, name: post.title, item: url },
-        ],
-      },
-    ],
-  };
+// Article + breadcrumb (+ FAQ and any custom blocks) built by lib/schema.ts, the
+// same builder the admin's schema preview uses.
+function buildSchemas(post) {
+  return buildAllSchemas(post.schemaSource, post.customSchemas || []);
 }
 
 function TableOfContents({ toc }) {
@@ -191,13 +156,13 @@ function SidebarCta() {
 }
 
 export default async function BlogPostPage({ params }) {
-  const post = getPostBySlug((await params).slug);
+  const post = await loadPost((await params).slug);
   if (!post) notFound();
 
-  const url = getPostUrl(post);
+  const allPosts = await getAllPosts();
   const author = getAuthor(post);
-  const related = getRelatedPosts(post, 3);
-  const { newer, older } = getAdjacentPosts(post);
+  const related = getRelatedPosts(allPosts, post, 3);
+  const { newer, older } = getAdjacentPosts(allPosts, post);
   const hasToc = post.toc.length >= 3;
   const wasUpdated = new Date(post.modified) - new Date(post.date) > 1000 * 60 * 60 * 24;
   const tagList = [...post.categories, ...post.tags].filter(
@@ -208,7 +173,9 @@ export default async function BlogPostPage({ params }) {
     <main className="animated-page blog-page flex-1 bg-[#FFFFFA]">
       <ScrollReveal root=".animated-page" />
       <ReadingProgress target="#article-body" />
-      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(buildJsonLd(post))} />
+      {buildSchemas(post).map((schema, i) => (
+        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(schema) }} />
+      ))}
 
       {/* Header */}
       <section className="relative isolate overflow-hidden bg-[#FFFFFA]">

@@ -299,19 +299,6 @@ export default function HeadcountManagementSoftwarePage() {
         </div>
       </section>
 
-      {/* 15,00,000 workers banner */}
-      <section aria-labelledby="workers-heading" className="bg-[#FFFFFA] px-4 md:px-12">
-        <div
-          className={`${revealZoom} relative mx-auto flex max-w-7xl flex-col items-center gap-2 overflow-hidden rounded-2xl bg-[#efb000] px-6 py-10 text-center shadow-[0_24px_50px_-24px_rgba(239,176,0,0.8)] md:py-14`}
-        >
-          <div aria-hidden="true" className="absolute -left-10 -top-10 h-40 w-40 rounded-full bg-white/25 blur-2xl" />
-          <div aria-hidden="true" className="absolute -bottom-12 -right-6 h-44 w-44 rounded-full bg-[#0077c2]/20 blur-2xl" />
-          <h2 id="workers-heading" className="relative text-2xl font-semibold text-black md:text-[2.4rem] md:leading-[1.25]">
-            Keeps <StopwatchCounter value="15,00,000" className="font-bold text-[#0f162a]" /> workers safe across India
-          </h2>
-        </div>
-      </section>
-
       {/* Why emCount? — CSS-only tabs (hidden radios + .hrms-showcase rules in globals.css) */}
       <section id="hc-features" aria-labelledby="features-heading" className="scroll-mt-24 bg-[#FFFFFA] px-4 py-14 md:px-12 md:py-20">
         <div className="mx-auto flex max-w-7xl flex-col gap-8">

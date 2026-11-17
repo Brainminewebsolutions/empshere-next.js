@@ -7,15 +7,14 @@ import {
   SITE_NAME,
   SITE_URL,
   formatDate,
-  getAllPosts,
-  getBlogIndexSeo,
   getPage,
   getPageHref,
   getPostUrl,
   getTopCategories,
   getTotalPages,
   jsonLdScript,
-} from "@/lib/blog";
+} from "@/lib/blog-shared";
+import { getAllPosts, getBlogIndexSeo } from "@/lib/blog";
 import BlogCard from "./BlogCard";
 import BlogCta from "./BlogCta";
 import { PostImage } from "./BlogCard";
@@ -28,15 +27,16 @@ const DEFAULT_TITLE = "Blogs - HR & Workforce - Emsphere";
 const DEFAULT_DESCRIPTION =
   "Stay updated with the latest trends and insights in the world of HR, payroll and workforce management on our informative blogs.";
 
-// Metadata for /blog/ and /blog/page/N/ — title and description come from
-// Rank Math's settings for the WordPress blog page when available.
-export function getListingMetadata(page) {
+// Metadata for /blog/ and /blog/page/N/.
+export async function getListingMetadata(page) {
+  const allPosts = await getAllPosts();
   const seo = getBlogIndexSeo();
   const baseTitle = seo?.title || DEFAULT_TITLE;
   const description = seo?.description || DEFAULT_DESCRIPTION;
-  const title = page > 1 ? `${baseTitle} - Page ${page} of ${getTotalPages()}` : baseTitle;
+  const title = page > 1 ? `${baseTitle} - Page ${page} of ${getTotalPages(allPosts)}` : baseTitle;
   const url = `${SITE_URL}${getPageHref(page)}`;
-  const image = seo?.ogImage || getAllPosts()[0]?.featuredImage?.src || DEFAULT_OG_IMAGE.url;
+  const firstImage = allPosts[0]?.featuredImage?.src;
+  const image = seo?.ogImage || (firstImage?.startsWith("/") ? `${SITE_URL}${firstImage}` : firstImage) || DEFAULT_OG_IMAGE.url;
 
   return {
     title: { absolute: title },
@@ -224,10 +224,10 @@ function Hero({ page, totalPages, totalPosts, topics, coverPosts }) {
   );
 }
 
-export default function BlogListing({ page }) {
-  const allPosts = getAllPosts();
-  const totalPages = getTotalPages();
-  const { featured, posts } = getPage(page);
+export default async function BlogListing({ page }) {
+  const allPosts = await getAllPosts();
+  const totalPages = getTotalPages(allPosts);
+  const { featured, posts } = getPage(allPosts, page);
 
   const firstIndex = page === 1 ? 1 : 1 + FIRST_PAGE_GRID + (page - 2) * POSTS_PER_PAGE;
   const listed = featured ? [featured, ...posts] : posts;
@@ -274,7 +274,7 @@ export default function BlogListing({ page }) {
       <ScrollReveal root=".animated-page" />
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(jsonLd)} />
 
-      <Hero page={page} totalPages={totalPages} totalPosts={allPosts.length} topics={page === 1 ? getTopCategories(8) : []} coverPosts={allPosts.slice(0, 3)} />
+      <Hero page={page} totalPages={totalPages} totalPosts={allPosts.length} topics={page === 1 ? getTopCategories(allPosts, 8) : []} coverPosts={allPosts.slice(0, 3)} />
 
       <section className="bg-[#FFFFFA] py-14 sm:py-16 lg:py-20">
         <div className="mx-auto max-w-[1240px] px-5 sm:px-6">

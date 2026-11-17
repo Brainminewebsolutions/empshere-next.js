@@ -390,9 +390,14 @@ export default function LeadForm({
             <div ref={turnstileRef} className="min-h-[65px]" />
             {captchaError && (
               <p role="alert" className="mt-1 text-xs font-medium text-[#ef4444]">
-                {captchaError === "unavailable"
-                  ? "The security check could not load. Please allow it in your ad blocker, or write to us at sales@emsphere.com."
-                  : "Please complete the security check."}
+                {captchaError === "unavailable" ? (
+                  <>
+                    The security check could not load. Please allow it in your ad blocker, or write to us at{" "}
+                    <a href="mailto:sales@emsphere.com" className="underline underline-offset-2">sales@emsphere.com</a>.
+                  </>
+                ) : (
+                  "Please complete the security check."
+                )}
               </p>
             )}
           </div>
@@ -408,9 +413,14 @@ export default function LeadForm({
 
         {(status === "failed" || status === "captcha") && (
           <p role="alert" className="rounded-[10px] bg-[#fff0ef] px-4 py-3 text-sm font-medium text-[#c2362c]">
-            {status === "captcha"
-              ? "The security check failed or expired. Please complete it again and resubmit."
-              : "Something went wrong. Please try again, or write to us at sales@emsphere.com."}
+            {status === "captcha" ? (
+              "The security check failed or expired. Please complete it again and resubmit."
+            ) : (
+              <>
+                Something went wrong. Please try again, or write to us at{" "}
+                <a href="mailto:sales@emsphere.com" className="underline underline-offset-2">sales@emsphere.com</a>.
+              </>
+            )}
           </p>
         )}
 

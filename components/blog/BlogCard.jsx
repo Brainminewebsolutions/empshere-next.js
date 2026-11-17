@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { formatDate, getPostHref } from "@/lib/blog";
+import { formatDate, getPostHref } from "@/lib/blog-shared";
 import { ArrowRightIcon, CalendarIcon, ClockIcon } from "./BlogIcons";
 
 /* The home page "Latest Blogs" card, with real post data. The title link is

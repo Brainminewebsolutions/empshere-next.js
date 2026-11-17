@@ -4,10 +4,11 @@ import Link from "next/link";
 const PRODUCT_LINKS = [
   { label: "emHRMS", href: "/human-resource-management-system" },
   { label: "emCLMS", href: "/contract-labour-management-system-software" },
-  { label: "emPay", href: "/empay-management-solution" },
+  { label: "emPay", href: "/payroll-management-solution" },
   { label: "emWorkForce", href: "/workforce-management-system" },
   { label: "emVisit", href: "/visitor-management-system" },
   { label: "emMeal", href: "/canteen-management-system" },
+  { label: "emCount", href: "/headcount-management-software" },
 ];
 
 const COMPANY_LINKS = [
@@ -15,7 +16,7 @@ const COMPANY_LINKS = [
   { label: "About Us", href: "/about-us" },
   { label: "Clients", href: "/our-clients" },
   { label: "Testimonials", href: "/testimonial" },
-  { label: "Blogs", href: "/blogs" },
+  { label: "Blogs", href: "/blog" },
   { label: "Contact Us", href: "/contact-us" },
   { label: "Careers", href: "/careers" },
   { label: "Privacy Policy", href: "/privacy-policy" },
@@ -27,6 +28,8 @@ const SOLUTION_LINKS = [
   { label: "Workforce Management", href: "/workforce-management-system" },
   { label: "Visitor Management", href: "/visitor-management-system" },
   { label: "Canteen Management", href: "/canteen-management-system" },
+  { label: "Lift Integration", href: "/integrations" },
+  { label: "Labour Management System Software", href: "/labour-management-system-software" },
 ];
 
 function FooterColumn({ title, links, extra, className = "" }) {
@@ -113,7 +116,7 @@ export default function Footer() {
               {/* Social Links - perfectly centered */}
               <div className="flex w-full items-center justify-center gap-4 py-1">
                 <a
-                  href="https://www.linkedin.com/company/emsphere-technologies/"
+                  href="https://www.linkedin.com/company/emspheretechnologies"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Emsphere Technologies on LinkedIn"
@@ -122,7 +125,7 @@ export default function Footer() {
                   <LinkedInIcon className="h-7 w-7 sm:h-8 sm:w-8" />
                 </a>
                 <a
-                  href="https://facebook.com/emspheretechnologies/"
+                  href="https://www.facebook.com/emsphere"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Emsphere Technologies on Facebook"

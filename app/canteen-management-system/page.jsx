@@ -66,6 +66,7 @@ const goldCard =
 const greyCard =
   "bg-white rounded-2xl shadow-[inset_0_0_0_0.814px_#e5e5e5,0px_3px_12px_-4px_rgba(0,0,0,0.06)]";
 const mutedText = "text-[rgba(0,0,0,0.64)]";
+const inlineLink = "font-medium text-[#b07d00] underline-offset-2 hover:underline";
 
 const ease = "ease-[cubic-bezier(0.16,1,0.3,1)]";
 const motion = `transition-[translate,scale,box-shadow,background-color] duration-300 ${ease}`;
@@ -449,6 +450,7 @@ export default function CanteenManagementSystemPage() {
                 module for you!
               </>
             }
+            text="We have two modules, both offer complete control over the meal slot validations for different shifts, menu and vendor billing including coupons printing as per meal consumptions."
             className="max-w-4xl"
           />
           <ul className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
@@ -471,14 +473,6 @@ export default function CanteenManagementSystemPage() {
                     <h3 className="text-2xl font-semibold text-[#1f1f1f] md:text-[1.75rem]">{item.title}</h3>
                     <p className={`text-[15px] leading-[26px] md:text-base md:leading-[27px] ${mutedText}`}>{item.text}</p>
                   </div>
-                  {index === 1 && (
-                    <p className={`${fontInter} mt-auto inline-flex w-fit items-center gap-2 rounded-full bg-[#fff5d9] px-3.5 py-1.5 text-[13px] font-semibold text-[#7a5c00]`}>
-                      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#efb000] text-white">
-                        <CheckIcon className="h-3 w-3" />
-                      </span>
-                      Includes everything in Fixed Menu
-                    </p>
-                  )}
                 </article>
               </li>
             ))}
@@ -569,6 +563,9 @@ export default function CanteenManagementSystemPage() {
               <CheckIcon className="h-4 w-4" />
             </span>
             We can guarantee a hassle free experience.
+          </p>
+          <p className={`${revealUp} -mt-4 text-center text-base md:text-lg ${mutedText}`}>
+            Afterall …it is not just about the taste. When, Where and How …plays an important role in a complete meal experience!
           </p>
         </div>
       </section>
@@ -668,7 +665,15 @@ export default function CanteenManagementSystemPage() {
                 Benefits of Implementing <span className="text-[#f8bb18]">Emsphere’s Canteen Management System</span>
               </>
             }
-            text="Discover the key benefits of implementing Emsphere’s Contractor Canteen System — from reducing food wastage and improving hygiene to streamlining meal distribution and enhancing employee satisfaction."
+            text={
+              <>
+                Discover the key benefits of implementing Emsphere’s{" "}
+                <Link href="/blog/benefits-of-implementing-a-contractor-canteen-system/" className={inlineLink}>
+                  Contractor Canteen System
+                </Link>{" "}
+                — from reducing food wastage and improving hygiene to streamlining meal distribution and enhancing employee satisfaction.
+              </>
+            }
           />
           <ul className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {benefits.map((item, index) => (
@@ -693,18 +698,30 @@ export default function CanteenManagementSystemPage() {
                 Why choose <span className="text-[#f8bb18]">Emsphere Technologies</span> for the Canteen Management System
               </>
             }
+            text="Choosing Emsphere Technologies for your Canteen Management System Software offers a multitude of benefits that set it apart from other solutions in the market. Here are several compelling reasons why Emsphere is the ideal choice:"
             className="max-w-4xl"
           />
           <WhyChooseFlipCards reasons={reasons} />
+          <p className={`${revealUp} mx-auto max-w-4xl text-center text-base leading-[26px] md:text-lg md:leading-[29px] ${mutedText}`}>
+            Choosing Emsphere Technologies for your Canteen Management System offers a combination of advanced features, customization options, seamless
+            integration, and reliable support that make it the ideal solution for organizations seeking to streamline their canteen operations effectively.
+          </p>
 
           <aside
             aria-labelledby="conclusion-heading"
             className={`${revealZoom} relative overflow-hidden rounded-2xl bg-[#fdf6e6] p-6 text-[#1f1f1f] shadow-[inset_0_0_0_1px_#f0deba,0_24px_50px_-28px_rgba(0,0,0,0.25)] md:p-10`}
           >
             <div className="relative flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-              <h3 id="conclusion-heading" className="text-2xl font-semibold md:text-3xl">
-                Still confused?
-              </h3>
+              <div className="flex flex-col gap-3 lg:max-w-3xl">
+                <h3 id="conclusion-heading" className="text-2xl font-semibold md:text-3xl">
+                  Conclusion | Canteen Management System
+                </h3>
+                <p className={`text-base leading-[26px] md:text-lg md:leading-[29px] ${mutedText}`}>
+                  Efficient canteen management is essential for organizations to ensure employee satisfaction, productivity, and overall operational
+                  efficiency. Emsphere Technologies offers a comprehensive Canteen Management System designed to address the challenges faced by traditional
+                  systems and deliver tangible benefits to organizations.
+                </p>
+              </div>
               <a
                 href="/contact-us/" data-request-demo
                 className={`group/btn inline-flex shrink-0 items-center justify-center gap-2 self-start rounded-[9px] bg-[#efb000] px-6 py-3 ${fontInter} text-[15px] font-semibold text-black ${motion} hover:-translate-y-0.5 hover:bg-[#d69e00] hover:shadow-[0_8px_18px_-4px_rgba(239,176,0,0.55)] lg:self-center`}

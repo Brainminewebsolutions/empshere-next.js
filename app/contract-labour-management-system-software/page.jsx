@@ -93,6 +93,7 @@ const greyCard =
 const softCard =
   "rounded-[11px] shadow-[inset_0_0_0_0.601px_#e5e5e5,0px_2px_8px_-2px_rgba(0,0,0,0.05)]";
 const mutedText = "text-[rgba(0,0,0,0.64)]";
+const inlineLink = "font-medium text-[#b07d00] underline-offset-2 hover:underline";
 
 const ease = "ease-[cubic-bezier(0.16,1,0.3,1)]";
 const motion = `transition-[translate,scale,box-shadow,background-color] duration-300 ${ease}`;
@@ -358,6 +359,11 @@ const reasons = [
     text: "With a proven track record of success and satisfied clients across various industries, Emsphere Technologies is a trusted partner in workforce management. Our testimonials and case studies speak volumes about the impact of our solutions in driving efficiency, productivity, and profitability for our clients.",
     icon: "trophy",
   },
+  {
+    title: "Final Thoughts",
+    text: "Choosing Emsphere Technologies for your Contract Labour Management System means choosing innovation, scalability, and reliability. With our tailored solutions, cutting-edge technology, and unwavering commitment to customer success, we empower businesses to optimize their workforce management processes and achieve their strategic objectives. Trust Emsphere to be your partner in success.",
+    icon: "layers",
+  },
 ];
 
 const faqs = [
@@ -400,7 +406,13 @@ const faqs = [
   {
     question: "How does the contract labor management system help streamline compliance processes, leading to savings in time and resources?",
     answer: [
-      "The system plays a vital role in this by automating tasks, offering real-time insights, and integrating with the Visitor Management System. As a result, compliance workflows become more efficient, cutting down on manual efforts and ensuring adherence to regulations, which ultimately saves valuable time and resources.",
+      <>
+        The system plays a vital role in this by automating tasks, offering real-time insights, and integrating with the{" "}
+        <Link href="/visitor-management-system/" className={inlineLink}>
+          Visitor Management System
+        </Link>
+        . As a result, compliance workflows become more efficient, cutting down on manual efforts and ensuring adherence to regulations, which ultimately saves valuable time and resources.
+      </>,
     ],
   },
   {
@@ -583,7 +595,7 @@ export default function ContractLabourManagementSystemPage() {
                 </article>
               ))}
             </div>
-            <a href="#clms-modules" className={`${revealUp} ${primaryButton} self-start text-sm`}>
+            <a href="/contact-us/" className={`${revealUp} ${primaryButton} self-start text-sm`}>
               Explore More
               <ArrowCircleIcon className="h-4 w-4" />
             </a>
@@ -642,7 +654,17 @@ export default function ContractLabourManagementSystemPage() {
               <div>
                 <p className={`${fontInter} text-6xl font-extrabold leading-none tracking-tight md:text-7xl`}>20+</p>
                 <p className="mt-3 text-lg font-semibold leading-snug md:text-xl">State and central laws covered.</p>
+                <p className="mt-3 text-[15px] leading-[23px] text-white/85">
+                  Registers, returns and statutory checks stay current as labour laws change, so audits never catch you off guard.
+                </p>
               </div>
+              <ul className="flex flex-wrap gap-2">
+                {["CLRA Act", "Minimum Wages", "PF & ESIC", "Payment of Wages", "Bonus Act", "Shops & Establishments"].map((law) => (
+                  <li key={law} className="rounded-full bg-white/15 px-3 py-1.5 text-xs font-semibold ring-1 ring-white/25 backdrop-blur-sm">
+                    {law}
+                  </li>
+                ))}
+              </ul>
             </div>
 
             <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2">
@@ -746,7 +768,15 @@ export default function ContractLabourManagementSystemPage() {
                   Features of <span className="text-[#efb000]">Contract Labour Management System</span>
                 </>
               }
-              text="In today's fast-paced business environment, efficient management of labor resources is crucial for organizations to thrive. Emsphere Technologies, a leading provider of workforce management solutions, offers a Comprehensive Labour Management System (CLMS) tailored to meet the unique needs of modern businesses. Let's delve into the key features that make Emsphere's LMS stand out:"
+              text={
+                <>
+                  In today&apos;s fast-paced business environment, efficient management of labor resources is crucial for organizations to thrive. Emsphere Technologies, a leading provider of workforce management solutions, offers a{" "}
+                  <Link href="/labour-management-system-software/" className={inlineLink}>
+                    Comprehensive Labour Management System
+                  </Link>{" "}
+                  (CLMS) tailored to meet the unique needs of modern businesses. Let&apos;s delve into the key features that make Emsphere&apos;s LMS stand out:
+                </>
+              }
               align="left"
             />
             <div className={`${revealUp} flex flex-wrap items-center gap-4 pt-1`}>
@@ -754,9 +784,6 @@ export default function ContractLabourManagementSystemPage() {
                 Book a Demo
                 <ArrowCircleIcon className="h-4 w-4" />
               </a>
-              <Link href="/contact-us" className={`${outlineButton} text-sm`}>
-                Contact Sales
-              </Link>
             </div>
           </div>
         }
@@ -827,8 +854,8 @@ export default function ContractLabourManagementSystemPage() {
                     <FaqToggleIcon />
                   </summary>
                   <div className="hrms-faq-answer flex flex-col gap-3 px-4 pb-5 text-[15px] leading-[23px] sm:px-5 sm:text-base md:px-7 md:text-lg md:leading-[27px]">
-                    {faq.answer.map((paragraph) => (
-                      <p key={paragraph.slice(0, 32)}>{paragraph}</p>
+                    {faq.answer.map((paragraph, i) => (
+                      <p key={i}>{paragraph}</p>
                     ))}
                     {faq.list && (
                       <ol className="flex list-decimal flex-col gap-2 pl-6 marker:font-semibold marker:text-[#b07d00]">
@@ -849,6 +876,16 @@ export default function ContractLabourManagementSystemPage() {
 
       {/* Our Flagship Products */}
       <FlagshipProducts className="bg-[#FFFFFA]" />
+
+      {/* Deploy as you wish */}
+      <section aria-labelledby="deploy-heading" className="bg-[#FFFFFA] px-4 pb-4 md:px-12">
+        <div className={`${revealUp} ${goldCard} mx-auto flex max-w-5xl flex-col items-center gap-2 px-6 py-8 text-center`}>
+          <h2 id="deploy-heading" className="text-2xl font-semibold md:text-[2.1rem] md:leading-[44px]">
+            Deploy as <span className="text-[#efb000]">you wish</span>
+          </h2>
+          <p className={`text-base md:text-lg ${mutedText}`}>We offer implementation on premises or on cloud.</p>
+        </div>
+      </section>
 
 
       {/* Contact CTA — same as the home / HRMS / payroll pages */}

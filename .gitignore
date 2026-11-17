@@ -52,3 +52,4 @@ next-env.d.ts
 
 # Lead form secrets for Hostinger (upload next to public_html, never commit)
 /deploy/emsphere-form-config.php
+scripts/.media-map.json

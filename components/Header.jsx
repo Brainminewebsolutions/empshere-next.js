@@ -442,7 +442,7 @@ export default function Header() {
                             <div className="flex flex-col space-y-6 sm:space-y-7">
                               {/* 1. emPay Management Software */}
                               <Link
-                                href="/empay-management-solution"
+                                href="/payroll-management-solution"
                                 onMouseEnter={handleMenuEnter}
                                 onClick={() => setIsProductOpen(false)}
                                 className="group block focus-visible:outline-none"
@@ -771,7 +771,7 @@ export default function Header() {
 
                         {/* 3. emPay */}
                         <Link
-                          href="/empay-management-solution"
+                          href="/payroll-management-solution"
                           onClick={closeAllMenus}
                           className="block py-1.5 font-medium text-slate-800 hover:text-[#EFB000]"
                         >

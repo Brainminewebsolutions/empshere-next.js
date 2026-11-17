@@ -64,7 +64,7 @@ export const DEFAULT_PRODUCTS = [
     name: "emPay",
     text: "emPay helps organizations to manage their complete salary activities.",
     icon: Wallet,
-    href: "/empay-management-solution",
+    href: "/payroll-management-solution",
     font: `${fontInter} tracking-[-0.416px]`,
   },
   {
@@ -148,7 +148,9 @@ export default function FlagshipProducts({
                 <PhosphorIconTile icon={product.icon} className={`h-14 w-14 shrink-0 rounded-[9px] sm:h-16 sm:w-16 ${iconPop}`} iconClassName="h-8 w-8 sm:h-10 sm:w-10" />
                 <div className="flex min-w-0 flex-1 flex-col items-start gap-1.5 sm:w-full sm:items-center sm:gap-3">
                   <h3 className={`text-[17px] font-bold leading-[23px] ${titleShift} ${product.font || fontInstrument}`}>
-                    {product.name}
+                    <Link href={product.href} tabIndex={-1}>
+                      {product.name}
+                    </Link>
                   </h3>
                   <p className={`${fontInstrument} text-[13.5px] leading-[21px] text-black/70 sm:text-xs sm:leading-[19px] sm:text-black`}>
                     {product.text}

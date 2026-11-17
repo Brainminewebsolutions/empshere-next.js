@@ -81,7 +81,7 @@ async function getJson(route, params) {
   try {
     data = JSON.parse(body);
   } catch {
-    throw new Error(`Non-JSON response (${status}) from ${route}: ${body.slice(0, 160).replace(/\s+/g, " ")}`);
+    throw new Error(`Non-JSON response (${status}) from ${route} (not WordPress)`);
   }
   return { status, data };
 }
@@ -659,12 +659,16 @@ async function main() {
 
 main().catch((err) => {
   const hasSnapshot = fs.existsSync(OUT_FILE);
-  console.error(`✖ [blog] Could not fetch posts from WordPress: ${err.message}`);
 
   if (hasSnapshot) {
-    console.warn("⚠ [blog] Building with the previous data/blog-posts.json snapshot.");
+    // Expected when WORDPRESS_URL is not reachable from this machine/host: the
+    // committed snapshot is still valid, so this is a notice, not an error.
+    console.warn(`⚠ [blog] WordPress not reachable at ${WORDPRESS_URL}; building with the existing data/blog-posts.json snapshot.`);
+    console.warn("  (Set WORDPRESS_URL in .env to a reachable WordPress install to refresh posts.)");
     return;
   }
+  console.error(`✖ [blog] Could not fetch posts from WordPress: ${err.message}`);
+
   if (ALLOW_EMPTY) {
     fs.mkdirSync(path.dirname(OUT_FILE), { recursive: true });
     fs.writeFileSync(OUT_FILE, JSON.stringify({ generatedAt: null, blogIndexSeo: null, posts: [] }));

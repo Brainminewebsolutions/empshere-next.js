@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
 import DemoModal from "@/components/DemoModal";
+import SiteOnly from "@/components/SiteOnly";
 import { DEFAULT_OG_IMAGE, TWITTER_SITE } from "@/lib/seo";
 
 const geistSans = Geist({
@@ -27,20 +28,6 @@ export const metadata = {
   },
   description:
     "Digitalize your HR Processes and Workflow for all environments with our modern HR suites using the latest technology, powered by Emsphere Pune.",
-  keywords: [
-    "Workforce and Labor Management System",
-    "Labor Management System",
-    "Contract Labour Management System",
-    "CLMS Software",
-    "HRMS Software Pune",
-    "Payroll Management System",
-    "Emsphere Pune",
-    "Emsphere Technologies",
-    "Visitor Management System",
-    "Employee Lifecycle Management",
-    "HR Automation Suites",
-    "Industrial Relations Software",
-  ],
   alternates: {
     canonical: "https://www.emsphere.com/",
   },
@@ -70,12 +57,28 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
+      <head>
+        {/* Google Tag Manager: plain tags in the static <head> so the GTM extension detects them on every page. */}
+        <SiteOnly>
+          <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-MZCM5M6"></script>
+          <script
+            dangerouslySetInnerHTML={{
+              __html:
+                "window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());",
+            }}
+          />
+        </SiteOnly>
+      </head>
       <body className="flex min-h-full flex-col">
-        <SmoothScroll />
-        <Header />
+        <SiteOnly>
+          <SmoothScroll />
+          <Header />
+        </SiteOnly>
         {children}
-        <Footer />
-        <DemoModal />
+        <SiteOnly>
+          <Footer />
+          <DemoModal />
+        </SiteOnly>
       </body>
     </html>
   );

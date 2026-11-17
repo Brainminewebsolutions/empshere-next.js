@@ -11,6 +11,8 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
     "design-reference/**",
+    "admin-kit-NESTJS/**",
+    "scratch/**",
   ]),
 ]);
 

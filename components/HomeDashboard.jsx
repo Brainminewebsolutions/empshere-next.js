@@ -37,7 +37,7 @@ const SHOWCASE_PRODUCTS = [
     id: "emPayroll",
     name: "emPay",
     desc: "emPay helps organizations to manage the complete payroll activities.",
-    ctaLink: "/empay-management-solution",
+    ctaLink: "/payroll-management-solution",
     icon: Money,
   },
   {

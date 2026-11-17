@@ -1,30 +1,26 @@
 import { notFound } from "next/navigation";
 import BlogListing, { getListingMetadata } from "@/components/blog/BlogListing";
-import { getTotalPages } from "@/lib/blog";
+import { getAllPosts } from "@/lib/blog";
+import { getTotalPages } from "@/lib/blog-shared";
 
-// Static export: only the pages listed here exist. Page 1 lives at /blog/.
-export const dynamicParams = false;
+// Posts come from the database (edited in /admin), so these pages are
+// rendered on request. Page 1 lives at /blog/.
+export const dynamic = "force-dynamic";
 
-export function generateStaticParams() {
-  const total = getTotalPages();
-  // A static export needs at least one param; with a single page of posts,
-  // /blog/page/2/ just renders the not-found page.
-  if (total < 2) return [{ page: "2" }];
-  return Array.from({ length: total - 1 }, (_, i) => ({ page: String(i + 2) }));
-}
-
-function parsePage(value) {
+async function parsePage(value) {
   const page = Number(value);
-  return Number.isInteger(page) && page >= 2 && page <= getTotalPages() ? page : null;
+  if (!Number.isInteger(page) || page < 2) return null;
+  const total = getTotalPages(await getAllPosts());
+  return page <= total ? page : null;
 }
 
 export async function generateMetadata({ params }) {
-  const page = parsePage((await params).page);
+  const page = await parsePage((await params).page);
   return page ? getListingMetadata(page) : {};
 }
 
 export default async function BlogPaginatedPage({ params }) {
-  const page = parsePage((await params).page);
+  const page = await parsePage((await params).page);
   if (!page) notFound();
   return <BlogListing page={page} />;
 }

@@ -311,6 +311,18 @@ export default function ContactUsPage() {
 
             {/* Right: Direct Information & Offices */}
             <div className="lg:col-span-5 flex flex-col gap-6">
+              {/* Give us a call card (from the original emsphere.com contact page) */}
+              <div className={`${revealFromRight} ${goldCard} ${liftGold} flex flex-col items-center gap-3 p-6 text-center sm:p-7 transition-all`}>
+                <PhosphorIconTile icon={Headset} className="h-14 w-14 rounded-full" iconClassName="h-7 w-7" />
+                <h3 className={`${fontInstrument} text-xl font-bold text-[#1f1f1f]`}>Give us a call</h3>
+                <p className={`text-sm leading-relaxed ${mutedText}`}>
+                  Give us a ring. Our Experts are standing by monday to friday from <strong className="text-[#1f1f1f]">9AM to 6PM</strong> IST.
+                </p>
+                <a href="tel:+912027292732" className="text-base font-semibold text-[#0077c2] underline underline-offset-2">
+                  020-27292732
+                </a>
+              </div>
+
               {/* Direct Inquiries & Support Card */}
               <div
                 className={`${revealFromRight} ${goldCard} ${liftGold} flex flex-col gap-5 p-6 sm:p-7 transition-all`}
@@ -333,6 +345,9 @@ export default function ContactUsPage() {
                       <a href="mailto:sales@emsphere.com" className="font-semibold text-[#1f1f1f] hover:text-[#0077c2] transition-colors">
                         sales@emsphere.com
                       </a>
+                      <p className={`mt-0.5 text-xs ${mutedText}`}>
+                        Simple drop us an email at sales@emsphere.com and you&apos;ll receive a reply within 24 hours
+                      </p>
                     </div>
                   </div>
 
@@ -349,7 +364,17 @@ export default function ContactUsPage() {
                           +91 7798981534
                         </a>
                         <span className={`text-xs ${mutedText}`}>
-                          Board: 020-27292732 / 33
+                          Board:{" "}
+                          <a href="tel:+912027292732" className="hover:text-[#0077c2] transition-colors">
+                            020-27292732
+                          </a>{" "}
+                          /{" "}
+                          <a href="tel:+912027292733" className="hover:text-[#0077c2] transition-colors">
+                            33
+                          </a>
+                        </span>
+                        <span className={`text-xs ${mutedText}`}>
+                          Give us a ring. Our Experts are standing by monday to friday from 9AM to 6PM IST.
                         </span>
                       </div>
                     </div>
@@ -364,7 +389,7 @@ export default function ContactUsPage() {
                         Monday – Friday: 9:00 AM – 6:00 PM IST
                       </div>
                       <div className={`text-xs ${mutedText}`}>
-                        Excluding National &amp; Public Holidays
+                        We are waiting to help you Monday to Friday from 9AM to 6PM IST. Excluding National &amp; Public Holidays
                       </div>
                     </div>
                   </div>

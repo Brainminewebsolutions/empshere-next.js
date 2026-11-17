@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getPostHref } from "@/lib/blog";
+import { getPostHref } from "@/lib/blog-shared";
 import { PostImage, PostMeta } from "./BlogCard";
 import { ArrowRightIcon } from "./BlogIcons";
 

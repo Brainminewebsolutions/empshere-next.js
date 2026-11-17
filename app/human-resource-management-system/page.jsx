@@ -607,6 +607,9 @@ export default function HumanResourceManagementSystemPage() {
             </div>
           </div>
 
+          <h2 className={`${revealUp} text-center text-2xl font-semibold md:text-3xl`}>
+            What our customers love about <span className="text-[#efb000]">eHRMS</span>
+          </h2>
           <ul className="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-5">
             {heroFeatures.map((feature, index) => (
               <FeatureCard
@@ -615,7 +618,7 @@ export default function HumanResourceManagementSystemPage() {
                 className={revealUp}
                 style={stagger(index)}
                 icon={<feature.icon weight="fill" />}
-                titleAs="h2"
+                titleAs="h3"
                 title={feature.title}
                 text={feature.text}
               />
@@ -789,7 +792,7 @@ export default function HumanResourceManagementSystemPage() {
                     <p className="font-medium">Customizable to Fit Your Business</p>
                     <p>Build a workforce management system that works for you</p>
                   </div>
-                  <Link href="/workforce-management-system" className={`${learnMoreButton} shrink-0 px-10 py-2.5`}>
+                  <Link href="/contact-us/" className={`${learnMoreButton} shrink-0 px-10 py-2.5`}>
                     LEARN MORE
                     <ArrowOutlineIcon />
                   </Link>
@@ -807,7 +810,7 @@ export default function HumanResourceManagementSystemPage() {
                   <li>Attendance Capture via Mobile App and GPS.</li>
                 </ul>
               </div>
-              <LearnMoreLink href="/workforce-management-system" />
+              <LearnMoreLink href="/contact-us/" />
             </article>
           </div>
 
@@ -824,7 +827,7 @@ export default function HumanResourceManagementSystemPage() {
                   ))}
                 </ul>
                 <div className="mt-auto pt-2">
-                  <LearnMoreLink href={card.href} />
+                  <LearnMoreLink href={"/contact-us/"} />
                 </div>
               </article>
             ))}
@@ -896,6 +899,10 @@ export default function HumanResourceManagementSystemPage() {
             </h2>
             <p className="text-xl font-medium md:text-2xl">
               Build personalized learning experience based on employee interaction
+            </p>
+            <p className={`text-base leading-[26px] md:text-lg ${mutedText}`}>
+              Avoid scenarios like Moonlighting by helping your resource add to their skills with you. Interact, nominate, coordinate, automate training,
+              integrate with LMS, monitor and elevate your employee …all at one place!
             </p>
           </header>
           <div className={`${revealUp} relative isolate overflow-hidden rounded-3xl bg-[#fdf6e6] p-3 shadow-[inset_0_0_0_1px_#f0deba] sm:p-4 md:p-5`}>

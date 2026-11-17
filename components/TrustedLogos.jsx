@@ -27,6 +27,14 @@ const CSS = `
   margin: 0 0 28px;
   padding: 0 16px;
 }
+.trusted-logos .trustedTitle.trustedTitleWithSub { margin-bottom: 6px; }
+.trusted-logos .trustedSubtitle {
+  text-align: center;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.64);
+  margin: 0 0 24px;
+  padding: 0 16px;
+}
 .trusted-logos .trustedMarqueeWrapper {
   position: relative;
   width: 100%;
@@ -130,13 +138,14 @@ function LogoGroup({ hidden = false }) {
   );
 }
 
-export default function TrustedLogos({ title = "Trusted By Leading Organizations", id, className = "" }) {
+export default function TrustedLogos({ title = "Trusted By Leading Organizations", subtitle, id, className = "" }) {
   return (
     <section id={id} className={`trusted-logos ${className}`} aria-labelledby="trusted-logos-heading">
       <style>{CSS}</style>
-      <h2 id="trusted-logos-heading" className="trustedTitle reveal-on-scroll reveal-fade-up">
+      <h2 id="trusted-logos-heading" className={`trustedTitle reveal-on-scroll reveal-fade-up${subtitle ? " trustedTitleWithSub" : ""}`}>
         {title}
       </h2>
+      {subtitle && <p className="trustedSubtitle reveal-on-scroll reveal-fade-up">{subtitle}</p>}
       <div className="trustedMarqueeWrapper reveal-on-scroll reveal-fade-up">
         <div className="trustedMarqueeRow" aria-label="Trusted client logos">
           <div

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getPageHref, getPaginationRange } from "@/lib/blog";
+import { getPageHref, getPaginationRange } from "@/lib/blog-shared";
 import { ChevronIcon } from "./BlogIcons";
 
 /* Crawlable pagination: every page is a real <a href>, so search engines

@@ -196,6 +196,11 @@ export default function ClientsPage() {
               </ol>
             </nav>
 
+            {/* Original page heading + tagline */}
+            <p className={`${revealUp} ${fontInter} text-sm font-semibold uppercase tracking-[0.14em] text-[#b07d00]`}>
+              Our Grand Slams · Everything starts with the customer
+            </p>
+
             {/* Headline */}
             <h1
               id="clients-hero-heading"

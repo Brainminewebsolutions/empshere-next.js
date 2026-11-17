@@ -51,7 +51,7 @@ import leaderRohit from "../images/aboutimages/leader-rohit-gupta.webp";
 const HERO_STATS = [
   { value: "500", suffix: "+", label: "Happy Clients" },
   { value: "15", suffix: "+", label: "Years of Experience" },
-  { value: "10,00,000", suffix: "+", label: "Users" },
+  { value: "20,00,000", suffix: "+", label: "Satisfied Users" },
   { value: "10", suffix: "+", label: "Industries" },
 ];
 
@@ -80,6 +80,17 @@ const STRATEGIC_PILLARS = [
       "We listen before we build. Every workflow, biometric gate trigger, overtime formula, and contractor billing algorithm stems directly from real challenges faced daily by HR heads and plant directors.",
     icon: Lightbulb,
   },
+];
+
+/* --------------------------------------------------------------------
+   We reached out, We asked And here is what we heard.
+   -------------------------------------------------------------------- */
+const WHAT_WE_HEARD = [
+  { who: "CXO’s", want: "CXO’s want clear dashboards", answer: "…to see the devil early", icon: TrendUp },
+  { who: "Department Heads", want: "Department Heads want detailed reports with analytics", answer: "…as real devil is always in the details", icon: Target },
+  { who: "Team Managers", want: "Team Managers want a system that truly automates", answer: "…let them not fight the devil bare knuckles", icon: Cpu },
+  { who: "HR", want: "HR wants a system with seamless connectivity", answer: "… different departments in sync make a cohesive team!", icon: UsersThree },
+  { who: "Everyone", want: "Everyone wants freedom from legacy systems and excel sheets", answer: "change from legacy, embrace the modern with HR Tech re-imagined!", icon: RocketLaunch },
 ];
 
 /* --------------------------------------------------------------------
@@ -178,7 +189,7 @@ const LEADERSHIP_TEAM = [
     image: leaderYogesh,
     bio: "Visionary entrepreneur with over 18 years of specialized expertise in enterprise HR technology, industrial automation, and shop-floor digitalization. Under his leadership, emSphere has evolved into a trusted workforce backbone for India’s largest conglomerates.",
     expertise: ["Enterprise HRMS & CLMS", "Industrial Automation", "Product Vision"],
-    linkedin: "https://www.linkedin.com/company/emsphere-technologies",
+    linkedin: "https://www.linkedin.com/company/emspheretechnologies",
   },
   {
     name: "Rohit Gupta",
@@ -186,7 +197,7 @@ const LEADERSHIP_TEAM = [
     image: leaderRohit,
     bio: "Drives enterprise client partnerships, corporate strategy, and nationwide commercial expansion. With extensive market insight across automotive, manufacturing, and heavy engineering, he ensures client success at every stage of deployment.",
     expertise: ["Strategic Partnerships", "Pan-India Expansion", "Commercial Governance"],
-    linkedin: "https://www.linkedin.com/company/emsphere-technologies",
+    linkedin: "https://www.linkedin.com/company/emspheretechnologies",
   },
   {
     name: "Rucha Joshi",
@@ -194,7 +205,7 @@ const LEADERSHIP_TEAM = [
     image: null,
     bio: "Spearheads emSphere’s technological architecture, deep-tech IoT biometric firmware integrations, and enterprise cloud scalability. Champions high-concurrency systems, rigorous data security, and next-generation AI workforce intelligence.",
     expertise: ["Cloud Enterprise Architecture", "IoT Biometrics", "AI Analytics"],
-    linkedin: "https://www.linkedin.com/company/emsphere-technologies",
+    linkedin: "https://www.linkedin.com/company/emspheretechnologies",
   },
 ];
 
@@ -1799,6 +1810,40 @@ export default function AboutUsPage() {
                 <span className="pillarTag">{pillar.tag}</span>
                 <h3 className="pillarTitle">{pillar.title}</h3>
                 <p className="pillarDesc">{pillar.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Our story… is from your story! / We reached out, We asked */}
+      <section className="pillarsSection" id="our-story">
+        <div className="container">
+          <div className="sectionHead reveal-on-scroll reveal-fade-up">
+            <div className="pillBadge">
+              <span className="pillBadgeDot" />
+              Our story… is from your story!
+            </div>
+            <h2 className="sectionTitle">We reached out, We asked And here is what we heard.</h2>
+            <p className="sectionSubtitle">
+              A story of what you have, what you miss, And what more you would like, Modern HR problems are nothing less than devils which can cascade and
+              put the business in trouble.
+            </p>
+          </div>
+
+          <div className="pillarsGrid">
+            {WHAT_WE_HEARD.map((item, index) => (
+              <div
+                key={item.who}
+                className="pillarCard reveal-on-scroll reveal-fade-up"
+                style={{ transitionDelay: `${index * 90}ms` }}
+              >
+                <div className="pillarIconWrap" aria-hidden="true">
+                  <item.icon weight="fill" />
+                </div>
+                <span className="pillarTag">{item.who}</span>
+                <h3 className="pillarTitle">{item.want}</h3>
+                <p className="pillarDesc">{item.answer}</p>
               </div>
             ))}
           </div>
