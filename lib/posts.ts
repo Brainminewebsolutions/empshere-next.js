@@ -187,46 +187,54 @@ const CARD_COLUMNS =
 
 // Every published post as a light card, newest first. The blog listing,
 // related posts, previous/next links and the home page all derive from this.
-export const getPublishedCards = unstable_cache(
+// Database reads are cached; a failed read throws inside the cache so the
+// failure itself is never stored. The wrappers below fall back to the bundled
+// snapshot (uncached) so a database problem cannot blank the blog, and the
+// blog recovers on the very next request once the database is back.
+const cachedCards = unstable_cache(
   async (): Promise<PostCard[]> => {
-    try {
-      const rows = await query<PostRow>(
-        `SELECT ${CARD_COLUMNS} FROM posts
-          WHERE status = 'published' AND post_type = 'blog' AND (published_at IS NULL OR published_at <= ?)
-          ORDER BY published_at DESC, id ASC`,
-        [new Date()],
-      );
-      return rows.map(toCard);
-    } catch (error) {
-      console.error("[posts] database unavailable, serving the blog snapshot:", (error as Error)?.message || error);
-      return snapshotRows()
-        .map((r) => toCard({ ...r, body_start: String(r.content_html ?? "").slice(0, 1200) }))
-        .sort((a, b) => b.published_at.localeCompare(a.published_at));
-    }
+    const rows = await query<PostRow>(
+      `SELECT ${CARD_COLUMNS} FROM posts
+        WHERE status = 'published' AND post_type = 'blog' AND (published_at IS NULL OR published_at <= ?)
+        ORDER BY published_at DESC, id ASC`,
+      [new Date()],
+    );
+    return rows.map(toCard);
   },
   ["published-cards"],
   { tags: ["posts"], revalidate: REVALIDATE },
 );
 
+export async function getPublishedCards(): Promise<PostCard[]> {
+  try {
+    return await cachedCards();
+  } catch (error) {
+    console.error("[posts] database unavailable, serving the blog snapshot:", (error as Error)?.message || error);
+    return snapshotRows()
+      .map((r) => toCard({ ...r, body_start: String(r.content_html ?? "").slice(0, 1200) }))
+      .sort((a, b) => b.published_at.localeCompare(a.published_at));
+  }
+}
+
 // Full post (with body) for the public post page.
 export async function getPublishedPost(slug: string): Promise<Post | null> {
-  return unstable_cache(
-    async () => {
-      try {
+  try {
+    return await unstable_cache(
+      async () => {
         const row = await queryOne<PostRow>(
           "SELECT * FROM posts WHERE status = 'published' AND post_type = 'blog' AND slug = ? LIMIT 1",
           [slug],
         );
         return row ? mapPost(row) : null;
-      } catch (error) {
-        console.error("[posts] database unavailable, serving the blog snapshot:", (error as Error)?.message || error);
-        const row = snapshotRows().find((r) => r.slug === slug);
-        return row ? mapPost(row) : null;
-      }
-    },
-    ["published-post", slug],
-    { tags: ["posts", `post:${slug}`], revalidate: REVALIDATE },
-  )();
+      },
+      ["published-post", slug],
+      { tags: ["posts", `post:${slug}`], revalidate: REVALIDATE },
+    )();
+  } catch (error) {
+    console.error("[posts] database unavailable, serving the blog snapshot:", (error as Error)?.message || error);
+    const row = snapshotRows().find((r) => r.slug === slug);
+    return row ? mapPost(row) : null;
+  }
 }
 
 export async function getPublishedSlugs() {
