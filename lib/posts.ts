@@ -2,6 +2,7 @@ import "server-only";
 import { unstable_cache } from "next/cache";
 import { query, queryOne, toIso } from "./db";
 import type { CustomSchema, Faq } from "./post-schema";
+import { snapshotRows } from "./posts-snapshot";
 
 export type PostType = "blog";
 export type PostStatus = "draft" | "published";
@@ -188,13 +189,20 @@ const CARD_COLUMNS =
 // related posts, previous/next links and the home page all derive from this.
 export const getPublishedCards = unstable_cache(
   async (): Promise<PostCard[]> => {
-    const rows = await query<PostRow>(
-      `SELECT ${CARD_COLUMNS} FROM posts
-        WHERE status = 'published' AND post_type = 'blog' AND (published_at IS NULL OR published_at <= ?)
-        ORDER BY published_at DESC, id ASC`,
-      [new Date()],
-    );
-    return rows.map(toCard);
+    try {
+      const rows = await query<PostRow>(
+        `SELECT ${CARD_COLUMNS} FROM posts
+          WHERE status = 'published' AND post_type = 'blog' AND (published_at IS NULL OR published_at <= ?)
+          ORDER BY published_at DESC, id ASC`,
+        [new Date()],
+      );
+      return rows.map(toCard);
+    } catch (error) {
+      console.error("[posts] database unavailable, serving the blog snapshot:", (error as Error)?.message || error);
+      return snapshotRows()
+        .map((r) => toCard({ ...r, body_start: String(r.content_html ?? "").slice(0, 1200) }))
+        .sort((a, b) => b.published_at.localeCompare(a.published_at));
+    }
   },
   ["published-cards"],
   { tags: ["posts"], revalidate: REVALIDATE },
@@ -204,11 +212,17 @@ export const getPublishedCards = unstable_cache(
 export async function getPublishedPost(slug: string): Promise<Post | null> {
   return unstable_cache(
     async () => {
-      const row = await queryOne<PostRow>(
-        "SELECT * FROM posts WHERE status = 'published' AND post_type = 'blog' AND slug = ? LIMIT 1",
-        [slug],
-      );
-      return row ? mapPost(row) : null;
+      try {
+        const row = await queryOne<PostRow>(
+          "SELECT * FROM posts WHERE status = 'published' AND post_type = 'blog' AND slug = ? LIMIT 1",
+          [slug],
+        );
+        return row ? mapPost(row) : null;
+      } catch (error) {
+        console.error("[posts] database unavailable, serving the blog snapshot:", (error as Error)?.message || error);
+        const row = snapshotRows().find((r) => r.slug === slug);
+        return row ? mapPost(row) : null;
+      }
     },
     ["published-post", slug],
     { tags: ["posts", `post:${slug}`], revalidate: REVALIDATE },
@@ -224,12 +238,16 @@ export async function getPublishedSlugs() {
 export async function getRedirectTarget(oldSlug: string): Promise<string | null> {
   return unstable_cache(
     async () => {
-      const row = await queryOne<{ slug: string }>(
-        `SELECT p.slug FROM post_redirects r JOIN posts p ON p.id = r.post_id
-          WHERE r.post_type = 'blog' AND r.old_slug = ? AND p.status = 'published' LIMIT 1`,
-        [oldSlug],
-      );
-      return row ? postPath("blog", row.slug) : null;
+      try {
+        const row = await queryOne<{ slug: string }>(
+          `SELECT p.slug FROM post_redirects r JOIN posts p ON p.id = r.post_id
+            WHERE r.post_type = 'blog' AND r.old_slug = ? AND p.status = 'published' LIMIT 1`,
+          [oldSlug],
+        );
+        return row ? postPath("blog", row.slug) : null;
+      } catch {
+        return null;
+      }
     },
     ["post-redirect", oldSlug],
     { tags: ["posts", `post:${oldSlug}`], revalidate: REVALIDATE },
