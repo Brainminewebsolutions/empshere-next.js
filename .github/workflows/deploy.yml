@@ -1,10 +1,14 @@
-name: Deploy to Hostinger (SSH)
+name: Build check
+# The site runs as a Node.js app on Hostinger (admin dashboard, database blog
+# and /media need a server), and Hostinger's own Git auto-deploy publishes it.
+# This workflow only proves that every push still builds in server mode.
 on:
   push:
     branches: [main]
+  pull_request:
   workflow_dispatch:
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -13,36 +17,4 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      # A static export cannot contain server-only code. Remove it from this
-      # throwaway CI checkout (the repo itself is not changed). The lead form
-      # uses public/api/lead.php on the static site instead of app/api/lead.
-      - name: Remove server-only routes
-        run: rm -rf app/admin app/media app/api proxy.ts
       - run: npm run build
-        env:
-          BUILD_TARGET: static
-      - name: Set up SSH
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          SSH_HOST: ${{ secrets.SSH_HOST }}
-          SSH_PORT: ${{ secrets.SSH_PORT }}
-        run: |
-          mkdir -p ~/.ssh
-          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_ed25519
-          chmod 600 ~/.ssh/id_ed25519
-          ssh-keyscan -p "$SSH_PORT" "$SSH_HOST" >> ~/.ssh/known_hosts
-      - name: Upload with rsync
-        env:
-          SSH_HOST: ${{ secrets.SSH_HOST }}
-          SSH_PORT: ${{ secrets.SSH_PORT }}
-          SSH_USER: ${{ secrets.SSH_USER }}
-          SSH_TARGET_PATH: ${{ secrets.SSH_TARGET_PATH }}
-        run: |
-          # First run: no --delete, so nothing on the server is removed.
-          # Once the site looks right, add "--delete" plus the protect
-          # filters below to clear out stale files:
-          #   --delete --filter='P /blog/' --filter='P /wp-*' \
-          #   --filter='P /.well-known/' --filter='P /cgi-bin/'
-          rsync -avz \
-            -e "ssh -p $SSH_PORT" \
-            ./out/ "$SSH_USER@$SSH_HOST:$SSH_TARGET_PATH/"
