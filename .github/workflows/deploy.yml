@@ -13,6 +13,11 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      # A static export cannot contain server-only code. Remove it from this
+      # throwaway CI checkout (the repo itself is not changed). The lead form
+      # uses public/api/lead.php on the static site instead of app/api/lead.
+      - name: Remove server-only routes
+        run: rm -rf app/admin app/media app/api proxy.ts
       - run: npm run build
         env:
           BUILD_TARGET: static
