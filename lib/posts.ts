@@ -144,10 +144,10 @@ export async function getPostById(id: string): Promise<Post | null> {
 // Cached with unstable_cache and tagged "posts". The admin calls revalidateTag
 // after every save (refreshPublicSite in app/admin/_actions/posts.ts), so an
 // edited post shows on the site within seconds. The cache also expires on its
-// own every 5 minutes. Only light "card" rows are cached as a list (no post
+// own every minute. Only light "card" rows are cached as a list (no post
 // bodies), so no cache entry gets near the 2 MB limit.
 
-const REVALIDATE = 300;
+const REVALIDATE = 60;
 
 const plain = (html: string) =>
   html
@@ -219,17 +219,14 @@ export async function getPublishedCards(): Promise<PostCard[]> {
 // Full post (with body) for the public post page.
 export async function getPublishedPost(slug: string): Promise<Post | null> {
   try {
-    return await unstable_cache(
-      async () => {
-        const row = await queryOne<PostRow>(
-          "SELECT * FROM posts WHERE status = 'published' AND post_type = 'blog' AND slug = ? LIMIT 1",
-          [slug],
-        );
-        return row ? mapPost(row) : null;
-      },
-      ["published-post", slug],
-      { tags: ["posts", `post:${slug}`], revalidate: REVALIDATE },
-    )();
+    // Read straight from the database (no cache): a post deleted or unpublished
+    // from any running copy of the admin must disappear from every copy of the
+    // site immediately. The page is force-dynamic anyway and this is one indexed lookup.
+    const row = await queryOne<PostRow>(
+      "SELECT * FROM posts WHERE status = 'published' AND post_type = 'blog' AND slug = ? LIMIT 1",
+      [slug],
+    );
+    return row ? mapPost(row) : null;
   } catch (error) {
     console.error("[posts] database unavailable, serving the blog snapshot:", (error as Error)?.message || error);
     const row = snapshotRows().find((r) => r.slug === slug);
