@@ -228,9 +228,41 @@ function JobDetails({ job, onApply }) {
   );
 }
 
+const DIALOG_CSS = `
+.jobDialogBackdrop { animation: jobDialogFadeIn 0.3s ease-out both; }
+.jobDialogBackdrop[data-state="closing"] { animation: jobDialogFadeOut 0.24s ease-in both; }
+.jobDialogPanel { animation: jobDialogIn 0.38s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.jobDialogPanel[data-state="closing"] { animation: jobDialogOut 0.24s cubic-bezier(0.4, 0, 1, 1) both; }
+.jobDialogView { animation: jobDialogView 0.32s cubic-bezier(0.16, 1, 0.3, 1) both; }
+@keyframes jobDialogFadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes jobDialogFadeOut { from { opacity: 1; } to { opacity: 0; } }
+@keyframes jobDialogIn {
+  from { opacity: 0; transform: translateY(28px) scale(0.96); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes jobDialogOut {
+  from { opacity: 1; transform: none; }
+  to { opacity: 0; transform: translateY(20px) scale(0.97); }
+}
+@keyframes jobDialogView { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .jobDialogBackdrop, .jobDialogPanel, .jobDialogView { animation: none !important; }
+}
+`;
+const CLOSE_MS = 240;
+
 function JobDialog({ job, initialView, onClose }) {
   const [view, setView] = useState(initialView); // details | apply | done
+  const [closing, setClosing] = useState(false);
   const panel = useRef(null);
+
+  // Play the exit animation, then unmount (which restores page scrolling).
+  const requestClose = useCallback(() => {
+    if (closing) return;
+    setClosing(true);
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.setTimeout(onClose, reduce ? 0 : CLOSE_MS);
+  }, [closing, onClose]);
 
   useEffect(() => {
     const previous = document.activeElement;
@@ -253,7 +285,7 @@ function JobDialog({ job, initialView, onClose }) {
   }, [view]);
 
   const onKeyDown = (event) => {
-    if (event.key === "Escape") onClose();
+    if (event.key === "Escape") requestClose();
     if (event.key !== "Tab") return;
     const focusable = panel.current?.querySelectorAll("a[href],button:not([disabled]),input:not([tabindex='-1']),select,textarea,[tabindex]:not([tabindex='-1'])");
     if (!focusable?.length) return;
@@ -265,18 +297,21 @@ function JobDialog({ job, initialView, onClose }) {
 
   return createPortal(
     <div
-      className="fixed inset-0 z-[1000] flex items-end justify-center bg-black/55 p-0 sm:items-center sm:p-6"
-      onMouseDown={(e) => e.target === e.currentTarget && onClose()}
+      className="jobDialogBackdrop fixed inset-0 z-[1000] flex items-end justify-center bg-black/55 p-0 sm:items-center sm:p-6"
+      data-state={closing ? "closing" : "open"}
+      onMouseDown={(e) => e.target === e.currentTarget && requestClose()}
       onKeyDown={onKeyDown}
     >
+      <style>{DIALOG_CSS}</style>
       <div
         ref={panel}
+        data-state={closing ? "closing" : "open"}
         role="dialog"
         aria-modal="true"
         aria-labelledby="job-dialog-title"
         tabIndex={-1}
         data-lenis-prevent
-        className="relative flex max-h-[94svh] w-full max-w-2xl flex-col overflow-y-auto overscroll-contain rounded-t-3xl bg-white shadow-2xl outline-none sm:max-h-[90svh] sm:rounded-3xl"
+        className="jobDialogPanel relative flex max-h-[94svh] w-full max-w-2xl flex-col overflow-y-auto overscroll-contain rounded-t-3xl bg-white shadow-2xl outline-none sm:max-h-[90svh] sm:rounded-3xl"
       >
         <span aria-hidden="true" className="sticky top-0 z-10 block h-[3px] shrink-0 bg-gradient-to-r from-[#ffd34d] via-[#EFB000] to-[#ffd34d]" />
         <header className="flex items-start justify-between gap-4 border-b border-[#f1e7c8] bg-[#fffcf0] px-5 py-4 sm:px-8">
@@ -289,7 +324,7 @@ function JobDialog({ job, initialView, onClose }) {
           </div>
           <button
             type="button"
-            onClick={onClose}
+            onClick={requestClose}
             aria-label="Close"
             className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white text-[#4c4c4c] shadow-[inset_0_0_0_1px_#e5e5e5] transition-colors hover:text-[#b07d00]"
           >
@@ -297,7 +332,7 @@ function JobDialog({ job, initialView, onClose }) {
           </button>
         </header>
 
-        <div className="px-5 py-6 sm:px-8">
+        <div key={view} className="jobDialogView px-5 py-6 sm:px-8">
           {view === "details" && <JobDetails job={job} onApply={() => setView("apply")} />}
           {view === "apply" && <ApplyForm job={job} onDone={() => setView("done")} onBack={() => setView("details")} />}
           {view === "done" && (
@@ -311,7 +346,7 @@ function JobDialog({ job, initialView, onClose }) {
               </p>
               <button
                 type="button"
-                onClick={onClose}
+                onClick={requestClose}
                 className="mt-2 rounded-lg bg-[#EFB000] px-7 py-3 text-[15px] font-semibold text-white transition-colors hover:bg-[#d99e00]"
               >
                 Close
