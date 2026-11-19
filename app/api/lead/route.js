@@ -40,8 +40,14 @@ async function verifyTurnstile(token, ip) {
       signal: AbortSignal.timeout(10_000),
     });
     const data = await res.json();
+    if (!data.success) {
+      // e.g. invalid-input-secret (wrong/missing secret for this widget),
+      // timeout-or-duplicate (token reused or expired), bad-request.
+      console.error("[api/lead] Turnstile rejected the token:", data["error-codes"]?.join(", ") || "unknown", "hostname:", data.hostname || "-");
+    }
     return Boolean(data.success);
-  } catch {
+  } catch (error) {
+    console.error("[api/lead] Turnstile verification request failed:", error?.message || error);
     return false;
   }
 }
