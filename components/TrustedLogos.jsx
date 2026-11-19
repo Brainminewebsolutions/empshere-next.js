@@ -1,6 +1,6 @@
 /* "Trusted By Leading Organizations" logo marquee, shared by the home, About
    and product pages. Logos come from lib/clients.js and sit in a single
-   zig-zag row (alternating top/bottom) that scrolls right in an infinite loop.
+   zig-zag row (alternating top/bottom) that scrolls left in an infinite loop.
    Styles are scoped under ".trusted-logos" so the component can be dropped
    into any page without colliding with page-level CSS. */
 
@@ -54,7 +54,7 @@ const CSS = `
   display: flex;
   width: max-content;
   will-change: transform;
-  animation: trustedLogosScrollRight var(--duration, 100s) linear infinite;
+  animation: trustedLogosScrollLeft var(--duration, 100s) linear infinite;
 }
 .trusted-logos .trustedMarqueeRow:hover .trustedMarqueeTrack {
   animation-play-state: paused;
@@ -91,9 +91,9 @@ const CSS = `
   transform: scale(1.1);
   filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.12));
 }
-@keyframes trustedLogosScrollRight {
-  0% { transform: translate3d(-50%, 0, 0); }
-  100% { transform: translate3d(0, 0, 0); }
+@keyframes trustedLogosScrollLeft {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
 }
 @media (max-width: 768px) {
   .trusted-logos { --logo-scale: 1.1; padding: 38px 0 42px; }
