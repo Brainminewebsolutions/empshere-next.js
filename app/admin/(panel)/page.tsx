@@ -55,7 +55,7 @@ export default async function AdminDashboardPage() {
                       </span>
                     </td>
                     <td data-label="Edited" className={`${styles.muted} ${styles.nowrap}`}>
-                      {new Date(toIso(p.updated_at) ?? "").toLocaleString("en-GB", { dateStyle: "medium", timeStyle: "short" })}
+                      {new Date(toIso(p.updated_at) ?? "").toLocaleString("en-GB", { timeZone: "Asia/Kolkata", dateStyle: "medium", timeStyle: "short" })}
                     </td>
                   </tr>
                 ))}

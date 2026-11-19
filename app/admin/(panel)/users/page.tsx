@@ -49,7 +49,7 @@ export default async function UsersPage() {
                         {p.role}
                       </span>
                     </td>
-                    <td data-label="Last login" className={styles.muted}>{signIn ? new Date(signIn).toLocaleString("en-GB") : "Never"}</td>
+                    <td data-label="Last login" className={styles.muted}>{signIn ? new Date(signIn).toLocaleString("en-GB", { timeZone: "Asia/Kolkata", hour12: false }) : "Never"}</td>
                     <td data-label="Actions">
                       {p.id === me.id ? (
                         <span className={`${styles.muted} ${styles.small}`}>Change your password under My account</span>
