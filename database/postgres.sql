@@ -137,6 +137,49 @@ CREATE TABLE IF NOT EXISTS leads (
 );
 CREATE INDEX IF NOT EXISTS idx_leads_created ON leads (created_at);
 
+-- Job openings (Admin -> Job openings). Open jobs are listed on /careers.
+CREATE TABLE IF NOT EXISTS jobs (
+  id              VARCHAR(36)  NOT NULL PRIMARY KEY,
+  title           VARCHAR(160) NOT NULL,
+  department      VARCHAR(100) NOT NULL DEFAULT '',
+  location        VARCHAR(160) NOT NULL DEFAULT '',
+  employment_type VARCHAR(40)  NOT NULL DEFAULT 'Full-time',
+  experience      VARCHAR(80)  NOT NULL DEFAULT '',
+  salary          VARCHAR(100) NOT NULL DEFAULT '',
+  summary         VARCHAR(400) NOT NULL DEFAULT '',
+  description     TEXT         NULL,
+  requirements    TEXT         NULL,
+  status          VARCHAR(10)  NOT NULL DEFAULT 'open',
+  created_at      TIMESTAMP    NOT NULL DEFAULT (now() AT TIME ZONE 'utc'),
+  updated_at      TIMESTAMP    NOT NULL DEFAULT (now() AT TIME ZONE 'utc')
+);
+CREATE INDEX IF NOT EXISTS idx_jobs_status ON jobs (status, created_at);
+
+-- Applications from the /careers apply form (Admin -> Job applications).
+CREATE TABLE IF NOT EXISTS job_applications (
+  id              VARCHAR(36)  NOT NULL PRIMARY KEY,
+  job_id          VARCHAR(36)  NULL,
+  job_title       VARCHAR(160) NOT NULL DEFAULT '',
+  name            VARCHAR(120) NOT NULL DEFAULT '',
+  email           VARCHAR(190) NOT NULL DEFAULT '',
+  phone           VARCHAR(40)  NOT NULL DEFAULT '',
+  location        VARCHAR(120) NOT NULL DEFAULT '',
+  experience      VARCHAR(40)  NOT NULL DEFAULT '',
+  current_company VARCHAR(160) NOT NULL DEFAULT '',
+  current_ctc     VARCHAR(60)  NOT NULL DEFAULT '',
+  expected_ctc    VARCHAR(60)  NOT NULL DEFAULT '',
+  notice_period   VARCHAR(60)  NOT NULL DEFAULT '',
+  linkedin        VARCHAR(300) NOT NULL DEFAULT '',
+  message         TEXT         NULL,
+  resume_name     VARCHAR(160) NOT NULL DEFAULT '',
+  resume_mime     VARCHAR(100) NOT NULL DEFAULT '',
+  resume_size     INT          NOT NULL DEFAULT 0,
+  resume_data     BYTEA        NULL,
+  status          VARCHAR(20)  NOT NULL DEFAULT 'new',
+  created_at      TIMESTAMP    NOT NULL DEFAULT (now() AT TIME ZONE 'utc')
+);
+CREATE INDEX IF NOT EXISTS idx_apps_created ON job_applications (created_at);
+
 -- Lock the tables against Supabase's public REST API (see SECURITY above).
 ALTER TABLE users          ENABLE ROW LEVEL SECURITY;
 ALTER TABLE sessions       ENABLE ROW LEVEL SECURITY;
@@ -145,3 +188,5 @@ ALTER TABLE posts          ENABLE ROW LEVEL SECURITY;
 ALTER TABLE post_redirects ENABLE ROW LEVEL SECURITY;
 ALTER TABLE media          ENABLE ROW LEVEL SECURITY;
 ALTER TABLE leads          ENABLE ROW LEVEL SECURITY;
+ALTER TABLE jobs           ENABLE ROW LEVEL SECURITY;
+ALTER TABLE job_applications ENABLE ROW LEVEL SECURITY;

@@ -11,6 +11,7 @@ import {
 } from "@/lib/post-schema";
 import type { PostInput } from "../../../_actions/posts";
 import styles from "../../../admin.module.css";
+import { useDialog } from "../../DialogProvider";
 
 type Props = {
   post: PostInput;
@@ -24,6 +25,7 @@ type Props = {
 // builder as the public page (lib/schema.ts), so what you see here is
 // exactly what Google gets.
 export default function SchemaEditor({ post, set, liveUrl }: Props) {
+  const dialog = useDialog();
   const source: SchemaSource = {
     post_type: post.post_type,
     slug: post.slug,
@@ -107,8 +109,8 @@ export default function SchemaEditor({ post, set, liveUrl }: Props) {
                 <button
                   type="button"
                   className={styles.buttonLink}
-                  onClick={() => {
-                    if (block.json.trim() && !window.confirm("Replace this block's JSON with a fresh template?")) return;
+                  onClick={async () => {
+                    if (block.json.trim() && !(await dialog.confirm({ title: "Replace the JSON?", message: "This block's JSON will be replaced with a fresh template.", confirmLabel: "Replace" }))) return;
                     updateBlock(i, { json: JSON.stringify(schemaTemplate(block.type, source), null, 2) });
                   }}
                 >
@@ -125,8 +127,8 @@ export default function SchemaEditor({ post, set, liveUrl }: Props) {
                 <button
                   type="button"
                   className={`${styles.buttonLink} ${styles.buttonLinkDanger}`}
-                  onClick={() => {
-                    if (block.json.trim() && !window.confirm("Remove this schema block?")) return;
+                  onClick={async () => {
+                    if (block.json.trim() && !(await dialog.confirm({ title: "Remove this schema block?", message: "The block and its JSON will be removed.", confirmLabel: "Remove", danger: true }))) return;
                     setBlocks(blocks.filter((_, j) => j !== i));
                   }}
                 >

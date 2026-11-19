@@ -1,8 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
+import { connection } from "next/server";
 import { Instrument_Sans, Inter } from "next/font/google";
 import BackToTop from "@/components/BackToTop";
 import ScrollReveal from "@/components/ScrollReveal";
+import CareersJobBoard from "@/components/careers/CareersJobBoard";
+import { getOpenJobs } from "@/lib/jobs";
 import teamPhoto from "@/app/images/homeimages/corporate-hr-team-collaboration.webp";
 import {
   ArrowRight,
@@ -134,7 +137,11 @@ function SectionHeader({ id, eyebrow, title, text, align = "center" }) {
   );
 }
 
-export default function CareersPage() {
+export default async function CareersPage() {
+  // Jobs come from the admin dashboard, so render on every request.
+  await connection();
+  const jobs = await getOpenJobs();
+
   return (
     <main
       className={`${instrumentSans.variable} ${inter.variable} animated-page w-full overflow-x-hidden bg-[#FFFFFA] font-sans text-[#4c4c4c]`}
@@ -256,6 +263,9 @@ export default function CareersPage() {
             }
             text="Roles are published here the moment they open across our Pune, Delhi and Bengaluru offices."
           />
+          {jobs.length > 0 ? (
+            <CareersJobBoard jobs={jobs} />
+          ) : (
           <div
             className={`${revealUp} relative isolate mx-auto flex w-full max-w-3xl flex-col items-center gap-4 overflow-hidden rounded-3xl bg-white px-6 py-12 text-center shadow-[inset_0_0_0_1px_#ececec,0_18px_40px_-28px_rgba(0,0,0,0.25)] md:px-14 md:py-14`}
           >
@@ -279,6 +289,7 @@ export default function CareersPage() {
               {HR_EMAIL}
             </a>
           </div>
+          )}
         </div>
       </section>
 

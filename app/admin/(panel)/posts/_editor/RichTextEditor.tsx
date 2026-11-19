@@ -8,6 +8,7 @@ import { TextStyle, Color } from "@tiptap/extension-text-style";
 import { uploadImage } from "../../../_actions/posts";
 import styles from "../../../admin.module.css";
 import ColorPicker from "./ColorPicker";
+import { useDialog } from "../../DialogProvider";
 
 type Props = {
   value: string;
@@ -15,6 +16,7 @@ type Props = {
 };
 
 export default function RichTextEditor({ value, onChange }: Props) {
+  const dialog = useDialog();
   const [sourceMode, setSourceMode] = useState(false);
   const [source, setSource] = useState(value);
   const [uploading, setUploading] = useState(false);
@@ -61,10 +63,16 @@ export default function RichTextEditor({ value, onChange }: Props) {
     const result = await uploadImage(fd);
     setUploading(false);
     if (!result.ok) {
-      window.alert(result.error);
+      await dialog.alert({ tone: "error", title: "Image upload failed", message: result.error });
       return;
     }
-    const alt = window.prompt("Describe this image (alt text, important for SEO and accessibility):", "") ?? "";
+    const alt =
+      (await dialog.prompt({
+        title: "Image description",
+        message: "Describe this image (alt text, important for SEO and accessibility).",
+        defaultValue: "",
+        confirmLabel: "Insert image",
+      })) ?? "";
     editor.chain().focus().setImage({ src: result.url, alt }).run();
   };
 
@@ -121,6 +129,7 @@ function Toolbar({
   onToggleSource: () => void;
   onImage: () => void;
 }) {
+  const dialog = useDialog();
   if (!editor) return <div className={styles.toolbar} style={{ height: 43 }} />;
 
   const btn = (label: string, title: string, active: boolean, run: () => void, disabled = false) => (
@@ -140,25 +149,31 @@ function Toolbar({
 
   const chain = () => editor.chain().focus();
 
-  const setLink = () => {
+  const setLink = async () => {
     const previous = (editor.getAttributes("link").href as string | undefined) ?? "";
-    const url = window.prompt("Link URL (e.g. https://www.emsphere.com/about-us or /contact-us):", previous);
+    const url = await dialog.prompt({
+      title: "Link URL",
+      message: "e.g. https://www.emsphere.com/about-us or /contact-us. Leave empty to remove the link.",
+      defaultValue: previous,
+      placeholder: "https://",
+      confirmLabel: "Set link",
+    });
     if (url === null) return;
     if (url.trim() === "") {
       chain().extendMarkRange("link").unsetLink().run();
       return;
     }
     const external = /^https?:\/\//i.test(url) && !/emsphere\.com/i.test(url);
-    const newTab = external && window.confirm("Open this link in a new tab?");
+    const newTab = external && (await dialog.confirm({ title: "Open in a new tab?", message: "This link goes to another website. Open it in a new tab?", confirmLabel: "New tab", cancelLabel: "Same tab" }));
     chain()
       .extendMarkRange("link")
       .setLink({ href: url.trim(), target: newTab ? "_blank" : null })
       .run();
   };
 
-  const editAlt = () => {
+  const editAlt = async () => {
     const current = (editor.getAttributes("image").alt as string | undefined) ?? "";
-    const alt = window.prompt("Image alt text:", current);
+    const alt = await dialog.prompt({ title: "Image alt text", defaultValue: current, confirmLabel: "Save" });
     if (alt !== null) chain().updateAttributes("image", { alt }).run();
   };
 

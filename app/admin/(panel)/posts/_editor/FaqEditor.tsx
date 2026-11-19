@@ -2,6 +2,7 @@
 
 import type { Faq } from "@/lib/posts";
 import styles from "../../../admin.module.css";
+import { useDialog } from "../../DialogProvider";
 
 type Props = {
   faqs: Faq[];
@@ -11,6 +12,7 @@ type Props = {
 // Question/answer pairs shown after the post body on the live page, and
 // emitted as FAQPage structured data for Google.
 export default function FaqEditor({ faqs, onChange }: Props) {
+  const dialog = useDialog();
   const update = (index: number, field: keyof Faq, value: string) =>
     onChange(faqs.map((f, i) => (i === index ? { ...f, [field]: value } : f)));
 
@@ -22,9 +24,9 @@ export default function FaqEditor({ faqs, onChange }: Props) {
     onChange(next);
   };
 
-  const remove = (index: number) => {
+  const remove = async (index: number) => {
     const faq = faqs[index];
-    if ((faq.question || faq.answer) && !window.confirm("Remove this FAQ?")) return;
+    if ((faq.question || faq.answer) && !(await dialog.confirm({ title: "Remove this FAQ?", message: "The question and answer will be removed from this post.", confirmLabel: "Remove", danger: true }))) return;
     onChange(faqs.filter((_, i) => i !== index));
   };
 

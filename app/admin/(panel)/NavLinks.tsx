@@ -26,6 +26,20 @@ const ICONS: Record<string, React.ReactNode> = {
       <path d="M12 8.5v7M8.5 12h7" />
     </>
   ),
+  jobs: (
+    <>
+      <rect x="3.5" y="7.5" width="17" height="12" rx="2" />
+      <path d="M9 7.5V6a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 15 6v1.5M3.5 13h17" />
+    </>
+  ),
+  applications: (
+    <>
+      <path d="M14 3.5H7a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-10z" />
+      <path d="M14 3.5v5h5" />
+      <circle cx="12" cy="13" r="2.2" />
+      <path d="M8.5 18.2a3.6 3.6 0 0 1 7 0" />
+    </>
+  ),
   users: (
     <>
       <circle cx="9.5" cy="8" r="3.5" />
@@ -67,6 +81,8 @@ export default function NavLinks({ isAdmin }: { isAdmin: boolean }) {
     { href: "/admin/", label: "Dashboard", icon: "dashboard", active: pathname === "/admin" },
     { href: "/admin/posts/", label: "Blog posts", icon: "posts", active: pathname.startsWith("/admin/posts") && !pathname.startsWith("/admin/posts/new") },
     { href: "/admin/posts/new/?type=blog", label: "Add new post", icon: "add", active: pathname.startsWith("/admin/posts/new") },
+    { href: "/admin/jobs/", label: "Job openings", icon: "jobs", active: pathname.startsWith("/admin/jobs") },
+    { href: "/admin/applications/", label: "Job applications", icon: "applications", active: pathname.startsWith("/admin/applications") },
     ...(isAdmin
       ? [
           { href: "/admin/users/", label: "Users", icon: "users", active: pathname.startsWith("/admin/users") },

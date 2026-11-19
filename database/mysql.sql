@@ -157,3 +157,54 @@ CREATE TABLE IF NOT EXISTS `leads` (
   PRIMARY KEY (`id`),
   KEY `idx_leads_created` (`created_at`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ---------------------------------------------------------------------
+-- Job openings (Admin -> Job openings). Open jobs are listed on /careers.
+-- ---------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `jobs` (
+  `id`              CHAR(36)     NOT NULL,
+  `title`           VARCHAR(160) NOT NULL,
+  `department`      VARCHAR(100) NOT NULL DEFAULT '',
+  `location`        VARCHAR(160) NOT NULL DEFAULT '',
+  `employment_type` VARCHAR(40)  NOT NULL DEFAULT 'Full-time',
+  `experience`      VARCHAR(80)  NOT NULL DEFAULT '',
+  `salary`          VARCHAR(100) NOT NULL DEFAULT '',
+  `summary`         VARCHAR(400) NOT NULL DEFAULT '',
+  `description`     TEXT         NULL,
+  `requirements`    TEXT         NULL,
+  `status`          VARCHAR(10)  NOT NULL DEFAULT 'open',
+  `created_at`      DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at`      DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `idx_jobs_status` (`status`, `created_at`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ---------------------------------------------------------------------
+-- Applications submitted from the /careers apply form (Admin -> Job
+-- applications). The resume file is kept here so HR can download it.
+-- ---------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `job_applications` (
+  `id`              CHAR(36)     NOT NULL,
+  `job_id`          CHAR(36)     NULL,
+  `job_title`       VARCHAR(160) NOT NULL DEFAULT '',
+  `name`            VARCHAR(120) NOT NULL DEFAULT '',
+  `email`           VARCHAR(190) NOT NULL DEFAULT '',
+  `phone`           VARCHAR(40)  NOT NULL DEFAULT '',
+  `location`        VARCHAR(120) NOT NULL DEFAULT '',
+  `experience`      VARCHAR(40)  NOT NULL DEFAULT '',
+  `current_company` VARCHAR(160) NOT NULL DEFAULT '',
+  `current_ctc`     VARCHAR(60)  NOT NULL DEFAULT '',
+  `expected_ctc`    VARCHAR(60)  NOT NULL DEFAULT '',
+  `notice_period`   VARCHAR(60)  NOT NULL DEFAULT '',
+  `linkedin`        VARCHAR(300) NOT NULL DEFAULT '',
+  `message`         TEXT         NULL,
+  `resume_name`     VARCHAR(160) NOT NULL DEFAULT '',
+  `resume_mime`     VARCHAR(100) NOT NULL DEFAULT '',
+  `resume_size`     INT          NOT NULL DEFAULT 0,
+  `resume_data`     LONGBLOB     NULL,
+  `status`          VARCHAR(20)  NOT NULL DEFAULT 'new',
+  `created_at`      DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `idx_apps_created` (`created_at`),
+  KEY `idx_apps_job` (`job_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

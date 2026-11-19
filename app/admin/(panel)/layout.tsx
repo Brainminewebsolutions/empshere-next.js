@@ -4,6 +4,7 @@ import { requireStaff } from "@/lib/auth";
 import { logout } from "../_actions/auth";
 import NavLinks from "./NavLinks";
 import LoadingToast from "./LoadingToast";
+import DialogProvider from "./DialogProvider";
 import SidebarShell, { LOGO_SRC } from "./SidebarShell";
 import styles from "../admin.module.css";
 
@@ -17,6 +18,7 @@ export default async function PanelLayout({ children }: { children: React.ReactN
   const displayName = staff.fullName || staff.email;
 
   return (
+    <DialogProvider>
     <div className={styles.shell}>
       <SidebarShell>
         <Link href="/admin/" className={styles.brand} aria-label="Emsphere admin home">
@@ -47,5 +49,6 @@ export default async function PanelLayout({ children }: { children: React.ReactN
         <LoadingToast />
       </Suspense>
     </div>
+    </DialogProvider>
   );
 }

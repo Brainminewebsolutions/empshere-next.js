@@ -4,6 +4,7 @@ import { useRef, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { deleteLeads } from "../../_actions/leads";
 import styles from "../../admin.module.css";
+import { useDialog } from "../DialogProvider";
 import { useLoadingToast } from "../LoadingToast";
 
 // Wraps the leads table in one form so the row checkboxes (name="ids") and
@@ -17,6 +18,7 @@ export default function LeadsBulkForm({ pagination, children }: { pagination: Re
   const [pending, startTransition] = useTransition();
   useLoadingToast(pending, "Deleting…");
   const router = useRouter();
+  const dialog = useDialog();
 
   const rowBoxes = () =>
     Array.from(formRef.current?.querySelectorAll<HTMLInputElement>('input[name="ids"]') ?? []);
@@ -46,14 +48,19 @@ export default function LeadsBulkForm({ pagination, children }: { pagination: Re
           sync();
         }
       }}
-      onSubmit={(e) => {
+      onSubmit={async (e) => {
         e.preventDefault();
         const ids = rowBoxes()
           .filter((b) => b.checked)
           .map((b) => b.value);
         if (action !== "delete") return setMessage("Choose a bulk action first.");
         if (ids.length === 0) return setMessage("Select at least one lead.");
-        if (!window.confirm(`Delete ${ids.length} ${ids.length === 1 ? "lead" : "leads"} permanently? This cannot be undone.`)) return;
+        const ok = await dialog.confirm({
+          title: `Delete ${ids.length} ${ids.length === 1 ? "lead" : "leads"}?`,
+          message: "They will be deleted permanently. This cannot be undone.",
+          danger: true,
+        });
+        if (!ok) return;
 
         startTransition(async () => {
           const result = await deleteLeads(ids);
