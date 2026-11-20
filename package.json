@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build --webpack",
-    "postbuild": "next-sitemap && node scripts/sync-sitemap.js",
+    "redirects:csv": "node scripts/redirects-csv.mjs",
+    "seo:check": "node scripts/seo-check.mjs",
+    "seo:redirects": "node scripts/redirects-check.mjs",
     "fetch:blog": "node scripts/fetch-blog-posts.mjs",
     "db:setup": "node --env-file=.env.local scripts/setup-db.mjs",
     "db:import-blog": "node --env-file=.env.local scripts/import-blog-posts.mjs",
