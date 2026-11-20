@@ -13,6 +13,8 @@
 // need a Node server, so server mode is the default. Static export is kept
 // only for the legacy shared-hosting build: BUILD_TARGET=static npm run build
 // (it cannot include /admin or the database blog).
+import { redirects } from './redirects.mjs';
+
 const STATIC_EXPORT = process.env.BUILD_TARGET === 'static';
 
 // The blog's source folder is app/blogs but its public URL is /blog.
@@ -44,12 +46,31 @@ const adminHeaders = async () => [
   },
 ];
 
+// Staging must never be indexed: NEXT_PUBLIC_SITE_ENV=staging adds X-Robots-Tag
+// (and app/robots.js disallows everything). Production never gets noindex.
+const siteHeaders = async () => [
+  {
+    source: '/((?!admin).*)',
+    headers: [
+      { key: 'X-Content-Type-Options', value: 'nosniff' },
+      { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+      { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+      { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
+      ...(process.env.NEXT_PUBLIC_SITE_ENV === 'staging'
+        ? [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }]
+        : []),
+    ],
+  },
+  ...(await adminHeaders()),
+];
+
 const serverConfig = {
   ...sharedConfig,
   // Image uploads are server actions capped at 4 MB in code.
   experimental: { serverActions: { bodySizeLimit: '5mb' } },
   serverExternalPackages: ['mysql2', 'pg', 'sanitize-html'],
-  headers: adminHeaders,
+  headers: siteHeaders,
+  redirects: async () => redirects,
   env: {
     // Where LeadForm posts; see the note at the top of this file.
     NEXT_PUBLIC_FORM_ENDPOINT: process.env.NEXT_PUBLIC_FORM_ENDPOINT || '/api/lead/',
