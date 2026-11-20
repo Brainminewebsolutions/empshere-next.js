@@ -6,6 +6,7 @@ import SmoothScroll from "@/components/SmoothScroll";
 import DemoModal from "@/components/DemoModal";
 import SiteOnly from "@/components/SiteOnly";
 import { DEFAULT_OG_IMAGE, TWITTER_SITE } from "@/lib/seo";
+import { IS_PRODUCTION, SITE_URL as ENV_SITE_URL } from "@/lib/siteUrl";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,8 +18,8 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// TODO: replace with the confirmed production domain before deploying.
-const SITE_URL = "https://www.emsphere.com";
+const SITE_URL = ENV_SITE_URL;
+const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID || "GTM-MZCM5M6";
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
@@ -31,6 +32,9 @@ export const metadata = {
   alternates: {
     canonical: "https://www.emsphere.com/",
   },
+  verification: process.env.NEXT_PUBLIC_GSC_VERIFICATION
+    ? { google: process.env.NEXT_PUBLIC_GSC_VERIFICATION }
+    : undefined,
   openGraph: {
     title: "Workforce and Labor Management System - Emsphere",
     description:
@@ -59,15 +63,15 @@ export default function RootLayout({ children }) {
     >
       <head>
         {/* Google Tag Manager: plain tags in the static <head> so the GTM extension detects them on every page. */}
-        <SiteOnly>
-          <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-MZCM5M6"></script>
+        {IS_PRODUCTION && <SiteOnly>
+          <script async src={`https://www.googletagmanager.com/gtm.js?id=${GTM_ID}`}></script>
           <script
             dangerouslySetInnerHTML={{
               __html:
                 "window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());",
             }}
           />
-        </SiteOnly>
+        </SiteOnly>}
       </head>
       <body className="flex min-h-full flex-col">
         <SiteOnly>
