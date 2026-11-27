@@ -9,7 +9,8 @@ import { UTM_FIELDS } from "@/lib/utm";
 
    1. Validates the fields (same rules as the form).
    2. Verifies the Cloudflare Turnstile token when TURNSTILE_SECRET_KEY is set.
-   3. Emails the lead to LEAD_TO (table layout, Reply-To = the visitor).
+   3. Emails the lead to LEAD_TO, with hidden copies to LEAD_BCC
+      (table layout, Reply-To = the visitor).
    4. Saves a copy in the database (Admin -> Leads). A database problem is
       logged and never blocks the email.
    5. Emails the visitor a thank-you. If only this one fails, the lead is
@@ -124,7 +125,7 @@ export async function POST(request) {
   }
 
   try {
-    await sendMail({ to: leadTo, replyTo: { name: lead.name, address: lead.email }, ...leadEmail(lead) });
+    await sendMail({ to: leadTo, bcc: process.env.LEAD_BCC, replyTo: { name: lead.name, address: lead.email }, ...leadEmail(lead) });
   } catch (error) {
     console.error("[api/lead] lead email failed:", error);
     return fail(500, "mail_failed");

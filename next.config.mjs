@@ -66,8 +66,14 @@ const siteHeaders = async () => [
 
 const serverConfig = {
   ...sharedConfig,
-  // Image uploads are server actions capped at 4 MB in code.
-  experimental: { serverActions: { bodySizeLimit: '5mb' } },
+  experimental: {
+    // Image uploads are server actions capped at 4 MB in code.
+    serverActions: { bodySizeLimit: '5mb' },
+    // Next.js starts one build worker per CPU core. Hostinger's build machine
+    // reports dozens of cores but limits what one build may use, and the
+    // build aborts (SIGABRT) while generating pages. Two workers are enough.
+    cpus: 2,
+  },
   serverExternalPackages: ['mysql2', 'pg', 'sanitize-html'],
   headers: siteHeaders,
   redirects: async () => redirects,
