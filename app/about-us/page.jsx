@@ -4,7 +4,6 @@ import { useEffect, useRef, useState, Fragment } from "react";
 import TestimonialsSlider from "@/components/TestimonialsSlider";
 import TrustedLogos from "@/components/TrustedLogos";
 import { TESTIMONIALS } from "@/lib/testimonials";
-import Image from "next/image";
 import Link from "next/link";
 import BackToTop from "@/components/BackToTop";
 import StopwatchCounter from "@/components/StopwatchCounter";
@@ -16,33 +15,29 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const fontVariables = `${instrumentSans.variable} ${inter.variable}`;
 
 import {
+  ChartLineUp,
   CheckCircle,
   Cpu,
   Factory,
   Fingerprint,
   Flag,
+  Handshake,
   Lightbulb,
-  LinkedinLogo,
   Plant,
   RocketLaunch,
   SealCheck,
   ShieldCheck,
   Sparkle,
   Target,
+  TreeStructure,
   TrendUp,
   UsersThree,
 } from "@phosphor-icons/react/ssr";
 
 /* --------------------------------------------------------------------
-   Images — Frame illustrations from live emSphere About Us page
+   Hero photo
    -------------------------------------------------------------------- */
-import frame1 from "../images/aboutimages/frame-1-determined-to-solve.png";
-
-/* --------------------------------------------------------------------
-   Leadership Images
-   -------------------------------------------------------------------- */
-import leaderYogesh from "../images/aboutimages/leader-yogesh-ingale.webp";
-import leaderRohit from "../images/aboutimages/leader-rohit-gupta.webp";
+import heroTeam from "../images/human-resource-management-system/emwelcome-new-joiner-handshake.webp";
 
 /* --------------------------------------------------------------------
    Content data — accurate 1-to-1 from https://www.emsphere.com/about-us/
@@ -83,14 +78,15 @@ const STRATEGIC_PILLARS = [
 ];
 
 /* --------------------------------------------------------------------
-   We reached out, We asked And here is what we heard.
+   Our story, from every perspective
    -------------------------------------------------------------------- */
-const WHAT_WE_HEARD = [
-  { who: "CXO’s", want: "CXO’s want clear dashboards", answer: "…to see the devil early", icon: TrendUp },
-  { who: "Department Heads", want: "Department Heads want detailed reports with analytics", answer: "…as real devil is always in the details", icon: Target },
-  { who: "Team Managers", want: "Team Managers want a system that truly automates", answer: "…let them not fight the devil bare knuckles", icon: Cpu },
-  { who: "HR", want: "HR wants a system with seamless connectivity", answer: "… different departments in sync make a cohesive team!", icon: UsersThree },
-  { who: "Everyone", want: "Everyone wants freedom from legacy systems and excel sheets", answer: "change from legacy, embrace the modern with HR Tech re-imagined!", icon: RocketLaunch },
+const STORY_PERSPECTIVES = [
+  { who: "Business Leaders", title: "Leaders need complete workforce visibility.", desc: "Insights into workforce costs, productivity, compliance and operations.", icon: ChartLineUp },
+  { who: "HR & IR Teams", title: "HR needs control beyond attendance.", desc: "Contractor management, statutory compliance and workforce governance.", icon: ShieldCheck },
+  { who: "Plant & Operations", title: "Operations need workforce continuity.", desc: "Manpower deployment, shifts, attendance and daily operations.", icon: Factory },
+  { who: "Contractors", title: "Contractors need simpler coordination.", desc: "Onboarding, documentation, attendance, compliance and billing.", icon: Handshake },
+  { who: "Workforce", title: "Workers deserve a better experience.", desc: "Digital onboarding, self-service, communication and grievance support.", icon: UsersThree },
+  { who: "IT & Digital Teams", title: "IT needs secure, connected technology.", desc: "Enterprise integrations, security, reliability and scalability.", icon: TreeStructure },
 ];
 
 /* --------------------------------------------------------------------
@@ -122,6 +118,9 @@ const CORE_VALUES = [
 /* --------------------------------------------------------------------
    HONO-inspired Inception & Milestones Timeline (2015 - 2026)
    -------------------------------------------------------------------- */
+// Hidden for now, to be revisited. Set to true to show the timeline again.
+const SHOW_MILESTONES = false;
+
 const INCEPTION_MILESTONES = [
   {
     year: "2015",
@@ -185,27 +184,49 @@ const INCEPTION_MILESTONES = [
 const LEADERSHIP_TEAM = [
   {
     name: "Yogesh Ingale",
-    role: "Founder & Director / CEO",
-    image: leaderYogesh,
-    bio: "Visionary entrepreneur with over 18 years of specialized expertise in enterprise HR technology, industrial automation, and shop-floor digitalization. Under his leadership, emSphere has evolved into a trusted workforce backbone for India’s largest conglomerates.",
-    expertise: ["Enterprise HRMS & CLMS", "Industrial Automation", "Product Vision"],
-    linkedin: "https://www.linkedin.com/company/emspheretechnologies",
+    role: "CEO & Founder Director",
+    bio: [
+      "Yogesh brings 20+ years of experience across product management, technology and business development.",
+      "As the founder of emSphere, he has been instrumental in shaping the company's product vision, technology direction and enterprise growth journey.",
+      "His focus is on building scalable workforce technology that combines deep domain expertise, enterprise reliability and continuous product innovation.",
+    ],
+  },
+  {
+    name: "Rajesh Gupta",
+    role: "Director",
+    bio: [
+      "With more than 35 years of entrepreneurial experience, Rajesh brings deep expertise from the manpower and HR services industry.",
+      "His experience of building and running workforce services businesses gives him a first-hand understanding of the challenges faced by enterprises, contractors and workers.",
+      "His industry perspective helps connect technology with the practical realities of workforce management, business operations and customer requirements.",
+    ],
+    expertise: ["35+ Years", "Entrepreneurship", "Workforce Services"],
+  },
+  {
+    name: "Umesh Joshi",
+    role: "Director",
+    bio: [
+      "Umesh brings extensive HR leadership experience of more than 3 decades across diverse industries & large enterprises and provides a strong strategic perspective to emSphere.",
+      "His understanding of human resources, employee relations and workforce practices provides valuable insight into the challenges faced by enterprise HR and IR teams.",
+      "He brings an HR and strategic lens to emSphere's product and business thinking, helping ensure that technology delivers meaningful outcomes for organisations and their people.",
+    ],
   },
   {
     name: "Rohit Gupta",
-    role: "Director & Co-Founder / Commercial Head",
-    image: leaderRohit,
-    bio: "Drives enterprise client partnerships, corporate strategy, and nationwide commercial expansion. With extensive market insight across automotive, manufacturing, and heavy engineering, he ensures client success at every stage of deployment.",
-    expertise: ["Strategic Partnerships", "Pan-India Expansion", "Commercial Governance"],
-    linkedin: "https://www.linkedin.com/company/emspheretechnologies",
+    role: "Director",
+    bio: [
+      "Rohit brings a combination of entrepreneurial experience, operational leadership and HR consulting exposure, including experience with Deloitte.",
+      "His experience across business operations and HR enables him to bridge the gap between technology, process and execution.",
+      "He contributes to building an organisation focused on operational excellence and delivering practical outcomes for enterprise customers.",
+    ],
   },
   {
     name: "Rucha Joshi",
-    role: "Co-Founder & Technology Advisor",
-    image: null,
-    bio: "Spearheads emSphere’s technological architecture, deep-tech IoT biometric firmware integrations, and enterprise cloud scalability. Champions high-concurrency systems, rigorous data security, and next-generation AI workforce intelligence.",
-    expertise: ["Cloud Enterprise Architecture", "IoT Biometrics", "AI Analytics"],
-    linkedin: "https://www.linkedin.com/company/emspheretechnologies",
+    role: "Director",
+    bio: [
+      "Rucha brings together marketing, design and user experience to shape how emSphere communicates and how customers experience its products.",
+      "Her focus on marketing, UI/UX and customer experience helps translate complex workforce technology into experiences that are simpler, more intuitive and engaging for users.",
+      "She contributes to building a strong connection between product, brand and customer experience.",
+    ],
   },
 ];
 
@@ -503,7 +524,7 @@ const ABOUT_PAGE_CSS = `
   position: relative;
   background: #ffffff;
   border-radius: 18px;
-  padding: 28px;
+  padding: 12px;
   border: 1px solid rgba(0, 0, 0, 0.08);
   box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.08);
   display: flex;
@@ -512,11 +533,19 @@ const ABOUT_PAGE_CSS = `
   justify-content: center;
 }
 
+.about-page .heroMediaFrame {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
 .about-page .heroMediaImg {
   width: 100%;
-  max-width: 420px;
   height: auto;
-  object-fit: contain;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  /* Keeps all four people in frame and crops the graphics at the edges. */
+  object-position: 42% center;
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -1082,144 +1111,222 @@ const ABOUT_PAGE_CSS = `
    ========================================================================== */
 .about-page .leadershipSection {
   padding: 92px 0;
-  background: #ffffff;
+  background: linear-gradient(180deg, #ffffff 0%, #fffcf0 100%);
   border-bottom: 1px solid #f0f0dc;
 }
 
+/* First card (CEO) spans the full width, the others sit two per row. */
 .about-page .leadershipGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  max-width: 1120px;
+  margin: 0 auto;
 }
 
 .about-page .leaderCard {
-  background: #FFFFFA;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-top: 3.5px solid #EFB000;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 4px 18px -4px rgba(0, 0, 0, 0.06);
+  position: relative;
   display: flex;
   flex-direction: column;
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
-}
-
-.about-page .leaderCard:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 14px 32px -8px rgba(0, 0, 0, 0.12);
-  border-color: rgba(239, 176, 0, 0.4);
-  border-top-color: #EFB000;
-}
-
-.about-page .leaderPhotoWrap {
-  width: 100%;
-  height: 290px;
-  background: linear-gradient(180deg, #f7f7f0 0%, #ebebe0 100%);
-  position: relative;
+  background: #ffffff;
+  border: 1px solid rgba(11, 25, 44, 0.08);
+  border-radius: 18px;
   overflow: hidden;
+  box-shadow: 0 10px 30px -18px rgba(11, 25, 44, 0.22);
+  transition:
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.about-page .leaderCard.reveal-visible:hover {
+  transform: translateY(-6px);
+  border-color: rgba(239, 176, 0, 0.5);
+  box-shadow: 0 26px 48px -22px rgba(11, 25, 44, 0.3);
+}
+
+.about-page .leaderBanner {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 20px;
+  padding: 28px 32px;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(239, 176, 0, 0.28) 0%, transparent 55%),
+    linear-gradient(135deg, #0b192c 0%, #162a47 100%);
+  border-bottom: 3px solid #EFB000;
 }
 
-.about-page .leaderPhoto {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
-  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.about-page .leaderCard:hover .leaderPhoto {
-  transform: scale(1.04);
-}
-
-.about-page .leaderInitials {
-  width: 132px;
-  height: 132px;
+.about-page .leaderMonogram {
+  width: 76px;
+  height: 76px;
+  flex-shrink: 0;
   border-radius: 50%;
   display: grid;
   place-items: center;
   background: linear-gradient(135deg, #ffd34d 0%, #EFB000 100%);
-  color: #ffffff;
-  font-family: var(--font-heading);
-  font-size: 46px;
+  color: #0b192c;
+  font-size: 27px;
   font-weight: 700;
   letter-spacing: 0.02em;
-  box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.7), 0 18px 36px -14px rgba(214, 158, 0, 0.6);
+  box-shadow: 0 0 0 4px #0b192c, 0 0 0 6px rgba(239, 176, 0, 0.55);
   transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.about-page .leaderCard:hover .leaderInitials {
-  transform: scale(1.06);
+.about-page .leaderCard:hover .leaderMonogram {
+  transform: scale(1.07);
+}
+
+.about-page .leaderName {
+  font-size: 23px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 8px;
+  line-height: 1.25;
+}
+
+.about-page .leaderRole {
+  display: inline-block;
+  font-family: var(--font-label);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ffd34d;
+  border: 1px solid rgba(255, 211, 77, 0.4);
+  border-radius: 999px;
+  padding: 4px 12px;
 }
 
 .about-page .leaderInfo {
-  padding: 24px 24px 28px;
+  padding: 28px 32px 30px;
   display: flex;
   flex-direction: column;
   flex: 1;
 }
 
-.about-page .leaderHeader {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 6px;
-}
-
-.about-page .leaderName {
-  font-size: 22px;
-  font-weight: 700;
-  color: #111827;
-  margin: 0;
-  line-height: 1.25;
-}
-
-.about-page .leaderLinkedIn {
-  color: #0a66c2;
-  font-size: 22px;
-  transition: transform 0.2s ease, color 0.2s ease;
-  display: inline-flex;
-}
-
-.about-page .leaderLinkedIn:hover {
-  transform: scale(1.15);
-  color: #004182;
-}
-
-.about-page .leaderRole {
-  font-size: 14px;
-  font-weight: 600;
-  color: #b37e00;
-  margin: 0 0 14px;
-}
-
 .about-page .leaderBio {
-  font-size: 14.5px;
-  line-height: 1.6;
+  font-size: 15px;
+  line-height: 1.7;
   color: var(--text-64);
-  margin: 0 0 18px;
-  flex: 1;
+  margin: 0 0 12px;
+}
+
+.about-page .leaderBio:first-child {
+  color: #1f2937;
+  font-weight: 500;
+}
+
+.about-page .leaderBio:last-of-type {
+  margin-bottom: 0;
 }
 
 .about-page .leaderExpertiseTags {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 8px;
   margin-top: auto;
-  padding-top: 14px;
-  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  padding-top: 20px;
 }
 
 .about-page .expertiseTag {
-  background: #f4f4ec;
-  color: #4b5563;
-  font-size: 11.5px;
+  background: #fff6d9;
+  border: 1px solid rgba(239, 176, 0, 0.35);
+  color: #7a5400;
+  font-family: var(--font-label);
+  font-size: 12px;
   font-weight: 600;
-  padding: 4px 10px;
-  border-radius: 12px;
+  padding: 5px 12px;
+  border-radius: 999px;
+}
+
+/* Featured card: dark profile panel on the left, bio on the right. */
+.about-page .leaderCardFeatured {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 340px minmax(0, 1fr);
+}
+
+.about-page .leaderCardFeatured .leaderBanner {
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  gap: 26px;
+  padding: 40px 28px;
+  border-bottom: none;
+  border-right: 3px solid #EFB000;
+}
+
+.about-page .leaderCardFeatured .leaderMonogram {
+  width: 128px;
+  height: 128px;
+  font-size: 44px;
+}
+
+.about-page .leaderCardFeatured .leaderName {
+  font-size: 28px;
+}
+
+.about-page .leaderCardFeatured .leaderInfo {
+  justify-content: center;
+  padding: 40px 44px;
+}
+
+.about-page .leaderCardFeatured .leaderBio {
+  font-size: 16px;
+}
+
+@media (max-width: 860px) {
+  .about-page .leadershipGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .about-page .leaderCardFeatured {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .about-page .leaderCardFeatured .leaderBanner {
+    border-right: none;
+    border-bottom: 3px solid #EFB000;
+    padding: 32px 24px;
+  }
+
+  .about-page .leaderCardFeatured .leaderInfo {
+    padding: 28px 32px 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-page .leaderBanner {
+    gap: 16px;
+    padding: 22px 20px;
+  }
+
+  .about-page .leaderMonogram {
+    width: 60px;
+    height: 60px;
+    font-size: 21px;
+  }
+
+  .about-page .leaderName {
+    font-size: 20px;
+  }
+
+  .about-page .leaderInfo,
+  .about-page .leaderCardFeatured .leaderInfo {
+    padding: 22px 20px 24px;
+  }
+
+  .about-page .leaderCardFeatured .leaderBio {
+    font-size: 15px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-page .leaderCard,
+  .about-page .leaderMonogram {
+    transition: none;
+  }
 }
 
 /* ==========================================================================
@@ -1549,8 +1656,7 @@ const ABOUT_PAGE_CSS = `
     font-size: 36px;
   }
 
-  .about-page .pillarsGrid,
-  .about-page .leadershipGrid {
+  .about-page .pillarsGrid {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -1572,8 +1678,7 @@ const ABOUT_PAGE_CSS = `
 }
 
 @media (max-width: 768px) {
-  .about-page .pillarsGrid,
-  .about-page .leadershipGrid {
+  .about-page .pillarsGrid {
     grid-template-columns: 1fr;
   }
 
@@ -1731,24 +1836,22 @@ export default function AboutUsPage() {
                   REQUEST DEMO
                   <ArrowRightIcon className="buttonIcon" />
                 </Link>
-                <a className="secondaryButton" href="#leadership">
-                  MEET LEADERSHIP
-                  <ArrowRightIcon className="buttonIcon" />
-                </a>
               </div>
             </div>
 
-            {/* Right Column: Frame 1 Illustration */}
+            {/* Right Column: team photo */}
             <div className="reveal-on-scroll reveal-fade-left">
               <div className="heroMediaCard">
-                <img
-                  className="heroMediaImg"
-                  src={frame1.src}
-                  alt="Frame 1 DETERMINED to solve"
-                  width={frame1.width}
-                  height={frame1.height}
-                  loading="eager"
-                />
+                <div className="heroMediaFrame">
+                  <img
+                    className="heroMediaImg"
+                    src={heroTeam.src}
+                    alt="Team welcoming a new colleague with a handshake in a bright office"
+                    width={heroTeam.width}
+                    height={heroTeam.height}
+                    loading="eager"
+                  />
+                </div>
                 <span className="heroMediaBadge">
                   <CheckCircle size={16} weight="fill" />
                   Determined to Solve
@@ -1816,23 +1919,23 @@ export default function AboutUsPage() {
         </div>
       </section>
 
-      {/* Our story… is from your story! / We reached out, We asked */}
+      {/* Our story, from every perspective */}
       <section className="pillarsSection" id="our-story">
         <div className="container">
           <div className="sectionHead reveal-on-scroll reveal-fade-up">
             <div className="pillBadge">
               <span className="pillBadgeDot" />
-              Our story… is from your story!
+              Our story, from every perspective
             </div>
-            <h2 className="sectionTitle">We reached out, We asked And here is what we heard.</h2>
+            <h2 className="sectionTitle">Different challenges. One connected workforce ecosystem.</h2>
             <p className="sectionSubtitle">
-              A story of what you have, what you miss, And what more you would like, Modern HR problems are nothing less than devils which can cascade and
-              put the business in trouble.
+              Managing a large contract workforce requires more than technology. It takes coordination across people, processes and
+              enterprise operations.
             </p>
           </div>
 
           <div className="pillarsGrid">
-            {WHAT_WE_HEARD.map((item, index) => (
+            {STORY_PERSPECTIVES.map((item, index) => (
               <div
                 key={item.who}
                 className="pillarCard reveal-on-scroll reveal-fade-up"
@@ -1842,8 +1945,8 @@ export default function AboutUsPage() {
                   <item.icon weight="fill" />
                 </div>
                 <span className="pillarTag">{item.who}</span>
-                <h3 className="pillarTitle">{item.want}</h3>
-                <p className="pillarDesc">{item.answer}</p>
+                <h3 className="pillarTitle">{item.title}</h3>
+                <p className="pillarDesc">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -1851,6 +1954,7 @@ export default function AboutUsPage() {
       </section>
 
       {/* HONO-inspired Inception & Milestones Timeline (Insertion Section) */}
+      {SHOW_MILESTONES && (
       <section className="inceptionSection" id="inception">
         <div className="container">
           <div className="sectionHead reveal-on-scroll reveal-fade-up">
@@ -1917,6 +2021,7 @@ export default function AboutUsPage() {
           </ol>
         </div>
       </section>
+      )}
 
       {/* HONO-inspired Meet Leadership Section */}
       <section className="leadershipSection" id="leadership">
@@ -1924,64 +2029,53 @@ export default function AboutUsPage() {
           <div className="sectionHead reveal-on-scroll reveal-fade-up">
             <div className="pillBadge">
               <span className="pillBadgeDot" />
-              Executive Leadership
+              Our Leadership
             </div>
-            <h2 className="sectionTitle">Meet the Leadership Team</h2>
+            <h2 className="sectionTitle">Different expertise. One shared vision.</h2>
             <p className="sectionSubtitle">
-              Guided by deep manufacturing industry insight, enterprise software architecture, and a relentless commitment to customer success.
+              Our leadership brings together decades of experience across workforce management, HR, entrepreneurship, operations,
+              technology, product, marketing and user experience.
+            </p>
+            <p className="sectionSubtitle">
+              This combination gives emSphere a 360° understanding of the challenges organisations face when managing a complex
+              contract workforce.
             </p>
           </div>
 
           <div className="leadershipGrid">
             {LEADERSHIP_TEAM.map((leader, index) => (
-              <div
+              <article
                 key={leader.name}
-                className="leaderCard reveal-on-scroll reveal-fade-up"
-                style={{ transitionDelay: `${index * 100}ms` }}
+                className={`leaderCard ${index === 0 ? "leaderCardFeatured " : ""}reveal-on-scroll reveal-fade-up`}
+                style={{ transitionDelay: `${(index % 2) * 90}ms` }}
               >
-                <div className="leaderPhotoWrap">
-                  {leader.image ? (
-                    <Image
-                      className="leaderPhoto"
-                      src={leader.image}
-                      alt={leader.name}
-                      width={400}
-                      height={380}
-                      priority={false}
-                    />
-                  ) : (
-                    <span className="leaderInitials" aria-hidden="true">
-                      {leader.name
-                        .split(" ")
-                        .map((part) => part[0])
-                        .join("")}
-                    </span>
-                  )}
+                <div className="leaderBanner">
+                  <span className="leaderMonogram" aria-hidden="true">
+                    {leader.name
+                      .split(" ")
+                      .map((part) => part[0])
+                      .join("")}
+                  </span>
+                  <div>
+                    <h3 className="leaderName">{leader.name}</h3>
+                    <span className="leaderRole">{leader.role}</span>
+                  </div>
                 </div>
                 <div className="leaderInfo">
-                  <div className="leaderHeader">
-                    <h3 className="leaderName">{leader.name}</h3>
-                    <a
-                      href={leader.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="leaderLinkedIn"
-                      aria-label={`${leader.name} LinkedIn Profile`}
-                    >
-                      <LinkedinLogo weight="fill" />
-                    </a>
-                  </div>
-                  <span className="leaderRole">{leader.role}</span>
-                  <p className="leaderBio">{leader.bio}</p>
-                  <div className="leaderExpertiseTags">
-                    {leader.expertise.map((tag) => (
-                      <span key={tag} className="expertiseTag">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+                  {leader.bio.map((para) => (
+                    <p key={para} className="leaderBio">{para}</p>
+                  ))}
+                  {leader.expertise && (
+                    <div className="leaderExpertiseTags">
+                      {leader.expertise.map((tag) => (
+                        <span key={tag} className="expertiseTag">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
                 </div>
-              </div>
+              </article>
             ))}
           </div>
         </div>
