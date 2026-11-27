@@ -1,36 +1,7 @@
 /**
  * emSphere CLMS Sitelink Landing Page Scripts
- * Handles modal popups, 50% scroll triggers, Google reCAPTCHA v2 rendering, and lead capture submissions.
+ * Handles modal popups, 50% scroll triggers, the Cloudflare Turnstile check, and lead capture submissions.
  */
-
-// Google reCAPTCHA v2 configuration
-const RECAPTCHA_SITE_KEY = '6LcHXsItAAAAAC1mS6jgBpDhngKmB-a0e5fmTtvn'; // Google reCAPTCHA Site Key
-let heroRecaptchaWidgetId = null;
-let modalRecaptchaWidgetId = null;
-
-// Explicit initialization callback for Google reCAPTCHA
-window.initRecaptcha = function() {
-    function renderWidgets() {
-        const heroEl = document.getElementById('hero-recaptcha');
-        if (heroEl && window.grecaptcha && heroRecaptchaWidgetId === null) {
-            heroRecaptchaWidgetId = grecaptcha.render('hero-recaptcha', {
-                'sitekey': RECAPTCHA_SITE_KEY
-            });
-        }
-        const modalEl = document.getElementById('modal-recaptcha');
-        if (modalEl && window.grecaptcha && modalRecaptchaWidgetId === null) {
-            modalRecaptchaWidgetId = grecaptcha.render('modal-recaptcha', {
-                'sitekey': RECAPTCHA_SITE_KEY
-            });
-        }
-    }
-
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', renderWidgets);
-    } else {
-        renderWidgets();
-    }
-};
 
 document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('leadModal');
@@ -120,24 +91,10 @@ document.addEventListener('DOMContentLoaded', () => {
             return false;
         }
 
-        // Verify reCAPTCHA
-        if (typeof grecaptcha !== 'undefined') {
-            let recaptchaResponse = '';
-            if (form.querySelector('#hero-recaptcha') && heroRecaptchaWidgetId !== null) {
-                recaptchaResponse = grecaptcha.getResponse(heroRecaptchaWidgetId);
-            } else if (form.querySelector('#modal-recaptcha') && modalRecaptchaWidgetId !== null) {
-                recaptchaResponse = grecaptcha.getResponse(modalRecaptchaWidgetId);
-            } else {
-                const respInput = form.querySelector('[name="g-recaptcha-response"]');
-                if (respInput) {
-                    recaptchaResponse = respInput.value;
-                }
-            }
-
-            if (!recaptchaResponse) {
-                alert('Please verify that you are not a robot by completing the reCAPTCHA.');
-                return false;
-            }
+        // Cloudflare Turnstile (/lp-turnstile.js)
+        if (window.lpCaptcha && !window.lpCaptcha.passed(form)) {
+            alert('Please complete the security check above the button, then submit again.');
+            return false;
         }
 
         const originalText = submitBtn.textContent;
@@ -164,6 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 window.location.href = data.redirect || 'https://www.emsphere.com/thank-you/';
             } else {
                 alert(data.message || 'An error occurred while submitting your request. Please try again.');
+                window.lpCaptcha?.reset(form);
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
             }

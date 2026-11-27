@@ -3,6 +3,7 @@ import { exec } from "@/lib/db";
 import { sendMail } from "@/lib/email/mailer";
 import { leadEmail, thankYouEmail } from "@/lib/email/templates";
 import { UTM_FIELDS } from "@/lib/utm";
+import { verifyTurnstile } from "@/lib/turnstile";
 
 /* --------------------------------------------------------------------
    POST /api/lead/ — receives the JSON from components/LeadForm.jsx.
@@ -28,29 +29,6 @@ const fail = (status, error, extra) => Response.json({ ok: false, error, ...extr
 function clean(input, key) {
   const value = typeof input[key] === "string" ? input[key].trim() : "";
   return value.slice(0, LIMITS[key]);
-}
-
-async function verifyTurnstile(token, ip) {
-  const secret = process.env.TURNSTILE_SECRET_KEY;
-  if (!secret) return true;
-  if (!token) return false;
-  try {
-    const res = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
-      method: "POST",
-      body: new URLSearchParams({ secret, response: token, ...(ip ? { remoteip: ip } : {}) }),
-      signal: AbortSignal.timeout(10_000),
-    });
-    const data = await res.json();
-    if (!data.success) {
-      // e.g. invalid-input-secret (wrong/missing secret for this widget),
-      // timeout-or-duplicate (token reused or expired), bad-request.
-      console.error("[api/lead] Turnstile rejected the token:", data["error-codes"]?.join(", ") || "unknown", "hostname:", data.hostname || "-");
-    }
-    return Boolean(data.success);
-  } catch (error) {
-    console.error("[api/lead] Turnstile verification request failed:", error?.message || error);
-    return false;
-  }
 }
 
 export async function POST(request) {

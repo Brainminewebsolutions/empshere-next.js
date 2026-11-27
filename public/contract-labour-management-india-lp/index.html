@@ -286,6 +286,8 @@
               </div>
 
               <!-- CTA Button with Logo Amber -->
+              <div class="lp-turnstile"></div>
+
               <button type="submit" class="submit-btn w-full py-3.5 px-4 rounded-xl text-sm font-black text-brand-charcoal bg-brand-amber hover:bg-brand-amberhover shadow-amber-glow transition-all flex items-center justify-center gap-2 group cursor-pointer disabled:opacity-75 disabled:cursor-not-allowed">
                 <span class="btn-text">Request Custom Live Demo</span>
                 <svg class="btn-icon w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
@@ -1233,6 +1235,8 @@
           </div>
 
           <!-- Submit Button -->
+          <div class="lp-turnstile"></div>
+
           <button type="submit" class="submit-btn w-full py-3.5 px-4 rounded-xl text-sm font-black text-brand-charcoal bg-brand-amber hover:bg-brand-amberhover shadow-amber-glow transition-all flex items-center justify-center gap-2 group cursor-pointer disabled:opacity-75 disabled:cursor-not-allowed">
             <span class="btn-text">Confirm Live Demo Booking</span>
             <svg class="btn-icon w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
@@ -1375,6 +1379,11 @@
         form.addEventListener('submit', async function(e) {
           e.preventDefault();
 
+          if (window.lpCaptcha && !window.lpCaptcha.passed(form)) {
+            alert('Please complete the security check above the button, then submit again.');
+            return;
+          }
+
           const submitBtn = form.querySelector('.submit-btn');
           const btnText = form.querySelector('.btn-text');
           const btnIcon = form.querySelector('.btn-icon');
@@ -1409,6 +1418,7 @@
               window.location.href = redirectUrl;
             } else {
               alert(result.message || 'There was an error processing your request. Please try again.');
+              window.lpCaptcha?.reset(form);
               // Reset Button
               if (submitBtn) {
                 submitBtn.disabled = false;
@@ -1433,6 +1443,7 @@
     });
   </script>
 
+  <script src="/lp-turnstile.js" defer></script>
   <script src="tracking.js"></script>
 </body>
 </html>

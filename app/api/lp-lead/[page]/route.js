@@ -3,13 +3,14 @@ import { exec } from "@/lib/db";
 import { sendMail } from "@/lib/email/mailer";
 import { escapeHtml, landingLeadEmail } from "@/lib/email/templates";
 import { LANDING_PAGES } from "@/lib/landingPages.mjs";
+import { verifyTurnstile } from "@/lib/turnstile";
 
 /* --------------------------------------------------------------------
    POST /api/lp-lead/<slug>/ — forms of the campaign landing pages
    (public/<slug>/, settings in lib/landingPages.mjs).
 
    1. Validates the fields and requires a business email address.
-   2. Verifies Google reCAPTCHA on the pages that show it.
+   2. Verifies the Cloudflare Turnstile token (as on the website forms).
    3. Saves the lead (Admin -> Leads).
    4. Emails it to LP_LEAD_TO, with hidden copies to LP_LEAD_BCC.
    5. Logs it in the Google Sheet (LP_SHEETS_URL). If the email failed and
@@ -46,26 +47,6 @@ const TRACKING = [
   ["traffic_source", "Traffic Source"],
   ["traffic_medium", "Traffic Medium"],
 ];
-
-async function verifyRecaptcha(token, ip) {
-  const secret = process.env.RECAPTCHA_SECRET_KEY;
-  if (!secret) return true;
-  if (!token) return false;
-  try {
-    const res = await fetch("https://www.google.com/recaptcha/api/siteverify", {
-      method: "POST",
-      body: new URLSearchParams({ secret, response: token, ...(ip ? { remoteip: ip } : {}) }),
-      signal: AbortSignal.timeout(10_000),
-    });
-    const data = await res.json();
-    if (!data.success) console.error("[api/lp-lead] reCAPTCHA rejected the token:", data["error-codes"]?.join(", ") || "unknown");
-    return Boolean(data.success);
-  } catch (error) {
-    // Google unreachable: accept the lead rather than lose it.
-    console.error("[api/lp-lead] reCAPTCHA verification request failed:", error?.message || error);
-    return true;
-  }
-}
 
 async function logToSheet(payload) {
   const url = process.env.LP_SHEETS_URL;
@@ -145,8 +126,8 @@ export async function POST(request, { params }) {
   }
 
   const ip = request.headers.get("cf-connecting-ip") || request.headers.get("x-forwarded-for")?.split(",")[0].trim() || "";
-  if (config.captcha && !(await verifyRecaptcha(raw["g-recaptcha-response"], ip))) {
-    return fail("Google reCAPTCHA verification failed. Please try again.");
+  if (!(await verifyTurnstile(raw["cf-turnstile-response"], ip))) {
+    return fail("Security check failed. Please try again.");
   }
 
   const submittedAt = new Date();
@@ -209,7 +190,7 @@ export async function POST(request, { params }) {
   }
 
   const sheetFields = { ...raw };
-  delete sheetFields["g-recaptcha-response"];
+  delete sheetFields["cf-turnstile-response"];
   delete sheetFields.is_ajax;
   const sheet = await logToSheet({
     ...sheetFields,

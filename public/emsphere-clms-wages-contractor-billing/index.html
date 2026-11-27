@@ -758,8 +758,6 @@
             margin-bottom: 6px;
             display: flex;
             justify-content: flex-start;
-            height: 62px;
-            overflow: hidden;
         }
 
         .modal-container .recaptcha-container .g-recaptcha {
@@ -913,7 +911,7 @@
                                 <textarea id="heroMessage" name="message" class="form-textarea" rows="2" placeholder="Your requirements or message..."></textarea>
                             </div>
                             <div class="form-group recaptcha-container">
-                                <div id="hero-recaptcha" class="g-recaptcha" data-sitekey="6LcHXsItAAAAAC1mS6jgBpDhngKmB-a0e5fmTtvn"></div>
+                                <div class="lp-turnstile"></div>
                             </div>
                             <button type="submit" class="form-submit-btn">Book Wage & Billing Audit Demo</button>
                             <p class="form-disclaimer">🔒 100% Confidential • Fast Callback from CLMS Experts</p>
@@ -1239,7 +1237,7 @@
                     <textarea id="modalMessage" name="message" class="form-textarea" rows="2" placeholder="Your requirements or message..."></textarea>
                 </div>
                 <div class="form-group recaptcha-container">
-                    <div id="modal-recaptcha" class="g-recaptcha" data-sitekey="6LcHXsItAAAAAC1mS6jgBpDhngKmB-a0e5fmTtvn"></div>
+                    <div class="lp-turnstile"></div>
                 </div>
                 <button type="submit" class="form-submit-btn">Request Live Walkthrough</button>
                 <p class="form-disclaimer">🔒 Your data is confidential and protected by enterprise encryption.</p>
@@ -1248,7 +1246,7 @@
     </div>
 
     <!-- External JavaScript -->
-    <script src="https://www.google.com/recaptcha/api.js?onload=initRecaptcha&render=explicit" async defer></script>
+    <script src="/lp-turnstile.js" defer></script>
     <script src="js/main.js"></script>
     <script src="tracking.js"></script>
 </body>
