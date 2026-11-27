@@ -44,9 +44,9 @@ import heroTeam from "../images/human-resource-management-system/emwelcome-new-j
    -------------------------------------------------------------------- */
 
 const HERO_STATS = [
-  { value: "500", suffix: "+", label: "Happy Clients" },
+  { value: "500", suffix: "+", label: "Happy Client" },
   { value: "15", suffix: "+", label: "Years of Experience" },
-  { value: "20,00,000", suffix: "+", label: "Satisfied Users" },
+  { value: "10,00,000", suffix: "+", label: "Users" },
   { value: "10", suffix: "+", label: "Industries" },
 ];
 
