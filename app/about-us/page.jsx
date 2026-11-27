@@ -199,7 +199,6 @@ const LEADERSHIP_TEAM = [
       "His experience of building and running workforce services businesses gives him a first-hand understanding of the challenges faced by enterprises, contractors and workers.",
       "His industry perspective helps connect technology with the practical realities of workforce management, business operations and customer requirements.",
     ],
-    expertise: ["35+ Years", "Entrepreneurship", "Workforce Services"],
   },
   {
     name: "Umesh Joshi",
@@ -1221,25 +1220,6 @@ const ABOUT_PAGE_CSS = `
   margin-bottom: 0;
 }
 
-.about-page .leaderExpertiseTags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: auto;
-  padding-top: 20px;
-}
-
-.about-page .expertiseTag {
-  background: #fff6d9;
-  border: 1px solid rgba(239, 176, 0, 0.35);
-  color: #7a5400;
-  font-family: var(--font-label);
-  font-size: 12px;
-  font-weight: 600;
-  padding: 5px 12px;
-  border-radius: 999px;
-}
-
 /* Featured card: dark profile panel on the left, bio on the right. */
 .about-page .leaderCardFeatured {
   grid-column: 1 / -1;
@@ -2065,15 +2045,6 @@ export default function AboutUsPage() {
                   {leader.bio.map((para) => (
                     <p key={para} className="leaderBio">{para}</p>
                   ))}
-                  {leader.expertise && (
-                    <div className="leaderExpertiseTags">
-                      {leader.expertise.map((tag) => (
-                        <span key={tag} className="expertiseTag">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  )}
                 </div>
               </article>
             ))}
