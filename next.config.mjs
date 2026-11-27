@@ -14,6 +14,7 @@
 // only for the legacy shared-hosting build: BUILD_TARGET=static npm run build
 // (it cannot include /admin or the database blog).
 import { redirects } from './redirects.mjs';
+import { LANDING_PAGES } from './lib/landingPages.mjs';
 
 const STATIC_EXPORT = process.env.BUILD_TARGET === 'static';
 
@@ -81,7 +82,11 @@ const serverConfig = {
     // Where LeadForm posts; see the note at the top of this file.
     NEXT_PUBLIC_FORM_ENDPOINT: process.env.NEXT_PUBLIC_FORM_ENDPOINT || '/api/lead/',
   },
-  rewrites: blogRewrites,
+  // Campaign landing pages are static files in public/<slug>/.
+  rewrites: async () => [
+    ...(await blogRewrites()),
+    ...Object.keys(LANDING_PAGES).map((slug) => ({ source: `/${slug}`, destination: `/${slug}/index.html` })),
+  ],
 };
 
 const staticConfig = {

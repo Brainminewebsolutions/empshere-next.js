@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MZCM5M6');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manpower Requirement Planning, Forecasting & Analytics | emSphere CLMS</title>
+    <meta name="description" content="Optimize industrial headcount, automate contractor requisition quotas, forecast seasonal absenteeism, and unlock live plant productivity with emSphere Manpower Planning & Analytics.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --brand-navy: #0F2C59;
+            --brand-amber: #F59E0B;
+            --brand-amber-hover: #D97706;
+            --brand-amber-dark: #B45309;
+            --brand-amber-light: #FEF3C7;
+            --brand-amber-subtle: #FFFBEB;
+            --text-dark: #0F172A;
+            --text-body: #334155;
+            --text-muted: #64748B;
+            --bg-light: #F8FAFC;
+            --bg-card: #FFFFFF;
+            --border-color: #E2E8F0;
+            --border-subtle: #CBD5E1;
+            --success-green: #10B981;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+            --shadow-md: 0 10px 25px -5px rgba(15, 44, 89, 0.08), 0 8px 10px -6px rgba(15, 44, 89, 0.04);
+            --shadow-lg: 0 20px 30px -10px rgba(15, 44, 89, 0.14);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: var(--text-body);
+            background-color: #FFFFFF;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navbar - Only Logo & CTA */
+        .navbar {
+            border-bottom: 1px solid var(--border-color);
+            padding: 14px 0;
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(8px);
+            z-index: 100;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-link {
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .brand-logo-img {
+            height: 46px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* Unified Amber CTA Button */
+        .btn-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 13px 28px;
+            font-size: 15px;
+            font-weight: 700;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+            border: none;
+            background-color: var(--brand-amber);
+            color: #FFFFFF;
+            box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35);
+        }
+
+        .btn-cta:hover {
+            background-color: var(--brand-amber-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.45);
+        }
+
+        .btn-cta-lg {
+            padding: 15px 36px;
+            font-size: 16px;
+        }
+
+        /* Badge */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--brand-amber-light);
+            color: var(--brand-amber-dark);
+            font-size: 13px;
+            font-weight: 700;
+            padding: 6px 16px;
+            border-radius: 9999px;
+            text-transform: uppercase;
+            letter-spacing: 0.75px;
+            margin-bottom: 18px;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+
+        .badge-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--brand-amber);
+            border-radius: 50%;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 60px 0 70px;
+            background: linear-gradient(180deg, var(--brand-amber-subtle) 0%, #FFFFFF 100%);
+            position: relative;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .hero-left h1 {
+            font-size: 40px;
+            font-weight: 800;
+            color: var(--brand-navy);
+            line-height: 1.22;
+            margin-bottom: 18px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-left h1 .highlight {
+            color: var(--brand-amber-dark);
+        }
+
+        .hero-left p {
+            font-size: 17px;
+            color: var(--text-body);
+            margin-bottom: 24px;
+            line-height: 1.65;
+        }
+
+        .hero-feature-list {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .hero-feature-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--brand-navy);
+            margin-bottom: 12px;
+        }
+
+        .hero-feature-list li svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--brand-amber);
+            flex-shrink: 0;
+        }
+
+        /* Hero Form Card */
+        .hero-form-card {
+            background: #FFFFFF;
+            border-radius: 16px;
+            padding: 32px 28px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+            border-top: 5px solid var(--brand-amber);
+            position: relative;
+        }
+
+        .hero-form-header {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .hero-form-header h3 {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--brand-navy);
+            margin-bottom: 4px;
+        }
+
+        .hero-form-header p {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        /* Form Inputs */
+        .form-group {
+            margin-bottom: 14px;
+            text-align: left;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--brand-navy);
+            margin-bottom: 5px;
+        }
+
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 11px 13px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: inherit;
+            color: var(--text-dark);
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            background: #FFFFFF;
+        }
+
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            border-color: var(--brand-amber);
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
+        }
+
+        .form-submit-btn {
+            width: 100%;
+            padding: 13px;
+            font-size: 15px;
+            font-weight: 700;
+            background: var(--brand-amber);
+            color: #FFFFFF;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+            margin-top: 6px;
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35);
+        }
+
+        .form-submit-btn:hover {
+            background: var(--brand-amber-hover);
+        }
+
+        .form-disclaimer {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-align: center;
+            margin-top: 12px;
+        }
+
+        .recaptcha-container {
+            margin-bottom: 14px;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        @media (max-width: 420px) {
+            .recaptcha-container .g-recaptcha {
+                transform: scale(0.86);
+                transform-origin: 0 0;
+            }
+        }
+
+        /* Proof Bar */
+        .proof-bar {
+            background: var(--bg-light);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 20px 0;
+        }
+
+        .proof-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+
+        .proof-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--brand-navy);
+        }
+
+        .proof-item svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--brand-amber);
+            flex-shrink: 0;
+        }
+
+        /* Section Layouts */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 760px;
+            margin: 0 auto 50px;
+        }
+
+        .section-header .section-tag {
+            color: var(--brand-amber-dark);
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .section-header h2 {
+            font-size: 34px;
+            font-weight: 800;
+            color: var(--brand-navy);
+            line-height: 1.25;
+            margin-bottom: 14px;
+            letter-spacing: -0.01em;
+        }
+
+        .section-header p {
+            font-size: 16px;
+            color: var(--text-muted);
+        }
+
+        /* Split Feature Section */
+        .split-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin-bottom: 70px;
+        }
+
+        .split-grid.reverse {
+            direction: rtl;
+        }
+
+        .split-grid.reverse .split-content {
+            direction: ltr;
+        }
+
+        .split-content h3 {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--brand-navy);
+            margin-bottom: 16px;
+            line-height: 1.3;
+        }
+
+        .split-content p {
+            font-size: 16px;
+            color: var(--text-body);
+            margin-bottom: 20px;
+        }
+
+        .feature-bullets {
+            list-style: none;
+        }
+
+        .feature-bullets li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 12px;
+            font-size: 15px;
+            color: var(--text-body);
+        }
+
+        .feature-bullets li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--brand-amber);
+            font-weight: 800;
+            font-size: 16px;
+        }
+
+        .feature-visual-box {
+            background: #FFFFFF;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 32px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .stat-card-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .stat-card {
+            background: var(--brand-amber-light);
+            border: 1px solid rgba(245, 158, 11, 0.25);
+            padding: 16px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-card .number {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--brand-amber-dark);
+        }
+
+        .stat-card .label {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--brand-navy);
+            text-transform: uppercase;
+        }
+
+        /* 3-Column Cards Grid */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 28px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 32px;
+            transition: all 0.2s ease-in-out;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--brand-amber);
+        }
+
+        .card-icon-pill {
+            width: 44px;
+            height: 44px;
+            background: var(--brand-amber-light);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 18px;
+        }
+
+        .card-icon-pill svg {
+            width: 22px;
+            height: 22px;
+            fill: var(--brand-amber-dark);
+        }
+
+        .card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--brand-navy);
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            font-size: 15px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Comparison Table Section */
+        .table-wrapper {
+            background: #FFFFFF;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .comp-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        .comp-table th {
+            background: var(--brand-navy);
+            color: #FFFFFF;
+            padding: 18px 24px;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .comp-table td {
+            padding: 18px 24px;
+            font-size: 15px;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-body);
+        }
+
+        .comp-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comp-table tr:nth-child(even) {
+            background-color: var(--bg-light);
+        }
+
+        .comp-table td:first-child {
+            font-weight: 700;
+            color: var(--brand-navy);
+            width: 32%;
+        }
+
+        /* FAQ Section */
+        .faq-grid {
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        .faq-card {
+            background: #FFFFFF;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 24px;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .faq-card h4 {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--brand-navy);
+            margin-bottom: 10px;
+        }
+
+        .faq-card p {
+            font-size: 15px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* CTA Banner */
+        .cta-box {
+            background: linear-gradient(135deg, var(--brand-navy) 0%, #163665 100%);
+            border-radius: 16px;
+            padding: 60px 40px;
+            text-align: center;
+            color: #FFFFFF;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 80px;
+            border-top: 4px solid var(--brand-amber);
+        }
+
+        .cta-box h2 {
+            font-size: 34px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: #FFFFFF;
+        }
+
+        .cta-box p {
+            font-size: 17px;
+            color: #E2E8F0;
+            max-width: 680px;
+            margin: 0 auto 32px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-light);
+            border-top: 1px solid var(--border-color);
+            padding: 40px 0;
+            text-align: center;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .footer-logo {
+            height: 38px;
+            width: auto;
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+
+        /* Modal Overlay */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 44, 89, 0.7);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-container {
+            background: #FFFFFF;
+            border-radius: 14px;
+            width: 100%;
+            max-width: 480px;
+            max-height: 96vh;
+            overflow-y: auto;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE/Edge */
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            position: relative;
+            transform: scale(0.95) translateY(20px);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            border-top: 4px solid var(--brand-amber);
+            padding: 18px 22px;
+        }
+
+        .modal-container::-webkit-scrollbar {
+            display: none; /* Chrome/Safari/Blink */
+            width: 0;
+            height: 0;
+        }
+
+        .modal-overlay.active .modal-container {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: #F1F5F9;
+            border: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+            z-index: 2;
+        }
+
+        .modal-close:hover {
+            background: #E2E8F0;
+            color: var(--text-dark);
+        }
+
+        .modal-header {
+            margin-bottom: 10px;
+            text-align: left;
+            padding-right: 28px;
+        }
+
+        .modal-header h3 {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--brand-navy);
+            margin-bottom: 2px;
+            line-height: 1.25;
+        }
+
+        .modal-header p {
+            font-size: 11.5px;
+            color: var(--text-muted);
+            line-height: 1.35;
+        }
+
+        .modal-container .form-group {
+            margin-bottom: 7px;
+        }
+
+        .modal-container .form-row {
+            gap: 8px;
+        }
+
+        .modal-container .form-label {
+            font-size: 10.5px;
+            margin-bottom: 2px;
+            font-weight: 700;
+        }
+
+        .modal-container .form-input {
+            padding: 6px 10px;
+            font-size: 12.5px;
+            height: 33px;
+            border-radius: 6px;
+        }
+
+        .modal-container .form-textarea {
+            padding: 5px 10px;
+            font-size: 12.5px;
+            height: 38px;
+            min-height: 38px;
+            border-radius: 6px;
+            resize: none;
+        }
+
+        .modal-container .recaptcha-container {
+            margin-bottom: 6px;
+            display: flex;
+            justify-content: flex-start;
+            height: 62px;
+            overflow: hidden;
+        }
+
+        .modal-container .recaptcha-container .g-recaptcha {
+            transform: scale(0.78);
+            transform-origin: 0 0;
+        }
+
+        .modal-container .form-submit-btn {
+            padding: 9px 12px;
+            font-size: 13.5px;
+            border-radius: 6px;
+            margin-top: 2px;
+        }
+
+        .modal-container .form-disclaimer {
+            font-size: 10px;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 968px) {
+            .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+            .hero-left h1 { font-size: 32px; }
+            .hero-left p { font-size: 16px; }
+            .split-grid { grid-template-columns: 1fr; gap: 30px; }
+            .section-header h2 { font-size: 26px; }
+            .comp-table th, .comp-table td { padding: 12px 16px; font-size: 14px; }
+            .form-row { grid-template-columns: 1fr; gap: 0; }
+            .modal-container { padding: 24px 20px; }
+        }
+    </style>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MZCM5M6"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Top Navigation (Only Logo + Single CTA) -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="https://www.emsphere.com/" class="logo-link">
+                <img src="/wp-content/uploads/2022/09/Final-Logo-Animation-1.gif" 
+                     onerror="this.onerror=null; this.src='assets/logo.svg';" 
+                     alt="emSphere Technologies Logo" 
+                     class="brand-logo-img">
+            </a>
+            <button class="btn-cta open-modal-btn">Request Demo</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Integrated CTA Form -->
+    <header class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <!-- Left Column: Value Proposition -->
+                <div class="hero-left">
+                    <div class="badge">
+                        <span class="badge-dot"></span>
+                        CLMS Dedicated Module
+                    </div>
+                    <h1>Manpower Requirement Planning, <span class="highlight">Forecasting & Analytics</span></h1>
+                    <p>
+                        Eliminate plant under-deployment bottlenecks and avoid expensive contractor over-hiring. emSphere’s Manpower Planning & Analytics module synchronizes production line demand with contractor quotas, forecasts seasonal absenteeism, and delivers live executive headcount intelligence.
+                    </p>
+                    <ul class="hero-feature-list">
+                        <li>
+                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                            Production-Linked Digital Manpower Requisitions
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                            Predictive Absenteeism & Demand Forecasting
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                            Real-Time Line Deployment & Headcount Analytics
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Right Column: Embedded Hero CTA Form -->
+                <div class="hero-right">
+                    <div class="hero-form-card">
+                        <div class="hero-form-header">
+                            <h3>Schedule Manpower Analytics Walkthrough</h3>
+                            <p>Discover how emSphere optimizes labour requisitioning, forecasting, and plant deployment.</p>
+                        </div>
+                        <form action="/api/lp-lead/emsphere-clms-manpower-planning-analytics/" method="POST" onsubmit="handleFormSubmit(event)">
+                            <input type="hidden" name="landing_page" value="Manpower Planning & Analytics">
+                            <input type="hidden" name="form_type" value="Hero Form">
+                            <input type="hidden" name="utm_source" value="">
+                            <input type="hidden" name="utm_medium" value="">
+                            <input type="hidden" name="utm_campaign" value="">
+                            <input type="hidden" name="utm_term" value="">
+                            <input type="hidden" name="utm_content" value="">
+                            <input type="hidden" name="utm_id" value="">
+                            <input type="hidden" name="gclid" value="">
+                            <input type="hidden" name="referrer" value="">
+                            <input type="hidden" name="landing_page_url" value="">
+                            <input type="hidden" name="traffic_source" value="">
+                            <input type="hidden" name="traffic_medium" value="">
+                            <input type="hidden" name="page_name" value="Manpower Analytics">
+                            <input type="hidden" name="lead_id" value="">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label" for="heroFullName">Full Name *</label>
+                                    <input type="text" id="heroFullName" name="name" class="form-input" placeholder="e.g. Vikram Deshmukh" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="heroWorkEmail">Work Email *</label>
+                                    <input type="email" id="heroWorkEmail" name="email" class="form-input" placeholder="name@company.com" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label" for="heroPhoneNumber">Phone Number *</label>
+                                    <input type="tel" id="heroPhoneNumber" name="phone" class="form-input" placeholder="+91 98765 43210" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="heroCity">City *</label>
+                                    <input type="text" id="heroCity" name="city" class="form-input" placeholder="e.g. Pune, Mumbai" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="heroCompanyName">Company Name *</label>
+                                <input type="text" id="heroCompanyName" name="company" class="form-input" placeholder="e.g. Larsen & Toubro" required>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label" for="heroWorkforceSite">Select Workforce site across site *</label>
+                                    <select id="heroWorkforceSite" name="workforce_site" class="form-input" required>
+                                        <option value="">Select workforce size</option>
+                                        <option value="1,000 - 2,000 Contract workers">1,000 - 2,000 Contract workers</option>
+                                        <option value="2,000 - 4,000 Contract workers">2,000 - 4,000 Contract workers</option>
+                                        <option value="4,000 + Contract workers">4,000 + Contract workers</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="heroJobTitle">job title *</label>
+                                    <select id="heroJobTitle" name="job_title" class="form-input" required>
+                                        <option value="">Select job title</option>
+                                        <option value="CXO">CXO</option>
+                                        <option value="Senior Management">Senior Management</option>
+                                        <option value="Manager">Manager</option>
+                                        <option value="operational Manager">operational Manager</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="heroMessage">Message</label>
+                                <textarea id="heroMessage" name="message" class="form-textarea" rows="2" placeholder="Your requirements or message..."></textarea>
+                            </div>
+                            <div class="form-group recaptcha-container">
+                                <div id="hero-recaptcha" class="g-recaptcha" data-sitekey="6LcHXsItAAAAAC1mS6jgBpDhngKmB-a0e5fmTtvn"></div>
+                            </div>
+                            <button type="submit" class="form-submit-btn">Get Free Manpower Planning Demo</button>
+                            <p class="form-disclaimer">🔒 100% Confidential • Fast Callback from CLMS Experts</p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Proof Strip -->
+    <section class="proof-bar">
+        <div class="container">
+            <div class="proof-grid">
+                <div class="proof-item">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                    <span>Zero Headcount Under/Over Deployment</span>
+                </div>
+                <div class="proof-item">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                    <span>Dynamic Contractor Quota Allocation</span>
+                </div>
+                <div class="proof-item">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                    <span>Predictive Seasonal Absenteeism Buffer</span>
+                </div>
+                <div class="proof-item">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                    <span>Live Multi-Plant Executive Analytics</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Split Section 1: Digital Manpower Requisitions & Quotas -->
+    <section class="section">
+        <div class="container">
+            <div class="split-grid">
+                <div class="split-content">
+                    <span class="section-tag">DEMAND PLANNING</span>
+                    <h3>Production-Linked Manpower Requisitions & Quota Control</h3>
+                    <p>
+                        Align daily contractor supply precisely with production line plans. Department heads raise digital manpower indent requests tied to shift targets, while emSphere automatically routes requirements to authorized contractors within contract ceilings.
+                    </p>
+                    <ul class="feature-bullets">
+                        <li><strong>Digital Manpower Indents (MRP):</strong> Line managers submit exact skill-wise requirements (Skilled, Semi-skilled, Unskilled) with automated budget approval hierarchies.</li>
+                        <li><strong>Vendor Quota Dispatching:</strong> Dispatches demands across contractor agencies proportional to approved work orders and contractor SLA rankings.</li>
+                        <li><strong>Gate Ingress Ceiling Validation:</strong> Gate turnstiles auto-lock once the shift's approved requisition headcount is fulfilled, preventing unauthorized extra entries.</li>
+                    </ul>
+                </div>
+                <div class="feature-visual-box">
+                    <h4 style="color: var(--brand-navy); margin-bottom: 8px;">Requisition Fulfillment Tracker</h4>
+                    <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 16px;">Real-time indent fulfillment status for Shift A:</p>
+                    <div class="stat-card-row">
+                        <div class="stat-card">
+                            <div class="number">99.4%</div>
+                            <div class="label">Indent Match Rate</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="number">0</div>
+                            <div class="label">Over-Budget Deployments</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Split Section 2: Forecasting & Executive Analytics -->
+            <div class="split-grid reverse">
+                <div class="split-content">
+                    <span class="section-tag">PREDICTIVE INTELLIGENCE</span>
+                    <h3>Predictive Absenteeism & Live Productivity Dashboards</h3>
+                    <p>
+                        Anticipate labour supply shortages before they stall assembly lines. emSphere models historical attendance data to forecast seasonal absenteeism during festivals and harvesting periods, enabling proactive contractor buffer planning.
+                    </p>
+                    <ul class="feature-bullets">
+                        <li><strong>Predictive Absenteeism Modeling:</strong> Forecast contractor attendance fluctuations by shift, line, and vendor agency to maintain uninterrupted throughput.</li>
+                        <li><strong>Line-Wise Man-Hour Productivity:</strong> Compare output units produced against actual recorded contractor man-hours to identify idle line bottlenecks.</li>
+                        <li><strong>Contractor SLA & Compliance Scorecards:</strong> Benchmark vendor fulfillment speed, worker retention rates, and statutory audit readiness.</li>
+                    </ul>
+                </div>
+                <div class="feature-visual-box">
+                    <h4 style="color: var(--brand-navy); margin-bottom: 8px;">Live Plant Analytics Metrics</h4>
+                    <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 16px;">Central intelligence across 4 manufacturing units:</p>
+                    <ul class="feature-bullets" style="font-size: 14px;">
+                        <li>Live Gate Headcount vs Production Indent: <strong style="color: var(--success-green);">100% Balanced</strong></li>
+                        <li>Contractor Fulfillment Rating: <strong style="color: var(--success-green);">98.2% SLA Met</strong></li>
+                        <li>Seasonal Absenteeism Buffer: <strong style="color: var(--success-green);">Optimized (+4.5%)</strong></li>
+                        <li>Cost Per Standard Hour: <strong style="color: var(--success-green);">Under Target Budget</strong></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Table Section -->
+    <section class="section" style="background-color: var(--bg-light);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">STRATEGIC ADVANTAGE</span>
+                <h2>Why Spreadsheet Planning Creates Costly Bottlenecks</h2>
+                <p>Compare manual headcount guesswork against emSphere's automated Manpower Planning & Analytics engine.</p>
+            </div>
+            
+            <div class="table-wrapper">
+                <table class="comp-table">
+                    <thead>
+                        <tr>
+                            <th>Planning & Analytics Challenge</th>
+                            <th>emSphere Manpower Planning & Analytics Engine</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Chronic Line Under / Over-Staffing</td>
+                            <td><strong>Target-Linked Indent Engine:</strong> Requisitions are tied directly to line output quotas; excess gate arrivals are automatically restricted.</td>
+                        </tr>
+                        <tr>
+                            <td>Unpredictable Festival Absenteeism</td>
+                            <td><strong>Predictive Demand Forecasting:</strong> Leverages multi-year plant attendance trends to calculate required vendor buffer headcounts.</td>
+                        </tr>
+                        <tr>
+                            <td>Zero Visibility on Contractor Performance</td>
+                            <td><strong>Automated Vendor Scorecards:</strong> Rates contractors based on on-time fulfillment, worker quality, and statutory compliance history.</td>
+                        </tr>
+                        <tr>
+                            <td>Delayed Multi-Plant Cost Reporting</td>
+                            <td><strong>Executive Real-Time Dashboards:</strong> Unified single-screen analytics of labour expenses, OT trends, and headcount across all plants.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6 Capability Cards Grid -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">KEY CAPABILITIES</span>
+                <h2>Built for Industrial Plant Heads & Operations Directors</h2>
+                <p>Equip plant leadership with the tools to forecast, requisition, and monitor large-scale contract labour.</p>
+            </div>
+
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-icon-pill">
+                        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
+                    </div>
+                    <h3>Digital Indent & Approval Workflows</h3>
+                    <p>Standardize manpower requisitions with multi-tier approval chains based on shift requirements and department cost centers.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon-pill">
+                        <svg viewBox="0 0 24 24"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg>
+                    </div>
+                    <h3>Predictive Absenteeism Engine</h3>
+                    <p>Anticipate workforce dropouts during harvesting seasons, festivals, and extreme weather with intelligent predictive modeling.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon-pill">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    </div>
+                    <h3>Line-Wise Headcount Deployment</h3>
+                    <p>Track real-time worker distribution across shop floors, assembly lines, and warehousing bays to maintain optimal throughput.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon-pill">
+                        <svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
+                    </div>
+                    <h3>Contractor SLA & Quota Allocation</h3>
+                    <p>Distribute manpower indents automatically based on vendor capacity, historical SLA ratings, and approved contract ceilings.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon-pill">
+                        <svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9h-4v4h-2v-4H9V9h4V5h2v4h4v2z"/></svg>
+                    </div>
+                    <h3>ERP Production Plan Integration</h3>
+                    <p>Connect seamlessly with SAP PP/MM, Oracle, and manufacturing execution systems (MES) to sync daily production indents.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon-pill">
+                        <svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+                    </div>
+                    <h3>Cost Per Unit & Productivity Analytics</h3>
+                    <p>Track contractor labour spend per production unit, identify idle shift costs, and compare multi-plant efficiency on one screen.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section" style="background-color: var(--bg-light);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">COMMON QUESTIONS</span>
+                <h2>Frequently Asked Questions</h2>
+                <p>Everything you need to know about Manpower Planning & Analytics.</p>
+            </div>
+
+            <div class="faq-grid">
+                <div class="faq-card">
+                    <h4>How does the system prevent contractors from supplying excess workers?</h4>
+                    <p>When a manpower indent is raised and approved, that exact quota is passed to the gate access control system. Once the approved number of workers punch in for that contractor and shift, subsequent workers are locked out at the gate.</p>
+                </div>
+
+                <div class="faq-card">
+                    <h4>Can we track manpower deployment by specific shop floor production lines?</h4>
+                    <p>Yes. emSphere allows you to assign workers directly to bays, machines, and cost centers, giving operations managers real-time visibility into line-wise staffing and productivity.</p>
+                </div>
+
+                <div class="faq-card">
+                    <h4>How does predictive absenteeism forecasting work?</h4>
+                    <p>emSphere analyzes historical attendance trends across seasons, holidays, and regional festivals, providing predictive buffer recommendations to ensure your production lines never face unexpected shortages.</p>
+                </div>
+
+                <div class="faq-card">
+                    <h4>Can this module integrate with our ERP's production schedule?</h4>
+                    <p>Yes. emSphere integrates with SAP, Oracle, and leading MES systems to ingest daily production targets and automatically calculate standard manpower requirements.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bottom CTA Banner -->
+    <div class="container">
+        <div class="cta-box">
+            <h2>Take Complete Control of Your Plant Manpower Demand & Cost</h2>
+            <p>Experience automated indenting, predictive forecasting, and executive real-time analytics with emSphere CLMS.</p>
+            <div style="display: flex; justify-content: center;">
+                <button class="btn-cta btn-cta-lg open-modal-btn">Book a Personalized Demo</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <img src="/wp-content/uploads/2022/09/Final-Logo-Animation-1.gif" 
+                 onerror="this.onerror=null; this.src='assets/logo.svg';" 
+                 alt="emSphere Technologies Logo" 
+                 class="footer-logo">
+            <p>&copy; 2026 emSphere Technologies. All Rights Reserved. | Contract Labour Management System (CLMS)</p>
+        </div>
+    </footer>
+
+    <!-- Interactive Lead Capture Popup Modal -->
+    <div class="modal-overlay" id="leadModal">
+        <div class="modal-container">
+            <button class="modal-close" id="closeModalBtn" aria-label="Close modal">&times;</button>
+            <div class="modal-header">
+                <h3>Schedule Manpower Planning Demo</h3>
+                <p>Discover how emSphere streamlines manpower indents, forecasts absenteeism, and optimizes plant labour productivity.</p>
+            </div>
+            <form action="/api/lp-lead/emsphere-clms-manpower-planning-analytics/" method="POST" onsubmit="handleFormSubmit(event)">
+                <input type="hidden" name="landing_page" value="Manpower Planning & Analytics">
+                <input type="hidden" name="form_type" value="Modal Form">
+                <input type="hidden" name="utm_source" value="">
+                <input type="hidden" name="utm_medium" value="">
+                <input type="hidden" name="utm_campaign" value="">
+                <input type="hidden" name="utm_term" value="">
+                <input type="hidden" name="utm_content" value="">
+                <input type="hidden" name="utm_id" value="">
+                <input type="hidden" name="gclid" value="">
+                <input type="hidden" name="referrer" value="">
+                <input type="hidden" name="landing_page_url" value="">
+                <input type="hidden" name="traffic_source" value="">
+                <input type="hidden" name="traffic_medium" value="">
+                <input type="hidden" name="page_name" value="Manpower Analytics">
+                <input type="hidden" name="lead_id" value="">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" for="modalFullName">Full Name *</label>
+                        <input type="text" id="modalFullName" name="name" class="form-input" placeholder="e.g. Vikram Deshmukh" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="modalWorkEmail">Work Email *</label>
+                        <input type="email" id="modalWorkEmail" name="email" class="form-input" placeholder="name@company.com" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" for="modalPhoneNumber">Phone Number *</label>
+                        <input type="tel" id="modalPhoneNumber" name="phone" class="form-input" placeholder="+91 98765 43210" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="modalCity">City *</label>
+                        <input type="text" id="modalCity" name="city" class="form-input" placeholder="e.g. Pune, Mumbai" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="modalCompanyName">Company Name *</label>
+                    <input type="text" id="modalCompanyName" name="company" class="form-input" placeholder="e.g. Larsen & Toubro" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" for="modalWorkforceSite">Select Workforce site across site *</label>
+                        <select id="modalWorkforceSite" name="workforce_site" class="form-input" required>
+                            <option value="">Select workforce size</option>
+                            <option value="1,000 - 2,000 Contract workers">1,000 - 2,000 Contract workers</option>
+                            <option value="2,000 - 4,000 Contract workers">2,000 - 4,000 Contract workers</option>
+                            <option value="4,000 + Contract workers">4,000 + Contract workers</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="modalJobTitle">job title *</label>
+                        <select id="modalJobTitle" name="job_title" class="form-input" required>
+                            <option value="">Select job title</option>
+                            <option value="CXO">CXO</option>
+                            <option value="Senior Management">Senior Management</option>
+                            <option value="Manager">Manager</option>
+                            <option value="operational Manager">operational Manager</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="modalMessage">Message</label>
+                    <textarea id="modalMessage" name="message" class="form-textarea" rows="2" placeholder="Your requirements or message..."></textarea>
+                </div>
+                <div class="form-group recaptcha-container">
+                    <div id="modal-recaptcha" class="g-recaptcha" data-sitekey="6LcHXsItAAAAAC1mS6jgBpDhngKmB-a0e5fmTtvn"></div>
+                </div>
+                <button type="submit" class="form-submit-btn">Request Live Walkthrough</button>
+                <p class="form-disclaimer">🔒 Your data is confidential and protected by enterprise encryption.</p>
+            </form>
+        </div>
+    </div>
+
+    <!-- External JavaScript -->
+    <script src="https://www.google.com/recaptcha/api.js?onload=initRecaptcha&render=explicit" async defer></script>
+    <script src="js/main.js"></script>
+    <script src="tracking.js"></script>
+</body>
+</html>

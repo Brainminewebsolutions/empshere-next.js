@@ -1,0 +1,45 @@
+/* Lead form and popup additions (theme styles live in styles.css) */
+html body .lead-form .ff-el-form-control { width: 100%; box-sizing: border-box; }
+.lead-form .lead-recaptcha { min-height: 78px; }
+
+.lead-modal {
+  position: fixed; inset: 0; z-index: 100000;
+  display: flex; align-items: center; justify-content: center; padding: 16px;
+  background: rgba(15, 23, 42, 0.7);
+  opacity: 0; visibility: hidden; transition: opacity .3s ease, visibility .3s ease;
+}
+.lead-modal.active { opacity: 1; visibility: visible; }
+.lead-modal-box {
+  position: relative; box-sizing: border-box; width: 100%; max-width: 480px;
+  max-height: calc(100vh - 32px); max-height: calc(100dvh - 32px); overflow-y: auto;
+  padding: 20px 22px; background: #fff; border-radius: 14px; border-top: 4px solid #f59e0b;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, .35); text-align: left;
+}
+.lead-modal-box h3 { margin: 0 36px 4px 0; font-size: 20px; line-height: 1.3; color: #0f172a; }
+.lead-modal-box p { margin: 0 0 12px; font-size: 13px; line-height: 1.45; color: #475569; }
+html body .lead-modal .lead-modal-close {
+  position: absolute; top: 10px; right: 10px; width: 30px; height: 30px; min-width: 0;
+  display: flex; align-items: center; justify-content: center; padding: 0; margin: 0;
+  border: 0; border-radius: 50%; background: #f1f5f9; color: #334155; font-size: 20px; line-height: 1; cursor: pointer;
+}
+html body .lead-modal .lead-form .ff-el-group { margin-bottom: 8px; }
+html body .lead-modal .lead-form .ff-t-container { display: flex; gap: 8px; }
+html body .lead-modal .lead-form .ff-t-cell { flex: 1 1 0; min-width: 0; padding: 0; }
+html body .lead-modal .lead-form label { font-size: 12px; font-weight: 600; color: #334155; }
+html body .lead-modal .lead-form .ff-el-form-control {
+  height: 38px; min-height: 38px; margin: 0; padding: 6px 10px; font-size: 14px; line-height: 1.4;
+  color: #0f172a; background: #fff; border: 1px solid #cbd5e1; border-radius: 6px;
+}
+html body .lead-modal .lead-form textarea.ff-el-form-control { height: 54px; resize: vertical; }
+html body .lead-modal .lead-form .ff-btn-submit {
+  width: 100%; padding: 11px 14px; border: 0; border-radius: 6px;
+  background: #f59e0b; color: #fff; font-size: 15px; font-weight: 700; cursor: pointer;
+}
+html body .lead-form .ff-btn-submit:disabled { opacity: .7; cursor: wait; }
+@media (max-width: 480px) {
+  html body .lead-modal .lead-form .ff-t-container { display: block; }
+}
+/* The reCAPTCHA widget is 304px wide; shrink it on narrow phones */
+@media (max-width: 380px) {
+  .lead-form .lead-recaptcha > div { transform: scale(.85); transform-origin: 0 0; }
+}

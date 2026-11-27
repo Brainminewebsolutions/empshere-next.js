@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 55" width="260" height="55">
+  <defs>
+    <linearGradient id="emSphereGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F2C59"/>
+      <stop offset="100%" stop-color="#0284C7"/>
+    </linearGradient>
+  </defs>
+  <!-- Sphere Symbol -->
+  <circle cx="28" cy="27" r="20" fill="none" stroke="#F59E0B" stroke-width="3.5" opacity="0.9"/>
+  <ellipse cx="28" cy="27" rx="9" ry="20" fill="none" stroke="#0F2C59" stroke-width="2.5"/>
+  <circle cx="28" cy="27" r="5" fill="#F59E0B"/>
+  
+  <!-- Text: emSphere -->
+  <text x="58" y="36" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="28" font-weight="800" fill="#0F2C59" letter-spacing="-0.5">em<tspan fill="#F59E0B">Sphere</tspan></text>
+</svg>

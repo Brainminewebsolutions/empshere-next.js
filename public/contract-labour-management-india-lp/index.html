@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MZCM5M6');</script>
+  <!-- End Google Tag Manager -->
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enterprise Contract Labour Management System (CLMS) in India | emSphere</title>
+  <meta name="description" content="India's leading Contract Labour Management System (CLMS). Automate digital worker onboarding, biometric gate access, 100% CLRA compliance, and contractor billing. Trusted by Maruti Suzuki, Mahindra, Yazaki & 500+ plants.">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              amber: '#FAAF1D',        /* Exact emSphere Logo Vibrant Gold */
+              amberhover: '#E59B0B',   /* Deep Amber for Hover States */
+              amberdark: '#B45309',    /* Contrast Amber for Text */
+              amberlight: '#FEF3C7',   /* Soft Amber Chip Tint */
+              amberwash: '#FFFDF5',    /* Ultra-light Warm Surface */
+              charcoal: '#0B0F19',     /* Deep Executive Charcoal */
+              graphite: '#1E293B',     /* Solid Secondary Charcoal */
+              muted: '#475569',
+              border: '#E2E8F0'
+            }
+          },
+          boxShadow: {
+            'amber-glow': '0 10px 25px -3px rgba(250, 175, 29, 0.35), 0 4px 10px -2px rgba(250, 175, 29, 0.2)',
+            'card': '0 4px 20px -2px rgba(11, 15, 25, 0.05), 0 2px 6px -1px rgba(11, 15, 25, 0.03)',
+            'card-hover': '0 20px 35px -4px rgba(11, 15, 25, 0.1), 0 8px 16px -2px rgba(11, 15, 25, 0.06)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap');
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    .hero-mesh {
+      background-color: #ffffff;
+      background-image: 
+        radial-gradient(circle at 85% 15%, rgba(250, 175, 29, 0.10) 0%, transparent 55%),
+        radial-gradient(circle at 10% 90%, rgba(250, 175, 29, 0.06) 0%, transparent 45%);
+    }
+    .badge-amber {
+      background: linear-gradient(135deg, rgba(250, 175, 29, 0.14) 0%, rgba(254, 243, 199, 0.6) 100%);
+    }
+    .tab-active {
+      border-color: #FAAF1D !important;
+      background-color: #FAAF1D !important;
+      color: #0B0F19 !important;
+      box-shadow: 0 4px 14px rgba(250, 175, 29, 0.4);
+    }
+    
+    /* INFINITE SMOOTH LOGO MARQUEE SLIDESHOW */
+    @keyframes logoMarquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    .marquee-wrapper {
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: logoMarquee 28s linear infinite;
+    }
+    .marquee-track:hover {
+      animation-play-state: paused;
+    }
+
+    /* MODAL POPUP STYLING */
+    .modal-backdrop {
+      background: rgba(11, 15, 25, 0.75);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    @keyframes modalScaleIn {
+      from { opacity: 0; transform: scale(0.95) translateY(10px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .animate-modal-in {
+      animation: modalScaleIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+  </style>
+</head>
+<body class="bg-white text-brand-charcoal antialiased selection:bg-amber-100 selection:text-brand-amberdark">
+
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MZCM5M6"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- STICKY HEADER WITH EMSPHERE LOGO & ENQUIRE NOW CTA -->
+  <header class="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-slate-200/90 py-3.5 shadow-sm transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+      
+      <!-- Left: Official Animated Logo -->
+      <a href="#hero" class="inline-block transition-transform hover:scale-[1.01]" aria-label="emSphere Home">
+        <img 
+          src="./assets/images/emsphere-logo.gif" 
+          onerror="this.src='/wp-content/uploads/2022/09/Final-Logo-Animation-1.gif'"
+          alt="emSphere Technologies" 
+          class="h-10 sm:h-12 w-auto object-contain"
+        />
+      </a>
+
+      <!-- Right: Enquire Now CTA Button (Triggers Popup Modal) -->
+      <button onclick="openLeadModal('Header CTA')" class="inline-flex items-center justify-center px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-black text-brand-charcoal bg-brand-amber hover:bg-brand-amberhover shadow-amber-glow transition-all group cursor-pointer">
+        <span>Enquire Now</span>
+        <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 ml-1.5 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- HERO SECTION WITH LOGO AMBER COLOR SCHEME -->
+  <section id="hero" class="hero-mesh pt-8 pb-16 lg:pt-12 lg:pb-24 border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+        
+        <!-- Hero Text & Value Proposition (7 Cols) -->
+        <div class="lg:col-span-7 space-y-6">
+          
+          <!-- Badge -->
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full badge-amber border border-brand-amber/30 text-brand-charcoal text-xs font-bold tracking-tight">
+            <span class="w-2 h-2 rounded-full bg-brand-amber"></span>
+            <span>Built Specifically for Indian Principal Employers & Manufacturing Plants</span>
+          </div>
+
+          <!-- Headline matching Google Ads Intent with Logo Amber Emphasis -->
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-brand-charcoal tracking-tight leading-[1.15]">
+            Enterprise Contract Labour Management System <span class="text-brand-amberdark underline decoration-brand-amber decoration-4 underline-offset-4">(CLMS)</span> in India
+          </h1>
+
+          <!-- Crisp Subheadline -->
+          <p class="text-base sm:text-lg text-brand-muted leading-relaxed max-w-2xl">
+            Stop contractor billing leakages, eliminate ghost workers, and guarantee 100% CLRA audit compliance. <strong>emContract by emSphere</strong> unifies touchless face biometric turnstile access, automated statutory registers, and attendance-linked vendor billing into one powerful platform. Automate onboarding, face-based attendance and contractor billing. A labour management system built for your contract workforce.
+          </p>
+
+          <!-- 3 Value Pillars in Brand Amber Style -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+            <div class="flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200/90 shadow-card hover:border-brand-amber transition">
+              <div class="w-8 h-8 rounded-lg bg-amber-50 text-brand-amberdark flex items-center justify-center flex-shrink-0 font-bold mt-0.5 border border-amber-200/60">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <div>
+                <h4 class="text-xs font-bold text-brand-charcoal">Zero Ghost Workers</h4>
+                <p class="text-[11px] text-slate-500 mt-0.5">Biometric gates segregated strictly from regular employees.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200/90 shadow-card hover:border-brand-amber transition">
+              <div class="w-8 h-8 rounded-lg bg-amber-50 text-brand-amberdark flex items-center justify-center flex-shrink-0 font-bold mt-0.5 border border-amber-200/60">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <div>
+                <h4 class="text-xs font-bold text-brand-charcoal">100% Audit-Ready</h4>
+                <p class="text-[11px] text-slate-500 mt-0.5">Automated Form B, D, 13, 25 & AI PF/ESIC ECR check.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200/90 shadow-card hover:border-brand-amber transition">
+              <div class="w-8 h-8 rounded-lg bg-amber-50 text-brand-amberdark flex items-center justify-center flex-shrink-0 font-bold mt-0.5 border border-amber-200/60">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+              </div>
+              <div>
+                <h4 class="text-xs font-bold text-brand-charcoal">Single Ownership</h4>
+                <p class="text-[11px] text-slate-500 mt-0.5">Hardware (face machines/gates) + Cloud/On-Premise Software.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Enterprise Impact Counter Metrics -->
+          <div class="pt-5 border-t border-slate-200/80 flex flex-wrap items-center gap-6 sm:gap-10">
+            <div>
+              <span class="block text-2xl sm:text-3xl font-black text-brand-amberdark tracking-tight">100,000+</span>
+              <span class="text-xs font-semibold text-slate-500">Contract Workers Active Daily</span>
+            </div>
+            <div class="border-l border-slate-200 pl-6 sm:pl-10">
+              <span class="block text-2xl sm:text-3xl font-black text-brand-charcoal tracking-tight">500+</span>
+              <span class="text-xs font-semibold text-slate-500">Enterprise Plants in India</span>
+            </div>
+            <div class="border-l border-slate-200 pl-6 sm:pl-10">
+              <span class="block text-2xl sm:text-3xl font-black text-brand-charcoal tracking-tight">20+</span>
+              <span class="text-xs font-semibold text-slate-500">Central & State Acts</span>
+            </div>
+            <div class="border-l border-slate-200 pl-6 sm:pl-10">
+              <span class="block text-2xl sm:text-3xl font-black text-emerald-700 tracking-tight">6-8 Wks</span>
+              <span class="text-xs font-semibold text-slate-500">Fast Rollout Timeline</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Side: High-Converting Enterprise Lead Form (5 Cols) -->
+        <div id="demo-form" class="lg:col-span-5">
+          <div class="bg-white rounded-2xl shadow-xl border-2 border-brand-amber/40 p-6 sm:p-8 relative">
+            
+            <!-- Top Tag in Brand Amber -->
+            <div class="absolute -top-3.5 right-6 bg-brand-charcoal text-brand-amber border border-brand-amber/40 text-[11px] font-black tracking-wider uppercase px-3.5 py-1 rounded-full shadow-md flex items-center gap-1.5">
+              <span>★</span> Free 1-on-1 Consultation
+            </div>
+
+            <h3 class="text-xl font-black text-brand-charcoal mb-1">Book a Live Product Demo</h3>
+            <p class="text-xs text-slate-500 mb-5">See how emContract centralizes your contract workforce, prevents audit penalties, and synchronizes with your SAP/ERP.</p>
+
+            <form action="/api/lp-lead/contract-labour-management-india-lp/" method="POST" class="space-y-3.5 lead-form" id="heroLeadForm">
+              <input type="hidden" name="form_source" value="Hero Section Form">
+              <input type="hidden" name="lead_trigger" value="Hero Section CTA">
+              <input type="hidden" name="utm_source" id="utm_source" value="">
+              <input type="hidden" name="utm_medium" id="utm_medium" value="">
+              <input type="hidden" name="utm_campaign" id="utm_campaign" value="">
+              <input type="hidden" name="utm_term" id="utm_term" value="">
+              <input type="hidden" name="utm_content" id="utm_content" value="">
+              <input type="hidden" name="utm_id" value="">
+              <input type="hidden" name="gclid" value="">
+              <input type="hidden" name="referrer" value="">
+              <input type="hidden" name="landing_page_url" value="">
+              <input type="hidden" name="traffic_source" value="">
+              <input type="hidden" name="traffic_medium" value="">
+              <input type="hidden" name="page_name" value="Contract Labour">
+              <input type="hidden" name="lead_id" value="">
+
+              <div>
+                <label class="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">Full Name *</label>
+                <input type="text" name="name" required placeholder="e.g. Ramesh Kulkarni" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-brand-amber focus:border-transparent transition placeholder:text-slate-400">
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">Official Work Email *</label>
+                  <input type="email" name="email" required placeholder="ramesh@company.com" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-brand-amber focus:border-transparent transition placeholder:text-slate-400">
+                </div>
+                <div>
+                  <label class="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">Mobile Number *</label>
+                  <input type="tel" name="phone" required placeholder="+91 98765 43210" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-brand-amber focus:border-transparent transition placeholder:text-slate-400">
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">Company Name *</label>
+                  <input type="text" name="company_name" required placeholder="e.g. Auto Component Ltd" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-brand-amber focus:border-transparent transition placeholder:text-slate-400">
+                </div>
+                <div>
+                  <label class="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">Plant Location / City *</label>
+                  <input type="text" name="city" required placeholder="e.g. Pune, Chakan, Chennai" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-brand-amber focus:border-transparent transition placeholder:text-slate-400">
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">Total Contract Worker Strength *</label>
+                <select name="contract_worker_strength" required class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-brand-amber focus:border-transparent transition font-medium">
+                  <option value="">Select workforce size across sites...</option>
+                  <option value="1000-2000">1,000 - 2,000 Contract workers</option>
+                  <option value="2000-4000">2,000 - 4,000 Contract workers</option>
+                  <option value="4000+">4,000 + Contract workers</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">Job Title *</label>
+                <select name="job_title" required class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-brand-amber focus:border-transparent transition font-medium">
+                  <option value="">Select your job title...</option>
+                  <option value="CXO">CXO</option>
+                  <option value="Senior Management">Senior Management</option>
+                  <option value="Manager">Manager</option>
+                  <option value="operational Manager">operational Manager</option>
+                </select>
+              </div>
+
+              <!-- CTA Button with Logo Amber -->
+              <button type="submit" class="submit-btn w-full py-3.5 px-4 rounded-xl text-sm font-black text-brand-charcoal bg-brand-amber hover:bg-brand-amberhover shadow-amber-glow transition-all flex items-center justify-center gap-2 group cursor-pointer disabled:opacity-75 disabled:cursor-not-allowed">
+                <span class="btn-text">Request Custom Live Demo</span>
+                <svg class="btn-icon w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </button>
+
+              <div class="pt-2 flex items-center justify-center gap-3 text-[11px] text-slate-500">
+                <span class="flex items-center gap-1">
+                  <svg class="w-3.5 h-3.5 text-emerald-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/></svg>
+                  Enterprise NDA
+                </span>
+                <span>•</span>
+                <span>ISO 27001 Security</span>
+                <span>•</span>
+                <span>No Spam Guarantee</span>
+              </div>
+            </form>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ENTERPRISE CLIENT LOGO SLIDESHOW (AUTOPLAY INFINITE MARQUEE WITH ORIGINAL LOGOS) -->
+  <section class="py-12 bg-brand-amberwash/80 border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-6">
+      <p class="text-xs uppercase font-black tracking-widest text-brand-amberdark">
+        TRUSTED BY INDIA'S LARGEST ENTERPRISES & MANUFACTURING PLANTS
+      </p>
+    </div>
+
+    <!-- Infinite Carousel Slider Wrapper -->
+    <div class="marquee-wrapper py-2">
+      <div class="marquee-track items-center gap-10 sm:gap-14">
+        
+        <!-- Track 1: Original Logos from emsphere.com -->
+        <!-- 1. Maruti Suzuki India (Prominent Enforced Size) -->
+        <div class="flex items-center justify-center px-6 py-3 bg-white rounded-xl shadow-sm border border-slate-200/90 hover:border-brand-amber hover:shadow-md transition-all">
+          <img 
+            src="./assets/images/maruti-suzuki.webp" 
+            onerror="this.src='/wp-content/uploads/2026/08/toppng.com-maruti-suzuki-india-vector-logo-400x400-1.png.webp'"
+            alt="Maruti Suzuki India" 
+            class="h-16 sm:h-20 w-auto max-w-[200px] sm:max-w-[230px] object-contain scale-105"
+            loading="lazy"
+          />
+        </div>
+
+        <!-- 2. Client Logo 1 -->
+        <div class="flex items-center justify-center px-4 py-2 bg-white rounded-xl shadow-xs border border-slate-200/80 hover:border-brand-amber hover:shadow-md transition-all">
+          <img 
+            src="./assets/images/client-logo-1.webp" 
+            onerror="this.src='/wp-content/uploads/2026/08/pngwing.com-1-768x273.png.webp'"
+            alt="Client Enterprise" 
+            class="h-9 sm:h-11 w-auto max-w-[150px] object-contain"
+            loading="lazy"
+          />
+        </div>
+
+        <!-- 3. Client Logo 4 -->
+        <div class="flex items-center justify-center px-4 py-2 bg-white rounded-xl shadow-xs border border-slate-200/80 hover:border-brand-amber hover:shadow-md transition-all">
+          <img 
+            src="./assets/images/client-logo-4.webp" 
+            onerror="this.src='/wp-content/uploads/2026/08/pngwing.com-4-768x768.png.webp'"
+            alt="Client Enterprise" 
+            class="h-10 sm:h-12 w-auto max-w-[130px] object-contain"
+            loading="lazy"
+          />
+        </div>
+
+        <!-- 4. Client Logo 2 -->
+        <div class="flex items-center justify-center px-4 py-2 bg-white rounded-xl shadow-xs border border-slate-200/80 hover:border-brand-amber hover:shadow-md transition-all">
+          <img 
+            src="./assets/images/client-logo-2.webp" 
+            onerror="this.src='/wp-content/uploads/2026/08/pngwing.com-2-768x427.png.webp'"
+            alt="Client Enterprise" 
+            class="h-10 sm:h-12 w-auto max-w-[140px] object-contain"
+            loading="lazy"
+          />
+        </div>
+
+        <!-- 5. JK Cement -->
+        <div class="flex items-center justify-center px-4 py-2 bg-white rounded-xl shadow-xs border border-slate-200/80 hover:border-brand-amber hover:shadow-md transition-all">
+          <img 
+            src="./assets/images/jk-cement.webp" 
+            onerror="this.src='/wp-content/uploads/2026/08/JKCEMENT.NS_BIG-768x146.png.webp'"
+            alt="JK Cement" 
+            class="h-8 sm:h-10 w-auto max-w-[160px] object-contain"
+            loading="lazy"
+          />
+        </div>
+
+        <!-- 6. Kirloskar -->
+        <div class="flex items-center justify-center px-4 py-2 bg-white rounded-xl shadow-xs border border-slate-200/80 hover:border-brand-amber hover:shadow-md transition-all">
+          <img 
+            src="./assets/images/kirloskar.webp" 
+            onerror="this.src='/wp-content/uploads/2026/08/kirloskar-seeklogo-768x412.png.webp'"
+            alt="Kirloskar" 
+            class="h-10 sm:h-12 w-auto max-w-[150px] object-contain"
+            loading="lazy"
+          />
+        </div>
+
+        <!-- 7. Mahindra & Mahindra -->
+        <div class="flex items-center justify-center px-4 py-2 bg-white rounded-xl shadow-xs border border-slate-200/80 hover:border-brand-amber hover:shadow-md transition-all">
+          <img 
+            src="./assets/images/mahindra.webp" 
+            onerror="this.src='/wp-content/uploads/2026/01/Mahindralogo.png.webp'"
+            alt="Mahindra & Mahindra" 
+            class="h-9 sm:h-11 w-auto max-w-[150px] object-contain"
+            loading="lazy"
+          />
+        </div>
+
+        <!-- 8. Yazaki India -->
+        <div class="flex items-center justify-center px-4 py-2 bg-white rounded-xl shadow-xs border border-slate-200/80 hover:border-brand-amber hover:shadow-md transition-all">
+          <img 
+            src="./assets/images/yazaki.webp" 
+            onerror="this.src='/wp-content/uploads/2023/09/Yazaki-India-Ltd.png.webp'"
+            alt="Yazaki India" 
+            class="h-9 sm:h-11 w-auto max-w-[150px] object-contain"
+            loading="lazy"
+          />
+        </div>
+
+        <!-- 9. Client Logo 3 -->
+        <div class="flex items-center justify-center px-4 py-2 bg-white rounded-xl shadow-xs border border-slate-200/80 hover:border-brand-amber hover:shadow-md transition-all">
+          <img 
+            src="./assets/images/client-logo-3.webp" 
+            onerror="this.src='/wp-content/uploads/2026/08/pngwing.com-3-768x276.png.webp'"
+            alt="Client Enterprise" 
+            class="h-9 sm:h-11 w-auto max-w-[140px] object-contain"
+            loading="lazy"
+          />
+        </div>
+
+        <!-- 10. Client Logo 7 -->
+        <div class="flex items-center justify-center px-4 py-2 bg-white rounded-xl shadow-xs border border-slate-200/80 hover:border-brand-amber hover:shadow-md transition-all">
+          <img 
+            src="./assets/images/client-logo-7.webp" 
+            onerror="this.src='/wp-content/uploads/2026/08/pngwing.com-7-768x432.png.webp'"
+            alt="Client Enterprise" 
+            class="h-9 sm:h-11 w-auto max-w-[140px] object-contain"
+            loading="lazy"
+          />
+        </div>
+
+        <!-- 11. Client Logo 6 -->
+        <div class="flex items-center justify-center px-4 py-2 bg-white rounded-xl shadow-xs border border-slate-200/80 hover:border-brand-amber hover:shadow-md transition-all">
+          <img 
+            src="./assets/images/client-logo-6.webp" 
+            onerror="this.src='/wp-content/uploads/2026/08/pngwing.com-6-768x776.png.webp'"
+            alt="Client Enterprise" 
+            class="h-10 sm:h-12 w-auto max-w-[130px] object-contain"
+            loading="lazy"
+          />
+        </div>
+
+        <!-- DUPLICATE SET FOR INFINITE SEAMLESS LOOP (Track 2) -->
+        <!-- 1. Maruti Suzuki India -->
+        <div class="flex items-center justify-center px-6 py-3 bg-white rounded-xl shadow-sm border border-slate-200/90 hover:border-brand-amber hover:shadow-md transition-all" aria-hidden="true">
+          <img 
+            src="./assets/images/maruti-suzuki.webp" 
+            onerror="this.src='/wp-content/uploads/2026/08/toppng.com-maruti-suzuki-india-vector-logo-400x400-1.png.webp'"
+            alt="Maruti Suzuki India" 
+            class="h-16 sm:h-20 w-auto max-w-[200px] sm:max-w-[230px] object-contain scale-105"
+          />
+        </div>
+
+        <!-- 2. Client Logo 1 -->
+        <div class="flex items-center justify-center px-4 py-2 bg-white rounded-xl shadow-xs border border-slate-200/80 hover:border-brand-amber hover:shadow-md transition-all" aria-hidden="true">
+          <img 
+            src="./assets/images/client-logo-1.webp" 
+            onerror="this.src='/wp-content/uploads/2026/08/pngwing.com-1-768x273.png.webp'"
+            alt="Client Enterprise" 
+            class="h-9 sm:h-11 w-auto max-w-[150px] object-contain"
+          />
+        </div>
+
+        <!-- 3. Client Logo 4 -->
+        <div class="flex items-center justify-center px-4 py-2 bg-white rounded-xl shadow-xs border border-slate-200/80 hover:border-brand-amber hover:shadow-md transition-all" aria-hidden="true">
+          <img 
+            src="./assets/images/client-logo-4.webp" 
+            onerror="this.src='/wp-content/uploads/2026/08/pngwing.com-4-768x768.png.webp'"
+            alt="Client Enterprise" 
+            class="h-10 sm:h-12 w-auto max-w-[130px] object-contain"
+          />
+        </div>
+
+        <!-- 4. Client Logo 2 -->
+        <div class="flex items-center justify-center px-4 py-2 bg-white rounded-xl shadow-xs border border-slate-200/80 hover:border-brand-amber hover:shadow-md transition-all" aria-hidden="true">
+          <img 
+            src="./assets/images/client-logo-2.webp" 
+            onerror="this.src='/wp-content/uploads/2026/08/pngwing.com-2-768x427.png.webp'"
+            alt="Client Enterprise" 
+            class="h-10 sm:h-12 w-auto max-w-[140px] object-contain"
+          />
+        </div>
+
+        <!-- 5. JK Cement -->
+        <div class="flex items-center justify-center px-4 py-2 bg-white rounded-xl shadow-xs border border-slate-200/80 hover:border-brand-amber hover:shadow-md transition-all" aria-hidden="true">
+          <img 
+            src="./assets/images/jk-cement.webp" 
+            onerror="this.src='/wp-content/uploads/2026/08/JKCEMENT.NS_BIG-768x146.png.webp'"
+            alt="JK Cement" 
+            class="h-8 sm:h-10 w-auto max-w-[160px] object-contain"
+          />
+        </div>
+
+        <!-- 6. Kirloskar -->
+        <div class="flex items-center justify-center px-4 py-2 bg-white rounded-xl shadow-xs border border-slate-200/80 hover:border-brand-amber hover:shadow-md transition-all" aria-hidden="true">
+          <img 
+            src="./assets/images/kirloskar.webp" 
+            onerror="this.src='/wp-content/uploads/2026/08/kirloskar-seeklogo-768x412.png.webp'"
+            alt="Kirloskar" 
+            class="h-10 sm:h-12 w-auto max-w-[150px] object-contain"
+          />
+        </div>
+
+        <!-- 7. Mahindra & Mahindra -->
+        <div class="flex items-center justify-center px-4 py-2 bg-white rounded-xl shadow-xs border border-slate-200/80 hover:border-brand-amber hover:shadow-md transition-all" aria-hidden="true">
+          <img 
+            src="./assets/images/mahindra.webp" 
+            onerror="this.src='/wp-content/uploads/2026/01/Mahindralogo.png.webp'"
+            alt="Mahindra & Mahindra" 
+            class="h-9 sm:h-11 w-auto max-w-[150px] object-contain"
+          />
+        </div>
+
+        <!-- 8. Yazaki India -->
+        <div class="flex items-center justify-center px-4 py-2 bg-white rounded-xl shadow-xs border border-slate-200/80 hover:border-brand-amber hover:shadow-md transition-all" aria-hidden="true">
+          <img 
+            src="./assets/images/yazaki.webp" 
+            onerror="this.src='/wp-content/uploads/2023/09/Yazaki-India-Ltd.png.webp'"
+            alt="Yazaki India" 
+            class="h-9 sm:h-11 w-auto max-w-[150px] object-contain"
+          />
+        </div>
+
+        <!-- 9. Client Logo 3 -->
+        <div class="flex items-center justify-center px-4 py-2 bg-white rounded-xl shadow-xs border border-slate-200/80 hover:border-brand-amber hover:shadow-md transition-all" aria-hidden="true">
+          <img 
+            src="./assets/images/client-logo-3.webp" 
+            onerror="this.src='/wp-content/uploads/2026/08/pngwing.com-3-768x276.png.webp'"
+            alt="Client Enterprise" 
+            class="h-9 sm:h-11 w-auto max-w-[140px] object-contain"
+          />
+        </div>
+
+        <!-- 10. Client Logo 7 -->
+        <div class="flex items-center justify-center px-4 py-2 bg-white rounded-xl shadow-xs border border-slate-200/80 hover:border-brand-amber hover:shadow-md transition-all" aria-hidden="true">
+          <img 
+            src="./assets/images/client-logo-7.webp" 
+            onerror="this.src='/wp-content/uploads/2026/08/pngwing.com-7-768x432.png.webp'"
+            alt="Client Enterprise" 
+            class="h-9 sm:h-11 w-auto max-w-[140px] object-contain"
+          />
+        </div>
+
+        <!-- 11. Client Logo 6 -->
+        <div class="flex items-center justify-center px-4 py-2 bg-white rounded-xl shadow-xs border border-slate-200/80 hover:border-brand-amber hover:shadow-md transition-all" aria-hidden="true">
+          <img 
+            src="./assets/images/client-logo-6.webp" 
+            onerror="this.src='/wp-content/uploads/2026/08/pngwing.com-6-768x776.png.webp'"
+            alt="Client Enterprise" 
+            class="h-10 sm:h-12 w-auto max-w-[130px] object-contain"
+          />
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PAIN POINTS vs. EMSPHERE SOLUTION -->
+  <section class="py-16 sm:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-xs uppercase font-extrabold tracking-widest text-brand-amberdark mb-2.5">The Principal Employer Governance Gap</h2>
+        <p class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-charcoal tracking-tight">Why Traditional HRMS Cannot Handle Indian Contract Labour</p>
+        <p class="text-sm sm:text-base text-brand-muted mt-3.5 leading-relaxed">
+          Standard HRMS tools are built for white-collar, permanent staff. Managing external contractor workforces under the <strong>Contract Labour (Regulation & Abolition) Act, 1970</strong> demands specialized gate pass security, compliance auto-blocks, and contractor billing reconciliations. Digitize onboarding, attendance, contractor billing and statutory reports. India’s connected contract labour management system for plants and factories.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Challenge 1 -->
+        <div class="bg-white p-7 rounded-2xl border-2 border-slate-100 shadow-card hover:border-brand-amber hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300">
+          <div class="w-11 h-11 rounded-xl bg-red-50 text-red-600 flex items-center justify-center font-bold mb-5 border border-red-100">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+          </div>
+          <h3 class="text-base font-bold text-brand-charcoal mb-2">Ghost Workers & Proxy Attendance</h3>
+          <p class="text-xs text-brand-muted leading-relaxed mb-4">Manual registers and supervisor buddy punching result in paying for workers who never set foot inside your gates.</p>
+          <div class="pt-3 border-t border-slate-100">
+            <span class="text-xs font-bold text-brand-amberdark flex items-center gap-1.5">
+              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              emContract Solution
+            </span>
+            <p class="text-xs text-slate-700 mt-1 font-medium">Touchless Face Biometrics at turnstiles, segregated strictly from permanent employee records.</p>
+          </div>
+        </div>
+
+        <!-- Challenge 2 -->
+        <div class="bg-white p-7 rounded-2xl border-2 border-slate-100 shadow-card hover:border-brand-amber hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300">
+          <div class="w-11 h-11 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center font-bold mb-5 border border-amber-200">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          </div>
+          <h3 class="text-base font-bold text-brand-charcoal mb-2">CLRA Legal Penalties & Notices</h3>
+          <p class="text-xs text-brand-muted leading-relaxed mb-4">Expired Form VI licenses, missing Form 13/25, or unremitted PF/ESIC make the Principal Employer legally liable.</p>
+          <div class="pt-3 border-t border-slate-100">
+            <span class="text-xs font-bold text-brand-amberdark flex items-center gap-1.5">
+              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              emContract Solution
+            </span>
+            <p class="text-xs text-slate-700 mt-1 font-medium">Automated "Auto-Block" locks turnstile gate passes the moment contractor documentation expires.</p>
+          </div>
+        </div>
+
+        <!-- Challenge 3 -->
+        <div class="bg-white p-7 rounded-2xl border-2 border-slate-100 shadow-card hover:border-brand-amber hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300">
+          <div class="w-11 h-11 rounded-xl bg-amber-50 text-brand-amberdark flex items-center justify-center font-bold mb-5 border border-amber-200">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="text-base font-bold text-brand-charcoal mb-2">Vendor Billing Disputes & Leakage</h3>
+          <p class="text-xs text-brand-muted leading-relaxed mb-4">Finance and HR waste weeks cross-checking contractor bills against conflicting manual shift logs and overtime claims.</p>
+          <div class="pt-3 border-t border-slate-100">
+            <span class="text-xs font-bold text-brand-amberdark flex items-center gap-1.5">
+              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              emContract Solution
+            </span>
+            <p class="text-xs text-slate-700 mt-1 font-medium">Attendance-linked automated invoice generation with precise department-wise CTC reports.</p>
+          </div>
+        </div>
+
+        <!-- Challenge 4 -->
+        <div class="bg-white p-7 rounded-2xl border-2 border-slate-100 shadow-card hover:border-brand-amber hover:shadow-card-hover transition-all duration-300">
+          <div class="w-11 h-11 rounded-xl bg-slate-100 text-brand-charcoal flex items-center justify-center font-bold mb-5 border border-slate-200">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <h3 class="text-base font-bold text-brand-charcoal mb-2">Hardware-Software Friction</h3>
+          <p class="text-xs text-brand-muted leading-relaxed mb-4">Third-party biometric device vendors and cloud software providers constantly shift blame when plant gates stall.</p>
+          <div class="pt-3 border-t border-slate-100">
+            <span class="text-xs font-bold text-brand-amberdark flex items-center gap-1.5">
+              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              emContract Solution
+            </span>
+            <p class="text-xs text-slate-700 mt-1 font-medium">Single-point ownership from biometric turnstiles to CLMS software and bi-directional SAP sync.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+
+  <!-- THE EMSPHERE ADVANTAGE -->
+  <section class="py-16 sm:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-xs uppercase font-extrabold tracking-widest text-brand-amberdark mb-2.5">Enterprise Differentiation</h2>
+        <p class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-charcoal tracking-tight">The emSphere Competitive Edge</p>
+        <p class="text-sm sm:text-base text-brand-muted mt-3">Why India's premier manufacturing plants choose emSphere over generic software platforms.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-2xl border-2 border-slate-100 shadow-card hover:border-brand-amber hover:shadow-card-hover transition-all">
+          <div class="w-12 h-12 rounded-xl bg-amber-50 text-brand-amberdark flex items-center justify-center text-xl mb-6 font-bold border border-amber-200">
+            🏢
+          </div>
+          <h3 class="text-lg font-bold text-brand-charcoal mb-2.5">Hardware + Software Integrated</h3>
+          <p class="text-xs text-brand-muted leading-relaxed">
+            Eliminate finger-pointing between device makers and software vendors. emSphere delivers, commissions, and supports both the biometric face terminals and the cloud/on-premise CLMS platform under a single SLA.
+          </p>
+        </div>
+
+        <div class="bg-white p-8 rounded-2xl border-2 border-slate-100 shadow-card hover:border-brand-amber hover:shadow-card-hover transition-all">
+          <div class="w-12 h-12 rounded-xl bg-amber-50 text-brand-amberdark flex items-center justify-center text-xl mb-6 font-bold border border-amber-200">
+            🔒
+          </div>
+          <h3 class="text-lg font-bold text-brand-charcoal mb-2.5">Cloud or On-Premise Deployment</h3>
+          <p class="text-xs text-brand-muted leading-relaxed">
+            Whether your corporate IT mandates complete air-gapped on-premise servers or high-availability secure Cloud hosting, emContract conforms 100% to your internal IT security and data residency policies.
+          </p>
+        </div>
+
+        <div class="bg-white p-8 rounded-2xl border-2 border-slate-100 shadow-card hover:border-brand-amber hover:shadow-card-hover transition-all">
+          <div class="w-12 h-12 rounded-xl bg-amber-50 text-brand-amberdark flex items-center justify-center text-xl mb-6 font-bold border border-amber-200">
+            ⚡
+          </div>
+          <h3 class="text-lg font-bold text-brand-charcoal mb-2.5">Proven Enterprise Scale (40k+ Workers)</h3>
+          <p class="text-xs text-brand-muted leading-relaxed">
+            Battle-tested across massive heavy engineering facilities, automotive assemblies, and multi-location foundry environments. Proven ability to govern over 40,000 contract workers for a single client.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE CLIENT TESTIMONIALS (DARK GRAPHITE & LOGO AMBER) -->
+  <section class="py-16 sm:py-24 bg-brand-charcoal text-white border-y border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-xs uppercase font-extrabold tracking-widest text-brand-amber mb-2.5">Real Enterprise Voices</h2>
+        <p class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">Trusted by India's Industrial Leaders</p>
+        <p class="text-sm text-slate-400 mt-3">Here is how leading Principal Employers manage thousands of contract labourers with emSphere.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-slate-900/90 p-8 rounded-2xl border border-slate-800 flex flex-col justify-between hover:border-brand-amber transition">
+          <div class="space-y-4">
+            <div class="flex items-center gap-1 text-brand-amber text-sm">★★★★★</div>
+            <p class="text-xs sm:text-sm text-slate-300 italic leading-relaxed">
+              "Managing 40,000+ contract labourers across multiple locations requires accuracy, compliance, and strong governance. emSphere provides an end-to-end CLMS with digital onboarding, face-based attendance, real-time compliance monitoring, OT calculations, statutory reporting, and contractor billing. It has brought greater standardization, control, visibility, and audit confidence across our operations."
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-slate-800">
+            <h4 class="font-bold text-white text-sm">Mr. Nilesh Tarange</h4>
+            <p class="text-xs text-brand-amber font-semibold">GM - Process Assurance | Auto Farm Sector</p>
+            <p class="text-xs text-slate-400 font-extrabold tracking-wide mt-0.5">Mahindra & Mahindra</p>
+          </div>
+        </div>
+
+        <div class="bg-slate-900/90 p-8 rounded-2xl border border-slate-800 flex flex-col justify-between hover:border-brand-amber transition">
+          <div class="space-y-4">
+            <div class="flex items-center gap-1 text-brand-amber text-sm">★★★★★</div>
+            <p class="text-xs sm:text-sm text-slate-300 italic leading-relaxed">
+              "The best part was that emSphere provided end to end solution from Face biometric devices to the contract labour management software which helped us to have a single point of ownership for the entire process across 12000+ employees at 7 Plant locations."
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-slate-800">
+            <h4 class="font-bold text-white text-sm">Mr. Mahesh Jadhav</h4>
+            <p class="text-xs text-brand-amber font-semibold">Sr. HR Manager</p>
+            <p class="text-xs text-slate-400 font-extrabold tracking-wide mt-0.5">Yazaki India Ltd</p>
+          </div>
+        </div>
+
+        <div class="bg-slate-900/90 p-8 rounded-2xl border border-slate-800 flex flex-col justify-between hover:border-brand-amber transition">
+          <div class="space-y-4">
+            <div class="flex items-center gap-1 text-brand-amber text-sm">★★★★★</div>
+            <p class="text-xs sm:text-sm text-slate-300 italic leading-relaxed">
+              "emSphere emContract Labour management system empowered us to digitize end to end system from 120+ Biometric attendance, Manpower planning to Contractor billing & labour Analytics associated with it for dynamic contract labour workforce at our 28+ locations 20,000+ contract employees."
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-slate-800">
+            <h4 class="font-bold text-white text-sm">Mr. Shrikrishna Khalse</h4>
+            <p class="text-xs text-brand-amber font-semibold">Lead Employee Relations</p>
+            <p class="text-xs text-slate-400 font-extrabold tracking-wide mt-0.5">Varroc Excellence</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMERCIAL FAQs -->
+  <section class="py-16 sm:py-24 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14">
+        <h2 class="text-xs uppercase font-extrabold tracking-widest text-brand-amberdark mb-2.5">Clear Answers</h2>
+        <p class="text-2xl sm:text-3xl font-extrabold text-brand-charcoal tracking-tight">Frequently Asked Commercial Questions</p>
+        <p class="text-sm text-slate-500 mt-2">Key details for Plant Heads, HR Leaders, and Procurement Directors.</p>
+      </div>
+
+      <div class="space-y-4">
+        <div class="border-2 border-slate-100 rounded-xl p-5 hover:border-brand-amber transition">
+          <h3 class="font-bold text-brand-charcoal text-sm sm:text-base cursor-pointer flex justify-between items-center" onclick="toggleFaq(1)">
+            <span>Can contractor bills and invoices be generated directly from emContract?</span>
+            <span class="text-brand-amberdark text-xl font-bold" id="faq-icon-1">+</span>
+          </h3>
+          <div id="faq-answer-1" class="hidden mt-3 text-xs sm:text-sm text-brand-muted leading-relaxed pt-2 border-t border-slate-100">
+            Yes. emContract is an end-to-end system that calculates contract worker wages, contractor service charges, and statutory deductions based strictly on biometric shift attendance. It provides validated contractor billing summaries and department-wise CTC reports for finance approval.
+          </div>
+        </div>
+
+        <div class="border-2 border-slate-100 rounded-xl p-5 hover:border-brand-amber transition">
+          <h3 class="font-bold text-brand-charcoal text-sm sm:text-base cursor-pointer flex justify-between items-center" onclick="toggleFaq(2)">
+            <span>How does the system prevent non-compliant workers from entering our plant?</span>
+            <span class="text-brand-amberdark text-xl font-bold" id="faq-icon-2">+</span>
+          </h3>
+          <div id="faq-answer-2" class="hidden mt-3 text-xs sm:text-sm text-brand-muted leading-relaxed pt-2 border-t border-slate-100">
+            emContract features an automated compliance "Auto-Block" rule. If a contractor's CLRA license, work order limit, PF/ESIC deposit proof, safety training, or medical clearance lapses, the system automatically disables the worker's turnstile gate pass and immediately notifies plant security and HR.
+          </div>
+        </div>
+
+        <div class="border-2 border-slate-100 rounded-xl p-5 hover:border-brand-amber transition">
+          <h3 class="font-bold text-brand-charcoal text-sm sm:text-base cursor-pointer flex justify-between items-center" onclick="toggleFaq(3)">
+            <span>Does emSphere integrate with our existing SAP / ERP and biometric hardware?</span>
+            <span class="text-brand-amberdark text-xl font-bold" id="faq-icon-3">+</span>
+          </h3>
+          <div id="faq-answer-3" class="hidden mt-3 text-xs sm:text-sm text-brand-muted leading-relaxed pt-2 border-t border-slate-100">
+            Yes. We offer native API-based integrations with SAP, Oracle, and enterprise ERPs for seamless data synchronization of manpower indents and validated vendor invoices. Furthermore, we can integrate with your existing biometric hardware or provide turnkey emSphere facial recognition terminals.
+          </div>
+        </div>
+
+        <div class="border-2 border-slate-100 rounded-xl p-5 hover:border-brand-amber transition">
+          <h3 class="font-bold text-brand-charcoal text-sm sm:text-base cursor-pointer flex justify-between items-center" onclick="toggleFaq(4)">
+            <span>How long does it take to implement emContract across multiple plant locations?</span>
+            <span class="text-brand-amberdark text-xl font-bold" id="faq-icon-4">+</span>
+          </h3>
+          <div id="faq-answer-4" class="hidden mt-3 text-xs sm:text-sm text-brand-muted leading-relaxed pt-2 border-t border-slate-100">
+            emSphere is a modular, ready-to-deploy platform. While exact timeframes depend on module customization and hardware gate counts, typical multi-plant enterprise implementations are completed within 6 to 8 weeks with dedicated on-ground field support.
+          </div>
+        </div>
+
+        <div class="border-2 border-slate-100 rounded-xl p-5 hover:border-brand-amber transition">
+          <h3 class="font-bold text-brand-charcoal text-sm sm:text-base cursor-pointer flex justify-between items-center" onclick="toggleFaq(5)">
+            <span>How does the AI PF & ESIC comparison feature work?</span>
+            <span class="text-brand-amberdark text-xl font-bold" id="faq-icon-5">+</span>
+          </h3>
+          <div id="faq-answer-5" class="hidden mt-3 text-xs sm:text-sm text-brand-muted leading-relaxed pt-2 border-t border-slate-100">
+            Our automated audit engine cross-checks contractor-submitted PF Electronic Challan Receipts (ECRs) and ESIC remittances against actual attendance-derived wages. Any short payment, omitted employee, or numerical variance is flagged before invoices are cleared for payment.
+          </div>
+        </div>
+
+        <div class="extra-faq hidden border-2 border-slate-100 rounded-xl p-5 hover:border-brand-amber transition">
+          <h3 class="font-bold text-brand-charcoal text-sm sm:text-base cursor-pointer flex justify-between items-center" onclick="toggleFaq(6)">
+            <span>What is labour management software and how does a labour management system work?</span>
+            <span class="text-brand-amberdark text-xl font-bold" id="faq-icon-6">+</span>
+          </h3>
+          <div id="faq-answer-6" class="hidden mt-3 text-xs sm:text-sm text-brand-muted leading-relaxed pt-2 border-t border-slate-100">
+            Labour management software is a digital labour management system that helps businesses manage employees, contract workers, attendance, scheduling, workforce records, and day-to-day workforce operations from a centralized platform.
+          </div>
+        </div>
+
+        <div class="extra-faq hidden border-2 border-slate-100 rounded-xl p-5 hover:border-brand-amber transition">
+          <h3 class="font-bold text-brand-charcoal text-sm sm:text-base cursor-pointer flex justify-between items-center" onclick="toggleFaq(7)">
+            <span>What are workforce management systems and workforce management solutions?</span>
+            <span class="text-brand-amberdark text-xl font-bold" id="faq-icon-7">+</span>
+          </h3>
+          <div id="faq-answer-7" class="hidden mt-3 text-xs sm:text-sm text-brand-muted leading-relaxed pt-2 border-t border-slate-100">
+            Workforce management systems and workforce management solutions help organizations manage their workforce through tools for employee management, attendance tracking, scheduling, workforce allocation, contractor management, reporting, and compliance.
+          </div>
+        </div>
+
+        <div class="extra-faq hidden border-2 border-slate-100 rounded-xl p-5 hover:border-brand-amber transition">
+          <h3 class="font-bold text-brand-charcoal text-sm sm:text-base cursor-pointer flex justify-between items-center" onclick="toggleFaq(8)">
+            <span>Can an employee attendance management system manage contract workers?</span>
+            <span class="text-brand-amberdark text-xl font-bold" id="faq-icon-8">+</span>
+          </h3>
+          <div id="faq-answer-8" class="hidden mt-3 text-xs sm:text-sm text-brand-muted leading-relaxed pt-2 border-t border-slate-100">
+            Yes. An employee attendance management system can help track attendance, working hours, shifts, and workforce records for employees and contract workers. Contract worker management software can also provide dedicated features for managing contractors and their workforce.
+          </div>
+        </div>
+
+        <div class="extra-faq hidden border-2 border-slate-100 rounded-xl p-5 hover:border-brand-amber transition">
+          <h3 class="font-bold text-brand-charcoal text-sm sm:text-base cursor-pointer flex justify-between items-center" onclick="toggleFaq(9)">
+            <span>What is a contract labour management system?</span>
+            <span class="text-brand-amberdark text-xl font-bold" id="faq-icon-9">+</span>
+          </h3>
+          <div id="faq-answer-9" class="hidden mt-3 text-xs sm:text-sm text-brand-muted leading-relaxed pt-2 border-t border-slate-100">
+            A contract labour management system is designed to manage contract labour and contract workers, including worker records, contractor information, attendance, deployment, documentation, scheduling, and compliance. Contract labour management software helps centralize these processes.
+          </div>
+        </div>
+
+        <div class="extra-faq hidden border-2 border-slate-100 rounded-xl p-5 hover:border-brand-amber transition">
+          <h3 class="font-bold text-brand-charcoal text-sm sm:text-base cursor-pointer flex justify-between items-center" onclick="toggleFaq(10)">
+            <span>What features should I look for in labour management software?</span>
+            <span class="text-brand-amberdark text-xl font-bold" id="faq-icon-10">+</span>
+          </h3>
+          <div id="faq-answer-10" class="hidden mt-3 text-xs sm:text-sm text-brand-muted leading-relaxed pt-2 border-t border-slate-100">
+            Important workforce management tools can include employee management, contract worker management, attendance tracking, labor scheduling, contractor management, compliance monitoring, reporting, mobile access, and centralized workforce information. A labour management information system can bring these records together in one platform.
+          </div>
+        </div>
+
+        <div class="extra-faq hidden border-2 border-slate-100 rounded-xl p-5 hover:border-brand-amber transition">
+          <h3 class="font-bold text-brand-charcoal text-sm sm:text-base cursor-pointer flex justify-between items-center" onclick="toggleFaq(11)">
+            <span>Is there a labour management app for mobile workforce management?</span>
+            <span class="text-brand-amberdark text-xl font-bold" id="faq-icon-11">+</span>
+          </h3>
+          <div id="faq-answer-11" class="hidden mt-3 text-xs sm:text-sm text-brand-muted leading-relaxed pt-2 border-t border-slate-100">
+            Depending on the solution, a labour management app can allow employees, supervisors, contractors, and administrators to access workforce information, attendance, approvals, worker records, and other workforce management features from mobile devices.
+          </div>
+        </div>
+
+        <div class="extra-faq hidden border-2 border-slate-100 rounded-xl p-5 hover:border-brand-amber transition">
+          <h3 class="font-bold text-brand-charcoal text-sm sm:text-base cursor-pointer flex justify-between items-center" onclick="toggleFaq(12)">
+            <span>What is the difference between contract management software and contract labour management software?</span>
+            <span class="text-brand-amberdark text-xl font-bold" id="faq-icon-12">+</span>
+          </h3>
+          <div id="faq-answer-12" class="hidden mt-3 text-xs sm:text-sm text-brand-muted leading-relaxed pt-2 border-t border-slate-100">
+            Contract management software generally focuses on managing contracts, agreements, and documentation, while contract labour management software focuses on managing contract workers, contractors, attendance, workforce deployment, and compliance. Businesses should choose based on their specific requirements rather than looking only for generic contract software.
+          </div>
+        </div>
+
+        <div class="extra-faq hidden border-2 border-slate-100 rounded-xl p-5 hover:border-brand-amber transition">
+          <h3 class="font-bold text-brand-charcoal text-sm sm:text-base cursor-pointer flex justify-between items-center" onclick="toggleFaq(13)">
+            <span>Can labour management software support workplace management and employee management?</span>
+            <span class="text-brand-amberdark text-xl font-bold" id="faq-icon-13">+</span>
+          </h3>
+          <div id="faq-answer-13" class="hidden mt-3 text-xs sm:text-sm text-brand-muted leading-relaxed pt-2 border-t border-slate-100">
+            Yes. Depending on the platform, a workplace management system can support employee management, attendance, workforce tracking, visitor management, scheduling, and other workplace processes. An employee management system can also help centralize employee and workforce records.
+          </div>
+        </div>
+
+        <div class="extra-faq hidden border-2 border-slate-100 rounded-xl p-5 hover:border-brand-amber transition">
+          <h3 class="font-bold text-brand-charcoal text-sm sm:text-base cursor-pointer flex justify-between items-center" onclick="toggleFaq(14)">
+            <span>Does labour management software provide labour management services and workforce management tools?</span>
+            <span class="text-brand-amberdark text-xl font-bold" id="faq-icon-14">+</span>
+          </h3>
+          <div id="faq-answer-14" class="hidden mt-3 text-xs sm:text-sm text-brand-muted leading-relaxed pt-2 border-t border-slate-100">
+            Labour management software is primarily a technology solution rather than a labour management service. It provides workforce management tools that can help organizations streamline employee management, contract labour management, attendance, scheduling, reporting, and workforce administration.
+          </div>
+        </div>
+
+        <div class="extra-faq hidden border-2 border-slate-100 rounded-xl p-5 hover:border-brand-amber transition">
+          <h3 class="font-bold text-brand-charcoal text-sm sm:text-base cursor-pointer flex justify-between items-center" onclick="toggleFaq(15)">
+            <span>How do I choose the best contract labour management system or contract management software?</span>
+            <span class="text-brand-amberdark text-xl font-bold" id="faq-icon-15">+</span>
+          </h3>
+          <div id="faq-answer-15" class="hidden mt-3 text-xs sm:text-sm text-brand-muted leading-relaxed pt-2 border-t border-slate-100">
+            When choosing the best contract labour management system, consider contract worker management, employee attendance, labor scheduling, contractor management, compliance, reporting, mobile access, integrations, scalability, and ease of use. The right solution should align with your organization's workforce and contract management requirements.
+          </div>
+        </div>
+
+        <div class="extra-faq hidden border-2 border-slate-100 rounded-xl p-5 hover:border-brand-amber transition">
+          <h3 class="font-bold text-brand-charcoal text-sm sm:text-base cursor-pointer flex justify-between items-center" onclick="toggleFaq(16)">
+            <span>What is a Contract Labour Management System (CLMS)?</span>
+            <span class="text-brand-amberdark text-xl font-bold" id="faq-icon-16">+</span>
+          </h3>
+          <div id="faq-answer-16" class="hidden mt-3 text-xs sm:text-sm text-brand-muted leading-relaxed pt-2 border-t border-slate-100">
+            A Contract Labour Management System is software that helps principal employers manage contractors and their workers in one place. It covers contractor registration, worker onboarding, attendance, wage verification, gate access and statutory compliance. emContract replaces spreadsheets and paperwork with a single, audit-ready system.
+          </div>
+        </div>
+
+        <div class="extra-faq hidden border-2 border-slate-100 rounded-xl p-5 hover:border-brand-amber transition">
+          <h3 class="font-bold text-brand-charcoal text-sm sm:text-base cursor-pointer flex justify-between items-center" onclick="toggleFaq(17)">
+            <span>Why do companies in India need contract labour management software?</span>
+            <span class="text-brand-amberdark text-xl font-bold" id="faq-icon-17">+</span>
+          </h3>
+          <div id="faq-answer-17" class="hidden mt-3 text-xs sm:text-sm text-brand-muted leading-relaxed pt-2 border-t border-slate-100">
+            Principal employers are responsible for contractor compliance under Indian labour laws, including the CLRA Act. Manual tracking leads to missed renewals, wage disputes and penalties. Contract labour management software gives you real-time visibility, automated alerts and records that stand up in an inspection.
+          </div>
+        </div>
+
+        <div class="extra-faq hidden border-2 border-slate-100 rounded-xl p-5 hover:border-brand-amber transition">
+          <h3 class="font-bold text-brand-charcoal text-sm sm:text-base cursor-pointer flex justify-between items-center" onclick="toggleFaq(18)">
+            <span>How is a CLMS different from a general workforce management system or HRMS?</span>
+            <span class="text-brand-amberdark text-xl font-bold" id="faq-icon-18">+</span>
+          </h3>
+          <div id="faq-answer-18" class="hidden mt-3 text-xs sm:text-sm text-brand-muted leading-relaxed pt-2 border-t border-slate-100">
+            A general workforce management system or HRMS is built for your own employees, with payroll and leave. A CLMS is built for contract workforce, where the contractor is the employer. It focuses on contractor compliance, licence tracking, worker verification and principal employer risk.
+          </div>
+        </div>
+
+        <div class="extra-faq hidden border-2 border-slate-100 rounded-xl p-5 hover:border-brand-amber transition">
+          <h3 class="font-bold text-brand-charcoal text-sm sm:text-base cursor-pointer flex justify-between items-center" onclick="toggleFaq(19)">
+            <span>How does emContract help with CLRA and statutory compliance?</span>
+            <span class="text-brand-amberdark text-xl font-bold" id="faq-icon-19">+</span>
+          </h3>
+          <div id="faq-answer-19" class="hidden mt-3 text-xs sm:text-sm text-brand-muted leading-relaxed pt-2 border-t border-slate-100">
+            emContract tracks contractor licences, work orders, PF and ESI details, minimum wage compliance and document validity in one dashboard. It sends alerts before expiry and generates compliance reports, so your team stays ready for labour inspections and audits.
+          </div>
+        </div>
+
+        <div class="extra-faq hidden border-2 border-slate-100 rounded-xl p-5 hover:border-brand-amber transition">
+          <h3 class="font-bold text-brand-charcoal text-sm sm:text-base cursor-pointer flex justify-between items-center" onclick="toggleFaq(20)">
+            <span>What is a Contractor Worker Master?</span>
+            <span class="text-brand-amberdark text-xl font-bold" id="faq-icon-20">+</span>
+          </h3>
+          <div id="faq-answer-20" class="hidden mt-3 text-xs sm:text-sm text-brand-muted leading-relaxed pt-2 border-t border-slate-100">
+            A Contractor Worker Master is a central database of every contract worker, with identity details, skills, contractor, work site, documents and status. It prevents duplicate entries, makes verification easier and gives HR, security and compliance teams a single source of truth.
+          </div>
+        </div>
+
+        <div class="extra-faq hidden border-2 border-slate-100 rounded-xl p-5 hover:border-brand-amber transition">
+          <h3 class="font-bold text-brand-charcoal text-sm sm:text-base cursor-pointer flex justify-between items-center" onclick="toggleFaq(21)">
+            <span>How does contract worker management work from onboarding to exit?</span>
+            <span class="text-brand-amberdark text-xl font-bold" id="faq-icon-21">+</span>
+          </h3>
+          <div id="faq-answer-21" class="hidden mt-3 text-xs sm:text-sm text-brand-muted leading-relaxed pt-2 border-t border-slate-100">
+            Workers are registered under their contractor, their documents are verified, and they receive approval and a gate pass or ID card. The system then tracks attendance, deployment and wages. At exit, access is closed and records are archived for audit.
+          </div>
+        </div>
+
+        <div class="extra-faq hidden border-2 border-slate-100 rounded-xl p-5 hover:border-brand-amber transition">
+          <h3 class="font-bold text-brand-charcoal text-sm sm:text-base cursor-pointer flex justify-between items-center" onclick="toggleFaq(22)">
+            <span>Can the system integrate with biometric attendance devices?</span>
+            <span class="text-brand-amberdark text-xl font-bold" id="faq-icon-22">+</span>
+          </h3>
+          <div id="faq-answer-22" class="hidden mt-3 text-xs sm:text-sm text-brand-muted leading-relaxed pt-2 border-t border-slate-100">
+            Yes. emContract can connect with biometric and access control devices so attendance flows into the system automatically. This removes manual muster rolls and gives accurate hours for wage and contractor bill verification. Contact us to confirm support for your specific device brand.
+          </div>
+        </div>
+
+        <div class="extra-faq hidden border-2 border-slate-100 rounded-xl p-5 hover:border-brand-amber transition">
+          <h3 class="font-bold text-brand-charcoal text-sm sm:text-base cursor-pointer flex justify-between items-center" onclick="toggleFaq(23)">
+            <span>Can I manage multiple contractors, plants and sites in one system?</span>
+            <span class="text-brand-amberdark text-xl font-bold" id="faq-icon-23">+</span>
+          </h3>
+          <div id="faq-answer-23" class="hidden mt-3 text-xs sm:text-sm text-brand-muted leading-relaxed pt-2 border-t border-slate-100">
+            Yes. You can manage many contractors across multiple locations from one dashboard, with site-wise and contractor-wise reports. Access can be set by role, so each plant or department sees only what it needs.
+          </div>
+        </div>
+
+        <div class="extra-faq hidden border-2 border-slate-100 rounded-xl p-5 hover:border-brand-amber transition">
+          <h3 class="font-bold text-brand-charcoal text-sm sm:text-base cursor-pointer flex justify-between items-center" onclick="toggleFaq(24)">
+            <span>Is contract labour management software better than managing in Excel?</span>
+            <span class="text-brand-amberdark text-xl font-bold" id="faq-icon-24">+</span>
+          </h3>
+          <div id="faq-answer-24" class="hidden mt-3 text-xs sm:text-sm text-brand-muted leading-relaxed pt-2 border-t border-slate-100">
+            Yes, for most companies. Excel lacks automated alerts, access control and audit trails, and it breaks down as headcount grows. A dedicated system reduces errors, saves admin time and keeps documents and attendance linked in one place.
+          </div>
+        </div>
+
+        <div class="extra-faq hidden border-2 border-slate-100 rounded-xl p-5 hover:border-brand-amber transition">
+          <h3 class="font-bold text-brand-charcoal text-sm sm:text-base cursor-pointer flex justify-between items-center" onclick="toggleFaq(25)">
+            <span>What should I look for in the best contract labour management system?</span>
+            <span class="text-brand-amberdark text-xl font-bold" id="faq-icon-25">+</span>
+          </h3>
+          <div id="faq-answer-25" class="hidden mt-3 text-xs sm:text-sm text-brand-muted leading-relaxed pt-2 border-t border-slate-100">
+            Look for strong compliance tracking, a worker master database, attendance and access integration, contractor bill verification, role-based access, reporting and local support in India. Also check that it is scalable, easy for site staff to use, and can integrate with your HRMS or ERP.
+          </div>
+        </div>
+
+        <div class="extra-faq hidden border-2 border-slate-100 rounded-xl p-5 hover:border-brand-amber transition">
+          <h3 class="font-bold text-brand-charcoal text-sm sm:text-base cursor-pointer flex justify-between items-center" onclick="toggleFaq(26)">
+            <span>Which industries can use emContract?</span>
+            <span class="text-brand-amberdark text-xl font-bold" id="faq-icon-26">+</span>
+          </h3>
+          <div id="faq-answer-26" class="hidden mt-3 text-xs sm:text-sm text-brand-muted leading-relaxed pt-2 border-t border-slate-100">
+            emContract suits any organisation with a large contract workforce, including manufacturing, construction, warehousing and logistics, facility management, energy and infrastructure. It also works for staffing and labour contracting companies.
+          </div>
+        </div>
+
+        <div class="extra-faq hidden border-2 border-slate-100 rounded-xl p-5 hover:border-brand-amber transition">
+          <h3 class="font-bold text-brand-charcoal text-sm sm:text-base cursor-pointer flex justify-between items-center" onclick="toggleFaq(27)">
+            <span>Is emContract cloud-based, and can I access it online?</span>
+            <span class="text-brand-amberdark text-xl font-bold" id="faq-icon-27">+</span>
+          </h3>
+          <div id="faq-answer-27" class="hidden mt-3 text-xs sm:text-sm text-brand-muted leading-relaxed pt-2 border-t border-slate-100">
+            Yes, you can access it online from any location with the right login. This lets head office, plant HR and security teams work from the same live data. Confirm deployment options with our team if you need on-premise hosting.
+          </div>
+        </div>
+
+        <div class="extra-faq hidden border-2 border-slate-100 rounded-xl p-5 hover:border-brand-amber transition">
+          <h3 class="font-bold text-brand-charcoal text-sm sm:text-base cursor-pointer flex justify-between items-center" onclick="toggleFaq(28)">
+            <span>Can emContract integrate with our existing HRMS, payroll, ERP or access control?</span>
+            <span class="text-brand-amberdark text-xl font-bold" id="faq-icon-28">+</span>
+          </h3>
+          <div id="faq-answer-28" class="hidden mt-3 text-xs sm:text-sm text-brand-muted leading-relaxed pt-2 border-t border-slate-100">
+            Yes. We can integrate emContract with common HRMS, payroll, ERP and access control systems so data does not need to be entered twice. Share your current systems with us and we will confirm the integration approach.
+          </div>
+        </div>
+
+        <div class="extra-faq hidden border-2 border-slate-100 rounded-xl p-5 hover:border-brand-amber transition">
+          <h3 class="font-bold text-brand-charcoal text-sm sm:text-base cursor-pointer flex justify-between items-center" onclick="toggleFaq(29)">
+            <span>How long does implementation take, and is training provided?</span>
+            <span class="text-brand-amberdark text-xl font-bold" id="faq-icon-29">+</span>
+          </h3>
+          <div id="faq-answer-29" class="hidden mt-3 text-xs sm:text-sm text-brand-muted leading-relaxed pt-2 border-t border-slate-100">
+            Implementation time depends on the number of sites, contractors and integrations. We provide setup support, data migration help and training for your HR, compliance and security teams so you can go live quickly.
+          </div>
+        </div>
+
+        <div class="extra-faq hidden border-2 border-slate-100 rounded-xl p-5 hover:border-brand-amber transition">
+          <h3 class="font-bold text-brand-charcoal text-sm sm:text-base cursor-pointer flex justify-between items-center" onclick="toggleFaq(30)">
+            <span>How much does a contract labour management system cost?</span>
+            <span class="text-brand-amberdark text-xl font-bold" id="faq-icon-30">+</span>
+          </h3>
+          <div id="faq-answer-30" class="hidden mt-3 text-xs sm:text-sm text-brand-muted leading-relaxed pt-2 border-t border-slate-100">
+            Pricing depends on workforce size, number of sites and the modules you need. Request a demo and we will share a plan that fits your needs. You can also view our pricing plans on this page.
+          </div>
+        </div>
+
+        <div class="extra-faq hidden border-2 border-slate-100 rounded-xl p-5 hover:border-brand-amber transition">
+          <h3 class="font-bold text-brand-charcoal text-sm sm:text-base cursor-pointer flex justify-between items-center" onclick="toggleFaq(31)">
+            <span>Is my data safe with emContract?</span>
+            <span class="text-brand-amberdark text-xl font-bold" id="faq-icon-31">+</span>
+          </h3>
+          <div id="faq-answer-31" class="hidden mt-3 text-xs sm:text-sm text-brand-muted leading-relaxed pt-2 border-t border-slate-100">
+            emContract uses role-based access, secure login and audit trails to protect worker and contractor records. Ask our team for details on hosting, backup and data security practices.
+          </div>
+        </div>
+
+        <div class="extra-faq hidden border-2 border-slate-100 rounded-xl p-5 hover:border-brand-amber transition">
+          <h3 class="font-bold text-brand-charcoal text-sm sm:text-base cursor-pointer flex justify-between items-center" onclick="toggleFaq(32)">
+            <span>How can I get a demo?</span>
+            <span class="text-brand-amberdark text-xl font-bold" id="faq-icon-32">+</span>
+          </h3>
+          <div id="faq-answer-32" class="hidden mt-3 text-xs sm:text-sm text-brand-muted leading-relaxed pt-2 border-t border-slate-100">
+            Fill in the form on this page or call us. We will show you how emContract works for your own contractor and compliance process, with no obligation.
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-8 text-center">
+        <button id="loadMoreFaqs" type="button" onclick="loadMoreFaqs()" class="w-full sm:w-auto px-6 py-3 rounded-xl text-sm font-bold text-brand-charcoal bg-brand-amber hover:bg-brand-amberhover transition cursor-pointer">
+          Load More FAQs
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA (LOGO AMBER ACCENTS & EXECUTIVE CHARCOAL) -->
+  <section class="py-16 sm:py-20 bg-brand-charcoal text-white relative overflow-hidden border-t border-slate-800">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 relative z-10">
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight">
+        Ready to Eliminate Contractor Leakages & Audit Liabilities?
+      </h2>
+      <p class="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+        Join Maruti Suzuki, Mahindra, Yazaki, Varroc, and 500+ enterprise manufacturing sites. Experience emContract in action with a custom 1-on-1 walkthrough tailored to your plant operations.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+        <!-- CTA opens Popup Modal -->
+        <button onclick="openLeadModal('Bottom CTA')" class="w-full sm:w-auto px-8 py-4 rounded-xl text-sm sm:text-base font-black text-brand-charcoal bg-brand-amber hover:bg-brand-amberhover shadow-amber-glow transition-all cursor-pointer">
+          Schedule Your 1-on-1 Live Demo →
+        </button>
+        <a href="tel:+919876543210" class="w-full sm:w-auto px-6 py-4 rounded-xl text-sm sm:text-base font-bold text-white bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur transition-all flex items-center justify-center gap-2">
+          <svg class="w-4 h-4 text-brand-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+          Direct Line: +91 98765 43210
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROFESSIONAL FOOTER -->
+  <footer class="py-10 bg-[#070A11] text-slate-400 text-xs border-t border-slate-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-4 text-center md:text-left">
+        <img 
+          src="./assets/images/emsphere-logo.gif" 
+          onerror="this.src='/wp-content/uploads/2022/09/Final-Logo-Animation-1.gif'"
+          alt="emSphere Technologies" 
+          class="h-8 w-auto object-contain brightness-0 invert opacity-80"
+        />
+        <div class="border-l border-slate-800 pl-4">
+          <p class="font-bold text-slate-200">emSphere Technologies Pvt. Ltd.</p>
+          <p class="text-slate-500 text-[11px]">Pune, Maharashtra, India • Enterprise Workforce & CLMS Systems</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-6 text-[11px]">
+        <a href="https://www.emsphere.com/privacy-policy/" target="_blank" class="hover:text-white transition">Privacy Policy</a>
+        <a href="https://www.emsphere.com/contact-us/" target="_blank" class="hover:text-white transition">Contact Us</a>
+        <span class="text-slate-600">© 2026 emSphere. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MOBILE STICKY BOTTOM BAR (CTA Opens Popup) -->
+  <div class="sm:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 p-2.5 flex items-center gap-2.5 shadow-2xl">
+    <a href="tel:+919876543210" class="flex-1 py-2.5 px-3 rounded-lg border border-slate-300 text-slate-800 text-xs font-bold text-center flex items-center justify-center gap-1.5 bg-slate-50">
+      <svg class="w-3.5 h-3.5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+      Call Expert
+    </a>
+    <button onclick="openLeadModal('Mobile Sticky Bar')" class="flex-1 py-2.5 px-3 rounded-lg bg-brand-amber text-brand-charcoal text-xs font-black text-center shadow-amber-glow cursor-pointer">
+      Book Live Demo →
+    </button>
+  </div>
+
+  <!-- INTERACTIVE MODAL POPUP LEAD FORM -->
+  <div id="leadModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto modal-backdrop transition-opacity duration-300" role="dialog" aria-modal="true">
+    
+    <!-- Modal Card Container -->
+    <div class="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl border-2 border-brand-amber/50 overflow-hidden animate-modal-in my-auto">
+      
+      <!-- Top Amber Accent Bar -->
+      <div class="h-2 w-full bg-gradient-to-r from-brand-amber via-amber-400 to-brand-amberdark"></div>
+
+      <!-- Close Button -->
+      <button onclick="closeLeadModal()" class="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-brand-charcoal flex items-center justify-center text-lg font-bold transition cursor-pointer" aria-label="Close dialog">
+        ✕
+      </button>
+
+      <div class="p-6 sm:p-8 max-h-[85vh] overflow-y-auto">
+        
+        <!-- Header -->
+        <div class="flex items-center gap-2 mb-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-brand-amber animate-pulse"></span>
+          <span class="text-xs font-black uppercase tracking-wider text-brand-amberdark">Instant Plant Assessment</span>
+        </div>
+        <h3 class="text-xl sm:text-2xl font-black text-brand-charcoal tracking-tight">
+          Request a Custom Live Demo
+        </h3>
+        <p class="text-xs text-slate-500 mt-1 mb-5">
+          See how emContract centralizes contract workers, locks gate access on license expiry, and integrates directly with SAP.
+        </p>
+
+        <!-- Popup Form -->
+        <form action="/api/lp-lead/contract-labour-management-india-lp/" method="POST" class="space-y-3.5 lead-form" id="popupLeadForm">
+          <input type="hidden" name="form_source" value="Popup Modal Form">
+          <input type="hidden" name="lead_trigger" id="popup_lead_trigger" value="Popup Modal">
+          <input type="hidden" name="utm_source" id="popup_utm_source" value="">
+          <input type="hidden" name="utm_medium" id="popup_utm_medium" value="">
+          <input type="hidden" name="utm_campaign" id="popup_utm_campaign" value="">
+          <input type="hidden" name="utm_term" id="popup_utm_term" value="">
+          <input type="hidden" name="utm_content" id="popup_utm_content" value="">
+          <input type="hidden" name="utm_id" value="">
+          <input type="hidden" name="gclid" value="">
+          <input type="hidden" name="referrer" value="">
+          <input type="hidden" name="landing_page_url" value="">
+          <input type="hidden" name="traffic_source" value="">
+          <input type="hidden" name="traffic_medium" value="">
+          <input type="hidden" name="page_name" value="Contract Labour">
+          <input type="hidden" name="lead_id" value="">
+
+          <div>
+            <label class="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">Full Name *</label>
+            <input type="text" name="name" required placeholder="e.g. Ramesh Kulkarni" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-brand-amber focus:border-transparent transition placeholder:text-slate-400">
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">Official Work Email *</label>
+              <input type="email" name="email" required placeholder="ramesh@company.com" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-brand-amber focus:border-transparent transition placeholder:text-slate-400">
+            </div>
+            <div>
+              <label class="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">Mobile Number *</label>
+              <input type="tel" name="phone" required placeholder="+91 98765 43210" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-brand-amber focus:border-transparent transition placeholder:text-slate-400">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">Company Name *</label>
+              <input type="text" name="company_name" required placeholder="e.g. Auto Component Ltd" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-brand-amber focus:border-transparent transition placeholder:text-slate-400">
+            </div>
+            <div>
+              <label class="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">Plant Location / City *</label>
+              <input type="text" name="city" required placeholder="e.g. Pune, Chakan, Chennai" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-brand-amber focus:border-transparent transition placeholder:text-slate-400">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">Total Contract Worker Strength *</label>
+            <select name="contract_worker_strength" required class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-brand-amber focus:border-transparent transition font-medium">
+              <option value="">Select workforce size across sites...</option>
+              <option value="1000-2000">1,000 - 2,000 Contract workers</option>
+              <option value="2000-4000">2,000 - 4,000 Contract workers</option>
+              <option value="4000+">4,000 + Contract workers</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">Job Title *</label>
+            <select name="job_title" required class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-brand-amber focus:border-transparent transition font-medium">
+              <option value="">Select your job title...</option>
+              <option value="CXO">CXO</option>
+              <option value="Senior Management">Senior Management</option>
+              <option value="Manager">Manager</option>
+              <option value="operational Manager">operational Manager</option>
+            </select>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="submit-btn w-full py-3.5 px-4 rounded-xl text-sm font-black text-brand-charcoal bg-brand-amber hover:bg-brand-amberhover shadow-amber-glow transition-all flex items-center justify-center gap-2 group cursor-pointer disabled:opacity-75 disabled:cursor-not-allowed">
+            <span class="btn-text">Confirm Live Demo Booking</span>
+            <svg class="btn-icon w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </button>
+
+          <div class="pt-2 flex items-center justify-center gap-3 text-[11px] text-slate-500">
+            <span class="flex items-center gap-1">
+              <svg class="w-3.5 h-3.5 text-emerald-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/></svg>
+              Enterprise NDA
+            </span>
+            <span>•</span>
+            <span>ISO 27001 Certified</span>
+            <span>•</span>
+            <span>Strict Privacy Guarantee</span>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT CONTROLLERS -->
+  <script>
+    // 1. FAQ Accordion
+    function toggleFaq(index) {
+      const answer = document.getElementById('faq-answer-' + index);
+      const icon = document.getElementById('faq-icon-' + index);
+      if (answer.classList.contains('hidden')) {
+        answer.classList.remove('hidden');
+        icon.innerText = '−';
+      } else {
+        answer.classList.add('hidden');
+        icon.innerText = '+';
+      }
+    }
+
+    function loadMoreFaqs() {
+      document.querySelectorAll('.extra-faq').forEach(faq => faq.classList.remove('hidden'));
+      document.getElementById('loadMoreFaqs').classList.add('hidden');
+    }
+
+    // 3. Modal Popup Functions
+    function openLeadModal(triggerSource = 'Manual CTA') {
+      const modal = document.getElementById('leadModal');
+      const triggerInput = document.getElementById('popup_lead_trigger');
+      if (triggerInput) triggerInput.value = triggerSource;
+      if (modal) {
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden'; // Prevent page scrolling under modal
+      }
+    }
+
+    function closeLeadModal() {
+      const modal = document.getElementById('leadModal');
+      if (modal) {
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+      // Record dismissal in session so it won't auto-popup on scroll again this visit
+      sessionStorage.setItem('emsphere_scroll_popup_dismissed', 'true');
+    }
+
+    // Close modal when clicking on dark backdrop
+    document.getElementById('leadModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeLeadModal();
+      }
+    });
+
+    // Close modal on Escape key press
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeLeadModal();
+      }
+    });
+
+    // 4. Half-Page (50%) Scroll Auto-Trigger for Popup Form
+    let scrollTriggered = false;
+    window.addEventListener('scroll', function() {
+      if (scrollTriggered) return;
+      if (sessionStorage.getItem('emsphere_scroll_popup_dismissed')) return;
+
+      const totalDocHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const currentScroll = window.scrollY;
+
+      if (totalDocHeight > 0 && (currentScroll / totalDocHeight) >= 0.5) {
+        scrollTriggered = true;
+        openLeadModal('Auto 50% Scroll Trigger');
+      }
+    });
+
+    // 5. UTM Parameter Capture & Storage for Google Ads
+    const utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+
+    function initUtmAndTracking() {
+      const params = new URLSearchParams(window.location.search);
+      
+      // Save any query parameters into sessionStorage so they persist
+      utmKeys.forEach(key => {
+        if (params.has(key)) {
+          sessionStorage.setItem('ems_' + key, params.get(key));
+        }
+      });
+
+      // Populate hidden inputs in all lead forms
+      utmKeys.forEach(key => {
+        const value = params.get(key) || sessionStorage.getItem('ems_' + key) || '';
+        const heroInput = document.getElementById(key);
+        const popupInput = document.getElementById('popup_' + key);
+        if (heroInput && value) heroInput.value = value;
+        if (popupInput && value) popupInput.value = value;
+      });
+    }
+
+    // 6. Require a business email address on every lead form
+    function setupBusinessEmailValidation() {
+      const personalEmailDomains = [
+        'gmail.com', 'rediffmail.com', 'rediff.com', 'yahoo.com',
+        'outlook.com', 'hotmail.com', 'live.com', 'msn.com',
+        'icloud.com', 'aol.com', 'proton.me', 'protonmail.com', 'zoho.com'
+      ];
+      const errorMessage = 'Please Enter Valid Business Email ID';
+
+      document.querySelectorAll('.lead-form input[type="email"]').forEach(input => {
+        const validateBusinessEmail = () => {
+          const domain = input.value.trim().toLowerCase().split('@').pop();
+          input.setCustomValidity(personalEmailDomains.includes(domain) ? errorMessage : '');
+        };
+
+        input.addEventListener('input', validateBusinessEmail);
+        input.addEventListener('change', validateBusinessEmail);
+      });
+    }
+
+    // 7. Asynchronous Form Submission with Thank-You Redirect
+    function setupFormHandlers() {
+      const forms = document.querySelectorAll('.lead-form');
+
+      forms.forEach(form => {
+        form.addEventListener('submit', async function(e) {
+          e.preventDefault();
+
+          const submitBtn = form.querySelector('.submit-btn');
+          const btnText = form.querySelector('.btn-text');
+          const btnIcon = form.querySelector('.btn-icon');
+          const originalText = btnText ? btnText.textContent : 'Submit';
+
+          // Set Loading State
+          if (submitBtn) {
+            submitBtn.disabled = true;
+            if (btnText) btnText.textContent = 'Submitting Request...';
+            if (btnIcon) btnIcon.classList.add('animate-spin');
+          }
+
+          const formData = new FormData(form);
+          formData.append('is_ajax', '1');
+
+          try {
+            const response = await fetch(form.action || '/api/lp-lead/contract-labour-management-india-lp/', {
+              method: 'POST',
+              body: formData,
+              headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'Accept': 'application/json'
+              }
+            });
+
+            const result = await response.json();
+
+            if (result.status === 'success') {
+              if (btnText) btnText.textContent = 'Success! Redirecting...';
+              // Redirect to thank you page
+              const redirectUrl = result.redirect_url || 'https://www.emsphere.com/thank-you/';
+              window.location.href = redirectUrl;
+            } else {
+              alert(result.message || 'There was an error processing your request. Please try again.');
+              // Reset Button
+              if (submitBtn) {
+                submitBtn.disabled = false;
+                if (btnText) btnText.textContent = originalText;
+                if (btnIcon) btnIcon.classList.remove('animate-spin');
+              }
+            }
+          } catch (error) {
+            console.error('Submission error:', error);
+            // Fallback: Submit form traditionally if fetch or JSON parsing fails
+            form.submit();
+          }
+        });
+      });
+    }
+
+    // Initialize on DOM Ready
+    window.addEventListener('DOMContentLoaded', () => {
+      initUtmAndTracking();
+      setupBusinessEmailValidation();
+      setupFormHandlers();
+    });
+  </script>
+
+  <script src="tracking.js"></script>
+</body>
+</html>
