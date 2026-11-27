@@ -1,0 +1,5 @@
+old_url,new_url,status_code,match_type,confidence,reason,old_status,old_indexable,gsc_clicks,gsc_impressions,referring_domains,inlinks,priority,reviewed
+"/old-page-renamed/","/new-page-name/",301,renamed,exact,"EXAMPLE ROW: page was renamed",200,yes,120,4500,6,40,HIGH,no
+"/blog/category/:path*","/blog/",301,archive-wildcard,high,"EXAMPLE ROW: category archive with no equivalent",200,yes,,,,,LOW,no
+"/same-path-on-both-sites/","",,keep-same-url,exact,"EXAMPLE ROW: path exists on new site, no redirect needed",200,yes,,,,,MEDIUM,no
+"/removed-page-no-match/","",,no-equivalent,low,"EXAMPLE ROW: no close match, leave as 404, never send to homepage",200,yes,,,,,LOW,no
